@@ -4,8 +4,8 @@ let InterfaceManager;
 
 document.addEventListener("DOMContentLoaded", (event) => {
   initApp();
-
-
+  renderIndex();
+  self.InterfaceManager.hideLoader();
 });
 
 /**

@@ -48,6 +48,13 @@ class UIManager {
     this.displayElement(this.main);
   }
 
-
+  /**
+  ** Set tabindex of multiple elements.
+  **/
+  setTabIndex(elements, value) {
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].setAttribute("tabindex", value);
+    }
+  }
 
 }
