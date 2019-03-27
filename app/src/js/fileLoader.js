@@ -26,7 +26,7 @@ class FileLoader {
   **/
   static loadFile(fileType, params, callback) {
     const file = this.createFile(fileType, params);
-    if (file.readyState){  //IE
+    if (file.readyState) {  //IE
       file.onreadystatechange = () => {
         if (file.readyState == "loaded" || file.readyState == "complete"){
           file.onreadystatechange = null;
