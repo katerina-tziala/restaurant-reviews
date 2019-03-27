@@ -5,8 +5,17 @@ let InterfaceManager, MapManager;
 
 document.addEventListener("DOMContentLoaded", (event) => {
   initApp();
-  renderIndex();
+
+  console.log(DisplayManager.getUserView());
+
   self.InterfaceManager.hideLoader();
+
+  if(DisplayManager.getUserView()==="index"){
+    renderIndex();
+  } else {
+    console.log("hi");
+    renderRestaurantInfo();
+  }
 });
 
 /**
@@ -18,3 +27,12 @@ const initApp = () => {
   self.spinner = document.getElementById("spinner");
   self.InterfaceManager = new UIManager(self.main, self.loader, self.spinner);
 };
+
+
+
+
+
+
+
+
+//

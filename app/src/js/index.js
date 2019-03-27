@@ -1,7 +1,7 @@
 "use strict";
 let restaurants, neighborhoods, cuisines,
 neighborhoodSelect, neighborhoodsList, cuisineSelect, cuisineList,
-restaurantsList, restaurantResults;
+restaurantsList, restaurantResults, mapCheckbox;
 /**
 ** Render index view.
 **/
@@ -12,10 +12,50 @@ const renderIndex = () => {
   self.cuisineList = document.getElementById("cuisine_list");
   self.restaurantsList = document.getElementById("restaurantsList");
   self.restaurantResults = document.getElementById("filterResults");
+  self.mapCheckbox = document.getElementById("maptoggler");
   self.mapManager = null;
   fetchNeighborhoods();
   fetchCuisines();
   updateRestaurants();
+  self.mapCheckbox.addEventListener("keyup", (event) => {
+    if (event.keyCode===13) {
+      event.preventDefault();
+      const mapcheck = document.getElementById("mapcheck");
+      if (mapcheck.checked) {
+        mapcheck.checked=false;
+      }else {
+        mapcheck.checked=true;
+      }
+      toggleMap();
+    }
+  });
+};
+document.addEventListener("click", (event) => {
+  const selects = document.querySelectorAll(".select_widget");
+  if (selects[0].contains(event.target)) {
+    closeSelectBox(self.cuisineSelect, self.cuisineList);
+  }else if (selects[1].contains(event.target)) {
+    closeSelectBox(self.neighborhoodSelect, self.neighborhoodsList);
+  }else{
+    closeSelectBox(self.neighborhoodSelect, self.neighborhoodsList);
+    closeSelectBox(self.cuisineSelect, self.cuisineList);
+  }
+});
+/**
+** Close Select Box.
+**/
+const closeSelectBox = (comboButton, comboList) => {
+  const expanded = comboButton.getAttribute("aria-expanded")==="false"?false:true;
+  if (expanded) {
+    handleComboButton(comboButton);
+    const params = {
+      "comboButton": comboButton,
+      "comboBox": comboList,
+      "focusableElements": comboList.querySelectorAll(".selectoption"),
+      "target":"null"
+    };
+    closeComboBox(params, true);
+  }
 };
 /**
 ** Toggle map.
