@@ -130,6 +130,7 @@ const updateRestaurants = () => {
     if (error) { // Got an error!
       console.error(error);
     } else {
+      self.InterfaceManager.hideLoader();
       resetRestaurants(restaurants);
       if(restaurants.length > 0) {
         fillRestaurantsHTML();

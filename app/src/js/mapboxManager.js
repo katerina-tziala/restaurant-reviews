@@ -51,7 +51,7 @@ class MapboxManager {
           this.addMarkersToMap(restaurants);
         });
       });
-    }, 800);
+    }, 700);
   }
 
   /**

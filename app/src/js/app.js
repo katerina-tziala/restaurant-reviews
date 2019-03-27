@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   console.log(DisplayManager.getUserView());
 
-  self.InterfaceManager.hideLoader();
+  
 
   if(DisplayManager.getUserView()==="index"){
     renderIndex();

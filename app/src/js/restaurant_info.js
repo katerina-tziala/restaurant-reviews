@@ -10,6 +10,7 @@ const renderRestaurantInfo = () => {
     if (error) { // Got an error!
       console.error(error);
     } else {
+      self.InterfaceManager.hideLoader();
       self.restaurant = restaurant;
       fillBreadcrumb();
       fillRestaurantHTML();
@@ -140,7 +141,6 @@ const fillReviewsHTML = (reviews = self.reviews, reviewsList = self.reviewsList)
 ** Create review HTML and add it to the webpage.
 **/
 const createReviewHTML = (review) => {
-  console.log(review);
   const li = document.createElement("li");
   li.className = "reviewCard";
   li.setAttribute("role" , "listitem");
