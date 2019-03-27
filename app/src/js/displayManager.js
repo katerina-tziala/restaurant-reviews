@@ -34,6 +34,13 @@ class DisplayManager {
   }
 
   /**
+  ** Redirect user.
+  **/
+  static redirectUser(redirectLink) {
+    window.location.replace(redirectLink);
+  }
+
+  /**
   ** Get a parameter by name from page URL.
   **/
   static getParameterByName(name, url) {
@@ -67,4 +74,5 @@ class DisplayManager {
     const formated = dateparts[2]+" "+dateparts[1]+" "+dateparts[3];
     return formated;
   }
+
 }
