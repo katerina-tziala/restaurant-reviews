@@ -146,8 +146,8 @@ const handleComboBox = (params) => {
 ** Close combo box.
 **/
 const closeComboBox = (params, outside=false) => {
-  self.InterfaceManager.hideElement(params.comboBox);
-  self.InterfaceManager.setTabIndex(params.focusableElements, -1);
+  DisplayManager.hideElement(params.comboBox);
+  DisplayManager.setTabIndex(params.focusableElements, -1);
   if (!outside) {
     params.comboButton.focus();
   }
@@ -164,7 +164,7 @@ const closeComboBox = (params, outside=false) => {
 ** Open combo box.
 **/
 const openComboBox = (params) => {
-  self.InterfaceManager.displayElement(params.comboBox);
+  DisplayManager.displayElement(params.comboBox);
   params.comboButton.blur();
   const activedescendant = params.comboButton.getAttribute("aria-activedescendant");
   for (var i = 0; i < params.focusableElements.length; i++) {
@@ -173,7 +173,7 @@ const openComboBox = (params) => {
   const active_element = document.getElementById(activedescendant);
   active_element.classList.add("selected");
   active_element.setAttribute("aria-selected", "true");
-  self.InterfaceManager.setTabIndex(params.focusableElements, 0);
+  DisplayManager.setTabIndex(params.focusableElements, 0);
   active_element.focus();
 };
 /**

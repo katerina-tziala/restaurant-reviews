@@ -1,60 +1,53 @@
 class UIManager {
   _hideClass = "hidden";
   _spinClass = "spin";
-  constructor(main, loader, spinner){
+  _noResultsFetchingMessages = {
+     "restaurants": `<span>No results matching your criteria!</span><span>Please try again!</span><i>Hint: Search with a different combination of neighborhoods and cuisines!</i>`,
+     "reviews": `<span>No reviews yet!</span>`
+  };
+
+  constructor(main, loader, spinner) {
       this.main = main;
       this.loader = loader;
       this.spinner = spinner;
-  }
-
-
-
-
-
-  /**
-  ** Remove class.
-  **/
-  removeClass(element, classname) {
-    element.classList.remove(classname);
-  }
-
-  /**
-  ** Add class.
-  **/
-  addClass(element, classname) {
-    element.classList.add(classname);
-  }
-
-  /**
-  ** Display element.
-  **/
-  displayElement(element) {
-    this.removeClass(element, this._hideClass);
-  }
-
-  /**
-  ** Hide element.
-  **/
-  hideElement(element) {
-    this.addClass(element, this._hideClass);
   }
 
   /**
   ** Hide loader.
   **/
   hideLoader() {
-    this.removeClass(this.spinner, this._spinClass);
-    this.hideElement(this.loader);
-    this.displayElement(this.main);
+    this.spinner.classList.remove(this._spinClass);
+    DisplayManager.hideElement(this.loader);
+    DisplayManager.displayElement(this.main);
   }
 
   /**
-  ** Set tabindex of multiple elements.
+  ** Display proper message about fetching restaurants/reviews results.
   **/
-  setTabIndex(elements, value) {
-    for (let i = 0; i < elements.length; i++) {
-      elements[i].setAttribute("tabindex", value);
-    }
-  }
+  displayNoResultsFetchingMessage(type, container, list) {
+    const div = document.createElement("div");
+    div.className = "fetcherMessageContainer";
+    const p = document.createElement("p");
+    p.className = "fetcherMessage";
+    p.setAttribute("role" , "alert")
+    p.setAttribute("aria-live" , "assertive");
+    const feedback_icon = document.createElement("i");
+    feedback_icon.classList.add("fas", "fa-exclamation-triangle", "feedback_icon");
+    const message_p = document.createElement("p");
+    message_p.innerHTML = this._noResultsFetchingMessages[type];
+    message_p.className = "fetcherFeedback";
+    p.append(feedback_icon, message_p);
+    div.append(p);
+    container.insertBefore(div, list);
+  };
 
+  /**
+  ** Remove message about restaurants/reviews results.
+  **/
+  removeNoResultsFetchingeMessage() {
+    const fetcherMessage = document.querySelectorAll(".fetcherMessageContainer");
+    if (fetcherMessage.length>0) {
+      fetcherMessage[0].remove();
+    }
+  };
 }

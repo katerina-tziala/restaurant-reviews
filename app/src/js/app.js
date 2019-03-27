@@ -1,6 +1,7 @@
 "use strict";
 let main, loader, spinner;
-let InterfaceManager;
+let InterfaceManager, MapManager;
+
 
 document.addEventListener("DOMContentLoaded", (event) => {
   initApp();

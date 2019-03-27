@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+.fetcherMessageContainer {
+    width: 100%;
+    padding: 16px;
+}
+.fetcherMessage {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  color: #000;
+  position: relative;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.15), 0 2px 9px 1px rgba(0, 0, 0, 0.15), 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 16px;
+  border: 1px dashed #cc0000;
+}
+.feedback_icon {
+  display: block;
+  font-size: 40px;
+  color: #cc0000;
+  margin-bottom: 10px;
+}
+.fetcherFeedback>span {
+  display: block;
+  padding: 4px;
+}
+.fetcherFeedback>i {
+  display: block;
+  padding: 4px;
+  color: #4d4d4d;
+}
