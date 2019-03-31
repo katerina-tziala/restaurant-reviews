@@ -64,6 +64,9 @@
 	color: #1c262f;
 	background-color: #fff;
 }
+#btn_update {
+  margin-right: 40px;
+}
 /* ~~~~~~~~~~~~~~~~~~ RESPONSIVE DESIGN WITH MEDIA QUERIES ~~~~~~~~~~~~~~~~~~ */
 @media screen and (max-width: 770px) {
   .buttons_wrapper {

@@ -50,4 +50,14 @@ class UIManager {
       fetcherMessage[0].remove();
     }
   };
+
+
+  /**
+  ** Check if loader is displayed.
+  **/
+  loaderIsDisplayed() {
+    return this.loader.classList.contains(this._hideClass) ? false : true;
+  }
+
+
 }

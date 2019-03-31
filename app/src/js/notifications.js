@@ -13,10 +13,18 @@ class NotificationsManager {
       message: `You are able to use the Restaurant Reviews app while offline!<br><i><b>Notice: </b>The map is not currently available since it was not loaded yet!<i>`},
     online: {
       title: "You are back online!",
-      message: "Internet connection was successfully re-established!"}
+      message: "Internet connection was successfully re-established!"},
+    update: {
+      title: "update available",
+      message: "A new version of the Restaurant Reviews app is available!"},
+    unable_to_connect_retrying: {
+      title: "Unable to connect!",
+      message: `Retrying in <span id="message_timer"></span>`}
   };
 
   _notificationTimeout = 0;
+  _notificationInterval = 0;
+  _notificationCountdown = 0;
 
   constructor() {
     this.createNotificationsHTML();
@@ -80,8 +88,24 @@ class NotificationsManager {
     this.notificationBody.innerHTML= notification.message;
   }
 
-
-
+  /**
+  ** Display a countdown notification. When it reaches to 0 clear countdown execute the next function.
+  **/
+  addNotificationCountDown(callback) {
+    this._notificationCountdown = 0;
+    this._notificationInterval = 0;
+    this._notificationCountdown = 5;
+    let timer = document.getElementById("message_timer");
+    timer.innerHTML = this._notificationCountdown;
+    this._notificationInterval = setInterval(() => {
+      this._notificationCountdown--;
+      if (this._notificationCountdown < 1) {
+        this.clearNotificationCountDown();
+        callback();
+      }
+      timer.innerHTML = this._notificationCountdown;
+    }, 1000);
+  };
 
   /**
   ** Clear notification.
@@ -94,10 +118,32 @@ class NotificationsManager {
     if (this._notificationTimeout > 0) {
       clearTimeout(this._notificationTimeout);
     }
-    // if (self.notificationInterval>0) {
-    //   clearNotificationCountDown(self.timeoutMessage);
-    // }
+
+    if (this._notificationInterval > 0) {
+      clearNotificationCountDown();
+    }
+
+    //this.notificationContainer.classList.remove("update_app");
+
+
   };
+
+  /**
+  ** Clear notification count down.
+  **/
+  clearNotificationCountDown() {
+    clearInterval(this._notificationInterval);
+    this._notificationCountdown = 0;
+  }
+
+
+  /**
+  ** Remove notification.
+  **/
+  removeNotification() {
+    this.hideNotification();
+    this._notificationTimeout = setTimeout(() => {this.clearNotification();}, 4000);
+  }
 
 
   /**
@@ -110,8 +156,22 @@ class NotificationsManager {
     this._notificationTimeout = setTimeout(() => {this.hideNotification();}, timeout);
   }
 
-
-
+  /**
+  ** Generate update notification.
+  **/
+  generateUpdateNotification() {
+    this.createNotificationContent(this.getNotificationContent("update"));
+    const container = document.createElement("div");
+    container.className = "buttons_wrapper";
+    const updateButton = DisplayManager.createButton("btn_update", "update", "update app", updateApp);
+    updateButton.classList.add("notification_button", "update_btn");
+    const dismissButton = DisplayManager.createButton("btn_dismiss", "dismiss", "dismiss update", dismissUpdate);
+    dismissButton.classList.add("notification_button", "update_btn");
+    container.append(updateButton, dismissButton);
+    //this.notificationContainer.classList.add("update_app");
+    this.notificationBody.append(container);
+    this.displayNotification();
+  }
 
 
 
@@ -131,5 +191,16 @@ class NotificationsManager {
     container.append(gotitButton);
     this.notificationBody.append(container);
   }
-
+  /**
+  ** Create "refresh"/ "retry" button for notification.
+  **/
+  createReActionButton(type) {
+    const container = document.createElement("div");
+    container.classList.add("buttons_wrapper");
+    const button_title = type ==="refresh" ? "refresh the app" : "retry to reconnect";
+    const button = DisplayManager.createButton(`btn_${type}`, type, "refresh the app", refreshApp);
+    button.classList.add("notification_button", `btn_${type}`);
+    container.append(button);
+    this.notificationBody.append(container);
+  }
 }
