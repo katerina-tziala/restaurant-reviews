@@ -1,8 +1,8 @@
 "use strict";
 let restaurants, neighborhoods, cuisines,
 neighborhoodSelect, neighborhoodsList, cuisineSelect, cuisineList,
-restaurantsList, restaurantResults,
-neighborhoodSelectWidget, cuisineSelectWidget;
+neighborhoodSelectWidget, cuisineSelectWidget,
+restaurantsList, restaurantResults;
 /**
 ** Render index view.
 **/
