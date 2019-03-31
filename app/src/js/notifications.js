@@ -19,7 +19,10 @@ class NotificationsManager {
       message: "A new version of the Restaurant Reviews app is available!"},
     unable_to_connect_retrying: {
       title: "Unable to connect!",
-      message: `Retrying in <span id="message_timer"></span>`}
+      message: `Retrying in <span id="message_timer"></span>`},
+    map_failure: {
+      title: "Ooops!",
+      message: `Map wasn't loaded successfully!<br>To be able to display the map check your internet connection and refresh the app.`}
   };
 
   _notificationTimeout = 0;
@@ -146,6 +149,8 @@ class NotificationsManager {
   }
 
 
+
+  /////////////////////////// GENERATE NOTIFICATIONS ///////////////////////////
   /**
   ** Generate basic notification.
   **/
@@ -179,28 +184,42 @@ class NotificationsManager {
 
 
 
-  ///////////////////// CREATE BUTTONS FOR NOTIFICATIONS. /////////////////////
+  ////////////////////// CREATE BUTTONS FOR NOTIFICATIONS //////////////////////
+
+
+  getButtonsContainer() {
+    let buttonsContainer = this.notificationBody.querySelectorAll(".buttons_wrapper");
+    if (buttonsContainer.length > 0) {
+      buttonsContainer = buttonsContainer[0];
+    } else {
+      buttonsContainer = document.createElement("div");
+      buttonsContainer.classList.add("buttons_wrapper");
+    }
+    return buttonsContainer;
+  }
+
   /**
   ** Create "got it" button for notification.
   **/
   createGotItButton() {
-    const container = document.createElement("div");
-    container.classList.add("buttons_wrapper");
+    const buttonsContainer = this.getButtonsContainer();
     const gotitButton = DisplayManager.createButton("btn_gotit", "got it", "close notification", closeNotification);
     gotitButton.classList.add("notification_button", "gotit_btn");
-    container.append(gotitButton);
-    this.notificationBody.append(container);
+    buttonsContainer.append(gotitButton);
+    this.notificationBody.append(buttonsContainer);
   }
   /**
   ** Create "refresh"/ "retry" button for notification.
   **/
-  createReActionButton(type) {
-    const container = document.createElement("div");
-    container.classList.add("buttons_wrapper");
-    const button_title = type ==="refresh" ? "refresh the app" : "retry to reconnect";
-    const button = DisplayManager.createButton(`btn_${type}`, type, "refresh the app", refreshApp);
+  createReActionButton(type, title, callback) {
+    const buttonsContainer = this.getButtonsContainer();
+    let buttonText = type;
+    if(buttonText.split("_").length > 1){
+      buttonText = buttonText.split("_")[0];
+    }
+    const button = DisplayManager.createButton(`btn_${type}`, buttonText, title, callback);
     button.classList.add("notification_button", `btn_${type}`);
-    container.append(button);
-    this.notificationBody.append(container);
+    buttonsContainer.append(button);
+    this.notificationBody.append(buttonsContainer);
   }
 }

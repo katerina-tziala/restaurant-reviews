@@ -51,13 +51,11 @@ class UIManager {
     }
   };
 
-
   /**
   ** Check if loader is displayed.
   **/
   loaderIsDisplayed() {
     return this.loader.classList.contains(this._hideClass) ? false : true;
   }
-
 
 }

@@ -9,7 +9,7 @@ class MapboxManager {
   }
   _MapBoxJS = {
     type: "application/javascript",
-    src: "https://unpkg.com/leaflet@1.3.1/dist/leaflet.js",
+    src: "https://unpkg.com/leaflet@1.3.1/dist/leafle.js",
     integrity: "sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==",
     crossorigin: " ",
     charset: "utf-8"
@@ -27,7 +27,7 @@ class MapboxManager {
   _mapDisplayClassCSS = "displaymap";
   _mapTimeout = null;
   _mapInitializing = null;
-
+  _mapFailed = false;
   constructor(lat, lng, zoom, restaurants){
     this.lat = lat;
     this.lng = lng;
@@ -40,8 +40,8 @@ class MapboxManager {
   ** Initialize map.
   **/
   initMap(restaurants) {
-    this.displayMap();
     this._mapInitializing = true;
+    this.displayMap();
     setTimeout(() => {
       Promise.all([FileLoader.loadFile("link", this._MapBoxCSS),FileLoader.loadFile("script", this._MapBoxJS)]).then(() => {
             this.MapLayer = new L.map("map", {
@@ -53,7 +53,8 @@ class MapboxManager {
             this.addMarkersToMap(restaurants);
             this._mapInitializing = false;
         }).catch(() => {
-          console.log('loading failure!');
+          this._mapFailed = true;
+          mapFailure();
         });
     }, 700)
   }
@@ -97,13 +98,18 @@ class MapboxManager {
   ** Display and/or hide map.
   **/
    toggleMap(displayMap) {
-     if (!this._mapInitializing) {
-        clearTimeout(this._mapTimeout);
-        if(displayMap) {
-          this.displayMap();
-        } else {
-          this.hideMap();
-        }
+     if (this._mapFailed) {
+        mapFailure();
+     }
+     else {
+       if (!this._mapInitializing) {
+          clearTimeout(this._mapTimeout);
+          if(displayMap) {
+            this.displayMap();
+          } else {
+            this.hideMap();
+          }
+       }
      }
    }
 

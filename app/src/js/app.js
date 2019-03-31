@@ -2,15 +2,14 @@
 let main, loader, spinner, mapButton;
 let InterfaceManager, MapManager, Notifications;
 let newSWorker;
+
+
 const start_url = "http://localhost:8887/index.html";
 const app_scope = "/";
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
   initApp();
-
-
-
   initView();
 });
 
@@ -35,38 +34,13 @@ const initApp = () => {
   self.InterfaceManager = new UIManager(self.main, self.loader, self.spinner);
   self.mapManager = null;
   self.Notifications = new NotificationsManager();
-
   self.newSWorker = null;
 
-  //console.log(self.InterfaceManager.loaderIsDisplayed());
 
-
-
-  // if (!navigator.onLine && !mapLoaded()) {
-  //   disableMap();
-  // } else {
-  //   enableMap();
-  // }
-
-
-//  console.log(self.Notifications.getNotificationContent("offline"));
-//  self.Notifications.generateBasicNotification(self.Notifications.getNotificationContent("offline"), 5000);
-  registerServiceWorker();
+//  registerServiceWorker();
 };
 
-/**
-** Reload the app.
-**/
-const reloadApp = () => {
-  window.location.href = window.location.href;
-};
 
-/**
-** Refresh the app.
-**/
-const refreshApp = () => {
-  window.location.reload(true);
-};
 
 
 
@@ -115,7 +89,7 @@ window.addEventListener("offline", (event) => {
   if (self.InterfaceManager.loaderIsDisplayed()) {
     offlineNotification = self.Notifications.getNotificationContent("unable_to_connect_retrying");
     self.Notifications.createNotificationContent(offlineNotification);
-    self.Notifications.createReActionButton("retry");
+    self.Notifications.createReActionButton("retry", "retry to connect", reloadApp);
     self.Notifications.addNotificationCountDown(() => {
       reloadApp();
     });
@@ -135,6 +109,19 @@ window.addEventListener("offline", (event) => {
 
 
 
+/**
+** Reload the app.
+**/
+const reloadApp = () => {
+  window.location.href = window.location.href;
+};
+
+/**
+** Refresh the app.
+**/
+const refreshApp = () => {
+  window.location.reload(true);
+};
 
 /**
 ** Close notification and clear timeout.
@@ -178,6 +165,18 @@ const enableMap = () => {
   }
 };
 
+
+const mapFailure = () => {
+  self.Notifications.clearNotification();
+  const mapContainer = document.getElementById("map_container");
+  DisplayManager.hideElement(mapContainer);
+  mapContainer.classList.remove("displaymap");
+  disableMap();
+  self.Notifications.createNotificationContent(self.Notifications.getNotificationContent("map_failure"));
+  self.Notifications.createReActionButton("refresh", "refresh the app", refreshApp);
+  self.Notifications.createReActionButton("dismiss", "dissmiss map", closeNotification);
+  self.Notifications.displayNotification();
+};
 
 ////////////////////////////// SERVICE WORKER FUNCTIONS //////////////////////////////
 /**
@@ -244,6 +243,3 @@ const updateApp = (event) => {
   self.Notifications.removeNotification();
   self.newSWorker = null;
 };
-
-
-//

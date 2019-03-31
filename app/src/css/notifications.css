@@ -64,17 +64,27 @@
 	color: #1c262f;
 	background-color: #fff;
 }
-#btn_update {
+#btn_update, #btn_retry, #btn_refresh {
   margin-right: 40px;
 }
+
+
+
+
 /* ~~~~~~~~~~~~~~~~~~ RESPONSIVE DESIGN WITH MEDIA QUERIES ~~~~~~~~~~~~~~~~~~ */
+@media screen and (max-width: 1140px) {
+  .buttons_wrapper {
+    padding: 8px 0;
+  }
+}
 @media screen and (max-width: 770px) {
   .buttons_wrapper {
     display: block;
     width: 100%;
-    max-width: 245px;
-    padding-left: 0px;
-    padding-top: 16px;
+    padding: 0px;
     margin: auto;
+  }
+  .buttons_wrapper > button {
+    margin: 16px!important;
   }
 }
