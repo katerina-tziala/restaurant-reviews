@@ -165,8 +165,8 @@ const createReviewHTML = (review) => {
 **/
 const toggleMap = (event) => {
   const button = document.getElementById("mapButton");
-  const action = button.getAttribute("aria-label").split(" ")[0];
-  handleMapButtonDisplay(button, action);
+  const action = button.getAttribute("aria-label").split(" ")[0].toLowerCase();
+  DisplayManager.handleMapButtonDisplay(button, action);
   const displayMap = action === "show" ? true : false;
   if (self.MapManager) {
     self.MapManager.toggleMap(displayMap);
@@ -174,23 +174,7 @@ const toggleMap = (event) => {
     self.MapManager = new MapboxManager(self.restaurant.latlng.lat, self.restaurant.latlng.lng, 16, [self.restaurant]);
   }
 };
-/**
-** Handle display of button to open/close map.
-**/
-const handleMapButtonDisplay = (button, action) => {
-  const next_action = action === "show" ? "hide" : "show";
-  const next_icon = next_action === "hide" ? "fa-map-marker-alt" : "fa-map";
-  button.setAttribute("aria-label", `${next_action} map`);
-  button.title = `${next_action} map`;
-  const icon = button.getElementsByTagName("I")[0];
-  if (next_action==="hide") {
-    icon.classList.remove("location_icon", "fa-map-marker-alt");
-    icon.classList.add("map_icon", "fa-map");
-  }else{
-    icon.classList.remove("map_icon", "fa-map");
-    icon.classList.add("location_icon", "fa-map-marker-alt");
-  }
-};
+
 /**
 ** Populate rating stars for review.
 **/

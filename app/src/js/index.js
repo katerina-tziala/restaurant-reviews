@@ -1,7 +1,8 @@
 "use strict";
 let restaurants, neighborhoods, cuisines,
 neighborhoodSelect, neighborhoodsList, cuisineSelect, cuisineList,
-restaurantsList, restaurantResults, mapCheckbox;
+restaurantsList, restaurantResults,
+neighborhoodSelectWidget, cuisineSelectWidget;
 /**
 ** Render index view.
 **/
@@ -12,63 +13,48 @@ const renderIndex = () => {
   self.cuisineList = document.getElementById("cuisine_list");
   self.restaurantsList = document.getElementById("restaurantsList");
   self.restaurantResults = document.getElementById("filterResults");
-  self.mapCheckbox = document.getElementById("maptoggler");
+  self.neighborhoodSelectWidget = null;
+  self.cuisineSelectWidget = null;
   self.mapManager = null;
+  self.neighborhoods = [];
+  self.cuisines = [];
+  updateRestaurants();
   fetchNeighborhoods();
   fetchCuisines();
-  updateRestaurants();
-  self.mapCheckbox.addEventListener("keyup", (event) => {
-    if (event.keyCode===13) {
-      event.preventDefault();
-      const mapcheck = document.getElementById("mapcheck");
-      if (mapcheck.checked) {
-        mapcheck.checked=false;
-      }else {
-        mapcheck.checked=true;
-      }
-      toggleMap();
-    }
-  });
 };
+
+/**
+** Close select box when clicking outside the element.
+**/
 document.addEventListener("click", (event) => {
   const selects = document.querySelectorAll(".select_widget");
   if (selects[0].contains(event.target)) {
-    closeSelectBox(self.cuisineSelect, self.cuisineList);
+    self.cuisineSelectWidget.closeSelectBox("null", true);
   }else if (selects[1].contains(event.target)) {
-    closeSelectBox(self.neighborhoodSelect, self.neighborhoodsList);
-  }else{
-    closeSelectBox(self.neighborhoodSelect, self.neighborhoodsList);
-    closeSelectBox(self.cuisineSelect, self.cuisineList);
+    self.neighborhoodSelectWidget.closeSelectBox("null", true);
+  } else {
+    self.neighborhoodSelectWidget.closeSelectBox("null", true);
+    self.cuisineSelectWidget.closeSelectBox("null", true);
   }
 });
-/**
-** Close Select Box.
-**/
-const closeSelectBox = (comboButton, comboList) => {
-  const expanded = comboButton.getAttribute("aria-expanded")==="false"?false:true;
-  if (expanded) {
-    handleComboButton(comboButton);
-    const params = {
-      "comboButton": comboButton,
-      "comboBox": comboList,
-      "focusableElements": comboList.querySelectorAll(".selectoption"),
-      "target":"null"
-    };
-    closeComboBox(params, true);
-  }
-};
+
 /**
 ** Toggle map.
 **/
 const toggleMap = () => {
-  const mapcheckbox = document.getElementById("mapcheck");
-  const displayMap = mapcheckbox.checked;
+  const button = document.getElementById("mapButton");
+  const action = button.getAttribute("aria-label").split(" ")[0].toLowerCase();
+  DisplayManager.handleMapButtonDisplay(button, action);
+  const displayMap = action === "show" ? true : false;
   if (self.MapManager) {
     self.MapManager.toggleMap(displayMap);
   } else {
     self.MapManager = new MapboxManager(40.722216, -73.987501, 12, self.restaurants);
   }
+  self.neighborhoodSelectWidget.closeSelectBox("null", true);
+  self.cuisineSelectWidget.closeSelectBox("null", true);
 };
+
 /**
 ** Fetch all neighborhoods and set their HTML.
 **/
@@ -77,9 +63,10 @@ const fetchNeighborhoods = () => {
     if (error) { // Got an error
       console.error(error);
     } else {
-      self.neighborhoods = neighborhoods.sort();
-      fillOptionsHTML(self.neighborhoodsList,self.neighborhoods, "n");
-      comboBoxManager(self.neighborhoodSelect, self.neighborhoodsList);
+        self.neighborhoods = neighborhoods.sort();
+        const neighborhoodOptions = self.neighborhoods;
+        neighborhoodOptions.unshift("All Neighborhoods");
+        self.neighborhoodSelectWidget = new SelectWidget(self.neighborhoodSelect, self.neighborhoodsList, "n", updateRestaurants, neighborhoodOptions);
     }
   });
 };
@@ -91,47 +78,30 @@ const fetchNeighborhoods = () => {
     if (error) { // Got an error!
       console.error(error);
     } else {
-      self.cuisines = cuisines.sort();
-      fillOptionsHTML(self.cuisineList, self.cuisines, "c");
-      comboBoxManager(self.cuisineSelect, self.cuisineList);
+        self.cuisines = cuisines.sort();
+        const cuisineOptions = self.cuisines;
+        cuisineOptions.unshift("All Cuisines");
+        self.cuisineSelectWidget = new SelectWidget(self.cuisineSelect, self.cuisineList, "c", updateRestaurants, cuisineOptions);
     }
   });
 };
-/**
-** Fill options HTML for neighborhoods and cuisines.
-**/
-const fillOptionsHTML = (listbox, itemList, optkey) => {
-  let index=1;
-  const firstItem = listbox.getElementsByTagName("LI")[0];
-  firstItem.setAttribute("aria-setsize", itemList.length+1);
-  itemList.forEach(item => {
-    const option = document.createElement("li");
-    option.setAttribute("role", "option");
-    option.setAttribute("value", item);
-    option.setAttribute("id", `${optkey}_opt_${index}`);
-    option.classList.add("selectoption");
-    option.setAttribute("aria-setsize", itemList.length+1);
-    option.setAttribute("aria-posinset", index+1);
-    option.setAttribute("aria-selected", "false");
-    option.innerHTML = item;
-    listbox.append(option);
-    index++;
-  });
-};
+
 /**
 ** Update page and map for current restaurants.
 **/
 const updateRestaurants = () => {
-  const cuisine_id = self.cuisineSelect.getAttribute("aria-activedescendant");
-  const neighborhood_id = self.neighborhoodSelect.getAttribute("aria-activedescendant");
-  const cuisine = document.getElementById(cuisine_id).getAttribute("value");
-  const neighborhood = document.getElementById(neighborhood_id).getAttribute("value");
+  const cuisine_id = self.cuisineList.getAttribute("aria-activedescendant");
+  const neighborhood_id = self.neighborhoodsList.getAttribute("aria-activedescendant");
+  let cuisine = document.getElementById(cuisine_id).getAttribute("value");
+  cuisine = cuisine.startsWith("All") ? "all" : cuisine;
+  let neighborhood = document.getElementById(neighborhood_id).getAttribute("value");
+  neighborhood = neighborhood.startsWith("All") ? "all" : neighborhood;
   DBHelper.fetchRestaurantByCuisineAndNeighborhood(cuisine, neighborhood, (error, restaurants) => {
     if (error) { // Got an error!
       console.error(error);
     } else {
-      self.InterfaceManager.hideLoader();
       resetRestaurants(restaurants);
+      self.InterfaceManager.hideLoader();
       if(restaurants.length > 0) {
         fillRestaurantsHTML();
       } else {
@@ -140,6 +110,7 @@ const updateRestaurants = () => {
     }
   });
 };
+
 /**
 ** Clear current restaurants, their HTML and remove their map markers.
 **/
@@ -152,6 +123,7 @@ const resetRestaurants = (restaurants, ul = self.restaurantsList) => {
   }
   self.restaurants = restaurants;
 };
+
 /**
 ** Create all restaurants HTML and add them to the webpage.
 **/
@@ -163,6 +135,7 @@ const fillRestaurantsHTML = (restaurants = self.restaurants, ul = self.restauran
     self.MapManager.addMarkersToMap(self.restaurants);
   }
 };
+
 /**
 ** Create restaurant HTML.
 **/

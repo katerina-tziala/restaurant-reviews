@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/no-results-message.css">
   <link rel="stylesheet" href="css/map.css">
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/select_widget.css">
 </head>
 <body>
   <header id="header">
@@ -23,34 +24,41 @@
   <div id="content_wrapper">
       <main id="main" class="main hidden">
         <section id="filterOptions" role="region" aria-label="apply filters" class="centeredFlexbox">
-          <h2><span id="filter_tag_1">Filter Restaurants by </span><span id="filter_tag_2" class="filter_tag">neighborhood</span> and/or <span id="filter_tag_3" class="filter_tag">cuisine</span></h2>
+          <h2>
+            <label id="filter_tag_1">Filter Restaurants by </label>
+            <label id="filter_tag_2" class="filter_tag">neighborhood</label>
+            <span>and/or</span>
+            <label id="filter_tag_3" class="filter_tag">cuisine</label>
+          </h2>
           <div class="select_widget">
-            <button id="select_neighborhood" class="centeredFlexbox selectbutton" role="combobox" aria-expanded="false" aria-activedescendant="n_opt_0" aria-labelledby="filter_tag_1 filter_tag_2" aria-haspopup="listbox" aria-owns="neighborhoods_listbox">
+            <button id="select_neighborhood" class="centeredFlexbox selectbutton" aria-haspopup="listbox" aria-owns="neighborhoods_list" aria-labelledby="filter_tag_1 filter_tag_2 select_neighborhood">
               <span id="selected_neighborhood">All Neighborhoods</span>
-              <span id="arrow_neighborhood" class="select_arrow arrow_down"></span>
+              <span id="arrow_neighborhood" class="select_arrow fas fa-caret-down"></span>
             </button>
-            <ul role="listbox" id="neighborhoods_list" class="listbox hidden">
-                <li role="option" value="all" id="n_opt_0" aria-setsize="1" aria-posinset="1" aria-selected="true" class="selectoption">All Neighborhoods</li>
+            <ul id="neighborhoods_list" role="listbox" class="listbox hidden" aria-labelledby="filter_tag_1 filter_tag_2"   aria-expanded="false" aria-activedescendant="n_opt_0">
+              <li id="n_opt_0" role="option" value="All Neighborhoods" class="selectoption" aria-setsize="1" aria-posinset="1" aria-selected="true">All Neighborhoods</li>
             </ul>
           </div>
           <div class="select_widget">
-            <button id="select_cuisine" class="centeredFlexbox selectbutton" role="combobox" aria-expanded="false" aria-activedescendant="c_opt_0" aria-labelledby="filter_tag_1 filter_tag_3" aria-haspopup="listbox" aria-owns="cuisine_listbox">
-            <span id="selected_cuisine">All Cuisines</span>
-            <span id="arrow_cuisine" class="select_arrow arrow_down"></span>
+            <button id="select_cuisine" aria-haspopup="listbox" aria-owns="cuisine_list" aria-labelledby="filter_tag_1 filter_tag_3 select_cuisine" class="centeredFlexbox selectbutton">
+              <span id="selected_cuisine">All Cuisines</span>
+              <span id="arrow_cuisine" class="select_arrow fas fa-caret-down"></span>
             </button>
-            <ul role="listbox" id="cuisine_list" class="listbox hidden">
-                <li role="option" value="all" id="c_opt_0"  aria-setsize="1" aria-posinset="1"  aria-selected="true" class="selectoption">All Cuisines</li>
+            <ul id="cuisine_list" role="listbox" class="listbox hidden" aria-labelledby="filter_tag_1 filter_tag_3" aria-expanded="false" aria-activedescendant="c_opt_0">
+              <li id="c_opt_0" role="option" value="All Cuisines" class="selectoption" aria-setsize="1" aria-posinset="1" aria-selected="true">All Cuisines</li>
             </ul>
           </div>
         </section>
         <section id="filterResults" role="region" aria-label="filter results">
-          <h4>Filter Results</h4>
-          <div id="checkbox_container" class="checkbox_wrapper">
-            <label class="checkbox_container" tabindex="-1">Show Map
-              <input id="mapcheck" type="checkbox" tabindex="-1" onchange="toggleMap()">
-              <span id="maptoggler" class="checkmark" role="checkbox" aria-checked="false" tabindex="0"></span>
-            </label>
-          </div>
+          <h4 class="centeredFlexbox filterResultsHeader">
+            <span>Filter Results</span>
+            <button id="mapButton"
+            aria-label="Show results on map"
+            title="Show results on map"
+            onclick="toggleMap(event)">
+              <i class="fas fa-map-marker-alt location_icon"></i>
+            </button>
+          </h4>
           <section id="map_container" class="map_container hidden">
             <div id="map" role="application" aria-label="Mapbox Maps" title="Mapbox Maps with restaurants' location" tabindex="0"></div>
           </section>
@@ -75,7 +83,7 @@
   <script type="application/javascript" charset="utf-8" src="js/displayManager.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/uiManager.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/mapboxManager.js"></script>
-  <script type="application/javascript" charset="utf-8" src="js/combobox.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/select_widget.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/index.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/app.js"></script>
 </body>

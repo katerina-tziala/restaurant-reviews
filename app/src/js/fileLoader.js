@@ -25,6 +25,7 @@ class FileLoader {
   ** Load CSS/Javascript file.
   **/
   static loadFile(fileType, params, callback) {
+    //try catch error
     const file = this.createFile(fileType, params);
     if (file.readyState) {  //IE
       file.onreadystatechange = () => {

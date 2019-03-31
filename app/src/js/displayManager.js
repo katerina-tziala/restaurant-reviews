@@ -75,4 +75,34 @@ class DisplayManager {
     return formated;
   }
 
+  /**
+  ** Get title and label from map button.
+  **/
+  static getMabButtonLabelTitle(next_action) {
+    const label_part_a = DisplayManager.getUserView() === "restaurant" ? "restaurant" : "results";
+    const label_part_b = next_action === "show" ? "on" : "from";
+    const label = next_action + " " + label_part_a + " " + label_part_b + " map";
+    return label.charAt(0).toUpperCase() + label.slice(1);
+  }
+
+  /**
+  ** Handle display of button to open/close map.
+  **/
+  static handleMapButtonDisplay(button, action) {
+    const next_action = action === "show" ? "hide" : "show";
+    const next_icon = next_action === "hide" ? "fa-map-marker-alt" : "fa-map";
+    button.setAttribute("aria-label", DisplayManager.getMabButtonLabelTitle(next_action));
+    button.title = DisplayManager.getMabButtonLabelTitle(next_action);
+    const icon = button.getElementsByTagName("I")[0];
+    if (next_action === "hide") {
+      icon.classList.remove("location_icon", "fa-map-marker-alt");
+      icon.classList.add("map_icon", "fa-map");
+    } else {
+      icon.classList.remove("map_icon", "fa-map");
+      icon.classList.add("location_icon", "fa-map-marker-alt");
+    }
+  }
+
+
+
 }

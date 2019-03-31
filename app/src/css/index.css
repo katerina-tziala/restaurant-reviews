@@ -4,10 +4,10 @@
 #filterOptions {
   width: 100%;
   background-color: #cfd9e2;
-  padding: 16px;
+  padding: 20px;
   flex-flow: row wrap;
 }
-#filterOptions>h2 {
+#filterOptions > h2 {
   width: 100%;
   font-weight: 400;
   font-size: 1.1rem;
@@ -18,148 +18,25 @@
 .filter_tag {
   text-transform: capitalize;
 }
-/* ~~~~~~~~~~~~~~~~~~~~~~~~ SELECT OPTIONS ~~~~~~~~~~~~~~~~~~~~~~~~ */
-.select_widget {
-  position: relative;
-}
-.select_widget:nth-of-type(1) {
-  margin-right: 40px;
-}
-.selectbutton {
-  height: 40px;
-  width: 200px;
-  border-radius: 8px;
-  background-color: #fff;
-  justify-content: flex-start;
-  border: 2px solid #fff;
-}
-#selected_neighborhood, #selected_cuisine {
-  font-size: 1rem;
-  width: 170px;
-  text-align: left;
-  padding-left: 10px;
-}
-.selectbutton:focus, .selectbutton:hover {
-	border-color: #ff751a;
-}
-.select_arrow {
-  border: 9px solid #1c262f;
-}
-.arrow_up {
-  margin-top: -10px;
-  border-color: transparent transparent #1c262f transparent;
-}
-.arrow_down {
-  margin-top: 11px;
-  border-color: #1c262f transparent transparent transparent;
-}
-.selectoption {
-  border-bottom: 1px solid rgba(28, 38, 47, 0.5);
-  padding: 8px 10px;
-  text-align: left;
-  font-size: 1rem;
-  cursor: pointer;
-}
-.listbox {
-  border-radius: 8px;
-  overflow: hidden;
-  width: 200px;
-  margin: auto;
-  list-style-type:none;
-  max-height: 150px;
-  overflow-y: auto;
-  position: absolute;
-  background-color: #fff;
-  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.15), 0 2px 5px 1px rgba(0, 0, 0, 0.15), 0 4px 2px -2px rgba(0, 0, 0, 0.2);
-  color: #000;
-  z-index: 5000;
-}
-.selectoption.selected {
-  background-color: rgba(28, 38, 47, 1)!important;
-  color:#fff!important;
-}
-.selectoption:hover,.selectoption:focus {
-  background-color: rgba(28, 38, 47, 0.8)!important;
-  color:#fff!important;
-  outline: none;
-}
 /* ~~~~~~~~~~~~~~~~~~~~~~~~ FILTER RESULTS ~~~~~~~~~~~~~~~~~~~~~~~~ */
 #filterResults {
-  background-color: inherit;
   width: 100%;
   color: #fff;
-}
-#filterResults>h4 {
-  font-weight: 400;
-  display: block;
-  width: 100%;
-  font-size: 1.2rem;
-  padding: 16px;
   background-color: #323b43;
 }
-#checkbox_container {
-  border: 1px solid #336699;
-  background-color: #336699;
+.filterResultsHeader {
+    width: 100%;
+    font-weight: 400;
+    padding: 10px;
 }
-/* ~~~~~~~~~~~~~~~~~~~~~~~~ CHECKBOX FOR MAP DISPLAY ~~~~~~~~~~~~~~~~~~~~~~~~ */
-.checkbox_container {
+.filterResultsHeader > span {
+  font-size: 1.2rem;
   display: block;
-  position: relative;
-  cursor: pointer;
-  font-size: 1rem;
-  user-select: none;
-  width: 140px;
-  line-height: 30px;
-  text-align: left;
-  color: #fff;
-  outline: none;
-  margin: auto;
-  margin-bottom: 8px;
-  margin-top: 8px;
+  margin-right: 20px;
 }
-.checkbox_container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-.checkmark {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 28px;
-  width: 28px;
-  background-color: inherit;
-  border: 2px solid #fff;
-  border-radius: 8px;
-}
-.checkmark:hover, .checkmark:focus  {
-  background-color: #cfd9e2;
-	border-color: #ff751a;
-  outline: none;
-}
-.checkbox_container input:checked ~ .checkmark {
+#mapButton {
   background-color: #fff;
-}
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-.checkbox_container input:checked ~ .checkmark:after {
-  display: block;
-}
-.checkbox_container .checkmark:after {
-  left: 7px;
-  top: 1px;
-  width: 7px;
-  height: 15px;
-  border: 2px solid #4080bf;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+  color: #1c262f;
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~ RESTAURANT LIST ~~~~~~~~~~~~~~~~~~~~~~~~ */
 .list_container {
@@ -254,21 +131,18 @@
 }
 /* ~~~~~~~~~~~~~~~~~~ RESPONSIVE DESIGN WITH MEDIA QUERIES ~~~~~~~~~~~~~~~~~~ */
 @media screen and (max-width: 500px) {
-  #filterOptions{
+  #filterOptions {
     flex-flow: column nowrap;
-  }
-  .select_widget:nth-of-type(1) {
-    margin-right: 0px;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
   }
 }
 @media screen and (min-width: 840px) and (max-width: 900px) {
-  .restaurantCard{
+  .restaurantCard {
     margin: 1%;
   }
 }
 @media screen and (min-width: 778px) and (max-width: 848px) {
-  .restaurantCard{
+  .restaurantCard {
     width: 100%;
     max-width: 350px;
     margin: 1%;
@@ -279,7 +153,7 @@
   }
 }
 @media screen and (min-width: 405px) and (max-width: 612px) {
-  .restaurantCard{
+  .restaurantCard {
     width: 100%;
     max-width: 350px;
     margin: 16px;

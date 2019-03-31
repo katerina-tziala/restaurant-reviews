@@ -25,7 +25,8 @@ class MapboxManager {
   _LeafletTileLayerLink = "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}";
   _MapMarkers = [];
   _mapDisplayClassCSS = "displaymap";
-
+  _selfTimeout = null;
+  _selfInitializing = null;
   constructor(lat, lng, zoom, restaurants){
     this.lat = lat;
     this.lng = lng;
@@ -39,6 +40,7 @@ class MapboxManager {
   **/
   initMap(restaurants) {
     this.displayMap();
+    this._selfInitializing = true;
     setTimeout(() => {
       FileLoader.loadFile("link", this._MapBoxCSS, () => {
         FileLoader.loadFile("script", this._MapBoxJS, () => {
@@ -51,6 +53,7 @@ class MapboxManager {
           this.addMarkersToMap(restaurants);
         });
       });
+      this._selfInitializing = false;
     }, 700);
   }
 
@@ -93,10 +96,13 @@ class MapboxManager {
   ** Display and/or hide map.
   **/
    toggleMap(displayMap) {
-     if(displayMap) {
-       this.displayMap();
-     } else {
-       this.hideMap();
+     if (!this._selfInitializing) {
+        clearTimeout(this._selfTimeout);
+        if(displayMap) {
+          this.displayMap();
+        } else {
+          this.hideMap();
+        }
      }
    }
 
@@ -105,7 +111,7 @@ class MapboxManager {
   **/
  displayMap(){
    DisplayManager.displayElement(this.mapContainer);
-   setTimeout(() => {
+   this._selfTimeout = setTimeout(() => {
      this.mapContainer.classList.add(this._mapDisplayClassCSS);
    }, 200);
  }
@@ -115,7 +121,7 @@ class MapboxManager {
  **/
   hideMap(){
      this.mapContainer.classList.remove(this._mapDisplayClassCSS);
-     setTimeout(() => {
+     this._selfTimeout = setTimeout(() => {
        DisplayManager.hideElement(this.mapContainer);
      }, 800);
    }
