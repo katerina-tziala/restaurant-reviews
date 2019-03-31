@@ -21,24 +21,29 @@ class FileLoader {
     }
     return file;
   }
-  /**
-  ** Load CSS/Javascript file.
-  **/
-  static loadFile(fileType, params, callback) {
-    //try catch error
-    const file = this.createFile(fileType, params);
-    if (file.readyState) {  //IE
-      file.onreadystatechange = () => {
-        if (file.readyState == "loaded" || file.readyState == "complete"){
-          file.onreadystatechange = null;
-          callback();
-        }
+
+  static loadFile(fileType, params) {
+    return new Promise((resolve, reject) => {
+      const file = this.createFile(fileType, params);
+      if (file.readyState) { //IE
+        file.onreadystatechange = () => {
+          if (file.readyState == "loaded" || file.readyState == "complete"){
+            file.onreadystatechange = null;
+            resolve();
+          } else {
+            reject();
+          }
+        };
+      } else {//Others
+        file.onload = () => {
+          resolve();
+        };
+      }
+      file.onerror = () => {
+        reject();
       };
-    } else {//Others
-      file.onload = () => {
-        callback();
-      };
-    }
-    document[this.getFilePosition(fileType)].appendChild(file);
+      document[this.getFilePosition(fileType)].appendChild(file);
+    });
   }
+
 }

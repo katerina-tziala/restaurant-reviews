@@ -27,6 +27,7 @@ class MapboxManager {
   _mapDisplayClassCSS = "displaymap";
   _selfTimeout = null;
   _selfInitializing = null;
+
   constructor(lat, lng, zoom, restaurants){
     this.lat = lat;
     this.lng = lng;
@@ -42,18 +43,18 @@ class MapboxManager {
     this.displayMap();
     this._selfInitializing = true;
     setTimeout(() => {
-      FileLoader.loadFile("link", this._MapBoxCSS, () => {
-        FileLoader.loadFile("script", this._MapBoxJS, () => {
-          this.MapLayer = new L.map("map", {
-            center: [this.lat, this.lng],
-            zoom: this.zoomLevel,
-            scrollWheelZoom: false
-          });
-          L.tileLayer(this._LeafletTileLayerLink, this._LeafletMapBox_Params).addTo(this.MapLayer);
-          this.addMarkersToMap(restaurants);
+      Promise.all([FileLoader.loadFile("link", this._MapBoxCSS),FileLoader.loadFile("script", this._MapBoxJS)]).then(() => {
+            this.MapLayer = new L.map("map", {
+              center: [this.lat, this.lng],
+              zoom: this.zoomLevel,
+              scrollWheelZoom: false
+            });
+            L.tileLayer(this._LeafletTileLayerLink, this._LeafletMapBox_Params).addTo(this.MapLayer);
+            this.addMarkersToMap(restaurants);
+            this._selfInitializing = false;
+        }).catch(() => {
+          console.log('loading failure!');
         });
-      });
-      this._selfInitializing = false;
     }, 700);
   }
 
@@ -109,7 +110,7 @@ class MapboxManager {
   /**
   ** Display map.
   **/
- displayMap(){
+ displayMap() {
    DisplayManager.displayElement(this.mapContainer);
    this._selfTimeout = setTimeout(() => {
      this.mapContainer.classList.add(this._mapDisplayClassCSS);
@@ -119,7 +120,7 @@ class MapboxManager {
  /**
  ** Hide map.
  **/
-  hideMap(){
+  hideMap() {
      this.mapContainer.classList.remove(this._mapDisplayClassCSS);
      this._selfTimeout = setTimeout(() => {
        DisplayManager.hideElement(this.mapContainer);
