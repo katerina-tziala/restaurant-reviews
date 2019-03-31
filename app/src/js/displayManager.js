@@ -103,4 +103,18 @@ class DisplayManager {
     }
   }
 
+  /**
+  ** Create button.
+  **/
+  static createButton(id, text, aria, functionName) {
+   const button = document.createElement("button");
+   button.innerHTML = text;
+   button.setAttribute("id", id);
+   button.setAttribute("aria-label", aria);
+   button.addEventListener("click", functionName);
+   button.type = "button";
+   return button;
+  }
+
+
 }

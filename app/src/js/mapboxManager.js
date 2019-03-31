@@ -25,8 +25,8 @@ class MapboxManager {
   _LeafletTileLayerLink = "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}";
   _MapMarkers = [];
   _mapDisplayClassCSS = "displaymap";
-  _selfTimeout = null;
-  _selfInitializing = null;
+  _mapTimeout = null;
+  _mapInitializing = null;
 
   constructor(lat, lng, zoom, restaurants){
     this.lat = lat;
@@ -41,7 +41,7 @@ class MapboxManager {
   **/
   initMap(restaurants) {
     this.displayMap();
-    this._selfInitializing = true;
+    this._mapInitializing = true;
     setTimeout(() => {
       Promise.all([FileLoader.loadFile("link", this._MapBoxCSS),FileLoader.loadFile("script", this._MapBoxJS)]).then(() => {
             this.MapLayer = new L.map("map", {
@@ -51,11 +51,11 @@ class MapboxManager {
             });
             L.tileLayer(this._LeafletTileLayerLink, this._LeafletMapBox_Params).addTo(this.MapLayer);
             this.addMarkersToMap(restaurants);
-            this._selfInitializing = false;
+            this._mapInitializing = false;
         }).catch(() => {
           console.log('loading failure!');
         });
-    }, 700);
+    }, 700)
   }
 
   /**
@@ -97,8 +97,8 @@ class MapboxManager {
   ** Display and/or hide map.
   **/
    toggleMap(displayMap) {
-     if (!this._selfInitializing) {
-        clearTimeout(this._selfTimeout);
+     if (!this._mapInitializing) {
+        clearTimeout(this._mapTimeout);
         if(displayMap) {
           this.displayMap();
         } else {
@@ -112,7 +112,7 @@ class MapboxManager {
   **/
  displayMap() {
    DisplayManager.displayElement(this.mapContainer);
-   this._selfTimeout = setTimeout(() => {
+   this._mapTimeout = setTimeout(() => {
      this.mapContainer.classList.add(this._mapDisplayClassCSS);
    }, 200);
  }
@@ -122,7 +122,7 @@ class MapboxManager {
  **/
   hideMap() {
      this.mapContainer.classList.remove(this._mapDisplayClassCSS);
-     this._selfTimeout = setTimeout(() => {
+     this._mapTimeout = setTimeout(() => {
        DisplayManager.hideElement(this.mapContainer);
      }, 800);
    }

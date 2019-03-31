@@ -21,6 +21,12 @@
   margin-top: 1px;
   display: inline-block;
 }
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed!important;
+}
+
 #map_container {
   width: 100%;
   background-color: #323b43;

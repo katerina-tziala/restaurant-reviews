@@ -15,7 +15,6 @@ const renderIndex = () => {
   self.restaurantResults = document.getElementById("filterResults");
   self.neighborhoodSelectWidget = null;
   self.cuisineSelectWidget = null;
-  self.mapManager = null;
   self.neighborhoods = [];
   self.cuisines = [];
   updateRestaurants();
@@ -42,14 +41,13 @@ document.addEventListener("click", (event) => {
 ** Toggle map.
 **/
 const toggleMap = () => {
-  const button = document.getElementById("mapButton");
-  const action = button.getAttribute("aria-label").split(" ")[0].toLowerCase();
-  DisplayManager.handleMapButtonDisplay(button, action);
+  const action = self.mapButton.getAttribute("aria-label").split(" ")[0].toLowerCase();
+  DisplayManager.handleMapButtonDisplay(self.mapButton, action);
   const displayMap = action === "show" ? true : false;
-  if (self.MapManager) {
-    self.MapManager.toggleMap(displayMap);
-  } else {
+  if (!mapLoaded()) {
     self.MapManager = new MapboxManager(40.722216, -73.987501, 12, self.restaurants);
+  } else {
+    self.MapManager.toggleMap(displayMap);
   }
   self.neighborhoodSelectWidget.closeSelectBox("null", true);
   self.cuisineSelectWidget.closeSelectBox("null", true);
