@@ -40,18 +40,18 @@ document.addEventListener("click", (event) => {
 /**
 ** Toggle map.
 **/
-const toggleMap = () => {
-  const action = self.mapButton.getAttribute("aria-label").split(" ")[0].toLowerCase();
-  DisplayManager.handleMapButtonDisplay(self.mapButton, action);
-  const displayMap = action === "show" ? true : false;
-  if (!mapLoaded()) {
-    self.MapManager = new MapboxManager(40.722216, -73.987501, 12, self.restaurants);
-  } else {
-    self.MapManager.toggleMap(displayMap);
-  }
-  self.neighborhoodSelectWidget.closeSelectBox("null", true);
-  self.cuisineSelectWidget.closeSelectBox("null", true);
-};
+// const toggleMap = () => {
+//   const action = self.mapButton.getAttribute("aria-label").split(" ")[0].toLowerCase();
+//   DisplayManager.handleMapButtonDisplay(self.mapButton, action);
+//   const displayMap = action === "show" ? true : false;
+//   if (!mapLoaded()) {
+//     self.MapManager = new MapboxManager(40.722216, -73.987501, 12, self.restaurants);
+//   } else {
+//     self.MapManager.toggleMap(displayMap);
+//   }
+//   self.neighborhoodSelectWidget.closeSelectBox("null", true);
+//   self.cuisineSelectWidget.closeSelectBox("null", true);
+// };
 
 /**
 ** Fetch all neighborhoods and set their HTML.
@@ -116,9 +116,7 @@ const resetRestaurants = (restaurants, ul = self.restaurantsList) => {
   self.restaurants = [];
   ul.innerHTML = "";
   self.InterfaceManager.removeNoResultsFetchingeMessage();
-  if (self.MapManager) {
-    self.MapManager.removeMarkers();
-  }
+  removeMarkers();
   self.restaurants = restaurants;
 };
 
@@ -129,9 +127,7 @@ const fillRestaurantsHTML = (restaurants = self.restaurants, ul = self.restauran
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
   });
-  if (self.MapManager) {
-    self.MapManager.addMarkersToMap(self.restaurants);
-  }
+  addMarkersToMap(self.restaurants);
 };
 
 /**

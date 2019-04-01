@@ -163,16 +163,16 @@ const createReviewHTML = (review) => {
 /**
 ** Toggle map of restaurant.
 **/
-const toggleMap = (event) => {
-  const action = self.mapButton.getAttribute("aria-label").split(" ")[0].toLowerCase();
-  DisplayManager.handleMapButtonDisplay(self.mapButton, action);
-  const displayMap = action === "show" ? true : false;
-  if (!mapLoaded()) {
-    self.MapManager = new MapboxManager(self.restaurant.latlng.lat, self.restaurant.latlng.lng, 16, [self.restaurant]);
-  } else {
-    self.MapManager.toggleMap(displayMap);
-  }
-};
+// const toggleMap = (event) => {
+//   const action = self.mapButton.getAttribute("aria-label").split(" ")[0].toLowerCase();
+//   DisplayManager.handleMapButtonDisplay(self.mapButton, action);
+//   const displayMap = action === "show" ? true : false;
+//   if (!mapLoaded()) {
+//     self.MapManager = new MapboxManager(self.restaurant.latlng.lat, self.restaurant.latlng.lng, 16, [self.restaurant]);
+//   } else {
+//     self.MapManager.toggleMap(displayMap);
+//   }
+// };
 
 /**
 ** Populate rating stars for review.
