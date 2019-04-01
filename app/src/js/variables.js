@@ -23,10 +23,6 @@ const appParams = {
       crossorigin: " ",
       charset: "utf-8"
     }
-
-
-
-
   },
   cssClasses: {
     displayMap: "displaymap",

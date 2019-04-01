@@ -127,39 +127,10 @@ const closeNotification = (event) => {
 
 
 /////////////////////////////////// MAP FUNCTIONS ///////////////////////////////////
-/**
-** Check if map was loaded.
-**/
-// const mapLoaded = () => {
-//   return !self.MapManager ? false : true;
-// }
 
-/**
-** Disable map for users when they are offline and map was not loaded.
-**/
-const disableMap = () => {
-  self.mapButton.removeAttribute("onclick");
-  self.mapButton.classList.add("disabled");
-  self.mapButton.setAttribute("aria-label", "Map is currently unavailable");
-  self.mapButton.title = "Map is currently unavailable";
-};
 
-/**
-** Enable map for users based on view.
-**/
-const enableMap = () => {
-  self.mapButton.setAttribute("onclick", "toggleMap(event)");
-  self.mapButton.classList.remove("disabled");
-  const currentAction = self.mapButton.getAttribute("aria-label").split(" ")[0].toLowerCase();
-  if (currentAction === "hide" || currentAction === "show"){
-    const prev_action = currentAction === "show" ? "hide" : "show";
-    DisplayManager.handleMapButtonDisplay(self.mapButton, prev_action);
-  } else {
-    DisplayManager.handleMapButtonDisplay(self.mapButton, "hide");
-  }
-};
 
-// 
+//
 // const mapFailure = () => {
 // //  self.Notifications.clearNotification();
 //   const mapContainer = document.getElementById("map_container");
