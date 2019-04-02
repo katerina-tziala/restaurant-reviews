@@ -9,13 +9,13 @@ let mapLoaded = false;
 **/
 const toggleMap = () => {
   const action = self.mapButton.getAttribute("aria-label").split(" ")[0].toLowerCase();
-  toggleMapButtonDisplay(self.mapButton, action);
+  toggleMapButtonDisplay(action);
   if (!self.mapLoaded) {
     initMap(getMapInitParams());
   } else {
     const displayMap = action === "show" ? true : false;
     toggleMapDisplay(displayMap);
-    if (DisplayManager.getUserView() !== "restaurant") {
+    if (InterfaceManager.getUserView() !== "restaurant") {
       self.neighborhoodSelectWidget.closeSelectBox("null", true);
       self.cuisineSelectWidget.closeSelectBox("null", true);
       console.log("select widget");
@@ -26,13 +26,13 @@ const toggleMap = () => {
 /**
 ** Handle display of button to open/close map.
 **/
-const toggleMapButtonDisplay = (button, action) => {
+const toggleMapButtonDisplay = (action) => {
   const next_action = action === "show" ? "hide" : "show";
   const next_icon = next_action === "hide" ? "fa-map-marker-alt" : "fa-map";
   const buttonText = getMabButtonLabelTitle(next_action);
-  button.setAttribute("aria-label", buttonText);
-  button.title = buttonText;
-  const icon = button.getElementsByTagName("I")[0];
+  self.mapButton.setAttribute("aria-label", buttonText);
+  self.mapButton.title = buttonText;
+  const icon = self.mapButton.getElementsByTagName("I")[0];
   if (next_action === "hide") {
     icon.classList.remove("location_icon", "fa-map-marker-alt");
     icon.classList.add("map_icon", "fa-map");
@@ -46,7 +46,7 @@ const toggleMapButtonDisplay = (button, action) => {
 ** Get title and label from map button.
 **/
 const getMabButtonLabelTitle = (next_action) => {
-  const label_part_a = DisplayManager.getUserView() === "restaurant" ? "restaurant" : "results";
+  const label_part_a = InterfaceManager.getUserView() === "restaurant" ? "restaurant" : "results";
   const label_part_b = next_action === "show" ? "on" : "from";
   const label = next_action + " " + label_part_a + " " + label_part_b + " map";
   return label.charAt(0).toUpperCase() + label.slice(1);
@@ -56,7 +56,7 @@ const getMabButtonLabelTitle = (next_action) => {
 ** Get params to initialize the map based on the view.
 **/
 const getMapInitParams = () => {
-  const view = DisplayManager.getUserView();
+  const view = InterfaceManager.getUserView();
   let mapInitParams;
   if(view === "restaurant"){
     mapInitParams = {
@@ -77,14 +77,22 @@ const getMapInitParams = () => {
 };
 
 /**
+** Reset map variables.
+**/
+const resetMap = () => {
+  self.mapBoxLayer = null;
+  removeMarkers();
+  self.mapTimeout = 0;
+  self.mapInitializing = false;
+  self.mapLoaded = false;
+}
+
+/**
 ** Initialize map.
 **/
 const initMap = (params) => {
-  self.mapBoxLayer = null;
-  self.mapMarkers = [];
-  self.mapTimeout = 0;
+  resetMap();
   self.mapInitializing = true;
-  self.mapLoaded = false;
   displayMap();
   setTimeout(() => {
     Promise.all([FileLoader.loadFile("link", appParams.mapBox.cssFile),
@@ -109,7 +117,7 @@ const initMap = (params) => {
 ** Display map.
 **/
 const displayMap = () => {
- DisplayManager.displayElement(self.mapContainer);
+ InterfaceManager.displayElement(self.mapContainer);
  self.mapTimeout = setTimeout(() => {
    self.mapContainer.classList.add(appParams.cssClasses.displayMap);
  }, 200);
@@ -121,7 +129,7 @@ const displayMap = () => {
  const hideMap = () => {
    self.mapContainer.classList.remove(appParams.cssClasses.displayMap);
    self.mapTimeout = setTimeout(() => {
-      DisplayManager.hideElement(self.mapContainer);
+      InterfaceManager.hideElement(self.mapContainer);
     }, 800);
 };
 
@@ -187,9 +195,9 @@ const enableMap = () => {
   const currentAction = self.mapButton.getAttribute("aria-label").split(" ")[0].toLowerCase();
   if (currentAction === "hide" || currentAction === "show"){
     const prev_action = currentAction === "show" ? "hide" : "show";
-    toggleMapDisplay(self.mapButton, prev_action);
+    toggleMapButtonDisplay(prev_action);
   } else {
-    toggleMapDisplay(self.mapButton, "hide");
+    toggleMapButtonDisplay("hide");
   }
 };
 
@@ -197,24 +205,28 @@ const enableMap = () => {
 ** Disable map for users when they are offline and map was not loaded.
 **/
 const disableMap = () => {
+  self.mapContainer.classList.remove(appParams.cssClasses.displayMap);
+  InterfaceManager.hideElement(self.mapContainer);
   self.mapButton.removeAttribute("onclick");
   self.mapButton.classList.add(appParams.cssClasses.disableMapButton);
   self.mapButton.setAttribute("aria-label", "Map is currently unavailable");
   self.mapButton.title = "Map is currently unavailable";
-  self.mapBoxLayer = null;
-  removeMarkers();
-  self.mapTimeout = 0;
-  self.mapInitializing = false;
-  self.mapLoaded = false;
+  toggleMapButtonDisplay("hide");
+  resetMap();
 };
 
-
 /**
-** Show notification for failing to load the map.
+** Handle map failure.
 **/
 const mapFailure = () => {
-  console.log("map failure");
-}
+  // self.mapContainer.classList.remove(appParams.cssClasses.displayMap);
+  // InterfaceManager.hideElement(self.mapContainer);
+  // toggleMapButtonDisplay("hide");
+  // resetMap();
+  disableMap();
+  console.log("map failure notification");
+  console.log("enable map button after notification");
+};
 
 
 

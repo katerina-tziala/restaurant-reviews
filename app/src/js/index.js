@@ -83,11 +83,11 @@ const updateRestaurants = () => {
       console.error(error);
     } else {
       resetRestaurants(restaurants);
-      self.InterfaceManager.hideLoader();
+      InterfaceManager.hideLoader();
       if(restaurants.length > 0) {
         fillRestaurantsHTML();
       } else {
-        self.InterfaceManager.displayNoResultsFetchingMessage("restaurants", self.restaurantResults, self.restaurantsList);
+        InterfaceManager.displayNoResultsFetchingMessage("restaurants", self.restaurantResults, self.restaurantsList);
       }
     }
   });
@@ -99,7 +99,7 @@ const updateRestaurants = () => {
 const resetRestaurants = (restaurants, ul = self.restaurantsList) => {
   self.restaurants = [];
   ul.innerHTML = "";
-  self.InterfaceManager.removeNoResultsFetchingeMessage();
+  InterfaceManager.removeNoResultsFetchingeMessage();
   removeMarkers();
   self.restaurants = restaurants;
 };

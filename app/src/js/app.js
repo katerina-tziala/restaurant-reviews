@@ -1,6 +1,6 @@
 "use strict";
 let main, loader, spinner, mapContainer, mapButton;
-let InterfaceManager;
+
 let newSWorker;
 
 
@@ -25,12 +25,12 @@ const initApp = () => {
   self.mapButton = document.getElementById("mapButton");
   self.mapContainer = document.getElementById("map_container");
 
-  self.InterfaceManager = new UIManager(self.main, self.loader, self.spinner);
+  //self.InterfaceManager = new UIManager(self.main, self.loader, self.spinner);
   //self.mapManager = null;
   //self.Notifications = new NotificationsManager();
   self.newSWorker = null;
 
-
+  //console.log(InterfaceManager.test());
 //  registerServiceWorker();
 };
 
@@ -42,7 +42,7 @@ const initApp = () => {
 ** Initialize view depending on the page that was loaded.
 **/
 const initView = () => {
-  const pageView = DisplayManager.getUserView();
+  const pageView = InterfaceManager.getUserView();
 
   switch (pageView) {
     case "index":
@@ -52,7 +52,7 @@ const initView = () => {
       renderRestaurantInfo();
       break;
     default:
-    DisplayManager.redirectUser(self.start_url);
+    InterfaceManager.redirectUser(self.start_url);
   }
 };
 
@@ -134,7 +134,7 @@ const closeNotification = (event) => {
 // const mapFailure = () => {
 // //  self.Notifications.clearNotification();
 //   const mapContainer = document.getElementById("map_container");
-//   DisplayManager.hideElement(mapContainer);
+//   InterfaceManager.hideElement(mapContainer);
 //   mapContainer.classList.remove("displaymap");
 //   disableMap();
 //   // self.Notifications.createNotificationContent(self.Notifications.getNotificationContent("map_failure"));

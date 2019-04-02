@@ -1,18 +1,16 @@
-class DisplayManager {
-  static _hidenClass = "hidden";
-
+class InterfaceManager {
   /**
   ** Display element.
   **/
   static displayElement(element) {
-    element.classList.remove(this._hidenClass);
+    element.classList.remove(appParams.cssClasses.hidden);
   }
 
   /**
   ** Hide element.
   **/
   static hideElement(element) {
-    element.classList.add(this._hidenClass);
+    element.classList.add(appParams.cssClasses.hidden);
   }
 
   /**
@@ -25,19 +23,30 @@ class DisplayManager {
   }
 
   /**
+  ** Hide loader.
+  **/
+  static hideLoader() {
+    self.spinner.classList.remove(appParams.cssClasses.spinClass);
+    InterfaceManager.hideElement(self.loader);
+    InterfaceManager.displayElement(self.main);
+  }
+
+  /**
+  ** Show loader.
+  **/
+  static showLoader() {
+    self.spinner.classList.add(appParams.cssClasses.spinClass);
+    InterfaceManager.hideElement(self.main);
+    InterfaceManager.displayElement(self.loader);
+  }
+
+  /**
   ** Get the displayed view to the user.
   **/
   static getUserView() {
     const url = window.location.href;
     const view = url.split("/").pop().split(".")[0];
     return view === "" ? null : view;
-  }
-
-  /**
-  ** Redirect user.
-  **/
-  static redirectUser(redirectLink) {
-    window.location.replace(redirectLink);
   }
 
   /**
@@ -54,6 +63,13 @@ class DisplayManager {
     if (!results[2])
       return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  }
+
+  /**
+  ** Redirect user.
+  **/
+  static redirectUser(redirectLink) {
+    window.location.replace(redirectLink);
   }
 
   /**
@@ -75,8 +91,6 @@ class DisplayManager {
     return formated;
   }
 
-
-
   /**
   ** Create button.
   **/
@@ -90,5 +104,34 @@ class DisplayManager {
    return button;
   }
 
+  /**
+  ** Remove message about restaurants/reviews results.
+  **/
+  static removeNoResultsFetchingeMessage() {
+    const fetcherMessage = document.querySelectorAll(".fetcherMessageContainer");
+    if (fetcherMessage.length>0) {
+      fetcherMessage[0].remove();
+    }
+  }
+
+  /**
+  ** Display proper message about fetching restaurants/reviews results.
+  **/
+  static displayNoResultsFetchingMessage(type, container, list) {
+    const div = document.createElement("div");
+    div.className = "fetcherMessageContainer";
+    const p = document.createElement("p");
+    p.className = "fetcherMessage";
+    p.setAttribute("role" , "alert")
+    p.setAttribute("aria-live" , "assertive");
+    const feedback_icon = document.createElement("i");
+    feedback_icon.classList.add("fas", "fa-exclamation-triangle", "feedback_icon");
+    const message_p = document.createElement("p");
+    message_p.innerHTML = appParams.noResultsFetchingMessages[type];
+    message_p.className = "fetcherFeedback";
+    p.append(feedback_icon, message_p);
+    div.append(p);
+    container.insertBefore(div, list);
+  }
 
 }

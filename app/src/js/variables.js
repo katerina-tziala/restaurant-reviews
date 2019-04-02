@@ -25,8 +25,14 @@ const appParams = {
     }
   },
   cssClasses: {
+    hidden: "hidden",
+    spinClass: "spin",
     displayMap: "displaymap",
     disableMapButton: "disabled"
+  },
+  noResultsFetchingMessages: {
+     restaurants: `<span>No results matching your criteria!</span><span>Please try again!</span><i>Hint: Search with a different combination of neighborhoods and cuisines!</i>`,
+     reviews: `<span>No reviews yet!</span>`
   }
 
 };

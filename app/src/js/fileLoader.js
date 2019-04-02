@@ -21,7 +21,9 @@ class FileLoader {
     }
     return file;
   }
-
+  /**
+  ** Load file and return a promise.
+  **/
   static loadFile(fileType, params) {
     return new Promise((resolve, reject) => {
       const file = this.createFile(fileType, params);

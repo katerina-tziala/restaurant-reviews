@@ -210,7 +210,7 @@ class SelectWidget {
   ** Open select box.
   **/
   openSelectBox() {
-    DisplayManager.displayElement(this.selectList);
+    InterfaceManager.displayElement(this.selectList);
     this.selectButton.blur();
     const activedescendant = this.selectList.getAttribute("aria-activedescendant");
     for (let i = 0; i < this.focusableElements.length; i++) {
@@ -219,7 +219,7 @@ class SelectWidget {
     const active_element = document.getElementById(activedescendant);
     active_element.classList.add("selected");
     active_element.setAttribute("aria-selected", "true");
-    DisplayManager.setTabIndex(this.focusableElements, 0);
+    InterfaceManager.setTabIndex(this.focusableElements, 0);
     active_element.focus();
     this.expanded = true;
   }
@@ -228,8 +228,8 @@ class SelectWidget {
   ** Close select box.
   **/
   closeSelectBox(target, outside = false) {
-    DisplayManager.hideElement(this.selectList);
-    DisplayManager.setTabIndex(this.focusableElements, -1);
+    InterfaceManager.hideElement(this.selectList);
+    InterfaceManager.setTabIndex(this.focusableElements, -1);
     if (!outside) {
       this.selectButton.focus();
     }

@@ -10,7 +10,7 @@ const renderRestaurantInfo = () => {
     if (error) { // Got an error!
       console.error(error);
     } else {
-      self.InterfaceManager.hideLoader();
+      InterfaceManager.hideLoader();
       self.restaurant = restaurant;
       fillBreadcrumb();
       fillRestaurantHTML();
@@ -25,7 +25,7 @@ const fetchRestaurantFromURL = (callback) => {
     callback(null, self.restaurant)
     return;
   }
-  const id = DisplayManager.getParameterByName("id");
+  const id = InterfaceManager.getParameterByName("id");
   if (!id) { // no id found in URL
     error = "No restaurant id in URL"
     callback(error, null);
@@ -128,10 +128,10 @@ const renderReviewsLink = (reviews_numb, restaurant) => {
 const fillReviewsHTML = (reviews = self.reviews, reviewsList = self.reviewsList) => {
   self.reviewsList.innerHTML = "";
   if (!reviews || reviews.length === 0) {
-    self.InterfaceManager.displayNoResultsFetchingMessage("reviews", self.reviewsResults, self.reviewsList);
+    InterfaceManager.displayNoResultsFetchingMessage("reviews", self.reviewsResults, self.reviewsList);
     return;
   } else {
-    self.InterfaceManager.removeNoResultsFetchingeMessage();
+    InterfaceManager.removeNoResultsFetchingeMessage();
     reviews.forEach(review => {
        reviewsList.appendChild(createReviewHTML(review));
     });
@@ -152,11 +152,11 @@ const createReviewHTML = (review) => {
   reviewer.innerHTML = `<span>by</span><b title="${review.name}">${review.name}</b>`;
   const created = document.createElement("p");
   created.className = "reviewCreationDate";
-  created.innerHTML = DisplayManager.formatDate(review.date);
+  created.innerHTML = InterfaceManager.formatDate(review.date);
   review_info.append(reviewer, created);
   const comments = document.createElement("p");
   comments.className = "ratingComments";
-  comments.innerHTML = DisplayManager.decodeEntities(review.comments);
+  comments.innerHTML = InterfaceManager.decodeEntities(review.comments);
   li.append(rating, review_info, comments);
   return li;
 };
