@@ -1,3 +1,4 @@
+"use strict";
 class SelectWidget {
 
   constructor(selectButton, selectList, optionKey, onOptionSelectFunction, selectedOptions) {
@@ -67,11 +68,6 @@ class SelectWidget {
       this.onOptionSelect();
     });
   }
-
-
-
-
-
 
   /**
   ** Handle select widget display and interaction.

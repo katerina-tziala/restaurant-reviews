@@ -1,3 +1,4 @@
+"use strict";
 class FileLoader {
   /**
   ** Get the position in which the CSS/Javascript file should be placed.

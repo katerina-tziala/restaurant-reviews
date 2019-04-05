@@ -1,5 +1,6 @@
 "use strict";
-let main, loader, spinner, mapContainer, mapButton;
+let main, loader, spinner, mapContainer, mapButton,
+notificationContainer, notificationHeader, notificationTitle, notificationBody;
 
 let newSWorker;
 
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   initApp();
   initView();
 
+//displayNotification();
 
 });
 
@@ -24,7 +26,10 @@ const initApp = () => {
   self.spinner = document.getElementById("spinner");
   self.mapButton = document.getElementById("mapButton");
   self.mapContainer = document.getElementById("map_container");
-
+  self.notificationContainer = document.getElementById("notification_container");
+  self.notificationHeader = document.getElementById("notification_header");
+  self.notificationTitle = document.getElementById("notification_title");
+  self.notificationBody = document.getElementById("notification_body");
   //self.InterfaceManager = new UIManager(self.main, self.loader, self.spinner);
   //self.mapManager = null;
   //self.Notifications = new NotificationsManager();
@@ -103,27 +108,9 @@ const initView = () => {
 
 
 
-/**
-** Reload the app.
-**/
-const reloadApp = () => {
-  window.location.href = window.location.href;
-};
 
-/**
-** Refresh the app.
-**/
-const refreshApp = () => {
-  window.location.reload(true);
-};
 
-/**
-** Close notification and clear timeout.
-**/
-const closeNotification = (event) => {
-  event.preventDefault();
-//  self.Notifications.removeNotification();
-};
+
 
 
 /////////////////////////////////// MAP FUNCTIONS ///////////////////////////////////

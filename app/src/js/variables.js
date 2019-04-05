@@ -1,3 +1,4 @@
+"use strict";
 const appParams = {
   mapBox: {
     leaflet_tile_layer_link: "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}",
@@ -18,7 +19,7 @@ const appParams = {
     },
     jsFile: {
       type: "application/javascript",
-      src: "https://unpkg.com/leaflet@1.3.1/dist/leaflet.js",
+      src: "https://unpkg.com/leaflet@1.3.1/dist/leafle.js",
       integrity: "sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==",
       crossorigin: " ",
       charset: "utf-8"
@@ -28,11 +29,20 @@ const appParams = {
     hidden: "hidden",
     spinClass: "spin",
     displayMap: "displaymap",
-    disableMapButton: "disabled"
+    disableMapButton: "disabled",
+    displayNotification: "display_notification"
   },
   noResultsFetchingMessages: {
      restaurants: `<span>No results matching your criteria!</span><span>Please try again!</span><i>Hint: Search with a different combination of neighborhoods and cuisines!</i>`,
      reviews: `<span>No reviews yet!</span>`
+  },
+  notifications: {
+    clear: { title: "", message: "", type:""},
+    map_failure: {
+      title: "Ooops!",
+      message: "Map wasn't loaded successfully! Please try again.",
+      type: "map_failure"
+    }
   }
 
 };

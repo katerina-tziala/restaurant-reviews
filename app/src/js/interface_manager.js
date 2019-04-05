@@ -71,6 +71,20 @@ class InterfaceManager {
   static redirectUser(redirectLink) {
     window.location.replace(redirectLink);
   }
+  
+  /**
+  ** Reload the app.
+  **/
+  static reloadApp() {
+    window.location.href = window.location.href;
+  }
+
+  /**
+  ** Refresh the app.
+  **/
+  static refreshApp () {
+    window.location.reload(true);
+  }
 
   /**
   ** Decode HTML entities.

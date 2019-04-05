@@ -1,3 +1,4 @@
+"use strict";
 let mapBoxLayer = null;
 let mapMarkers = [];
 let mapTimeout = 0;
@@ -18,7 +19,6 @@ const toggleMap = () => {
     if (InterfaceManager.getUserView() !== "restaurant") {
       self.neighborhoodSelectWidget.closeSelectBox("null", true);
       self.cuisineSelectWidget.closeSelectBox("null", true);
-      console.log("select widget");
     }
   }
 };
@@ -219,19 +219,6 @@ const disableMap = () => {
 ** Handle map failure.
 **/
 const mapFailure = () => {
-  // self.mapContainer.classList.remove(appParams.cssClasses.displayMap);
-  // InterfaceManager.hideElement(self.mapContainer);
-  // toggleMapButtonDisplay("hide");
-  // resetMap();
   disableMap();
-  console.log("map failure notification");
-  console.log("enable map button after notification");
+  generateBasicNotification(getNotificationContent("map_failure"), 0);
 };
-
-
-
-
-
-
-
-//
