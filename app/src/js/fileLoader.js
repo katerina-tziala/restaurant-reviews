@@ -10,6 +10,29 @@ class FileLoader {
     };
     return positions[fileType];
   }
+
+  /**
+  ** Get parameters of a file.
+  **/
+  static getFileParameters(filepath) {
+    const fileType = filepath.split(".").pop();
+    let params;
+    if(fileType === "css") {
+      params = {
+        rel: "stylesheet",
+        charset: "utf-8",
+        href: filepath
+      }
+    } else {
+      params = {
+        type: "application/javascript",
+        charset: "utf-8",
+        src: filepath
+      }
+    }
+    return params;
+  }
+
   /**
   ** Create tag and attributes of the CSS/Javascript file.
   **/

@@ -9,14 +9,14 @@ const cacheFiles = [
   'restaurant.html',
   'js/app.js',
   'js/dbhelper.js',
-  'js/displayManager.js',
   'js/fileLoader.js',
   'js/index.js',
-  'js/mapboxManager.js',
+  'js/interface_manager.js',
+  'js/map.js',
   'js/notifications.js',
   'js/restaurant.js',
   'js/select_widget.js',
-  'js/uiManager.js',
+  'js/variables.js',
   'css/critical.css',
   'css/index.css',
   'css/map.css',
@@ -40,6 +40,7 @@ const cacheImages = [
   'img/9.jpg',
   'img/10.jpg'
 ];
+
 //Install Service Worker and cache files:
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -53,6 +54,7 @@ self.addEventListener('install', (event) => {
     })
   );
 });
+
 //Activate Service Worker and delete old cache(s):
 self.addEventListener('activate', (event) => {
   self.clients.claim();
@@ -68,12 +70,14 @@ self.addEventListener('activate', (event) => {
     })
   );
 });
+
 //Activate a waiting Service Worker:
 self.addEventListener('message', (event) => {
   if (event.data.action === 'skipWaiting') {
     self.skipWaiting();
   }
 });
+
 //Respond with a file from cache or add the requested file in cache and then respond:
 //Handle API requests as well:
 self.addEventListener('fetch', (event) => {
@@ -85,6 +89,7 @@ self.addEventListener('fetch', (event) => {
   }
   event.respondWith(retrieveFile(staticCacheName, event.request));
 });
+
 //Respond with an image or file from cache or add the requested image or file in cache and then respond:
 self.retrieveFile = (cache, request) =>{
   return caches.open(cache).then((cache) => {

@@ -41,6 +41,13 @@ class InterfaceManager {
   }
 
   /**
+  ** Check if loader is displayed.
+  **/
+  static loaderIsDisplayed() {
+    return !self.loader.classList.contains(appParams.cssClasses.hidden) ? true : false;
+  }
+
+  /**
   ** Get the displayed view to the user.
   **/
   static getUserView() {
@@ -71,7 +78,7 @@ class InterfaceManager {
   static redirectUser(redirectLink) {
     window.location.replace(redirectLink);
   }
-  
+
   /**
   ** Reload the app.
   **/
@@ -82,7 +89,7 @@ class InterfaceManager {
   /**
   ** Refresh the app.
   **/
-  static refreshApp () {
+  static refreshApp() {
     window.location.reload(true);
   }
 

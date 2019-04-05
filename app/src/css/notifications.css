@@ -67,10 +67,6 @@
 #btn_update, #btn_retry, #btn_refresh {
   margin-right: 40px;
 }
-
-
-
-
 /* ~~~~~~~~~~~~~~~~~~ RESPONSIVE DESIGN WITH MEDIA QUERIES ~~~~~~~~~~~~~~~~~~ */
 @media screen and (max-width: 1140px) {
   .buttons_wrapper {
@@ -85,6 +81,6 @@
     margin: auto;
   }
   .buttons_wrapper > button {
-    margin: 16px!important;
+    margin: 16px 16px 0!important;
   }
 }

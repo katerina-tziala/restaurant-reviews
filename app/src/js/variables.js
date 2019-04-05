@@ -1,5 +1,15 @@
 "use strict";
 const appParams = {
+  start_url: "http://localhost:8887/index.html",
+  scope: "/",
+  indexFiles:{
+    js: ["js/map.js", "js/select_widget.js", "js/index.js"],
+    css: ["css/no_results_message.css", "css/map.css", "css/select_widget.css", "css/index.css"]
+  },
+  restaurantFiles:{
+    js: ["js/map.js", "js/restaurant.js"],
+    css: ["css/no_results_message.css", "css/map.css", "css/restaurant.css", "css/reviews.css"]
+  },
   mapBox: {
     leaflet_tile_layer_link: "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}",
     leaflet_params: {
@@ -19,7 +29,7 @@ const appParams = {
     },
     jsFile: {
       type: "application/javascript",
-      src: "https://unpkg.com/leaflet@1.3.1/dist/leafle.js",
+      src: "https://unpkg.com/leaflet@1.3.1/dist/leaflet.js",
       integrity: "sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==",
       crossorigin: " ",
       charset: "utf-8"
@@ -37,12 +47,37 @@ const appParams = {
      reviews: `<span>No reviews yet!</span>`
   },
   notifications: {
-    clear: { title: "", message: "", type:""},
+    clear: { title: "", message: "", type:"cleared"},
     map_failure: {
       title: "Ooops!",
       message: "Map wasn't loaded successfully! Please try again.",
       type: "map_failure"
-    }
+    },
+    online: {
+       title: "You are back online!",
+       message: "Internet connection was successfully re-established!",
+       type: "online"
+     },
+    offline: {
+      title: "Unable to connect! retrying...",
+      message: "You are able to use the Restaurant Reviews app while offline!",
+      type: "offline"
+    },
+    offline_noMap: {
+      title: "Unable to connect! retrying...",
+      message: `You are able to use the Restaurant Reviews app while offline!<br><i><b>Notice: </b>The map is not currently available since it was not loaded yet!<i>`,
+      type: "offline_noMap"
+    },
+    unable_to_connect_retrying: {
+      title: "Unable to connect!",
+      message: `Retrying in <span id="message_timer"></span>`,
+      type: "unable_to_connect_retrying"
+    },
+    update: {
+      title: "update available",
+      message: "A new version of the Restaurant Reviews app is available!",
+      type: "update"}
+
   }
 
 };

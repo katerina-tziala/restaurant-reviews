@@ -192,13 +192,7 @@ const removeMarkers = () => {
 const enableMap = () => {
   self.mapButton.setAttribute("onclick", "toggleMap(event)");
   self.mapButton.classList.remove(appParams.cssClasses.disableMapButton);
-  const currentAction = self.mapButton.getAttribute("aria-label").split(" ")[0].toLowerCase();
-  if (currentAction === "hide" || currentAction === "show"){
-    const prev_action = currentAction === "show" ? "hide" : "show";
-    toggleMapButtonDisplay(prev_action);
-  } else {
-    toggleMapButtonDisplay("hide");
-  }
+  toggleMapButtonDisplay("hide");
 };
 
 /**
@@ -209,9 +203,10 @@ const disableMap = () => {
   InterfaceManager.hideElement(self.mapContainer);
   self.mapButton.removeAttribute("onclick");
   self.mapButton.classList.add(appParams.cssClasses.disableMapButton);
+  toggleMapButtonDisplay("hide");
   self.mapButton.setAttribute("aria-label", "Map is currently unavailable");
   self.mapButton.title = "Map is currently unavailable";
-  toggleMapButtonDisplay("hide");
+  self.mapButton.blur();
   resetMap();
 };
 
