@@ -1,7 +1,5 @@
 "use strict";
-let main, loader, spinner, mapContainer, mapButton,
-notificationContainer, notificationHeader, notificationTitle, notificationBody;
-let newSWorker;
+let main, loader, spinner, mapContainer, mapButton, notificationContainer, notificationHeader, notificationTitle, notificationBody, newSWorker;
 document.addEventListener("DOMContentLoaded", (event) => {
   initApp();
 });

@@ -1,5 +1,6 @@
 "use strict";
 const appParams = {
+  port:"8887",
   start_url: "http://localhost:8887/index.html",
   scope: "/",
   indexFiles:{
