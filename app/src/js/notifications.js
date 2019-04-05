@@ -127,7 +127,6 @@ const createNotificationActionButton = (type, text, title, callback) => {
   self.notificationBody.append(buttonsContainer);
 }
 
-
 //////////////////////////// GENERATE NOTIFICATIONS ////////////////////////////
 /**
 ** Generate basic notification.
