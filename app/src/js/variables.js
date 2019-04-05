@@ -79,5 +79,4 @@ const appParams = {
       type: "update"}
 
   }
-
 };
