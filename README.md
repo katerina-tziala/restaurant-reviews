@@ -25,6 +25,11 @@ Build off of your existing Restaurant Reviews app to create a fully-featured app
 
 **2.** Follow the README file of the server repository to get the Node development server up and running locally on your computer.
 
+**3.** Fork and clone the [**restaurant_reviews-stage_2**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_2) repository.
+
+**4.** Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
+
+
 
 <h2>Auditing the Restaurant Reviews App</h2>
 
