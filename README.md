@@ -34,6 +34,13 @@ Build off of your existing Restaurant Reviews app to create a fully-featured app
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/app_params.png" alt="change app parameters" width="80%" height="auto">
 </p>
 
+**6.** Navigate from your terminal inside the /app folder and run  ***gulp*** to bundle and build the app.
+<p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/bundle_app.png" alt="running gulp to build the app" width="80%" height="auto">
+</p>
+
+
+
 <h2>Auditing the Restaurant Reviews App</h2>
 
 
