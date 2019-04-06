@@ -11,3 +11,6 @@ This repository is split into the following branches based on the app's phase of
  - Semantic HTML5 markup and ARIA atributes for accessibility
  - Vanilla Javascript following the ES6 JavaScript Syntax (arrow functions, destructuring, sting literals, sets, etc.)
  -  Cache API and a ServiceWorker for offline use
+ - Pull data through Ajax (Fetch API) from a live data source
+ - Cache the JSON response data on the client with IndexedDB for offline access
+ - Create a build system with  Gulp
