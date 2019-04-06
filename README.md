@@ -65,14 +65,10 @@ After completing the second stage of the project, the application was audited. T
     </p><br>
 
 <h2>Towards a Progressive Wep App</h2>
-As stated by Google Developers, Progressive Web Apps are installable and live on the user's home screen, without the need for an app store. They offer an immersive full screen experience with help from a web app manifest file that allows us to control how our app appears and how it's launched. The following images illustrate how the browser (Chrome) installs the <b>Restaurant Reviews App</b> on the user's home screen.
-
-<br>
+As stated by Google Developers, Progressive Web Apps are installable and live on the user's home screen, without the need for an app store. They offer an immersive full screen experience with help from a web app manifest file that allows us to control how our app appears and how it's launched. The following images illustrate how the browser (Chrome) installs the <b>Restaurant Reviews App</b> on the user's home screen.<br><br>
 <p align="center">
  <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/pwa1.png" alt="restaurant reviews app, installing the app" width="100%" height="auto">
-</p>
-
-<br>
+</p><br><br>
 <p align="center">
  <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/pwa2.png" alt="restaurant reviews app, browser apps" width="100%" height="auto">
 </p>
