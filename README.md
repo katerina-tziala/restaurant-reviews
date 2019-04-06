@@ -10,8 +10,8 @@ This repository is split into the following branches based on the app's phase of
    - Progressive Web App >90
    - Performance >70
    - Accessibility >90
-<br>
- <i>The app now must be run alongside with the [**mws-stage-restaurant-stage-2**](https://github.com/udacity/mws-restaurant-stage-2) back end data server.</i>
+
+   <i>The app now must be run alongside with the [**mws-stage-restaurant-stage-2**](https://github.com/udacity/mws-restaurant-stage-2) back end data server.</i>
  
 
 
