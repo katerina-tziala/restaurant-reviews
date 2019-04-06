@@ -21,6 +21,8 @@ Build off of your existing Restaurant Reviews app to create a fully-featured app
  - **Accessibility:** The application retains accessibility features from the Stage 1 project. Images have alternate text, the application uses appropriate focus management for navigation, and semantic elements and ARIA attributes are used correctly.<br><br>
 <h2>Local Setup of the Project</h2>
 
+**1.** Fork and clone the [**server**](https://github.com/udacity/mws-restaurant-stage-2) repository.
+
 
 <h2>Auditing the Restaurant Reviews App</h2>
 
