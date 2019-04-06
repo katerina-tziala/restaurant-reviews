@@ -31,3 +31,15 @@ After completing the first stage of the project the application was audited. The
    <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/RR-S1_Responsive_index.png" alt="restaurant reviews app, index page responsive layout" width="70%" height="auto">
     </p>
+    
+    **2.** Accessibility
+   <p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/RR-S1_Accessibility_index.png" alt="restaurant reviews app, index page accessibility audit" width="70%" height="auto">
+    </p>
+    
+    **3.** Offline
+   <p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/RR-S1_Offline_index.png" alt="restaurant reviews app, index page offline" width="70%" height="auto">
+    </p>
+
+
