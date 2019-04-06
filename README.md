@@ -7,7 +7,7 @@ to retrieve JSON data. The preparation to start working on this project and impl
  
 <h2>Project Requirements</h2>
  
-  - **User Interface:** Users are able to mark a restaurant as a favorite (and remove a restaurant from favorites), this toggle is visible in the application.<br>Users are also able to add their own reviews for a restaurant. Form submission works properly and adds a new review to the database.
+  - **User Interface:** Users are able to mark a restaurant as a favorite (and remove a restaurant from favorites), this toggle is visible in the application. Users are also able to add their own reviews for a restaurant. Form submission works properly and adds a new review to the database.
 
   - **Offline Use:** The client application works offline. JSON responses are cached using the IndexedDB API. Any data previously accessed while connected is reachable while offline. Users are able to mark a restaurant as a favorite (and remove a restaurant from favorites) while offline and the request is sent to the server when connectivity is re-established. Users are able to add a review to a restaurant while offline and the review is sent to the server when connectivity is re-established.
   
