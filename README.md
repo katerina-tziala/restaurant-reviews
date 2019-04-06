@@ -30,7 +30,9 @@ Build off of your existing Restaurant Reviews app to create a fully-featured app
 **4.** Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
 
 **5.** Add your [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE) in the ***mapboxkey*** in the *config.json* file inside the **gulp_tasks** folder. Make sure that the ***app_params*** of this file are defined appropriately (check the path, the start_url, the scope and the endpoints).
-
+<p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/app_params.png" alt="change app parameters" width="80%" height="auto">
+</p>
 
 <h2>Auditing the Restaurant Reviews App</h2>
 
