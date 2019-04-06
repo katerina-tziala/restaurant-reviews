@@ -28,3 +28,6 @@ After completing the first stage of the project the application was audited. The
 
  - **index.html:**<br>
    **1.** Responsive Design
+   <p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/RR-S1_Responsive_index.png" alt="restaurant reviews app, index page responsive layout" width="70%" height="auto">
+    </p>
