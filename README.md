@@ -23,9 +23,9 @@ Build off of your existing Restaurant Reviews app to create a fully-featured app
 
 **1.** Fork and clone the [**server**](https://github.com/udacity/mws-restaurant-stage-2) repository.
 
-**2.** Follow the README file of the server repository to get the Node development up and running locally on your computer.
+**2.** Follow the README file of the server repository to get the Node development server up and running locally on your computer.
+
 
 <h2>Auditing the Restaurant Reviews App</h2>
-
 
 
