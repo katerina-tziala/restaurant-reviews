@@ -4,4 +4,4 @@ This repository is split into the following branches based on the app's phase of
 - [**restaurant_reviews-stage_1**](https://github.com/katerina-tziala/restaurant/blob/restaurant_reviews-stage_1/README.md):
 [restaurant_reviews-stage_1](http://github.com)
 
-[I'm an inline-style link](https://www.google.com)
+[restaurant_reviews-stage_1](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_1)
