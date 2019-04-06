@@ -2,7 +2,7 @@
 This is the second stage of the three stage course material project <b>Restaurant Reviews</b>. Building upon the responsive and accessible design that was developed in the first stage, the app should now connect to an external server
 to retrieve JSON data. The preparation to start working on this project and implement the requirements documented below, included:
 
- - Fork and clone the [**server**](https://github.com/udacity/mws-restaurant-stage-2) repository.
+ - Fork and clone the [**stage 2 Node development server**](https://github.com/udacity/mws-restaurant-stage-2) repository.
  - Run the development server locally to develop the project code.<br><br>
  
 <h2>Project Requirements</h2>
@@ -24,7 +24,7 @@ to retrieve JSON data. The preparation to start working on this project and impl
 
 <h2>Local Setup of the Project</h2>
 
-**1.** Fork and clone the [**server**](https://github.com/udacity/mws-restaurant-stage-2) repository.
+**1.** Fork and clone the [**stage 2 Node development server**](https://github.com/udacity/mws-restaurant-stage-2) repository.
 
 **2.** Follow the README file of the server repository to get the Node development server up and running locally on your computer.
 
