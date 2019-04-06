@@ -51,7 +51,7 @@ After completing the first stage of the project, the application was audited. Th
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/RR-S1_Accessibility_index.png" alt="restaurant reviews app, index page accessibility audit" width="100%" height="auto">
     </p><br>
     
-    **3.** **Offline**
+    **3.** **Offline Use**
    <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/RR-S1_Offline_index.png" alt="restaurant reviews app, index page offline" width="100%" height="auto">
     </p><br><br>
@@ -67,7 +67,7 @@ After completing the first stage of the project, the application was audited. Th
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/RR-S1_Accessibility_restaurant.png" alt="restaurant reviews app, restaurant page accessibility audit" width="100%" height="auto">
     </p><br>
     
-    **3.** **Offline**
+    **3.** **Offline Use**
    <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/RR-S1_Offline_restaurant.png" alt="restaurant reviews app, restaurant page offline" width="100%" height="auto">
     </p>
