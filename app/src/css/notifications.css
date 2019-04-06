@@ -68,11 +68,6 @@
   margin-right: 40px;
 }
 /* ~~~~~~~~~~~~~~~~~~ RESPONSIVE DESIGN WITH MEDIA QUERIES ~~~~~~~~~~~~~~~~~~ */
-@media screen and (max-width: 1140px) {
-  .buttons_wrapper {
-    padding: 8px 0;
-  }
-}
 @media screen and (max-width: 770px) {
   .buttons_wrapper {
     display: block;
