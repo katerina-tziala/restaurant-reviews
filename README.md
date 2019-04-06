@@ -23,4 +23,4 @@
 
 **6.** Launch the website!
 <br><br>
-<h2>Audit the App</h2>
+<h2>Auditing the Restaurant Reviews App</h2>
