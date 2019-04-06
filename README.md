@@ -40,7 +40,7 @@ After completing the first stage of the project the application was audited. The
     **3.** Offline
    <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/RR-S1_Offline_index.png" alt="restaurant reviews app, index page offline" width="100%" height="auto">
-    </p>
+    </p><br><br>
  
  - **restaurant.html:**<br>
    **1.** Responsive Design
