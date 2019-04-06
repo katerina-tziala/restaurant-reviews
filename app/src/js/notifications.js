@@ -43,7 +43,7 @@ const createNotificationContent = (notification) => {
 const clearNotification = () => {
   createNotificationContent(getNotificationContent("clear"));
   if (self.notificationTimeout > 0) {
-    clearTimeout(this.notificationTimeout);
+    clearTimeout(self.notificationTimeout);
   }
   if (self.notificationInterval > 0) {
     clearNotificationCountDown();
