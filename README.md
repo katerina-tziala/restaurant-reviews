@@ -52,4 +52,9 @@ After completing the second stage of the project, the application was audited. T
  - **Application Data Source and Offline Use**
     <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/app_data.png" alt="caching data in Indexed DB" width="100%" height="auto">
-    </p>
+    </p><br>
+    
+ - **Lighthouse Metrics for index.html**
+
+ - **Lighthouse Metrics for restaurant.html**
+
