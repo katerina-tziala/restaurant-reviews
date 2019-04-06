@@ -1,9 +1,8 @@
 <h1>Restaurant Reviews App: Stage 3</h1>
-This is the third and final stage of the three stage course material project <b>Restaurant Reviews</b>.
+This is the third and final stage of the three stage course material project <b>Restaurant Reviews</b>. Building upon the responsive, accessible and connected application that was developed incrementally in the first two stages, the app should now provide additional functionality. Users should now be able to create their own reviews and add restaurants in their favorites list. If the app is offline, form submissions should defer updating to the remote database until a connection is established. The preparation to start working on this project and implement the requirements documented below, included:
 
-Building upon the responsive and accessible design that was developed in the first stage, the app should now connect to an external server
-to retrieve JSON data. The preparation to start working on this project and implement the requirements documented below, included:
-
+ - Fork and clone the [**stage-3 Node development server**](https://github.com/udacity/mws-restaurant-stage-3) repository.
+ - Run the development server locally to develop the project code.<br><br>
  
 <h2>Project Requirements</h2>
  
