@@ -3,6 +3,9 @@ const appParams = {
   port:"8887",
   start_url: "http://localhost:8887/index.html",
   scope: "/",
+  endpoints: {
+      restaurants: `http://localhost:1337/restaurants/`
+    },
   indexFiles:{
     js: ["js/map.js", "js/select_widget.js", "js/index.js"],
     css: ["css/no_results_message.css", "css/map.css", "css/select_widget.css", "css/index.css"]

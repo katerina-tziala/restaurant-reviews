@@ -83,6 +83,9 @@ self.addEventListener('message', (event) => {
 self.addEventListener('fetch', (event) => {
   const requestUrl = new URL(event.request.url);
   const requestedPath = requestUrl.pathname;
+  if (requestedPath.startsWith('/restaurants')) {
+    return;
+  }
   if (requestedPath.match('.jpg') || requestedPath.match('.png') || requestedPath.match('.svg') || requestedPath.match('.ico')) {
     event.respondWith(retrieveFile(imagesCacheName, event.request));
     return;

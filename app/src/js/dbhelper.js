@@ -4,30 +4,82 @@
  */
 class DBHelper {
   /**
-  ** Database URL.
-  ** Change this to restaurants.json file location on your server.
+  ** Restaurants URL.
   **/
-  static get DATABASE_URL() {
-    return `http://localhost:${appParams.port}/data/restaurants.json`;
+  static get RESTAURANTS_URL() {
+    return appParams.endpoints.restaurants;
+  }
+  /**
+  ** Request headers.
+  **/
+  static get REQUEST_HEADERS() {
+    const dataheaders = new Headers();
+    dataheaders.append('Accept', 'application/json; charset=utf-8');
+    return dataheaders;
+  }
+
+  /**
+  ** Check if indexed db is supported.
+  **/
+  static get INDEXED_DB_SUPPORT() {
+    const indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+    const transactions = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction || {READ_WRITE: "readwrite"};
+    const keys = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
+    if (!(indexedDB) || !(transactions) || !(keys)) {
+      return false;
+    }else {
+      return true;
+    }
+  }
+
+  /**
+  ** Index DB Store.
+  **/
+  static get AppStore() {
+    return new DataStore();
+  }
+
+  /**
+  ** Fetch data.
+  **/
+  static async fetchData(url) {
+    const request = new Request(url, {
+      method: 'GET',
+      mode: 'cors',
+      cache: 'reload',
+      credentials:'same-origin',
+      headers: DBHelper.REQUEST_HEADERS});
+    try {
+      const fetchResult = fetch(request);
+      const response = await fetchResult;
+      const jsonData = await response.json();
+      return Promise.resolve(jsonData);
+    } catch(error){
+      throw Error(error);
+    }
   }
 
   /**
   ** Fetch all restaurants.
   **/
   static fetchRestaurants(callback) {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', DBHelper.DATABASE_URL);
-    xhr.onload = () => {
-      if (xhr.status === 200) { // Got a success response from server!
-        const json = JSON.parse(xhr.responseText);
-        const restaurants = json.restaurants;
-        callback(null, restaurants);
-      } else { // Oops!. Got an error from server.
-        const error = (`Request failed. Returned status of ${xhr.status}`);
-        callback(error, null);
-      }
-    };
-    xhr.send();
+    if (DBHelper.INDEXED_DB_SUPPORT) {
+      DBHelper.AppStore.getCachedData('restaurants').then((response) => {
+        if (response.length > 0) {
+          callback(null, response);
+          callback = () => {}; // don't call callback again from fetch
+          }
+          DBHelper.fetchData(DBHelper.RESTAURANTS_URL).then((response)=>{
+            DBHelper.AppStore.cacheAll('restaurants', response);
+            callback(null, response);
+          }).catch((error) => callback(error, null));
+        });
+    } else {
+      DBHelper.fetchData(DBHelper.RESTAURANTS_URL).then((response)=>{
+        DBHelper.AppStore.cacheAll('restaurants', response);
+          callback(null, response);
+        }).catch((error) => callback(error, null));
+    }
   }
 
   /**
@@ -70,6 +122,10 @@ class DBHelper {
     });
   }
 
+
+
+
+
   /**
   ** Fetch all neighborhoods with proper error handling.
   **/
@@ -110,14 +166,15 @@ class DBHelper {
   ** Restaurant page URL.
   **/
   static urlForRestaurant(restaurant) {
-    return (`./restaurant.html?id=${restaurant.id}`);
+    return (`restaurant.html?id=${restaurant.id}`);
   }
 
   /**
   ** Restaurant image URL.
   **/
   static imageUrlForRestaurant(restaurant) {
-    return (`/img/${restaurant.photograph}`);
+    const image = restaurant.photograph+'.jpg';
+    return (`img/${image}`);
   }
 
 }
