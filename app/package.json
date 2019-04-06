@@ -1,0 +1,52 @@
+{
+  "name": "mws-restaurant-reviews-app",
+  "version": "1.0.0",
+  "description": "A PWA for Restaurant Reviews in the context of the Mobile Web Specialist Nanodegree Program",
+  "main": "app.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/katerina-tziala/restaurant_reviews_app.git"
+  },
+  "keywords": [
+    "restaurant reviews",
+    "progressive web application"
+  ],
+  "author": "Katerina Tziala",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-babel": "^7.0.1",
+    "gulp-batch-replace": "0.0.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-json-modify": "^1.0.2",
+    "gulp-minify": "^3.1.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace-task": "^0.11.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-strip-comments": "^2.5.2",
+    "gulp-strip-css-comments": "^2.0.0",
+    "gulp-uglify": "^3.0.1",
+    "gulp-uglify-es": "^1.0.4",
+    "minimatch": "^3.0.4",
+    "require-dir": "^1.1.0",
+    "run-sequence": "^2.2.1",
+    "through2": "^3.0.0"
+  },
+  "dependencies": {
+    "gulp-install": "^1.1.0"
+  }
+}

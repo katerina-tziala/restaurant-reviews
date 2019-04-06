@@ -72,7 +72,6 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
     fillRestaurantHoursHTML();
   }
   self.reviews = restaurant.reviews;
-  renderReviewsLink(restaurant.reviews.length, restaurant);
   fillRatingStats();
   fillReviewsHTML();
 };
@@ -112,16 +111,6 @@ const fillRatingStats = (reviews = self.reviews) => {
     total_rating.innerHTML = avg;
   }
 };
-/**
-** Create anchor point for reviews and display the appropriate link text.
-**/
-const renderReviewsLink = (reviews_numb, restaurant) => {
-  const reviews_link = document.getElementById("reviews_link");
-  reviews_link.href = DBHelper.urlForRestaurant(restaurant) + "#reviews";
-  if (reviews_numb === 1) {
-    reviews_link.innerHTML = "review";
-  }
-}
 /**
 ** Create all reviews HTML and add them to the webpage.
 **/

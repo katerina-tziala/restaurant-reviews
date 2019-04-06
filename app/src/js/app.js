@@ -1,5 +1,6 @@
 "use strict";
 let main, loader, spinner, mapContainer, mapButton, notificationContainer, notificationHeader, notificationTitle, notificationBody, newSWorker;
+let notificationTimeout, notificationInterval, notificationCountdown = 0;
 document.addEventListener("DOMContentLoaded", (event) => {
   initApp();
 });
@@ -18,6 +19,9 @@ const initApp = () => {
   self.notificationTitle = document.getElementById("notification_title");
   self.notificationBody = document.getElementById("notification_body");
   self.newSWorker = null;
+  self.notificationTimeout = 0;
+  self.notificationInterval = 0;
+  self.notificationCountdown = 0;
   registerServiceWorker();
   initView();
 };

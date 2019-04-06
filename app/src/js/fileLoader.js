@@ -21,6 +21,7 @@ class FileLoader {
       params = {
         rel: "stylesheet",
         charset: "utf-8",
+        type: "text/css",
         href: filepath
       }
     } else {

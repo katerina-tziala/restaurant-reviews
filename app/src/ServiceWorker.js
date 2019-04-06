@@ -3,6 +3,8 @@ const staticCacheName = 'rr-files-v1';
 const imagesCacheName = 'rr-images-v1';
 const appCaches = [staticCacheName, imagesCacheName];
 //files to be cached
+const cacheFiles = [_APP_CACHE_FILES_];
+/*
 const cacheFiles = [
   '/',
   'index.html',
@@ -26,9 +28,14 @@ const cacheFiles = [
   'css/reviews.css',
   'css/select_widget.css'
 ];
+*/
 //images to be cached
 const cacheImages = [
   'favicon.ico',
+  'mstile-70x70.png',
+  'mstile-150x150.png',
+  'mstile-310x150.png',
+  'mstile-310x310.png',
   'img/1.jpg',
   'img/2.jpg',
   'img/3.jpg',
@@ -38,7 +45,18 @@ const cacheImages = [
   'img/7.jpg',
   'img/8.jpg',
   'img/9.jpg',
-  'img/10.jpg'
+  'img/10.jpg',
+  'img/android-chrome-64x64.png',
+  'img/android-chrome-128x128.png',
+  'img/android-chrome-192x192.png',
+  'img/android-chrome-256x256.png',
+  'img/android-chrome-512x512.png',
+  'img/apple-touch-icon-57x57.png',
+  'img/apple-touch-icon-76x76.png',
+  'img/apple-touch-icon-144x144.png',
+  'img/apple-touch-icon-152x152.png',
+  'img/apple-touch-icon.png',
+  'img/safari-pinned-tab.svg'
 ];
 
 //Install Service Worker and cache files:

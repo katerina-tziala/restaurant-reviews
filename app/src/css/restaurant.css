@@ -143,10 +143,6 @@ h2 {
   letter-spacing: normal;
   padding: 0 8px;
   color: #ffd11a;
-  text-decoration: underline;
-}
-#reviews_link:hover, #reviews_link:focus {
-  color: #ff751a;
 }
 #restaurantAddress {
   width: 100%;

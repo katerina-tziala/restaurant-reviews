@@ -1,23 +1,22 @@
 "use strict";
 const appParams = {
-  port:"8887",
-  start_url: "http://localhost:8887/index.html",
-  scope: "/",
+  start_url: "_START_URL_",
+  scope: "_SCOPE_",
   endpoints: {
-      restaurants: `http://localhost:1337/restaurants/`
+      restaurants: "_RESTAURANTS_URL_"
     },
-  indexFiles:{
-    js: ["js/map.js", "js/select_widget.js", "js/index.js"],
-    css: ["css/no_results_message.css", "css/map.css", "css/select_widget.css", "css/index.css"]
+  indexFiles: {
+    js: ["js/index.min.js"],
+    css: ["css/index.min.css"]
   },
-  restaurantFiles:{
-    js: ["js/map.js", "js/restaurant.js"],
-    css: ["css/no_results_message.css", "css/map.css", "css/restaurant.css", "css/reviews.css"]
+  restaurantFiles: {
+    js: ["js/restaurant.min.js"],
+    css: ["css/restaurant.min.css"]
   },
   mapBox: {
     leaflet_tile_layer_link: "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}",
     leaflet_params: {
-        mapboxToken: "pk.eyJ1Ijoia2F0ZXJpbmF0emlhbGEiLCJhIjoiY2pwenNqdHF3MGU5MDQ4bzRudGdlanZ6eCJ9.kGbzX08otPecWpIvfKU3ZA",
+        mapboxToken: "_MAPBOX_API_KEY_",
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
         '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -81,6 +80,5 @@ const appParams = {
       title: "update available",
       message: "A new version of the Restaurant Reviews app is available!",
       type: "update"}
-
   }
 };

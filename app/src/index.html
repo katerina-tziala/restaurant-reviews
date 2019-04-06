@@ -12,8 +12,10 @@
   <meta name='description' content='Restaurant Reviews is an app that helps you find the best food in town! You can also see or add reviews and ratings for restaurants, and mark your favorite restaurants.'/>
   <link rel='shortcut icon' type='image/x-icon' href='favicon.ico'>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-  <link rel="stylesheet" charset="utf-8" href="css/critical.css">
-  <link rel="stylesheet" charset="utf-8" href="css/notifications.css">
+  <!--build:css-->
+  <link rel="stylesheet" charset="utf-8" type="text/css" href="css/critical.css">
+  <link rel="stylesheet" charset="utf-8" type="text/css" href="css/notifications.css">
+  <!--endbuild-->
   <link rel='manifest' href='manifest.json'>
   <meta name='msapplication-config' content='browserconfig.xml'>
   <meta name='theme-color' content='#ca5000'>
@@ -32,10 +34,18 @@
   <meta name='x5-fullscreen' content='true'>
   <meta name='x5-page-mode' content='app'>
   <meta name='renderer' content='webkit|ie-comp|ie-stand'>
+  <!--build:dns-->
   <link rel='dns-prefetch' href='http://localhost:8887/'>
+  <!--endbuild-->
+  <!--build:preconnect-->
   <link rel='preconnect' href='http://localhost:8887/'>
+  <!--endbuild-->
+  <!--build:base-->
   <base href='http://localhost:8887/'>
+  <!--endbuild-->
+  <!--build:starturl-->
   <meta name='msapplication-starturl' content='http://localhost:8887/index.html'>
+  <!--endbuild-->
   <link rel='mask-icon' size='any' href='assets/img/safari-pinned-tab.svg' color='#ca5000'>
   <link rel='apple-touch-startup-image' type='image/png' sizes='256x256' href='img/android-chrome-256x256.png'>
   <link rel='icon' type='image/png' sizes='64x64' href='img/android-chrome-64x64.png'>
@@ -114,6 +124,7 @@
     </div>
     <div id="notification_body"></div>
   </div>
+  <!--build:js -->
   <script type="application/javascript" charset="utf-8" src="js/variables.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/idb.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/datastore.js"></script>
@@ -122,5 +133,6 @@
   <script type="application/javascript" charset="utf-8" src="js/interface_manager.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/notifications.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/app.js"></script>
+  <!-- endbuild -->
 </body>
 </html>
