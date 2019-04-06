@@ -1,5 +1,5 @@
 <h1>Restaurant Reviews App: Stage 1</h1>
-This is the first stage of the three stage course material project **Restaurant Reviews**. The preparation to start working on the project and implement the requirements documented below, included:
+This is the first stage of the three stage course material project *Restaurant Reviews*. The preparation to start working on the project and implement the requirements documented below, included:
 
  - Fork and clone the [**mws-restaurant-stage-1**](https://github.com/udacity/mws-restaurant-stage-1) starter repository.
  - Get my own  [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE).
