@@ -12,9 +12,9 @@ Build off of your existing Restaurant Reviews app to create a fully-featured app
 
  - **Meet the Minimum Performance Requirements:** Optimize the site to ensure that the following performance benchmarks are satisfied (measure performance using the Lighthouse):
  
-  - **Progressive Web App** score should be at **90 or better**.
-  - **Performance** score should be at **70 or better**.
-  - **Accessibility** score should be at **90 or better**.
+   - **Progressive Web App** score should be at **90 or better**.
+   - **Performance** score should be at **70 or better**.
+   - **Accessibility** score should be at **90 or better**.
  
  - **Responsive Design:** The application maintains a responsive design on mobile, tablet and desktop viewports.
 
