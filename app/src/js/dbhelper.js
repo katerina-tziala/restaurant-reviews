@@ -128,7 +128,6 @@ class DBHelper {
   static fetchUniqueRestaurantParams(param, callback) {
     // Fetch all restaurants
     DBHelper.fetchRestaurants((error, restaurants) => {
-      console.log(restaurants);
       if (error) {
         callback(error, null);
       } else {
