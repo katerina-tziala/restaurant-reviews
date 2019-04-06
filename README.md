@@ -55,6 +55,11 @@ After completing the second stage of the project, the application was audited. T
     </p><br>
     
  - **Lighthouse Metrics for index.html**
-
+ <p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/RR-S2_audit_index.png" alt="lighthouse metrincs for index page" width="80%" height="auto">
+    </p><br>
+    
  - **Lighthouse Metrics for restaurant.html**
-
+ <p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/RR-S2_audit_restaurant.png" alt="lighthouse metrincs for restaurant page" width="80%" height="auto">
+    </p><br>
