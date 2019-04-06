@@ -122,42 +122,21 @@ class DBHelper {
     });
   }
 
-
-
-
-
   /**
-  ** Fetch all neighborhoods with proper error handling.
+  ** Fetch all parameters from restaurants (neighborhoods, restaurants) with proper error handling.
   **/
-  static fetchNeighborhoods(callback) {
+  static fetchUniqueRestaurantParams(param, callback) {
     // Fetch all restaurants
     DBHelper.fetchRestaurants((error, restaurants) => {
+      console.log(restaurants);
       if (error) {
         callback(error, null);
       } else {
-        // Get all neighborhoods from all restaurants
-        const neighborhoods = restaurants.map((v, i) => restaurants[i].neighborhood);
-        // Remove duplicates from neighborhoods
-        const uniqueNeighborhoods = neighborhoods.filter((v, i) => neighborhoods.indexOf(v) == i);
-        callback(null, uniqueNeighborhoods);
-      }
-    });
-  }
-
-  /**
-  ** Fetch all cuisines with proper error handling.
-  **/
-  static fetchCuisines(callback) {
-    // Fetch all restaurants
-    DBHelper.fetchRestaurants((error, restaurants) => {
-      if (error) {
-        callback(error, null);
-      } else {
-        // Get all cuisines from all restaurants
-        const cuisines = restaurants.map((v, i) => restaurants[i].cuisine_type);
-        // Remove duplicates from cuisines
-        const uniqueCuisines = cuisines.filter((v, i) => cuisines.indexOf(v) == i);
-        callback(null, uniqueCuisines);
+        // Get all parameters from all restaurants based on key
+        const params = restaurants.map((v, i) => restaurants[i][param]);
+        // Remove duplicates from parameters
+        const uniqueParams = params.filter((v, i) => params.indexOf(v) == i);
+        callback(null, uniqueParams);
       }
     });
   }

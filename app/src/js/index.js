@@ -38,7 +38,7 @@ document.addEventListener("click", (event) => {
 ** Fetch all neighborhoods and set their HTML.
 **/
 const fetchNeighborhoods = () => {
-  DBHelper.fetchNeighborhoods((error, neighborhoods) => {
+  DBHelper.fetchUniqueRestaurantParams('neighborhood', (error, neighborhoods) => {
     if (error) { // Got an error
       console.error(error);
     } else {
@@ -53,7 +53,7 @@ const fetchNeighborhoods = () => {
 ** Fetch all cuisines and set their HTML.
 **/
  const fetchCuisines = () => {
-  DBHelper.fetchCuisines((error, cuisines) => {
+  DBHelper.fetchUniqueRestaurantParams('cuisine_type', (error, cuisines) => {
     if (error) { // Got an error!
       console.error(error);
     } else {
