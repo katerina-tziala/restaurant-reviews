@@ -11,14 +11,14 @@
 <br><br>
 <h2>Local Setup of the Project</h2>
 
-1.Fork and clone the [**restaurant_reviews-stage_1**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_1) repository.
+1. Fork and clone the [**restaurant_reviews-stage_1**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_1) repository.
 
-2.To launch the website install and use the [**Web Server for Chrome**](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb).
+2. To launch the website install and use the [**Web Server for Chrome**](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb).
 
-3.Choose the /src folder of the project from the *Web Server for Chrome* app.
+3. Choose the /src folder of the project from the *Web Server for Chrome* app.
 
-4.Change the ***port*** and the ***start_url*** in the *variables.js* file with your own port provided by the *Web Server for Chrome*, and the generated url for the index.html file.
+4. Change the ***port*** and the ***start_url*** in the *variables.js* file with your own port provided by the *Web Server for Chrome*, and the generated url for the index.html file.
 
-5.Get your own [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE). and add it in the ***mapboxToken*** in the *variables.js* file.
+5. Get your own [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE). and add it in the ***mapboxToken*** in the *variables.js* file.
 
-6.Launch the website!
+6. Launch the website!
