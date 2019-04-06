@@ -8,8 +8,7 @@
  - **Cache the static site for offline use:** Using the Cache API and a ServiceWorker when available in the browser, the website caches responses to requests for site assets, so that any page (including images) that has been visited is accessible offline.
 
  - **Maintain the included functionality:** Ensure that implemented changes still facilitate the functionality of the website.
-
-
+<br><br>
 <h2>Local Setup of the Project</h2>
 
 1.Fork and clone the [**restaurant_reviews-stage_1**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_1) repository.
