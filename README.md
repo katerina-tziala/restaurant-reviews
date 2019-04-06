@@ -8,7 +8,6 @@
  - **Cache the static site for offline use:** Using the Cache API and a ServiceWorker when available in the browser, the website caches responses to requests for site assets, so that any page (including images) that has been visited is accessible offline.
 
  - **Maintain the included functionality:** Ensure that implemented changes still facilitate the functionality of the website.
-
 <br><br>
 <h2>Local Setup of the Project</h2>
 
@@ -23,6 +22,5 @@
 **5.** Get your own [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE). and add it in the ***mapboxToken*** in the *variables.js* file.
 
 **6.** Launch the website!
-
 <br><br>
 <h2>Audit the App</h2>
