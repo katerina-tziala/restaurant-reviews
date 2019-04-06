@@ -35,7 +35,7 @@ This is the first stage of the three stage course material project <b>Restaurant
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/mapboxAPIkey.png" alt="change mapbox api key" width="100%" height="auto">
 </p>
 
-**6.** Launch the website!
+**6.** Launch the website with the *Web Server for Chrome* app!
 <br><br>
 <h2>Auditing the Restaurant Reviews App</h2>
 After completing the first stage of the project the application was audited. The following figures illustrate the audit results for each interface.
