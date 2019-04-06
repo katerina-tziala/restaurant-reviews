@@ -26,6 +26,5 @@
 <h2>Auditing the Restaurant Reviews App</h2>
 After completing the first stage of the project the application was audited. The following figures illustrate the audit results for each interface.
 
-
- - **index.html:**
-  **1.** Responsive Design
+ - **index.html:**<br>
+   **1.** Responsive Design
