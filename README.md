@@ -9,6 +9,7 @@
 
  - **Maintain the included functionality:** Ensure that implemented changes still facilitate the functionality of the website.
 
+
 <h2>Local Setup of the Project</h2>
 
 1.Fork and clone the [**restaurant_reviews-stage_1**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_1) repository.
