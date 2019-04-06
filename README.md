@@ -41,33 +41,33 @@ This is the first stage of the three stage course material project <b>Restaurant
 After completing the first stage of the project, the application was audited. The following figures illustrate the audit results for each interface.
 
  - **index.html:**<br>
-   **1.** Responsive Design
+   **1.** **Responsive Design**
    <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/RR-S1_Responsive_index.png" alt="restaurant reviews app, index page responsive layout" width="90%" height="auto">
     </p><br>
     
-    **2.** Accessibility
+    **2.** **Accessibility**
    <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/RR-S1_Accessibility_index.png" alt="restaurant reviews app, index page accessibility audit" width="100%" height="auto">
     </p><br>
     
-    **3.** Offline
+    **3.** **Offline**
    <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/RR-S1_Offline_index.png" alt="restaurant reviews app, index page offline" width="100%" height="auto">
     </p><br><br>
  
  - **restaurant.html:**<br>
-   **1.** Responsive Design
+   **1.** **Responsive Design**
    <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/RR-S1_Responsive_restaurant.png" alt="restaurant reviews app, restaurant page responsive layout" width="90%" height="auto">
     </p><br>
     
-    **2.** Accessibility
+    **2.** **Accessibility**
    <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/RR-S1_Accessibility_restaurant.png" alt="restaurant reviews app, restaurant page accessibility audit" width="100%" height="auto">
     </p><br>
     
-    **3.** Offline
+    **3.** **Offline**
    <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/RR-S1_Offline_restaurant.png" alt="restaurant reviews app, restaurant page offline" width="100%" height="auto">
     </p>
