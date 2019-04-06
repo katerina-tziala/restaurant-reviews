@@ -21,10 +21,13 @@ This is the first stage of the three stage course material project <b>Restaurant
 **2.** To launch the website install and use the [**Web Server for Chrome**](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb).
 
 **3.** Choose the /src folder of the project from the *Web Server for Chrome* app.
+<p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_1/server.png" alt="setting up local server" width="50%" height="auto">
+</p>
 
 **4.** Change the ***port*** and the ***start_url*** in the *variables.js* file with your own port provided by the *Web Server for Chrome*, and the generated url for the index.html file.
 
-**5.** Get your own [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE). and add it in the ***mapboxToken*** in the *variables.js* file.
+**5.** Get your own [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE) and add it in the ***mapboxToken*** in the *variables.js* file.
 
 **6.** Launch the website!
 <br><br>
