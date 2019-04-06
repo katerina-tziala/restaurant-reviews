@@ -48,6 +48,7 @@ Build off of your existing Restaurant Reviews app to create a fully-featured app
 
 <h2>Auditing the Restaurant Reviews App</h2>
 After completing the second stage of the project, the application was audited. The following figures illustrate the audit results.
+
  - **Application Data Source and Offline Use**
     <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/app_data.png" alt="caching data in Indexed DB" width="100%" height="auto">
