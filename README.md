@@ -38,7 +38,7 @@ This is the first stage of the three stage course material project <b>Restaurant
 **6.** Launch the website with the ***Web Server for Chrome*** app!
 <br><br>
 <h2>Auditing the Restaurant Reviews App</h2>
-After completing the first stage of the project the application was audited. The following figures illustrate the audit results for each interface.
+After completing the first stage of the project, the application was audited. The following figures illustrate the audit results for each interface.
 
  - **index.html:**<br>
    **1.** Responsive Design
