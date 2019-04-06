@@ -5,6 +5,7 @@ to retrieve JSON data. The preparation to start working on this project and impl
  - Fork and clone the [**server**](https://github.com/udacity/mws-restaurant-stage-2) repository.
  - Run the development server locally to develop the project code.<br><br>
 <h2>Project Requirements</h2>
+
  - **Application Data Source:** The client application should pull restaurant data from the development server by using Asynchronous JavaScript requests (AJAX) with the use of the fetch() API, parse the JSON response, and use the information to render the appropriate sections of the application UI.
  - **Offline Use:** The client application must work offline. Data received from the server (JSON responses) are cached in an offline accessible database using the IndexedDB API, which will create an app shell architecture. Any data previously accessed while connected is reachable while offline.
 
