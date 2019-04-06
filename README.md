@@ -4,7 +4,7 @@ to retrieve JSON data. The preparation to start working on this project and impl
 
  - Fork and clone the [**server**](https://github.com/udacity/mws-restaurant-stage-2) repository.
  - Run the development server locally to develop the project code.<br><br>
-<h2>Project Requirements</h2>
+<h2>Project Requirements</h2><br><br>
 
  - **Application Data Source:** The client application should pull restaurant data from the development server by using Asynchronous JavaScript requests (AJAX) with the use of the fetch() API, parse the JSON response, and use the information to render the appropriate sections of the application UI.
  
@@ -46,7 +46,7 @@ to retrieve JSON data. The preparation to start working on this project and impl
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/server.png" alt="setting up local server" width="40%" height="auto">
 </p>
 
-**8.** Launch the website with the ***Web Server for Chrome*** app and while the ***Node development server*** is up and running!
+**8.** Launch the website with the ***Web Server for Chrome*** app and while the ***Node development server*** is up and running!<br><br>
 
 <h2>Auditing the Restaurant Reviews App</h2>
 After completing the second stage of the project, the application was audited. The following figures illustrate the audit results.
@@ -64,7 +64,7 @@ After completing the second stage of the project, the application was audited. T
  - **Lighthouse Metrics for restaurant.html**
  <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/RR-S2_audit_restaurant.png" alt="lighthouse metrincs for restaurant page" width="100%" height="auto">
-    </p><br>
+    </p><br><br>
 
 <h2>Towards a Progressive Wep App</h2>
 As stated by Google Developers, Progressive Web Apps are installable and live on the user's home screen, without the need for an app store. They offer an immersive full screen experience with help from a web app manifest file that allows us to control how our app appears and how it's launched. The following images illustrate how the browser (Chrome) installs the <b>Restaurant Reviews App</b> on the user's home screen.<br><br>
