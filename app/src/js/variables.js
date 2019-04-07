@@ -102,6 +102,17 @@ const appParams = {
     update: {
       title: "update available",
       message: "A new version of the Restaurant Reviews app is available!",
-      type: "update"}
-  }
+      type: "update"
+    },
+    failed_request_cached: {
+      title: "Unable to connect! retrying...",
+      message: "Your changes will be saved as soon as connection is re-established!",
+      type: "failed_request_cached"
+    },
+    failed_request: {
+        title: "Unable to connect!",
+        message: "Your changes were not saved! Please try again later!",
+        type: "failed_request"
+        },
+      }
 };

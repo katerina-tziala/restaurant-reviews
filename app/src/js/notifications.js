@@ -147,3 +147,16 @@ const generateUpdateNotification = () => {
   createNotificationActionButton("dismiss", "dismiss", "dismiss update", dismissUpdate);
   displayNotification();
 };
+
+/**
+** Generate notification of failure on user action.
+**/
+const generateFailureNotification = (idbsupport) => {
+  let notification;
+  if (idbsupport) {
+    notification = getNotificationContent("failed_request_cached");
+  }else{
+    notification = getNotificationContent("failed_request");
+  }
+  generateBasicNotification(notification, 15000);
+};

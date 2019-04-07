@@ -199,10 +199,6 @@ class DBHelper {
     }
   }
 
-
-
-
-
   /**
   ** Fetch restaurants by a cuisine and a neighborhood with proper error handling.
   **/
@@ -256,5 +252,60 @@ class DBHelper {
     let image = restaurant.photograph + '.jpg';
     return (`img/${image}`);
   }
+
+  /**
+  ** Mark restaurant as favorite or unmark it.
+  **/
+  static favoriteHandler(id, favorite) {
+    const url = DBHelper.RESTAURANTS_URL+`/${id}/?is_favorite=${favorite}`;
+    const request_params = {method: 'PUT'}
+    return DBHelper.sendData(url, request_params, "restaurant");
+  }
+  /**
+  ** Send data to server.
+  **/
+  static async sendData(url, request_params, target) {
+      const headers = DBHelper.REQUEST_HEADERS;
+      request_params.mode = "cors";
+      request_params.credentials = "same-origin";
+      request_params.headers = headers;
+      request_params.json = true;
+      const request = new Request(url, request_params);
+      try {
+        const fetchResult = fetch(request);
+        const response = await fetchResult;
+        const jsonData = await response.json();
+        const returnData = {
+          "request_status": "success",
+          "target": target,
+          "data": DBHelper.refactorData(target, [jsonData])[0]
+        }
+        DBHelper.updateIndexedDB(returnData, request_params.method);
+        return Promise.resolve(returnData);
+      } catch(error){
+        console.log(error);
+        // const failed_request = request_params;
+        // failed_request.target=target;
+        // failed_request.url=url;
+        // failed_request.data=[];
+        // return DBHelper.handleFailedRequest(failed_request);
+      }
+    }
+
+  /**
+  ** Sort item list by id.
+  **/
+  static sortByID(item_a, item_b, order_type) {
+    let optSort;
+    if(order_type==="asc"){
+      optSort =  parseFloat(item_a.id) - parseFloat(item_b.id);
+    } else {
+      optSort = parseFloat(item_b.id) - parseFloat(item_a.id);
+    }
+    return optSort;
+  }
+
+
+
 
 }
