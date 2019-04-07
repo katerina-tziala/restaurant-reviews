@@ -10,23 +10,28 @@ const appParams = {
     js: [
       "js/select_widget.js",
       "js/map.js",
+      "js/favorite_toggler.js",
       "js/index.js"
     ],
     css: [
       "css/no_results_message.css",
       "css/map.css",
       "css/select_widget.css",
-      "css/index.css"
+      "css/favorite_toggler.css",
+      "css/index.css",
+
     ]
   },
   restaurantFiles: {
     js: [
       "js/map.js",
+      "js/favorite_toggler.js",
       "js/restaurant.js"
     ],
     css: [
       "css/no_results_message.css",
       "css/map.css",
+      "css/favorite_toggler.css",
       "css/restaurant.css",
       "css/reviews.css"
     ]

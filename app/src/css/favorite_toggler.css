@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+.favoriteBookmark {
+  position: absolute;
+  top: 0px;
+  right: 4px;
+  width: 60px;
+  height: 70px;
+  z-index: 8;
+  font-size: 70px;
+  color:#bfbfbf;
+  opacity: 0.8;
+  text-shadow: 0px 0px 12px rgba(0, 0, 0, 1);
+}
+.favoriteButton{
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  z-index: 12;
+  width: 40px;
+  height: 40px;
+  background-color: inherit;
+  font-size: 40px;
+  color: #333;
+}
+.favored{
+  color: #e60000;
+}
+.unFavorite{
+  color: #323b43;
+}
+.favoriteButton:hover,.favoriteButton:focus{
+  color: #fff!important;
+  text-shadow: 0px 0px 12px #333;
+}

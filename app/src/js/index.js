@@ -142,6 +142,6 @@ const createRestaurantHTML = (restaurant) => {
   more.setAttribute("title", "View Details About Restaurant: " + restaurant.name);
   more.innerHTML = "View Details";
   more.href = DBHelper.urlForRestaurant(restaurant);
-  li.append(imageContainer, name, neighborhood, address, more);
+  li.append(createFavoriteBookmark(restaurant), imageContainer, name, neighborhood, address, more);
   return li;
 };

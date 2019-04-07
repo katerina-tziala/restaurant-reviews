@@ -59,6 +59,8 @@ const fillBreadcrumb = (restaurant = self.restaurant) => {
 const fillRestaurantHTML = (restaurant = self.restaurant) => {
   const name = document.getElementById("restaurantName");
   name.innerHTML = restaurant.name;
+  const imageContainer = document.querySelectorAll(".imageContainer")[0];
+  imageContainer.append(createFavoriteBookmark(restaurant));
   const image = document.getElementById("restaurantImg");
   image.alt = "photo of restaurant: " + restaurant.name;
   image.className = 'restaurantImg';
@@ -148,6 +150,8 @@ const createReviewHTML = (review) => {
   const created = document.createElement("p");
   created.className = "reviewCreationDate";
   created.innerHTML = InterfaceManager.formatDate(review.createdAt);
+
+  ////
   review_info.append(reviewer, created);
   const comments = document.createElement("p");
   comments.className = "ratingComments";
