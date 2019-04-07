@@ -22,6 +22,10 @@ This is the third and final stage of the three stage course material project <b>
  
 <h2>Local Setup of the Project</h2>
 
+**1.** Fork and clone the [**stage-3 Node development server**](https://github.com/udacity/mws-restaurant-stage-3) repository.
+
+**2.** Follow the README file of the server repository to get the Node development server up and running locally on your computer.
+
 <h2>Auditing the Restaurant Reviews App</h2>
 
 
