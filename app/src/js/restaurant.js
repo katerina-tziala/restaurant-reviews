@@ -71,9 +71,15 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
   if (restaurant.operating_hours) {
     fillRestaurantHoursHTML();
   }
-  self.reviews = restaurant.reviews;
-  fillRatingStats();
-  fillReviewsHTML();
+  DBHelper.fetchRestaurantReviews(restaurant.id, (error, reviews) => {
+    if (error) { // Got an error!
+      console.error(error);
+    } else {
+      self.reviews = reviews;
+      fillRatingStats();
+      fillReviewsHTML();
+    }
+  });
 };
 
 /**
@@ -141,7 +147,7 @@ const createReviewHTML = (review) => {
   reviewer.innerHTML = `<span>by</span><b title="${review.name}">${review.name}</b>`;
   const created = document.createElement("p");
   created.className = "reviewCreationDate";
-  created.innerHTML = InterfaceManager.formatDate(review.date);
+  created.innerHTML = InterfaceManager.formatDate(review.createdAt);
   review_info.append(reviewer, created);
   const comments = document.createElement("p");
   comments.className = "ratingComments";

@@ -3,8 +3,7 @@ const staticCacheName = 'rr-files-v1';
 const imagesCacheName = 'rr-images-v1';
 const appCaches = [staticCacheName, imagesCacheName];
 //files to be cached
-const cacheFiles = [_APP_CACHE_FILES_];
-/*
+//const cacheFiles = [_APP_CACHE_FILES_];
 const cacheFiles = [
   '/',
   'index.html',
@@ -28,7 +27,6 @@ const cacheFiles = [
   'css/reviews.css',
   'css/select_widget.css'
 ];
-*/
 //images to be cached
 const cacheImages = [
   'favicon.ico',
@@ -101,7 +99,8 @@ self.addEventListener('message', (event) => {
 self.addEventListener('fetch', (event) => {
   const requestUrl = new URL(event.request.url);
   const requestedPath = requestUrl.pathname;
-  if (requestedPath.startsWith('/restaurants')) {
+  const requestMethod = event.request.method.toUpperCase();
+  if (requestMethod==='POST' || requestMethod==='PUT' || requestMethod==='DELETE' || requestedPath.startsWith('/restaurants') || requestedPath.startsWith('/reviews')) {
     return;
   }
   if (requestedPath.match('.jpg') || requestedPath.match('.png') || requestedPath.match('.svg') || requestedPath.match('.ico')) {

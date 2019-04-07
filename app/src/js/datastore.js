@@ -13,6 +13,9 @@ class DataStore {
       switch (upgradeDb.oldVersion) {
         case 0:
           const restaurantStore = this.createStore(upgradeDb, 'restaurants');
+          const reviewsStore = this.createStore(upgradeDb, 'reviews');
+          reviewsStore.createIndex('byRestaurant', 'restaurant_id');
+          const requestStore = this.createStore(upgradeDb, 'failedRequests', true);
           break;
         }
       });
@@ -30,6 +33,18 @@ class DataStore {
       return db.transaction(storename).objectStore(storename).getAll();
     });
   }
+  //get all from indexedDB based on storename, index and key
+  getCachedDataById(storename, key) {
+    return this.cache.then((db) => {
+      return db.transaction(storename).objectStore(storename).getAll(key);
+    });
+  }
+  //get all from indexedDB based on storename, index and key
+  getCachedDataByIndex(storename, index, key) {
+   return this.cache.then((db) => {
+     return db.transaction(storename).objectStore(storename).index(index).getAll(key);
+   });
+  }
   //put all objects in indexedDB:
   cacheAll(storename, objects) {
     this.cache.then((db) => {
@@ -39,5 +54,15 @@ class DataStore {
         store.put(object);
       });
     });
+  }
+  //put one object in indexedDB:
+  cacheOne(storename, object) {
+    this.cacheAll(storename, [object]);
+  }
+  //delete one record from indexxedDB by key:
+  deleteOne(storename, key) {
+   this.cache.then((db) => {
+     db.transaction(storename, 'readwrite').objectStore(storename).delete(key);
+   });
   }
 }

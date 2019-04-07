@@ -3,6 +3,39 @@ let main, loader, spinner, mapContainer, mapButton, notificationContainer, notif
 let notificationTimeout, notificationInterval, notificationCountdown = 0;
 document.addEventListener("DOMContentLoaded", (event) => {
   initApp();
+
+
+  DBHelper.fetchRestaurants((error, rest) => {
+    if (error) { // Got an error!
+      console.error(error);
+    } else {
+      console.log(rest);
+    }
+  });
+
+  DBHelper.fetchRestaurantById(1, (error, rest) => {
+    if (error) { // Got an error!
+      console.error(error);
+    } else {
+      console.log(rest);
+    }
+  });
+  DBHelper.fetchReviews((error, rev) => {
+    if (error) { // Got an error!
+      console.error(error);
+    } else {
+      console.log(rev);
+    }
+  });
+
+  DBHelper.fetchRestaurantReviews(2, (error, rev) => {
+    if (error) { // Got an error!
+      console.error(error);
+    } else {
+      console.log(rev);
+    }
+  });
+
 });
 
 /**
@@ -22,7 +55,7 @@ const initApp = () => {
   self.notificationTimeout = 0;
   self.notificationInterval = 0;
   self.notificationCountdown = 0;
-  registerServiceWorker();
+  //registerServiceWorker();
   initView();
 };
 
