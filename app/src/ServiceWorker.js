@@ -21,6 +21,7 @@ const cacheFiles = [
   'js/restaurant.js',
   'js/reviews.js',
   'js/select_widget.js',
+  'js/update_when_online.js',
   'js/variables.js',
   'css/critical.css',
   'css/add_review.css',

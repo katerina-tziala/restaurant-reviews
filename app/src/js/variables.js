@@ -7,36 +7,12 @@ const appParams = {
       reviews: "http://localhost:1337/reviews",
     },
   indexFiles: {
-    js: [
-      "js/select_widget.js",
-      "js/map.js",
-      "js/favorite_toggler.js",
-      "js/index.js"
-    ],
-    css: [
-      "css/no_results_message.css",
-      "css/map.css",
-      "css/select_widget.css",
-      "css/favorite_toggler.css",
-      "css/index.css",
-
-    ]
+    js: ["js/index.min.js"],
+    css: ["css/index.min.css"]
   },
   restaurantFiles: {
-    js: [
-      "js/map.js",
-      "js/favorite_toggler.js",
-      "js/restaurant.js",
-      "js/reviews.js"
-    ],
-    css: [
-      "css/no_results_message.css",
-      "css/map.css",
-      "css/favorite_toggler.css",
-      "css/restaurant.css",
-      "css/reviews.css",
-      "css/add_review.css"
-    ]
+    js: ["js/restaurant.min.js"],
+    css: ["css/restaurant.min.css"]
   },
   mapBox: {
     leaflet_tile_layer_link: "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}",
