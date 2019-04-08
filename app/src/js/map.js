@@ -32,13 +32,12 @@ const toggleMapButtonDisplay = (action) => {
   const buttonText = getMabButtonLabelTitle(next_action);
   self.mapButton.setAttribute("aria-label", buttonText);
   self.mapButton.title = buttonText;
-  const icon = self.mapButton.getElementsByTagName("I")[0];
   if (next_action === "hide") {
-    icon.classList.remove("location_icon", "fa-map-marker-alt");
-    icon.classList.add("map_icon", "fa-map");
+    self.mapButton.classList.remove("location_icon", "fa-map-marker-alt");
+    self.mapButton.classList.add("map_icon", "fa-map");
   } else {
-    icon.classList.remove("map_icon", "fa-map");
-    icon.classList.add("location_icon", "fa-map-marker-alt");
+    self.mapButton.classList.remove("map_icon", "fa-map");
+    self.mapButton.classList.add("location_icon", "fa-map-marker-alt");
   }
 }
 

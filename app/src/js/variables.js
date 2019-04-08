@@ -26,14 +26,16 @@ const appParams = {
     js: [
       "js/map.js",
       "js/favorite_toggler.js",
-      "js/restaurant.js"
+      "js/restaurant.js",
+      "js/reviews.js"
     ],
     css: [
       "css/no_results_message.css",
       "css/map.css",
       "css/favorite_toggler.css",
       "css/restaurant.css",
-      "css/reviews.css"
+      "css/reviews.css",
+      "css/add_review.css"
     ]
   },
   mapBox: {

@@ -113,6 +113,27 @@ class InterfaceManager {
   }
 
   /**
+  ** Get time.
+  **/
+  static getTime(dateToGetTime) {
+    let date = new Date(dateToGetTime),
+        hours = (date.getHours()<10?'0':'') + date.getHours(),
+        minutes = (date.getMinutes()<10?'0':'') + (date.getMinutes());
+    return hours+":"+ minutes;
+  }
+
+  /**
+  ** Get date and time.
+  **/
+  static getDateTime(date) {
+    const datestring = InterfaceManager.formatDate(date);
+    const time = InterfaceManager.getTime(date);
+    const datetime = datestring + ", " + time;
+    return datetime;
+  }
+
+
+  /**
   ** Create button.
   **/
   static createButton(id, text, aria, functionName) {

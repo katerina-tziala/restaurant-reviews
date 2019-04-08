@@ -39,7 +39,8 @@ const toggleFavorite = (event) => {
   const button = document.getElementById(`favoriteBookmark_${restaurant_id}`);
   const currentstate = button.getAttribute("aria-pressed");
   const nextstate = currentstate.toString() === "true" ? false : true;
-  DBHelper.favoriteHandler(restaurant_id, nextstate).then((response)=>{
+  button.blur();
+  DBHelper.favoriteHandler(restaurant_id, nextstate).then((response) => {
     switch (response.request_status) {
       case "fail":
         generateFailureNotification(DBHelper.INDEXED_DB_SUPPORT);

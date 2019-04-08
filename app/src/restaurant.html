@@ -97,9 +97,7 @@
           </table>
         </div>
         <div id="restaurantAddress">
-          <button id="mapButton" aria-label="show map" title="Show map" onclick="toggleMap(event)">
-            <i class="fas fa-map-marker-alt location_icon"></i>
-          </button>
+          <button id="mapButton" class="fas fa-map-marker-alt location_icon" aria-label="show map" title="Show map" onclick="toggleMap(event)"></button>
           <p id="address"></p>
           <section id="map_container" class="map_container hidden">
              <div id="map" role="application" aria-label="Mapbox Maps"  title="Mapbox Maps with restaurant's location" tabindex="0"></div>
@@ -109,6 +107,7 @@
       <section id="reviews" role="region" aria-label="restaurant reviews">
         <h2 class="centeredFlexbox">
           <span>Reviews</span>
+          <button id="rev_btn_open" class="fas fa-plus" aria-label="add a review" title="Add a review!" onclick="toggleReviewForm(event)"></button>
         </h2>
        <ul id="reviewsList" aria-label="reviews list"></ul>
       </section>
@@ -125,6 +124,46 @@
         <a href="index.html"><strong>Restaurant Reviews</strong></a>
         <span>All Rights Reserved</span>
       </footer>
+  </div>
+  <div id="add_review_wrapper" class="add_review_wrapper centeredFlexbox hidden">
+    <div id="add_review_modal">
+      <h3>add review</h3>
+      <button id="rev_btn_close" class="modalfocusable fas fa-times" aria-label="close review form" title="Close review form!" onclick="toggleReviewForm(event)"></button>
+      <form id="addReviewForm" aria-label="add a review">
+        <fieldset class="fieldset">
+          <label class="inputlabel" for="namefield">name:</label>
+          <input type="text" class="textfield modalfocusable" id="namefield" name="username" aria-label="enter your name" placeholder="Your Name" autocomplete="off"/>
+        </fieldset>
+        <fieldset class="fieldset">
+          <label class="inputlabel" for="ratingfield">rating:</label>
+          <div id="ratingfield" class="ratingfield">
+            <label id="rrstar_0" for="star5" class="fas fa-star rrstar modalfocusable" tabindex="0" title="5 stars">
+              <input type="radio" id="star5" class="ratingradio" name="userrating" value="5" onclick="selectRatingStar(event)"/>
+            </label>
+            <label id="rrstar_4" for="star4" class="fas fa-star rrstar modalfocusable" tabindex="0" title="4 stars">
+              <input type="radio" id="star4" class="ratingradio" name="userrating" value="4" onclick="selectRatingStar(event)"/>
+            </label>
+            <label id="rrstar_3" for="star3" class="fas fa-star rrstar modalfocusable" tabindex="0" title="3 stars">
+              <input type="radio" id="star3" class="ratingradio" name="userrating" value="3" onclick="selectRatingStar(event)"/>
+            </label>
+            <label id="rrstar_2" for="star2" class="fas fa-star rrstar modalfocusable" tabindex="0" title="2 stars">
+              <input type="radio" id="star2" class="ratingradio" name="userrating" value="2" onclick="selectRatingStar(event)"/>
+            </label>
+            <label id="rrstar_1" for="star1" class="fas fa-star rrstar modalfocusable" tabindex="0" title="1 star">
+              <input type="radio" id="star1" class="ratingradio" name="userrating" value="1" onclick="selectRatingStar(event)"/>
+            </label>
+          </div>
+        </fieldset>
+        <fieldset class="fieldset">
+          <label class="inputlabel" for="commentsfield">comments:</label>
+          <textarea id="commentsfield" placeholder="Enter your comments for the restaurant here!" class="textfield modalfocusable" name="usercomments" aria-label="Enter your comments here" autocomplete="off"></textarea>
+        </fieldset>
+        <div class="formButtonsWrapper">
+          <button id="rev_clear" class="revformbtn modalfocusable" aria-label="clear review form" title="Clear review form!" onclick="clearReviewForm(event)">clear</button>
+          <button id="rev_submit" class="revformbtn modalfocusable" aria-label="save review" title="Save review!" onclick="submitReviewForm(event)">save</button>
+        </div>
+      </form>
+    </div>
   </div>
   <div id="notification_container" class="notification">
     <div id="notification_header">

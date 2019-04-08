@@ -152,7 +152,7 @@ class DBHelper {
   ** Fetch a restaurant by its ID.
   **/
   static fetchRestaurantById(id, callback) {
-    if (DBHelper.IndexedDBSupport) {
+    if (DBHelper.INDEXED_DB_SUPPORT) {
       DBHelper.AppStore.getCachedDataById('restaurants', parseInt(id)).then((response) => {
         if (response.length > 0) {
           callback(null, response[0]);
@@ -261,6 +261,54 @@ class DBHelper {
     const request_params = {method: 'PUT'}
     return DBHelper.sendData(url, request_params, "restaurant");
   }
+
+  /**
+  ** Add a new review.
+  **/
+  static postReview(review) {
+    const url = DBHelper.REVIEWS_URL;
+    const request_params = {
+      method: 'POST',
+      body: JSON.stringify(review)}
+    return DBHelper.sendData(url, request_params, "review");
+  }
+
+  /**
+  ** Update a review.
+  **/
+  static updateReview(review) {
+    let review_id = review.id;
+    if (!review_id.toString().startsWith('temp')) {
+      review_id = parseInt( review.id);
+    }
+    const url = DBHelper.REVIEWS_URL+`/${review_id}`;
+    const request_params = {
+      method: 'PUT',
+      body: JSON.stringify(review)}
+    return DBHelper.sendData(url, request_params, "review");
+  }
+
+  /**
+  ** Delete a review.
+  **/
+  static deleteReview(id) {
+    if (id.toString().startsWith('temp')) {
+      return DBHelper.getTargetId(DBHelper.REVIEWS_URL+`/${id}`, "review").then(id=>{
+        DBHelper.deleteExistingRequest({targetId:id, target: "review"});
+        const returnData = {
+            "request_status": "fail",
+            "target": 'review',
+            "data" : []
+          }
+        return returnData;
+      });
+    } else {
+      const url = DBHelper.REVIEWS_URL+`/${parseInt(id)}`;
+      const request_params = {method: 'DELETE'}
+      return DBHelper.sendData(url, request_params, "review");
+    }
+  }
+
   /**
   ** Send data to server.
   **/
@@ -282,15 +330,84 @@ class DBHelper {
         }
         DBHelper.updateIndexedDB(returnData, request_params.method);
         return Promise.resolve(returnData);
-      } catch(error){
-        console.log(error);
-        // const failed_request = request_params;
-        // failed_request.target=target;
-        // failed_request.url=url;
-        // failed_request.data=[];
-        // return DBHelper.handleFailedRequest(failed_request);
+      } catch(error) {
+        const failed_request = request_params;
+        failed_request.target = target;
+        failed_request.url = url;
+        failed_request.data = [];
+        return DBHelper.handleFailedRequest(failed_request);
       }
     }
+
+    /**
+    ** Get target id of failed request.
+    **/
+    static getTargetId(url, target) {
+      const splitter = target + "s";
+      let url_part = url.split(splitter).pop();
+      if(target === "restaurant") {
+        url_part = url_part.split("/?is_favorite")[0];
+        return Promise.resolve(url_part.substring(1));
+      } else {
+        if(url_part){
+          return Promise.resolve(url_part.substring(1));
+        } else {
+          return DBHelper.AppStore.getStoreKeys('failedRequests').then((response) => {
+            const nextkey = response.length+1;
+            return `temp${nextkey}`;
+          });
+        }
+      }
+    }
+
+    /**
+    ** Delete existing request.
+    **/
+    static deleteExistingRequest(newRequest) {
+      DBHelper.AppStore.getCachedData('failedRequests').then((response) => {
+        console.log(response);
+        if (response.length > 0){
+          const existingRequests = response.filter(response => response.target === newRequest.target && response.targetId === newRequest.targetId);
+          if(existingRequests.length > 0){
+            DBHelper.AppStore.deleteOne('failedRequests', existingRequests[0].id);
+          }
+        }
+      });
+    }
+
+  /**
+  ** Handle failed requests.
+  **/
+  static handleFailedRequest(failed_request) {
+    const returnData = {
+      "request_status": "fail",
+      "target": failed_request.target,
+      "data" : failed_request.data
+    }
+    if (DBHelper.INDEXED_DB_SUPPORT) {
+      return DBHelper.getTargetId(failed_request.url, failed_request.target).then(id => {
+        const requestToStore = {
+          "target": failed_request.target,
+          "url": failed_request.url,
+          "method": failed_request.method,
+          "targetId": id
+        }
+        if ('body' in failed_request) {
+          const dataload = JSON.parse(failed_request.body);
+          if (!('id' in dataload)) {
+            dataload.id = id;
+          }
+          requestToStore.body = dataload;
+          returnData.data = dataload;
+        }
+        DBHelper.deleteExistingRequest(requestToStore);
+        DBHelper.AppStore.cacheOne('failedRequests', requestToStore);
+        return Promise.resolve(returnData);
+      });
+    } else {
+      return Promise.resolve(returnData);
+    }
+  }
 
   /**
   ** Sort item list by id.
@@ -305,7 +422,16 @@ class DBHelper {
     return optSort;
   }
 
-
-
-
+  /**
+  ** Sort data by date.
+  **/
+  static sortByDate(item_a, item_b, order_type, key) {
+    let optSort;
+    if(order_type==="asc"){
+      optSort =  parseFloat(new Date(item_a[key]).getTime()) - parseFloat(new Date(item_b[key]).getTime());
+    } else {
+      optSort = parseFloat(new Date(item_b[key]).getTime()) - parseFloat(new Date(item_a[key]).getTime());
+    }
+    return optSort;
+  }
 }
