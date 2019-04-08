@@ -371,7 +371,7 @@ const submitReviewEditing = (editableReview = self.editableReview) => {
       displayReviewFormErrors(formerrors);
     }else{
       const newReview = userinput;
-      newReview.restaurant_id = parseInt(editableReview.restaurant_id);
+      newReview.restaurant_id = parseInt(self.restaurant.id);
       newReview.createdAt = editableReview.createdAt;
       newReview.updatedAt = Date.now();
       newReview.id = editableReview.id;

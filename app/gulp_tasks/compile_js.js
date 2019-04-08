@@ -77,6 +77,10 @@ gulp.task('bundle_js', function(done){
         {
            match: /_RESTAURANTS_URL_/g,
            replacement: config.app_params.endpoints.restaurants
+        },
+        {
+           match: /_REVIEWS_URL_/g,
+           replacement: config.app_params.endpoints.reviews
         }
       ]
       }))

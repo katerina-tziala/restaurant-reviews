@@ -26,7 +26,11 @@ const initApp = () => {
   DBHelper.fetchRestaurants((error, reviews) => {});
   DBHelper.fetchReviews((error, reviews) => {});
   initView();
-  setTimeout(() => {checkForAppDataUpdate();}, 10000);
+  setTimeout(() => {
+    if(navigator.online){
+       checkForAppDataUpdate();
+    }
+  }, 10000);
 };
 
 /**
@@ -168,7 +172,6 @@ const trackInstalling = (worker) => {
 **/
 const updateReady = (worker) => {
   self.newSWorker = worker;
-    console.log("updateReady");
   generateUpdateNotification();
 };
 

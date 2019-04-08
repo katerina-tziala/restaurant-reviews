@@ -84,8 +84,10 @@ const prepareRequestParams = (request) => {
     "params": {method: request.method}
   };
   if ('body' in request) {
-    let dataload = request.body
-    if ('id' in dataload && dataload.id.toString().startsWith('temp')) {
+    let dataload = request.body;
+    if ('id' in dataload && dataload.id.toString().startsWith('temp') && request.targetId.startsWith('temp')) {
+      request_params.url = request.url.split("/temp")[0];
+      request_params.params.method = 'POST';
       delete dataload['id'];
       request_params.params.body = JSON.stringify(dataload);
     } else {

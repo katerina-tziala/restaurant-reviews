@@ -3,7 +3,8 @@ const staticCacheName = 'rr-files-v1';
 const imagesCacheName = 'rr-images-v1';
 const appCaches = [staticCacheName, imagesCacheName];
 //files to be cached
-//const cacheFiles = [_APP_CACHE_FILES_];
+const cacheFiles = [_APP_CACHE_FILES_];
+/*
 const cacheFiles = [
   '/',
   'index.html',
@@ -33,7 +34,7 @@ const cacheFiles = [
   'css/restaurant.css',
   'css/reviews.css',
   'css/select_widget.css'
-];
+];*/
 //images to be cached
 const cacheImages = [
   'favicon.ico',
