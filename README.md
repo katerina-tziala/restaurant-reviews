@@ -26,6 +26,14 @@ This is the third and final stage of the three stage course material project <b>
 
 **2.** Follow the README file of the server repository to get the Node development server up and running locally on your computer.
 
+**3.** Fork and clone the [**restaurant_reviews-stage_3**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_3) repository.
+
+**4.** Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
+
+**5.** Add your [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE) in the ***mapboxkey*** in the *config.json* file inside the **gulp_tasks** folder. Make sure that the ***app_params*** of this file are defined appropriately (check the path, the start_url, the scope and the endpoints).
+<p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/app_params.png" alt="change app parameters" width="80%" height="auto">
+</p>
 <h2>Auditing the Restaurant Reviews App</h2>
 
 
