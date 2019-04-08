@@ -37,7 +37,7 @@ to retrieve JSON data. The preparation to start working on this project and impl
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/app_params.png" alt="change app parameters" width="80%" height="auto">
 </p>
 
-**6.** Navigate from your terminal inside the /app folder and run  ***gulp*** to bundle and build the app.
+**6.** Navigate from your terminal inside the /app folder and run ***gulp*** to bundle and build the app.
 <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/bundle_app.png" alt="running gulp to build the app" width="80%" height="auto">
 </p>
