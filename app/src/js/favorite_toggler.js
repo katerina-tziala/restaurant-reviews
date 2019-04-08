@@ -46,7 +46,7 @@ const toggleFavorite = (event) => {
         generateFailureNotification(DBHelper.INDEXED_DB_SUPPORT);
         if (DBHelper.INDEXED_DB_SUPPORT) {
           toggleFavoriteDisplay(button, nextstate);
-          updateRestaurantVars(response.data);
+          updateRestaurantVarsOnFail({id:restaurant_id, is_favorite:nextstate});
         }
         break;
       default:
@@ -56,6 +56,30 @@ const toggleFavorite = (event) => {
     }
   });
 };
+
+/**
+** Update JavaScript variables: restaurants or restaurant.
+**/
+const updateRestaurantVarsOnFail = (newRestaurant) => {
+  if (InterfaceManager.getUserView() === "restaurant") {
+    self.restaurant.is_favorite = newRestaurant.is_favorite;
+    DBHelper.updateIndexedDB({target: "restaurant", data: self.restaurant}, "PUT");
+  } else {
+    let newRestaurants = self.restaurants.filter(restaurant => restaurant.id !== newRestaurant.id);
+    const updatedRestaurant = self.restaurants.filter(restaurant => restaurant.id === newRestaurant.id)[0];
+    updatedRestaurant.is_favorite = newRestaurant.is_favorite;
+    DBHelper.updateIndexedDB({target: "restaurant", data: updatedRestaurant}, "PUT");
+    newRestaurants.push(updatedRestaurant);
+    newRestaurants.sort((item_a, item_b)=>{
+      return DBHelper.sortByID(item_a, item_b, "asc");
+    });
+    self.restaurants = [];
+    self.restaurants =  newRestaurants;
+  }
+};
+
+
+
 
 /**
 ** Update JavaScript variables: restaurants or restaurant.

@@ -344,6 +344,11 @@ const submitNewReview = () => {
             self.reviews.push(response.data);
             fillRatingStats();
             fillReviewsHTML();
+            DBHelper.AppStore.getStoreKeys('failedRequests').then((response) => {
+              const nextkey = response.length+1;
+              newReview.id = `temp${nextkey}`;
+              DBHelper.updateIndexedDB({target: "review", data: newReview}, "POST");
+            });
           }
           break;
         default:
@@ -382,6 +387,7 @@ const submitReviewEditing = (editableReview = self.editableReview) => {
             generateFailureNotification(DBHelper.INDEXED_DB_SUPPORT);
             if (DBHelper.INDEXED_DB_SUPPORT) {
               updateViewAfterReviewEdit(response.data);
+              DBHelper.updateIndexedDB({target: "review", data: newReview}, "PUT");
             }
             break;
           default:
@@ -424,6 +430,7 @@ const deleteReview = (event) => {
           self.reviews = self.reviews.filter(r => r.id != reviewId);
           fillRatingStats();
           fillReviewsHTML();
+          DBHelper.updateIndexedDB({target: "review", data: {id: reviewId}}, "DELETE");
         }
         break;
       default:
