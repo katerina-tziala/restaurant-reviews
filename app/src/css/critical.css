@@ -173,3 +173,12 @@ nav>h1 {
   display: none!important;
   visibility: hidden!important;
 }
+.freezer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8000;
+  width: 100vw;
+  height: 100vh;
+ background-color: rgba(0,0,0,0.4);
+}

@@ -176,4 +176,23 @@ class InterfaceManager {
     container.insertBefore(div, list);
   }
 
+  /**
+  ** Display freezer layer.
+  **/
+  static displayFreezer() {
+    const freezer = document.createElement("div");
+    freezer.className = appParams.cssClasses.freezer;
+    document.body.appendChild(freezer);
+  }
+
+  /**
+  ** Remove freezer layer.
+  **/
+  static removeFreezer() {
+    const freezer = document.querySelectorAll('.freezer');
+    if (freezer.length>0) {
+      freezer[0].remove();
+    }
+  }
+
 }

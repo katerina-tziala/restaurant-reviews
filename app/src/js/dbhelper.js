@@ -365,7 +365,6 @@ class DBHelper {
     **/
     static deleteExistingRequest(newRequest) {
       DBHelper.AppStore.getCachedData('failedRequests').then((response) => {
-        console.log(response);
         if (response.length > 0){
           const existingRequests = response.filter(response => response.target === newRequest.target && response.targetId === newRequest.targetId);
           if(existingRequests.length > 0){
@@ -427,11 +426,22 @@ class DBHelper {
   **/
   static sortByDate(item_a, item_b, order_type, key) {
     let optSort;
-    if(order_type==="asc"){
+    if(order_type === "asc"){
       optSort =  parseFloat(new Date(item_a[key]).getTime()) - parseFloat(new Date(item_b[key]).getTime());
     } else {
       optSort = parseFloat(new Date(item_b[key]).getTime()) - parseFloat(new Date(item_a[key]).getTime());
     }
     return optSort;
+  }
+
+  /**
+  ** Fetch failed requests.
+  **/
+  static fetchFailedRequests() {
+    if (DBHelper.INDEXED_DB_SUPPORT) {
+      return DBHelper.AppStore.getCachedData('failedRequests');
+    }else{
+      return Promise.resolve([]);
+    }
   }
 }

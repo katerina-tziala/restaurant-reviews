@@ -3,39 +3,6 @@ let main, loader, spinner, mapContainer, mapButton, notificationContainer, notif
 let notificationTimeout, notificationInterval, notificationCountdown = 0;
 document.addEventListener("DOMContentLoaded", (event) => {
   initApp();
-
-
-  DBHelper.fetchRestaurants((error, rest) => {
-    if (error) { // Got an error!
-      console.error(error);
-    } else {
-      console.log(rest);
-    }
-  });
-
-  DBHelper.fetchRestaurantById(1, (error, rest) => {
-    if (error) { // Got an error!
-      console.error(error);
-    } else {
-      console.log(rest);
-    }
-  });
-  DBHelper.fetchReviews((error, rev) => {
-    if (error) { // Got an error!
-      console.error(error);
-    } else {
-      console.log(rev);
-    }
-  });
-
-  DBHelper.fetchRestaurantReviews(2, (error, rev) => {
-    if (error) { // Got an error!
-      console.error(error);
-    } else {
-      console.log(rev);
-    }
-  });
-
 });
 
 /**
@@ -56,7 +23,10 @@ const initApp = () => {
   self.notificationInterval = 0;
   self.notificationCountdown = 0;
   registerServiceWorker();
+  DBHelper.fetchRestaurants((error, reviews) => {});
+  DBHelper.fetchReviews((error, reviews) => {});
   initView();
+  setTimeout(() => {checkForAppDataUpdate();}, 10000);
 };
 
 /**
@@ -115,7 +85,13 @@ window.addEventListener("online", (event) => {
     InterfaceManager.refreshApp();
   } else {
     enableMap();
-    generateBasicNotification(getNotificationContent("online"), 8000);
+    checkForFailedRequests().then((response) => {
+      if (response.length > 0) {
+        generateUnsavedChangesNotification(response.length);
+      } else {
+        generateBasicNotification(getNotificationContent("online"), 8000);
+      }
+    });
   }
 });
 

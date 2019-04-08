@@ -44,6 +44,7 @@ const clearNotification = () => {
   if (self.notificationInterval > 0) {
     clearNotificationCountDown();
   }
+  InterfaceManager.removeFreezer();
 };
 
 /**
@@ -159,4 +160,31 @@ const generateFailureNotification = (idbsupport) => {
     notification = getNotificationContent("failed_request");
   }
   generateBasicNotification(notification, 15000);
+};
+
+/**
+** Generate notification for unsaved changes.
+**/
+const generateUnsavedChangesNotification = (failedRequestsNumber) => {
+  clearNotification();
+  createNotificationContent(getNotificationContent("unsaved_changes"));
+  const chng = failedRequestsNumber === 1 ? "change" : "changes";
+  const unsaved_number = document.getElementById("unsaved_number");
+  unsaved_number.innerHTML = failedRequestsNumber;
+  const unsaved_changes = document.getElementById("unsaved_changes");
+  unsaved_changes.innerHTML = chng;
+  createNotificationActionButton("savenow", "save now", "save changes now", saveNow);
+  addNotificationCountDown(saveNow);
+  InterfaceManager.displayFreezer();
+  displayNotification();
+}
+
+/**
+** Generate notification to refresh the app.
+**/
+const generateRefreshNotification = () => {
+  clearNotification();
+  createNotificationContent(getNotificationContent("refresh"));
+  createNotificationActionButton("refresh", "refresh", "refresh app", InterfaceManager.refreshApp);
+  displayNotification();
 };

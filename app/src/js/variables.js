@@ -68,7 +68,8 @@ const appParams = {
     spinClass: "spin",
     displayMap: "displaymap",
     disableMapButton: "disabled",
-    displayNotification: "display_notification"
+    displayNotification: "display_notification",
+    freezer: "freezer"
   },
   noResultsFetchingMessages: {
      restaurants: `<span>No results matching your criteria!</span><span>Please try again!</span><i>Hint: Search with a different combination of neighborhoods and cuisines!</i>`,
@@ -115,6 +116,20 @@ const appParams = {
         title: "Unable to connect!",
         message: "Your changes were not saved! Please try again later!",
         type: "failed_request"
-        },
-      }
+    },
+    unsaved_changes: {
+      title: `You have <span id="unsaved_number"></span> unsaved <span id="unsaved_changes"></span>!`,
+      message: `Your changes will be saved in <span id="message_timer">10<span>`,
+      type: "unsaved_changes"
+    },
+    refresh: {
+        title: "All your changes were successfully saved!",
+        message: 'Refresh the app or reload the page to see the latest changes!',
+      type: "refresh"},
+    saving_changes: {
+      title: "Your changes are being saved!",
+      message: `Please wait...<br>You will be notified for the result as soon as possible`,
+      type: "saving_changes"
+    }
+  }
 };

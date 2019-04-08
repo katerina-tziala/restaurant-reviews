@@ -1,5 +1,6 @@
 "use strict";
 let restaurant, reviews, reviewsResults, reviewsList, reviewLayer, reviewModal, ratingStars;
+
 /**
 ** Render restaurant view.
 **/
@@ -23,6 +24,7 @@ const renderRestaurantInfo = () => {
   });
   self.reviewLayer.addEventListener('keydown', trapModalKeys);
 };
+
 /**
 ** Get current restaurant from page URL.
 **/
@@ -46,6 +48,7 @@ const fetchRestaurantFromURL = (callback) => {
     });
   }
 };
+
 /**
 ** Add restaurant name to the breadcrumb navigation menu
 **/
@@ -59,6 +62,7 @@ const fillBreadcrumb = (restaurant = self.restaurant) => {
   li.append(breadcrumb_a);
   breadcrumb.appendChild(li);
 };
+
 /**
 ** Create restaurant HTML and add it to the webpage.
 **/
@@ -109,6 +113,7 @@ const fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hour
     hours.appendChild(row);
   }
 };
+
 /**
 ** Calculate total rating statistics and add them in the webpage.
 **/
@@ -126,6 +131,7 @@ const fillRatingStats = (reviews = self.reviews) => {
     total_rating.innerHTML = avg;
   }
 };
+
 /**
 ** Create all reviews HTML and add them to the webpage.
 **/
@@ -147,6 +153,7 @@ const fillReviewsHTML = (reviews = self.reviews, reviewsList = self.reviewsList)
     });
   }
 };
+
 /**
 ** Create review HTML and add it to the webpage.
 **/
@@ -154,7 +161,6 @@ const createReviewHTML = (review) => {
   const li = document.createElement("li");
   li.className = "reviewCard";
   li.setAttribute("role" , "listitem");
-
   if (parseInt(review.id)>30 || review.id.toString().startsWith('temp')) {
     const editBtn = InterfaceManager.createButton(`edit_rev_${review.id}`, "", "edit review", editReview);
     editBtn.title = "Edit Review";
@@ -164,8 +170,6 @@ const createReviewHTML = (review) => {
     delBtn.classList.add("fas", "fa-trash-alt", "review_modification_btn", "deletereview");
     li.append(delBtn, editBtn);
   }
-
-
   const rating = populateReviewRating(review.rating);
   const review_info = document.createElement("div");
   review_info.className = "reviewInfo";

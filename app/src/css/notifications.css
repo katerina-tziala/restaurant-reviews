@@ -67,6 +67,9 @@
 #btn_update, #btn_retry, #btn_refresh {
   margin-right: 40px;
 }
+#btn_savenow{
+  width: 120px;
+}
 /* ~~~~~~~~~~~~~~~~~~ RESPONSIVE DESIGN WITH MEDIA QUERIES ~~~~~~~~~~~~~~~~~~ */
 @media screen and (max-width: 770px) {
   .buttons_wrapper {

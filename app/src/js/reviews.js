@@ -3,6 +3,7 @@ let focusAfterError=[];
 let reviewInitiator="";
 let reviewsModification="";
 let editableReview = [];
+
 /**
 ** Open review form from edit button.
 **/
@@ -15,6 +16,7 @@ const editReview = (event) => {
   self.editableReview = self.reviews.filter(r => r.id == reviewId)[0];
   displayAddReviewModal();
 };
+
 /**
 ** Open / close review form.
 **/
@@ -32,6 +34,7 @@ const toggleReviewForm = (event) => {
       break;
   }
 };
+
 /**
 ** Display add review modal box.
 **/
@@ -210,6 +213,7 @@ const initEditReviewForm = () => {
   document.getElementById("namefield").value = self.editableReview.name;
   document.getElementById("commentsfield").value = self.editableReview.comments;
 };
+
 /**
 ** Clear review form.
 **/
@@ -218,6 +222,7 @@ const clearReviewForm = (event) => {
   initReviewForm();
   removeFormErrors();
 };
+
 /**
 ** Trap and handle navigation when form is open.
 **/
@@ -282,6 +287,7 @@ const trapModalKeys = (event) => {
     return;
   }
 };
+
 /**
 ** Get user input.
 **/
@@ -300,6 +306,7 @@ const getUserInput = () => {
   };
   return userinput;
 }
+
 /**
 ** Submit review form.
 **/
@@ -314,6 +321,7 @@ const submitReviewForm = (event) => {
       break;
     }
 };
+
 /**
 ** Submit new review.
 **/
@@ -347,9 +355,6 @@ const submitNewReview = () => {
     });
   }
 };
-
-
-
 
 /**
 ** Submit review editing.
@@ -387,6 +392,7 @@ const submitReviewEditing = (editableReview = self.editableReview) => {
     }
   }
 };
+
 /**
 ** Update view after editing a review.
 **/
@@ -404,6 +410,7 @@ const updateViewAfterReviewEdit = (editedRev) => {
   fillRatingStats();
   fillReviewsHTML();
 };
+
 /**
 ** Delete a review.
 **/
