@@ -23,8 +23,7 @@ const initApp = () => {
   self.notificationInterval = 0;
   self.notificationCountdown = 0;
   registerServiceWorker();
-  DBHelper.fetchRestaurants((error, reviews) => {});
-  DBHelper.fetchReviews((error, reviews) => {});
+  DBHelper.fetchRestaurants(() => {});
   initView();
   setTimeout(() => {
     if(navigator.online){

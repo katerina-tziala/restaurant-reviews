@@ -187,15 +187,15 @@ class DBHelper {
   **/
   static fetchRestaurantReviews(id, callback) {
     if (DBHelper.INDEXED_DB_SUPPORT) {
-      DBHelper.AppStore.getCachedDataByIndex('reviews', 'byRestaurant', parseInt(id)).then((response) => {
+      DBHelper.AppStore.getCachedDataByIndex('reviews', 'byRestaurant', id).then((response) => {
         if (response.length > 0) {
           callback(null, response);
           callback = () => {}; // don't call callback again from fetch
         }
-        DBHelper.getData(DBHelper.REVIEWS_URL+`?restaurant_id=`+parseInt(id),'reviews', callback);
+        DBHelper.getData(DBHelper.REVIEWS_URL+`?restaurant_id=`+id,'reviews', callback);
       });
     }else{
-      DBHelper.getData(DBHelper.REVIEWS_URL+`?restaurant_id=`+parseInt(id),'reviews', callback);
+      DBHelper.getData(DBHelper.REVIEWS_URL+`?restaurant_id=`+id,'reviews', callback);
     }
   }
 
@@ -448,6 +448,6 @@ class DBHelper {
   static clearIndexedBD(){
     DBHelper.AppStore.deleteAll('failedRequests');
     DBHelper.AppStore.deleteAll('restaurants');
-    DBHelper.AppStore.deleteAll('reviews');  
+    DBHelper.AppStore.deleteAll('reviews');
   }
 }

@@ -423,10 +423,11 @@ const deleteReview = (event) => {
       case "fail":
       generateFailureNotification(DBHelper.INDEXED_DB_SUPPORT);
       if (DBHelper.INDEXED_DB_SUPPORT) {
+          const deleteReview = self.reviews.filter(r => r.id == reviewId)[0];
+          DBHelper.updateIndexedDB({target: "review", data: deleteReview}, "DELETE");
           self.reviews = self.reviews.filter(r => r.id != reviewId);
           fillRatingStats();
           fillReviewsHTML();
-          DBHelper.updateIndexedDB({target: "review", data: {id: reviewId}}, "DELETE");
         }
         break;
       default:
