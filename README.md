@@ -57,4 +57,8 @@ After completing the third stage of the project, the application was audited. Th
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/RR-S3_favorite-toggle.png" alt="add restaurant to or remove restaurant from favourites" width="100%" height="auto">
     </p><br>
 
+   - ***Add, Edit or Delete Review***
+    <p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/RR-S3_adding_review.png" alt="add, edit or remove review" width="100%" height="auto">
+    </p><br>
 
