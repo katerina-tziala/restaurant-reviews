@@ -52,7 +52,7 @@ After completing the third stage of the project, the application was audited. Th
 
  - **User Interface**
  
-  - ***Add Restaurant to or Remove Restaurant from Favourites***
+   - ***Add Restaurant to or Remove Restaurant from Favourites***
     <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/RR-S3_favorite-toggle.png" alt="add restaurant to or remove restaurant from favourites" width="100%" height="auto">
     </p><br>
