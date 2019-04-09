@@ -71,5 +71,11 @@ After completing the third stage of the project, the application was audited. Th
 
    - ***restaurant.html offline***
     <p align="center">
-    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/RR-S3_offline_restaurant.png" alt="restaurant.html offline width="100%" height="auto">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/RR-S3_offline_restaurant.png" alt="restaurant.html offline" width="100%" height="auto">
     </p><br>
+
+   - ***cached assets and data***
+    <p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/RR-S3_cached_assets.png" alt="cached assets and data" width="100%" height="auto">
+    </p><br> 
+    
