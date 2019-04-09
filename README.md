@@ -79,3 +79,13 @@ After completing the third stage of the project, the application was audited. Th
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/RR-S3_cached_assets.png" alt="cached assets and data" width="100%" height="auto">
     </p><br> 
     
+    
+ - **Lighthouse Metrics for index.html**
+ <p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/RR-S3_audit_index.png" alt="lighthouse metrincs for index page" width="100%" height="auto">
+    </p><br>
+    
+ - **Lighthouse Metrics for restaurant.html**
+ <p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/RR-S3_audit_restaurant.png" alt="lighthouse metrincs for restaurant page" width="100%" height="auto">
+    </p><br>
