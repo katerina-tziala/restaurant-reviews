@@ -52,11 +52,23 @@ to retrieve JSON data. The preparation to start working on this project and impl
 <h2>Auditing the Restaurant Reviews App</h2>
 After completing the second stage of the project, the application was audited. The following figures illustrate the audit results.
 
- - **Application Data Source and Offline Use**
+ - **Application Data Source**
     <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/app_data.png" alt="caching data in Indexed DB" width="100%" height="auto">
     </p><br>
-    
+ 
+ - **Offline Use**
+ 
+    - ***index.html offline***
+     <p align="center">
+     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/RR-S2_offline_index.png" alt="index.html offline" width="100%" height="auto">
+     </p><br>
+
+    - ***restaurant.html offline***
+     <p align="center">
+     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/RR-S2_offline_restaurant.png" alt="restaurant.html offline" width="100%" height="auto">
+     </p><br>
+
  - **Lighthouse Metrics for index.html**
  <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/RR-S2_audit_index.png" alt="lighthouse metrincs for index page" width="100%" height="auto">
