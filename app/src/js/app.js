@@ -2,7 +2,7 @@
 let main, loader, spinner, mapContainer, mapButton, notificationContainer, notificationHeader, notificationTitle, notificationBody, newSWorker;
 let notificationTimeout, notificationInterval, notificationCountdown = 0;
 document.addEventListener("DOMContentLoaded", (event) => {
-  initApp();
+    initApp();
 });
 
 /**

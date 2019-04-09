@@ -7,7 +7,7 @@
     "path":"http://localhost:8887/",
     "start_url": "http://localhost:8887/index.html",
     "scope": "/",
-    "mapboxkey": "pk.eyJ1Ijoia2F0ZXJpbmF0emlhbGEiLCJhIjoiY2pwenNqdHF3MGU5MDQ4bzRudGdlanZ6eCJ9.kGbzX08otPecWpIvfKU3ZA",
+    "mapboxkey": "_MAPBOX_API_KEY_",
     "endpoints": {
         "restaurants": "http://localhost:1337/restaurants",
         "reviews": "http://localhost:1337/reviews"

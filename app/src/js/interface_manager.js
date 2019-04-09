@@ -83,6 +83,7 @@ class InterfaceManager {
   ** Reload the app.
   **/
   static reloadApp() {
+    DBHelper.clearIndexedBD();
     window.location.href = window.location.href;
   }
 
@@ -90,6 +91,7 @@ class InterfaceManager {
   ** Refresh the app.
   **/
   static refreshApp() {
+    DBHelper.clearIndexedBD();
     window.location.reload(true);
   }
 

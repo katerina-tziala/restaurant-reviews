@@ -344,11 +344,7 @@ const submitNewReview = () => {
             self.reviews.push(response.data);
             fillRatingStats();
             fillReviewsHTML();
-            DBHelper.AppStore.getStoreKeys('failedRequests').then((response) => {
-              const nextkey = response.length+1;
-              newReview.id = `temp${nextkey}`;
-              DBHelper.updateIndexedDB({target: "review", data: newReview}, "POST");
-            });
+            DBHelper.updateIndexedDB({target: "review", data: response.data}, "POST");
           }
           break;
         default:
@@ -376,7 +372,7 @@ const submitReviewEditing = (editableReview = self.editableReview) => {
       displayReviewFormErrors(formerrors);
     }else{
       const newReview = userinput;
-      newReview.restaurant_id = parseInt(self.restaurant.id);
+      newReview.restaurant_id = self.restaurant.id;
       newReview.createdAt = editableReview.createdAt;
       newReview.updatedAt = Date.now();
       newReview.id = editableReview.id;
@@ -386,8 +382,8 @@ const submitReviewEditing = (editableReview = self.editableReview) => {
           case "fail":
             generateFailureNotification(DBHelper.INDEXED_DB_SUPPORT);
             if (DBHelper.INDEXED_DB_SUPPORT) {
-              updateViewAfterReviewEdit(response.data);
               DBHelper.updateIndexedDB({target: "review", data: newReview}, "PUT");
+              updateViewAfterReviewEdit(response.data);
             }
             break;
           default:

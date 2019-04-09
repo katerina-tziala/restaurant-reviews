@@ -444,4 +444,10 @@ class DBHelper {
       return Promise.resolve([]);
     }
   }
+
+  static clearIndexedBD(){
+    DBHelper.AppStore.deleteAll('failedRequests');
+    DBHelper.AppStore.deleteAll('restaurants');
+    DBHelper.AppStore.deleteAll('reviews');  
+  }
 }

@@ -71,4 +71,10 @@ class DataStore {
      db.transaction(storename, "readwrite").objectStore(storename).delete(key);
    });
   }
+  //delete all records from a store:
+  deleteAll(storename) {
+   this.cache.then((db) => {
+     db.transaction(storename, "readwrite").objectStore(storename).clear();
+   });
+  }
 }
