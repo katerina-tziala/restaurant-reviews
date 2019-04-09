@@ -48,6 +48,13 @@ This is the third and final stage of the three stage course material project <b>
 **8.** Launch the website with the ***Web Server for Chrome*** app and while the ***Node development server*** is up and running!<br><br>
 
 <h2>Auditing the Restaurant Reviews App</h2>
+After completing the third stage of the project, the application was audited. The following figures illustrate the audit results.
 
+ - **User Interface**
+ 
+  - ***Add Restaurant to or Remove Restaurant from Favourites***
+    <p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/RR-S3_favorite-toggle.png" alt="add restaurant to or remove restaurant from favourites" width="100%" height="auto">
+    </p><br>
 
 
