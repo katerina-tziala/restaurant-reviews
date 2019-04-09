@@ -89,3 +89,15 @@ After completing the third stage of the project, the application was audited. Th
  <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/RR-S3_audit_restaurant.png" alt="lighthouse metrincs for restaurant page" width="100%" height="auto">
     </p><br>
+
+<h2>Progressive Wep App</h2>
+
+ - **Reliable:** Loads instantly even in uncertain network conditions.
+ - **Fast:** Responds quickly to user interactions with silky smooth animations and no janky scrolling.
+ - **Engaging:** Feels like a natural app on the device, with an immersive user experience.
+<p align="center">
+ <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/pwa1.png" alt="restaurant reviews app, installing the app" width="100%" height="auto">
+</p><br><br>
+<p align="center">
+ <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/pwa2.png" alt="restaurant reviews app, browser apps" width="100%" height="auto">
+</p>
