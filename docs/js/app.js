@@ -25,11 +25,15 @@ const initApp = () => {
 //  registerServiceWorker();
 console.log("hi");
 
+const request = new Request(url, {
+  method: 'GET',
+  mode: 'no-cors',
+  cache: 'reload',
+  credentials:'same-origin',
+  headers: DBHelper.REQUEST_HEADERS});
 
-
-  DBHelper.fetchRestaurants((error, rest) => {
-    console.log(error);
-    console.log(rest);
+  fetch(request).then(data=>{
+    console.log(data);
   });
   // initView();
   // setTimeout(() => {
