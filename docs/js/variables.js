@@ -3,7 +3,7 @@ const appParams = {
   start_url: "https://katerina-tziala.github.io/restaurant/index.html",
   scope: "/restaurant/",
   endpoints: {
-      restaurants:  "https://restrevsdb-0f34.restdb.io/rest/restaurants",
+      restaurants: "https://restrevsdb-0f34.restdb.io/rest/restaurants",
       reviews: "https://restrevsdb-0f34.restdb.io/rest/reviews"
   },
   databaseApiKey: "5c48feeb8932456b814555c8",

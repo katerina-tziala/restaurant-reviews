@@ -24,10 +24,29 @@ const initApp = () => {
   self.notificationCountdown = 0;
 //  registerServiceWorker();
 console.log("hi");
-fetchDatas(appParams.endpoints.restaurants);
-DBHelper.fetchRestaurants((error, restaurants) => {
-  console.log(restaurants);
-});
+
+
+const hd = new Headers();
+hd.append('Accept', 'application/json; charset=utf-8');
+hd.append('x-apikey', '5c48feeb8932456b814555c8');
+hd.append('cache-control', 'no-cache');
+fetch('https://restrevsdb-0f34.restdb.io/rest/restaurants',
+{
+  method: 'GET',
+  mode: 'cors',
+  cache: 'reload',
+  credentials:'same-origin',
+  headers: hd}
+)
+  .then(function(response) {
+    console.log(response);
+  });
+
+//
+// fetchDatas(appParams.endpoints.restaurants);
+// DBHelper.fetchRestaurants((error, restaurants) => {
+//   console.log(restaurants);
+// });
   // initView();
   // setTimeout(() => {
   //   if(navigator.online){
