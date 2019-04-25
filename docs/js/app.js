@@ -24,7 +24,7 @@ const initApp = () => {
   self.notificationCountdown = 0;
 //  registerServiceWorker();
 console.log("hi");
-
+fetchDatas(appParams.endpoints.restaurants);
 DBHelper.fetchRestaurants((error, restaurants) => {
   console.log(restaurants);
 });
@@ -36,7 +36,22 @@ DBHelper.fetchRestaurants((error, restaurants) => {
   // }, 10000);
 };
 
-
+async function fetchDatas(url) {
+  const request = new Request(url, {
+    method: 'GET',
+    mode: 'cors',
+    cache: 'reload',
+    credentials:'same-origin',
+    headers: DBHelper.REQUEST_HEADERS});
+  try {
+    const fetchResult = fetch(request);
+    const response = await fetchResult;
+    const jsonData = await response.json();
+    console.log(jsonData);
+  } catch(error){
+    throw Error(error);
+  }
+}
 
 
 
