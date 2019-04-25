@@ -25,20 +25,7 @@ const initApp = () => {
 //  registerServiceWorker();
 console.log("hi");
 
-  const request = new Request(url, {
-    method: 'GET',
-    mode: 'cors',
-    cache: 'reload',
-    credentials:'same-origin',
-    headers: DBHelper.REQUEST_HEADERS});
-  try {
-    const fetchResult = fetch(request);
-    const response = await fetchResult;
-    const jsonData = await response.json();
-    console.log(jsonData);
-  } catch(error){
-    throw Error(error);
-  }
+
 
   DBHelper.fetchRestaurants((error, rest) => {
     console.log(error);
@@ -51,6 +38,15 @@ console.log("hi");
   //   }
   // }, 10000);
 };
+
+
+
+
+
+
+
+
+
 
 /**
 ** Initialize view depending on the page that was loaded.
