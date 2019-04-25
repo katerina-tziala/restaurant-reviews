@@ -54,7 +54,7 @@ class DBHelper {
   static async fetchData(url) {
     const request = new Request(url, {
       method: 'GET',
-      mode: 'cors',
+      mode: 'no-cors',
       cache: 'reload',
       credentials:'same-origin',
       headers: DBHelper.REQUEST_HEADERS});
