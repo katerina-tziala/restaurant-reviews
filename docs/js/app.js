@@ -25,16 +25,9 @@ const initApp = () => {
 //  registerServiceWorker();
 console.log("hi");
 
-const request = new Request(appParams.endpoints.restaurants, {
-  method: 'GET',
-  mode: 'no-cors',
-  cache: 'reload',
-  credentials:'same-origin',
-  headers: DBHelper.REQUEST_HEADERS});
-
-  fetch(request).then(data=>{
-    console.log(data);
-  });
+DBHelper.fetchRestaurants((error, restaurants) => {
+  console.log(restaurants);
+});
   // initView();
   // setTimeout(() => {
   //   if(navigator.online){

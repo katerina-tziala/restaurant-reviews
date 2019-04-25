@@ -21,7 +21,6 @@ class DBHelper {
   static get REQUEST_HEADERS() {
     const dataheaders = new Headers();
     dataheaders.append('Accept', 'application/json; charset=utf-8');
-    console.log(appParams.databaseApiKey);
     dataheaders.append('x-apikey', '5c48feeb8932456b814555c8');
     dataheaders.append('cache-control', 'no-cache');
     return dataheaders;
@@ -54,7 +53,7 @@ class DBHelper {
   static async fetchData(url) {
     const request = new Request(url, {
       method: 'GET',
-      mode: 'no-cors',
+      mode: 'cors',
       cache: 'reload',
       credentials:'same-origin',
       headers: DBHelper.REQUEST_HEADERS});
