@@ -21,6 +21,8 @@ class DBHelper {
   static get REQUEST_HEADERS() {
     const dataheaders = new Headers();
     dataheaders.append('Accept', 'application/json; charset=utf-8');
+    dataheaders.append('x-apikey', appParams.databaseApiKey);
+    dataheaders.append('cache-control', 'no-cache');
     return dataheaders;
   }
 
