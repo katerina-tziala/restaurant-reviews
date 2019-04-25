@@ -1,0 +1,184 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Verdana, Helvetica, sans-serif;
+}
+html, body {
+  background-color: #f2f2f2;
+  width: 100vw;
+  height: 100vh;
+  font-weight: 400;
+  font-display: optional;
+  color: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  position: relative;
+  overflow: hidden;
+}
+a {
+	color: #ff751a;
+	text-decoration: none;
+}
+a:hover, a:focus {
+	color: #1e90ff;
+	text-decoration: underline;
+  outline: none;
+}
+button {
+  border: none;
+  outline: none;
+  cursor: pointer!important;
+  height: 40px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#header {
+  position: fixed;
+  top:0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: auto;
+  min-height: 50px;
+  background-color: #1c262f;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.15), 0 2px 9px 1px rgba(0, 0, 0, 0.15), 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+}
+nav {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  padding: 0 16px;
+}
+nav>h1 {
+  width: 100%;
+}
+#headerLink {
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.3rem;
+  width: 100%;
+  display: block;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CONTENT SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#content_wrapper {
+  margin-top: 50px;
+  flex: 1 0 100px;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+}
+#main {
+  min-height: 100vh!important;
+  width: 100%;
+  flex: 1 0 100px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  background-color: inherit;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LOADER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#loader_container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  flex-flow: column nowrap;
+  z-index: 10000;
+  padding-left: 6px;
+  background-color: #f2f2f2;
+}
+#loader {
+  transform: scale(1.5, 1.5);
+}
+#spinner {
+  stroke: #ca5000;
+  stroke-width: 3px;
+  transform-origin: 50%;
+}
+.spin {
+  animation: line 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.2s linear infinite;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(450deg);
+    }
+  }
+@keyframes line {
+  0% {
+    stroke-dasharray: 2, 85.964;
+    transform: rotate(0);
+  }
+  50% {
+    stroke-dasharray: 65.973, 21.9911;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dasharray: 2, 85.964;
+    stroke-dashoffset: -65.973;
+    transform: rotate(90deg);
+    }
+  }
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FOOTER SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+#footer {
+  position: relative;
+  padding: 8px;
+  width: 100%;
+  height: auto;
+  background-color: #1c262f;
+  color: #e6e6e6;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  padding: 16px;
+  text-align: center;
+  text-transform: uppercase;
+}
+#footer>span, #footer>a, #footer>i {
+  padding: 8px 0;
+  display: inline-block;
+}
+#footer>a {
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  word-spacing: 0.3rem;
+  padding: 0 8px;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ UTILITY CLASSES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.centeredFlexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.hidden {
+  display: none!important;
+  visibility: hidden!important;
+}
+.freezer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8000;
+  width: 100vw;
+  height: 100vh;
+ background-color: rgba(0,0,0,0.4);
+}
