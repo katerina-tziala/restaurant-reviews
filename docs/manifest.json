@@ -10,7 +10,7 @@
     "src": "ServiceWorker.js",
     "scope": "/"
   },
-  "start_url": "http://localhost:8887/index.html",
+  "start_url": "https://katerina-tziala.github.io/index.html",
   "theme_color": "#ca5000",
   "lang": "en-US",
   "icons": [
