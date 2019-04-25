@@ -25,7 +25,7 @@ const initApp = () => {
 //  registerServiceWorker();
 console.log("hi");
 
-const request = new Request(url, {
+const request = new Request(appParams.endpoints.restaurants, {
   method: 'GET',
   mode: 'no-cors',
   cache: 'reload',
