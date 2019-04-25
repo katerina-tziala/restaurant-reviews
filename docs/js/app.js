@@ -22,7 +22,7 @@ const initApp = () => {
   self.notificationTimeout = 0;
   self.notificationInterval = 0;
   self.notificationCountdown = 0;
-  registerServiceWorker();
+//  registerServiceWorker();
   DBHelper.fetchRestaurants(() => {});
   // initView();
   // setTimeout(() => {
