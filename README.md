@@ -51,7 +51,7 @@ This is the third and final stage of the three stage course material project <b>
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/server.png" alt="setting up local server" width="40%" height="auto">
 </p>
 
-**8.** Launch the website with the ***Web Server for Chrome*** app and while the ***Node development server*** is up and running!<br><br>
+**8.** Launch the website with the ***Web Server for Chrome*** app and while the ***Node development server*** is up and running!<br><br><br>
 
 <h2>Auditing the Restaurant Reviews App</h2>
 After completing the third stage of the project, the application was audited. The following figures illustrate the audit results.
@@ -94,7 +94,7 @@ After completing the third stage of the project, the application was audited. Th
  - **Lighthouse Metrics for restaurant.html**
  <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/RR-S3_audit_restaurant.png" alt="lighthouse metrincs for restaurant page" width="100%" height="auto">
-    </p><br>
+    </p><br><br>
 
 <h2>Progressive Wep App</h2>
 
