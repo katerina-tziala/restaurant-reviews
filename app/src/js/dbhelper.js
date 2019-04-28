@@ -445,6 +445,9 @@ class DBHelper {
     }
   }
 
+  /**
+  ** Clear IndexedDB.
+  **/
   static clearIndexedBD(){
     DBHelper.AppStore.deleteAll('failedRequests');
     DBHelper.AppStore.deleteAll('restaurants');
