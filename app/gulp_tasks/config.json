@@ -4,17 +4,31 @@
     "dist" : "./dist"
   },
   "app_params" : {
-    "path":"http://localhost:8887/",
-    "start_url": "http://localhost:8887/index.html",
-    "scope": "/",
+    "path":"_APP_PATH",
+    "start_url": "_START_URL_",
+    "scope": "_SCOPE_",
     "mapboxkey": "_MAPBOX_API_KEY_",
     "endpoints": {
-        "restaurants": "http://localhost:1337/restaurants",
-        "reviews": "http://localhost:1337/reviews"
-    }
+        "restaurants": "_RESTAURANTS_URL_",
+        "reviews": "_REVIEWS_URL_"
+    },
+    "theme_color": "#ca5000"
   },
   "browserconfig" : "./src/browserconfig.xml",
   "manifest" : "./src/manifest.json",
+  "head_icons" : [
+    "./src/img/safari-pinned-tab.svg",
+    "./src/img/android-chrome-256x256.png",
+    "./src/img/android-chrome-64x64.png",
+    "./src/img/android-chrome-128x128.png",
+    "./src/img/android-chrome-192x192.png",
+    "./src/img/android-chrome-512x512.png",
+    "./src/img/apple-touch-icon-57x57.png",
+    "./src/img/apple-touch-icon-76x76.png",
+    "./src/img/apple-touch-icon-144x144.png",
+    "./src/img/apple-touch-icon-152x152.png",
+    "./src/img/apple-touch-icon.png"
+  ],
   "service_worker" : "./src/ServiceWorker.js",
   "images" : {
     "root" : "./src/*.+(png|ico)",
