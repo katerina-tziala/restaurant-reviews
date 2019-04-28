@@ -81,6 +81,10 @@ gulp.task('bundle_js', function(done){
         {
            match: /_REVIEWS_URL_/g,
            replacement: config.app_params.endpoints.reviews
+        },
+        {
+           match: /_DATABASE_API_KEY/g,
+           replacement: config.app_params.databaseApiKey
         }
       ]
       }))

@@ -16,13 +16,12 @@ const renderRestaurantInfo = () => {
     if (error) { // Got an error!
       console.error(error);
     } else {
-      InterfaceManager.hideLoader();
       self.restaurant = restaurant;
       fillBreadcrumb();
       fillRestaurantHTML();
     }
   });
-  self.reviewLayer.addEventListener('keydown', trapModalKeys);
+  self.reviewLayer.addEventListener("keydown", trapModalKeys);
 };
 
 /**
@@ -73,7 +72,7 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
   imageContainer.append(createFavoriteBookmark(restaurant));
   const image = document.getElementById("restaurantImg");
   image.alt = "photo of restaurant: " + restaurant.name;
-  image.className = 'restaurantImg';
+  image.className = "restaurantImg";
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   const cuisine = document.getElementById("cuisine");
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -84,13 +83,14 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
     fillRestaurantHoursHTML();
   }
   document.getElementById("commentsfield").placeholder = `Enter your comments for the restaurant "${self.restaurant.name}" here!`;
-  DBHelper.fetchRestaurantReviews(restaurant.id, (error, reviews) => {
+  DBHelper.fetchRestaurantReviews(restaurant._id, (error, reviews) => {
     if (error) { // Got an error!
       console.error(error);
     } else {
       self.reviews = reviews;
       fillRatingStats();
       fillReviewsHTML();
+      InterfaceManager.hideLoader();
     }
   });
 };
@@ -127,7 +127,7 @@ const fillRatingStats = (reviews = self.reviews) => {
     reviews.forEach(review => {
       sum_rating += parseInt(review.rating);
     });
-    const avg = Number(Math.round(sum_rating/reviews_numb+'e'+1)+'e-'+1);
+    const avg = Number(Math.round(sum_rating/reviews_numb+"e"+1)+"e-"+1);
     total_rating.innerHTML = avg;
   }
 };
@@ -161,11 +161,11 @@ const createReviewHTML = (review) => {
   const li = document.createElement("li");
   li.className = "reviewCard";
   li.setAttribute("role" , "listitem");
-  if (parseInt(review.id)>30 || review.id.toString().startsWith('temp')) {
-    const editBtn = InterfaceManager.createButton(`edit_rev_${review.id}`, "", "edit review", editReview);
+  if (parseInt(review.id)>24 || review._id.toString().startsWith("temp")) {
+    const editBtn = InterfaceManager.createButton(`edit_rev_${review._id}`, "", "edit review", editReview);
     editBtn.title = "Edit Review";
     editBtn.classList.add("fas", "fa-pencil-alt", "review_modification_btn", "edirreview");
-    const delBtn = InterfaceManager.createButton(`delete_rev_${review.id}`, "", "delete review", deleteReview);
+    const delBtn = InterfaceManager.createButton(`delete_rev_${review._id}`, "", "delete review", deleteReview);
     delBtn.title = "Delete Review";
     delBtn.classList.add("fas", "fa-trash-alt", "review_modification_btn", "deletereview");
     li.append(delBtn, editBtn);
@@ -180,7 +180,7 @@ const createReviewHTML = (review) => {
   created.className = "reviewCreationDate";
   created.innerHTML = InterfaceManager.formatDate(review.createdAt);
   review_info.append(reviewer, created);
-  if (new Date(review.updatedAt).getTime()>new Date(review.createdAt).getTime()) {
+  if (new Date(review.updatedAt).getTime() > new Date(review.createdAt).getTime()) {
     const updated = document.createElement("p");
     updated.className = "reviewUpdateDate";
     updated.innerHTML = `Last updated: ${InterfaceManager.getDateTime(review.updatedAt)}`;
@@ -204,7 +204,7 @@ const populateReviewRating = (rating) => {
   p.innerHTML = "rating:";
   review_rating.append(p);
   for (let i = 1; i < 6; i++) {
-    let star = document.createElement('div');
+    let star = document.createElement("div");
     star.classList.add("fas", "fa-star", "star_for_review");
     if (i<=rating) {
       star.classList.add("given_star");

@@ -14,9 +14,10 @@ const renderIndex = () => {
   self.cuisineSelectWidget = null;
   self.neighborhoods = [];
   self.cuisines = [];
-  updateRestaurants();
+
   fetchNeighborhoods();
   fetchCuisines();
+  updateRestaurants();
 };
 
 /**
@@ -38,7 +39,7 @@ document.addEventListener("click", (event) => {
 ** Fetch all neighborhoods and set their HTML.
 **/
 const fetchNeighborhoods = () => {
-  DBHelper.fetchUniqueRestaurantParams('neighborhood', (error, neighborhoods) => {
+  DBHelper.fetchUniqueRestaurantParams("neighborhood", (error, neighborhoods) => {
     if (error) { // Got an error
       console.error(error);
     } else {
@@ -53,7 +54,7 @@ const fetchNeighborhoods = () => {
 ** Fetch all cuisines and set their HTML.
 **/
  const fetchCuisines = () => {
-  DBHelper.fetchUniqueRestaurantParams('cuisine_type', (error, cuisines) => {
+  DBHelper.fetchUniqueRestaurantParams("cuisine_type", (error, cuisines) => {
     if (error) { // Got an error!
       console.error(error);
     } else {
@@ -98,6 +99,9 @@ const resetRestaurants = (restaurants, ul = self.restaurantsList) => {
   ul.innerHTML = "";
   InterfaceManager.removeNoResultsFetchingeMessage();
   removeMarkers();
+  restaurants.sort((item_a, item_b)=>{
+    return DBHelper.sortByID(item_a, item_b, "asc");
+  });
   self.restaurants = restaurants;
 };
 

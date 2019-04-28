@@ -2,9 +2,10 @@
 const appParams = {
   start_url: "_START_URL_",
   scope: "_SCOPE_",
+  databaseApiKey: "_DATABASE_API_KEY",
   endpoints: {
-      restaurants: "_RESTAURANTS_URL_",
-      reviews: "_REVIEWS_URL_"
+    restaurants: "_RESTAURANTS_URL_",
+    reviews: "_REVIEWS_URL_"
   },
   indexFiles: {
     js: ["js/index.min.js"],

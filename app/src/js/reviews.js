@@ -13,7 +13,7 @@ const editReview = (event) => {
   self.reviewsModification = "edit";
   self.reviewInitiator=document.getElementById(event.target.id);
   const reviewId = event.target.id.split("_").pop();
-  self.editableReview = self.reviews.filter(r => r.id == reviewId)[0];
+  self.editableReview = self.reviews.filter(r => r._id == reviewId)[0];
   displayAddReviewModal();
 };
 
@@ -27,9 +27,9 @@ const toggleReviewForm = (event) => {
       hideAddReviewModal();
       break;
     case "open":
-      self.reviewInitiator="";
-      self.reviewInitiator=document.getElementById("rev_btn_open");
-      self.reviewsModification="add";
+      self.reviewInitiator = "";
+      self.reviewInitiator = document.getElementById("rev_btn_open");
+      self.reviewsModification = "add";
       displayAddReviewModal();
       break;
   }
@@ -132,9 +132,9 @@ const getFormErrors = (userinput) => {
 const textValidation = (value, chars, oneletter=false) => {
   const numbpattern = new RegExp(`^[0-9]+$`);
   const charpattern = new RegExp(`^(?=.*[a-zA-Z]).{2,}$`);
-  if(value ===''){
+  if(value ===""){
     return "Please provide";
-  } else if(value.replace(/\s+/, "") === ''){
+  } else if(value.replace(/\s+/, "") === ""){
     return "Only spaces are NOT allowed for";
   }else if (numbpattern.test(value)) {
     return "Only numbers are NOT allowed for";
@@ -185,7 +185,7 @@ const removeFormErrors = () => {
   if (formerror.length>0) {
     formerror[0].remove();
   }
-  self.focusAfterError=[];
+  self.focusAfterError = [];
 };
 
 /**
@@ -293,7 +293,7 @@ const trapModalKeys = (event) => {
 **/
 const getUserInput = () => {
   const name = document.getElementById("namefield").value.toString().trim();
-  const ratingField = document.querySelector('input[name="userrating"]:checked');
+  const ratingField = document.querySelector("input[name='userrating']:checked");
   const comments = document.getElementById("commentsfield").value.toString().trim();
   let rating = 0;
   if (ratingField!=null) {
@@ -332,9 +332,9 @@ const submitNewReview = () => {
     displayReviewFormErrors(formerrors);
   }else{
     const newReview = userinput;
-    newReview.restaurant_id = parseInt(self.restaurant.id);
-    newReview.createdAt = Date.now();
-    newReview.updatedAt = Date.now();
+    newReview.restaurant_id = self.restaurant._id;
+    newReview.createdAt = new Date().toUTCString();
+    newReview.updatedAt = new Date().toUTCString();
     hideAddReviewModal();
     DBHelper.postReview(newReview).then((response)=>{
       switch (response.request_status) {
@@ -366,16 +366,17 @@ const submitReviewEditing = (editableReview = self.editableReview) => {
     parseInt(userinput.rating)===parseInt(editableReview.rating) &&
     userinput.comments.toLowerCase()===editableReview.comments.toLowerCase()) {
     hideAddReviewModal();
-  }else{
+  } else {
     const formerrors = getFormErrors(userinput);
     if (formerrors.length>0) {
       displayReviewFormErrors(formerrors);
     }else{
       const newReview = userinput;
-      newReview.restaurant_id = self.restaurant.id;
+      newReview.restaurant_id = self.restaurant._id;
       newReview.createdAt = editableReview.createdAt;
-      newReview.updatedAt = Date.now();
+      newReview.updatedAt = new Date().toUTCString();
       newReview.id = editableReview.id;
+      newReview._id = editableReview._id;
       hideAddReviewModal();
       DBHelper.updateReview(newReview).then((response)=>{
         switch (response.request_status) {
@@ -401,7 +402,7 @@ const submitReviewEditing = (editableReview = self.editableReview) => {
 const updateViewAfterReviewEdit = (editedRev) => {
   let updatedRevs = [];
   for (let i = 0; i < self.reviews.length; i++) {
-    if (self.reviews[i].id===editedRev.id) {
+    if (self.reviews[i]._id === editedRev._id) {
       updatedRevs.push(editedRev);
     }else {
       updatedRevs.push(self.reviews[i]);
@@ -417,21 +418,21 @@ const updateViewAfterReviewEdit = (editedRev) => {
 ** Delete a review.
 **/
 const deleteReview = (event) => {
-  const reviewId = event.target.id.split("_").pop();
+  let reviewId = event.target.id.split("_").pop()
   DBHelper.deleteReview(reviewId).then((response)=>{
     switch (response.request_status) {
       case "fail":
       generateFailureNotification(DBHelper.INDEXED_DB_SUPPORT);
       if (DBHelper.INDEXED_DB_SUPPORT) {
-          const deleteReview = self.reviews.filter(r => r.id == reviewId)[0];
+          const deleteReview = self.reviews.filter(r => r._id == reviewId)[0];
           DBHelper.updateIndexedDB({target: "review", data: deleteReview}, "DELETE");
-          self.reviews = self.reviews.filter(r => r.id != reviewId);
+          self.reviews = self.reviews.filter(r => r._id != reviewId);
           fillRatingStats();
           fillReviewsHTML();
         }
         break;
       default:
-        self.reviews = self.reviews.filter(r => r.id != reviewId);
+        self.reviews = self.reviews.filter(r => r._id != reviewId);
         fillRatingStats();
         fillReviewsHTML();
         break;

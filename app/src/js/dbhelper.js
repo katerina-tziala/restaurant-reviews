@@ -20,7 +20,10 @@ class DBHelper {
   **/
   static get REQUEST_HEADERS() {
     const dataheaders = new Headers();
-    dataheaders.append('Accept', 'application/json; charset=utf-8');
+    dataheaders.append("Accept", "application/json; charset=UTF-8");
+    dataheaders.append("Content-type", "application/json; charset=UTF-8");
+    dataheaders.append("x-apikey", appParams.databaseApiKey);
+    dataheaders.append("cache-control", "no-cache");
     return dataheaders;
   }
 
@@ -50,10 +53,10 @@ class DBHelper {
   **/
   static async fetchData(url) {
     const request = new Request(url, {
-      method: 'GET',
-      mode: 'cors',
-      cache: 'reload',
-      credentials:'same-origin',
+      method: "GET",
+      mode: "cors",
+      cache: "reload",
+      credentials:"same-origin",
       headers: DBHelper.REQUEST_HEADERS});
     try {
       const fetchResult = fetch(request);
@@ -72,16 +75,16 @@ class DBHelper {
     DBHelper.fetchData(url, target).then((response)=>{
       const responseData = {
         "target": target
-      }
-      if (target==="restaurants" || target==="reviews") {
+      };
+      if (target === "restaurants" || target === "reviews") {
         let refactorkey = target.substring(0, target.length-1);
-        const returnData = DBHelper.refactorData(refactorkey, response);
+        const returnData = response;
         responseData.data = returnData;
-        DBHelper.updateIndexedDB(responseData, 'GETALL');
+        DBHelper.updateIndexedDB(responseData, "GETALL");
       }else{
-        const returnData = DBHelper.refactorData(target, [response])[0];
+        const returnData = response;
         responseData.data = returnData;
-        DBHelper.updateIndexedDB(responseData, 'GET');
+        DBHelper.updateIndexedDB(responseData, "GET");
       }
       callback(null, responseData.data);
     }).catch((error) => callback(error, null));
@@ -90,27 +93,24 @@ class DBHelper {
   /**
   ** Refactor fetched data.
   **/
-  static refactorData(target, data) {
-    let returnData = JSON.parse(JSON.stringify(data));
-    switch (target) {
-      case "restaurant":
-        returnData.forEach(item => {
-          if (!('is_favorite' in item)) {
-            item.is_favorite=false;
-          }else{
-            item.is_favorite=item.is_favorite.toString()==="true"?true:false;
-          }
-          if (!('photograph' in item)) {
-            item.photograph=item.id.toString();
-          }
-        });
-        return returnData;
-        break;
-      default:
-        return returnData;
-        break;
-    }
-  }
+  // static refactorData(target, data) {
+  //   let returnData = JSON.parse(JSON.stringify(data));
+  //   switch (target) {
+  //     case "restaurant":
+  //       returnData.forEach(item => {
+  //         if (!("is_favorite" in item)) {
+  //           item.is_favorite = false;
+  //         } else {
+  //           item.is_favorite = item.is_favorite.toString()==="true" ? true : false;
+  //         }
+  //       });
+  //       return returnData;
+  //       break;
+  //     default:
+  //       return returnData;
+  //       break;
+  //   }
+  // }
 
   /**
   ** Update indexed db.
@@ -118,11 +118,11 @@ class DBHelper {
   static updateIndexedDB(response, method) {
     if (DBHelper.INDEXED_DB_SUPPORT) {
       switch (method) {
-        case 'GETALL':
+        case "GETALL":
           DBHelper.AppStore.cacheAll(response.target, response.data);
           break;
-        case 'DELETE':
-          DBHelper.AppStore.deleteOne(response.target+"s", response.data.id);
+        case "DELETE":
+          DBHelper.AppStore.deleteOne(response.target+"s", response.data._id);
           break;
         default:
           DBHelper.AppStore.cacheOne(response.target+"s", response.data);
@@ -136,15 +136,15 @@ class DBHelper {
   **/
   static fetchRestaurants(callback) {
     if (DBHelper.INDEXED_DB_SUPPORT) {
-      DBHelper.AppStore.getCachedData('restaurants').then((response) => {
+      DBHelper.AppStore.getCachedData("restaurants").then((response) => {
         if (response.length > 0) {
           callback(null, response);
-          callback = () => {}; // don't call callback again from fetch
+          callback = () => {}; // don"t call callback again from fetch
           }
-          DBHelper.getData(DBHelper.RESTAURANTS_URL,'restaurants', callback);
+          DBHelper.getData(DBHelper.RESTAURANTS_URL,"restaurants", callback);
         });
     } else {
-      DBHelper.getData(DBHelper.RESTAURANTS_URL,'restaurants', callback);
+      DBHelper.getData(DBHelper.RESTAURANTS_URL,"restaurants", callback);
     }
   }
 
@@ -153,15 +153,15 @@ class DBHelper {
   **/
   static fetchRestaurantById(id, callback) {
     if (DBHelper.INDEXED_DB_SUPPORT) {
-      DBHelper.AppStore.getCachedDataById('restaurants', parseInt(id)).then((response) => {
+      DBHelper.AppStore.getCachedDataById("restaurants", parseInt(id)).then((response) => {
         if (response.length > 0) {
           callback(null, response[0]);
-          callback = () => {}; // don't call callback again from fetch
+          callback = () => {}; // don"t call callback again from fetch
         }
-        DBHelper.getData(DBHelper.RESTAURANTS_URL+`/${id}`,'restaurant', callback);
+        DBHelper.getData(DBHelper.RESTAURANTS_URL+`/${id}`,"restaurant", callback);
       });
-    }else{
-      DBHelper.getData(DBHelper.RESTAURANTS_URL+`/${id}`,'restaurant', callback);
+    } else {
+      DBHelper.getData(DBHelper.RESTAURANTS_URL+`/${id}`,"restaurant", callback);
     }
   }
 
@@ -170,15 +170,15 @@ class DBHelper {
   **/
   static fetchReviews(callback) {
     if (DBHelper.INDEXED_DB_SUPPORT) {
-      DBHelper.AppStore.getCachedData('reviews').then((response) => {
+      DBHelper.AppStore.getCachedData("reviews").then((response) => {
         if (response.length > 0) {
           callback(null, response);
-          callback = () => {}; // don't call callback again from fetch
+          callback = () => {}; // don"t call callback again from fetch
         }
-        DBHelper.getData(DBHelper.REVIEWS_URL,'reviews', callback);
+        DBHelper.getData(DBHelper.REVIEWS_URL,"reviews", callback);
       });
     }else{
-      DBHelper.getData(DBHelper.REVIEWS_URL,'reviews', callback);
+      DBHelper.getData(DBHelper.REVIEWS_URL,"reviews", callback);
     }
   }
 
@@ -187,15 +187,17 @@ class DBHelper {
   **/
   static fetchRestaurantReviews(id, callback) {
     if (DBHelper.INDEXED_DB_SUPPORT) {
-      DBHelper.AppStore.getCachedDataByIndex('reviews', 'byRestaurant', id).then((response) => {
+      DBHelper.AppStore.getCachedDataByIndex("reviews", "byRestaurant", id).then((response) => {
         if (response.length > 0) {
           callback(null, response);
-          callback = () => {}; // don't call callback again from fetch
+          callback = () => {}; // don"t call callback again from fetch
         }
-        DBHelper.getData(DBHelper.REVIEWS_URL+`?restaurant_id=`+id,'reviews', callback);
+        const url_params = `?q={"restaurant_id":"${id}"}`;
+        DBHelper.getData(DBHelper.REVIEWS_URL + url_params,"reviews", callback);
       });
     }else{
-      DBHelper.getData(DBHelper.REVIEWS_URL+`?restaurant_id=`+id,'reviews', callback);
+      const url_params = `?q={"restaurant_id":"${id}"}`;
+      DBHelper.getData(DBHelper.REVIEWS_URL + url_params,"reviews", callback);
     }
   }
 
@@ -209,10 +211,10 @@ class DBHelper {
         callback(error, null);
       } else {
         let results = restaurants
-        if (cuisine != 'all') { // filter by cuisine
+        if (cuisine != "all") { // filter by cuisine
           results = results.filter(r => r.cuisine_type == cuisine);
         }
-        if (neighborhood != 'all') { // filter by neighborhood
+        if (neighborhood != "all") { // filter by neighborhood
           results = results.filter(r => r.neighborhood == neighborhood);
         }
         callback(null, results);
@@ -242,14 +244,14 @@ class DBHelper {
   ** Restaurant page URL.
   **/
   static urlForRestaurant(restaurant) {
-    return (`restaurant.html?id=${restaurant.id}`);
+    return (`restaurant.html?id=${restaurant._id}`);
   }
 
   /**
   ** Restaurant image URL.
   **/
   static imageUrlForRestaurant(restaurant) {
-    let image = restaurant.photograph + '.jpg';
+    let image = restaurant.photograph + ".jpg";
     return (`img/${image}`);
   }
 
@@ -257,8 +259,11 @@ class DBHelper {
   ** Mark restaurant as favorite or unmark it.
   **/
   static favoriteHandler(id, favorite) {
-    const url = DBHelper.RESTAURANTS_URL+`/${id}/?is_favorite=${favorite}`;
-    const request_params = {method: 'PUT'}
+    const url = DBHelper.RESTAURANTS_URL+`/${id}`;
+    const request_params = {
+      method: "PATCH",
+      body: JSON.stringify({is_favorite: favorite})
+    };
     return DBHelper.sendData(url, request_params, "restaurant");
   }
 
@@ -268,7 +273,7 @@ class DBHelper {
   static postReview(review) {
     const url = DBHelper.REVIEWS_URL;
     const request_params = {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(review)}
     return DBHelper.sendData(url, request_params, "review");
   }
@@ -277,13 +282,9 @@ class DBHelper {
   ** Update a review.
   **/
   static updateReview(review) {
-    let review_id = review.id;
-    if (!review_id.toString().startsWith('temp')) {
-      review_id = parseInt( review.id);
-    }
-    const url = DBHelper.REVIEWS_URL+`/${review_id}`;
+    const url = DBHelper.REVIEWS_URL+`/${review._id}`;
     const request_params = {
-      method: 'PUT',
+      method: "PATCH",
       body: JSON.stringify(review)}
     return DBHelper.sendData(url, request_params, "review");
   }
@@ -292,22 +293,24 @@ class DBHelper {
   ** Delete a review.
   **/
   static deleteReview(id) {
-    if (id.toString().startsWith('temp')) {
+    if (id.toString().startsWith("temp")) {
       return DBHelper.getTargetId(DBHelper.REVIEWS_URL+`/${id}`, "review").then(id=>{
         DBHelper.deleteExistingRequest({targetId:id, target: "review"});
         const returnData = {
             "request_status": "fail",
-            "target": 'review',
+            "target": "review",
             "data" : []
           }
         return returnData;
       });
     } else {
-      const url = DBHelper.REVIEWS_URL+`/${parseInt(id)}`;
-      const request_params = {method: 'DELETE'}
+      const url = DBHelper.REVIEWS_URL+`/${id}`;
+      const request_params = {method: "DELETE"};
       return DBHelper.sendData(url, request_params, "review");
     }
   }
+
+
 
   /**
   ** Send data to server.
@@ -326,7 +329,10 @@ class DBHelper {
         const returnData = {
           "request_status": "success",
           "target": target,
-          "data": DBHelper.refactorData(target, [jsonData])[0]
+          "data": jsonData
+        };
+        if (request_params.method === "DELETE") {
+          returnData.data = {_id: jsonData.result[0]};
         }
         DBHelper.updateIndexedDB(returnData, request_params.method);
         return Promise.resolve(returnData);
@@ -352,8 +358,8 @@ class DBHelper {
         if(url_part){
           return Promise.resolve(url_part.substring(1));
         } else {
-          return DBHelper.AppStore.getStoreKeys('failedRequests').then((response) => {
-            const nextkey = response.length+1;
+          return DBHelper.AppStore.getStoreKeys("failedRequests").then((response) => {
+            const nextkey = response.length + 1;
             return `temp${nextkey}`;
           });
         }
@@ -364,11 +370,11 @@ class DBHelper {
     ** Delete existing request.
     **/
     static deleteExistingRequest(newRequest) {
-      DBHelper.AppStore.getCachedData('failedRequests').then((response) => {
+      DBHelper.AppStore.getCachedData("failedRequests").then((response) => {
         if (response.length > 0){
           const existingRequests = response.filter(response => response.target === newRequest.target && response.targetId === newRequest.targetId);
           if(existingRequests.length > 0){
-            DBHelper.AppStore.deleteOne('failedRequests', existingRequests[0].id);
+            DBHelper.AppStore.deleteOne("failedRequests", existingRequests[0]._id);
           }
         }
       });
@@ -391,16 +397,17 @@ class DBHelper {
           "method": failed_request.method,
           "targetId": id
         }
-        if ('body' in failed_request) {
+        if ("body" in failed_request) {
           const dataload = JSON.parse(failed_request.body);
-          if (!('id' in dataload)) {
+          if (!("_id" in dataload) || !("id" in dataload)) {
+            dataload._id = id;
             dataload.id = id;
           }
           requestToStore.body = dataload;
           returnData.data = dataload;
         }
         DBHelper.deleteExistingRequest(requestToStore);
-        DBHelper.AppStore.cacheOne('failedRequests', requestToStore);
+        DBHelper.AppStore.cacheOne("failedRequests", requestToStore);
         return Promise.resolve(returnData);
       });
     } else {
@@ -412,13 +419,8 @@ class DBHelper {
   ** Sort item list by id.
   **/
   static sortByID(item_a, item_b, order_type) {
-    let optSort;
-    if(order_type==="asc"){
-      optSort =  parseFloat(item_a.id) - parseFloat(item_b.id);
-    } else {
-      optSort = parseFloat(item_b.id) - parseFloat(item_a.id);
-    }
-    return optSort;
+    const sortOrder = order_type === "asc" ? (-1) : 1;
+    return (item_a._id === item_b._id) ? 0 : item_a._id < item_b._id ? sortOrder : -sortOrder;
   }
 
   /**
@@ -439,15 +441,15 @@ class DBHelper {
   **/
   static fetchFailedRequests() {
     if (DBHelper.INDEXED_DB_SUPPORT) {
-      return DBHelper.AppStore.getCachedData('failedRequests');
+      return DBHelper.AppStore.getCachedData("failedRequests");
     }else{
       return Promise.resolve([]);
     }
   }
 
   static clearIndexedBD(){
-    DBHelper.AppStore.deleteAll('failedRequests');
-    DBHelper.AppStore.deleteAll('restaurants');
-    DBHelper.AppStore.deleteAll('reviews');
+    DBHelper.AppStore.deleteAll("failedRequests");
+    DBHelper.AppStore.deleteAll("restaurants");
+    DBHelper.AppStore.deleteAll("reviews");
   }
 }

@@ -47,7 +47,7 @@ const saveRequests = (requests) => {
     let sendingRequest = prepareRequestParams(requestToStore);
     setTimeout(() => {
       DBHelper.sendData(sendingRequest.url, sendingRequest.params, sendingRequest.target).then(response => {
-        DBHelper.AppStore.deleteOne('failedRequests', requestToStore.id);
+        DBHelper.AppStore.deleteOne("failedRequests", requestToStore._id);
         requests.shift();
         saveRequests(requests);
       });
@@ -64,7 +64,7 @@ const saveRequests = (requests) => {
 **/
 const checkForAppDataUpdate = (caughtupmessage = false) => {
   checkForFailedRequests().then((response) => {
-    if (response.length>0) {
+    if (response.length > 0) {
       generateUnsavedChangesNotification(response.length);
     } else {
       if (caughtupmessage) {
@@ -83,12 +83,12 @@ const prepareRequestParams = (request) => {
     "target": request.target,
     "params": {method: request.method}
   };
-  if ('body' in request) {
+  if ("body" in request) {
     let dataload = request.body;
-    if ('id' in dataload && dataload.id.toString().startsWith('temp') && request.targetId.startsWith('temp')) {
+    if ("_id" in dataload && dataload._id.toString().startsWith("temp") && request.targetId.startsWith("temp")) {
       request_params.url = request.url.split("/temp")[0];
-      request_params.params.method = 'POST';
-      delete dataload['id'];
+      request_params.params.method = "POST";
+      delete dataload["_id"];
       request_params.params.body = JSON.stringify(dataload);
     } else {
       request_params.params.body = JSON.stringify(dataload);

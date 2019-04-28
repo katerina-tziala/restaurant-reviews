@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
 ** Initialize the App.
 **/
 const initApp = () => {
+  registerServiceWorker();
+  DBHelper.fetchRestaurants(() => {});
+  DBHelper.fetchReviews(() => {});
   self.main = document.getElementById("main");
   self.loader = document.getElementById("loader_container");
   self.spinner = document.getElementById("spinner");
@@ -22,8 +25,6 @@ const initApp = () => {
   self.notificationTimeout = 0;
   self.notificationInterval = 0;
   self.notificationCountdown = 0;
-  registerServiceWorker();
-  DBHelper.fetchRestaurants(() => {});
   initView();
   setTimeout(() => {
     if(navigator.online){
@@ -130,9 +131,9 @@ window.addEventListener("offline", (event) => {
 ** Register service worker.
 **/
 const registerServiceWorker = () => {
-  if ('serviceWorker' in navigator) {
+  if ("serviceWorker" in navigator) {
     // Register the service worker
-    navigator.serviceWorker.register('ServiceWorker.js', {scope: appParams.app_scope}).then(reg => {
+    navigator.serviceWorker.register("ServiceWorker.js", {scope: appParams.app_scope}).then(reg => {
       if (!navigator.serviceWorker.controller) {
         return;
       }
@@ -144,14 +145,14 @@ const registerServiceWorker = () => {
         trackInstalling(reg.installing);
         return;
       }
-      reg.addEventListener('updatefound', () =>{
+      reg.addEventListener("updatefound", () =>{
         trackInstalling(reg.installing);
       });
     }).catch((error) => {
-        console.log('Oh No! Service Worker registration failed! Error: ' + error);
+        console.log("Oh No! Service Worker registration failed! Error: " + error);
       });
   } else {
-    console.log('Oh No! Service Workers are not supported!');
+    console.log("Oh No! Service Workers are not supported!");
   }
 };
 
@@ -159,8 +160,8 @@ const registerServiceWorker = () => {
 ** Track service worker installation.
 **/
 const trackInstalling = (worker) => {
-  worker.addEventListener('statechange', () => {
-    if(worker.state == 'installed'){
+  worker.addEventListener("statechange", () => {
+    if(worker.state == "installed"){
       updateReady(worker);
     }
   });
@@ -185,7 +186,7 @@ const dismissUpdate = (event) => {
 ** Update the app.
 **/
 const updateApp = (event) => {
-  self.newSWorker.postMessage({action: 'skipWaiting'});
+  self.newSWorker.postMessage({action: "skipWaiting"});
   hideNotification();
   self.newSWorker = null;
 };

@@ -62,14 +62,14 @@ class InterfaceManager {
   static getParameterByName(name, url) {
     if (!url)
       url = window.location.href;
-    name = name.replace(/[\[\]]/g, '\\$&');
+    name = name.replace(/[\[\]]/g, "\\$&");
     const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`),
       results = regex.exec(url);
     if (!results)
       return null;
     if (!results[2])
-      return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      return "";
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
   }
 
   /**
@@ -99,7 +99,7 @@ class InterfaceManager {
   ** Decode HTML entities.
   **/
   static decodeEntities(encodedString) {
-    let textArea = document.createElement('textarea');
+    let textArea = document.createElement("textarea");
     textArea.innerHTML = encodedString;
     return textArea.value;
   }
@@ -119,8 +119,8 @@ class InterfaceManager {
   **/
   static getTime(dateToGetTime) {
     let date = new Date(dateToGetTime),
-        hours = (date.getHours()<10?'0':'') + date.getHours(),
-        minutes = (date.getMinutes()<10?'0':'') + (date.getMinutes());
+        hours = (date.getHours()<10?"0":"") + date.getHours(),
+        minutes = (date.getMinutes()<10?"0":"") + (date.getMinutes());
     return hours+":"+ minutes;
   }
 
@@ -191,7 +191,7 @@ class InterfaceManager {
   ** Remove freezer layer.
   **/
   static removeFreezer() {
-    const freezer = document.querySelectorAll('.freezer');
+    const freezer = document.querySelectorAll(".freezer");
     if (freezer.length>0) {
       freezer[0].remove();
     }

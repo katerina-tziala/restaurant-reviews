@@ -23,7 +23,7 @@ class DataStore {
   //create object store
   createStore(upgradeDb, storename, autoIncrement = false) {
     return upgradeDb.createObjectStore(storename, {
-      keyPath: "id",
+      keyPath: "_id",
       autoIncrement: autoIncrement
     });
   }
