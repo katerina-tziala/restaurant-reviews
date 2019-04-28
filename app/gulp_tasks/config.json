@@ -4,7 +4,7 @@
     "dist" : "./dist"
   },
   "app_params" : {
-    "path":"_APP_PATH",
+    "path":"_APP_PATH_",
     "start_url": "_START_URL_",
     "scope": "_SCOPE_",
     "mapboxkey": "_MAPBOX_API_KEY_",
