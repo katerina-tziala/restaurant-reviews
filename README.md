@@ -26,4 +26,5 @@ After an extensive research, I decided to use
 
  - **Create DB & Collection**<br>
     - After creating an account, the first thing to do was to create a database.
-    - Once the database was created I added two collections (a collection is the equivalent of a table or spreadsheet): ***restaurants*** and ***reviews***.
+    - Once the database was created I added two collections (a collection is the equivalent of a table or spreadsheet), with the required fields and relations for each one of them: ***restaurants*** and ***reviews***.
+    - Finally, I added the data in the collections.
