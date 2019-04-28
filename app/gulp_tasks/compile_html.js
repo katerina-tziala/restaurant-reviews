@@ -29,11 +29,11 @@ gulp.task('compile_html', function(done){
       gulp.src([pages[i]])
       .pipe(htmlreplace({
           js: {
-            src: 'js/app.min.js',
+            src: config.app_params.path + 'js/app.min.js',
             tpl: '<script src="%s" charset="utf-8" type="application/javascript"></script>'
           },
           css: {
-            src: 'css/critical.min.css',
+            src: config.app_params.path +'css/critical.min.css',
             tpl: '<link href="%s" rel="stylesheet" charset="utf-8" type="text/css">'
           },
           favicon: {

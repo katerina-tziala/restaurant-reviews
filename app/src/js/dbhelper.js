@@ -91,28 +91,6 @@ class DBHelper {
   }
 
   /**
-  ** Refactor fetched data.
-  **/
-  // static refactorData(target, data) {
-  //   let returnData = JSON.parse(JSON.stringify(data));
-  //   switch (target) {
-  //     case "restaurant":
-  //       returnData.forEach(item => {
-  //         if (!("is_favorite" in item)) {
-  //           item.is_favorite = false;
-  //         } else {
-  //           item.is_favorite = item.is_favorite.toString()==="true" ? true : false;
-  //         }
-  //       });
-  //       return returnData;
-  //       break;
-  //     default:
-  //       return returnData;
-  //       break;
-  //   }
-  // }
-
-  /**
   ** Update indexed db.
   **/
   static updateIndexedDB(response, method) {
@@ -153,7 +131,7 @@ class DBHelper {
   **/
   static fetchRestaurantById(id, callback) {
     if (DBHelper.INDEXED_DB_SUPPORT) {
-      DBHelper.AppStore.getCachedDataById("restaurants", parseInt(id)).then((response) => {
+      DBHelper.AppStore.getCachedDataById("restaurants", id).then((response) => {
         if (response.length > 0) {
           callback(null, response[0]);
           callback = () => {}; // don"t call callback again from fetch
