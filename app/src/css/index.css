@@ -1,0 +1,165 @@
+@charset "utf-8";
+/* CSS Document */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~ FILTERS ~~~~~~~~~~~~~~~~~~~~~~~~ */
+#filterOptions {
+  width: 100%;
+  background-color: #cfd9e2;
+  padding: 20px;
+  flex-flow: row wrap;
+}
+#filterOptions > h2 {
+  width: 100%;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: #1c262f;
+  margin-bottom: 25px;
+  height: auto;
+}
+.filter_tag {
+  text-transform: capitalize;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~ FILTER RESULTS ~~~~~~~~~~~~~~~~~~~~~~~~ */
+#filterResults {
+  width: 100%;
+  color: #fff;
+  background-color: #323b43;
+}
+.filterResultsHeader {
+    width: 100%;
+    font-weight: 400;
+    padding: 10px;
+}
+.filterResultsHeader > span {
+  font-size: 1.2rem;
+  display: block;
+  margin-right: 20px;
+}
+#mapButton {
+  background-color: #fff;
+  color: #1c262f;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~ RESTAURANT LIST ~~~~~~~~~~~~~~~~~~~~~~~~ */
+.list_container {
+  width: 100%;
+  padding: 16px;
+  background-color: #f2f2f2;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: center;
+}
+.restaurantCard {
+  display: block;
+  width: 250px;
+  height: 400px;
+	position: relative;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.15), 0 2px 9px 1px rgba(0, 0, 0, 0.15), 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  margin: 16px;
+  padding: 8px;
+  overflow: hidden;
+}
+.imageContainer {
+	background-color: #fff;
+	height: 178px;
+	color: #fff;
+	text-align: center;
+	font-size: 5rem;
+	line-height: 168px;
+	position: relative;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.restaurantImg {
+  width: auto;
+	height: 100%;
+	margin: auto;
+	display: block;
+	font-size: 1.1rem;
+	color: #000;
+	line-height: 1.2rem;
+}
+.restaurantName{
+	color: #ca5000;
+	letter-spacing: 0;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  word-spacing: 4px;
+  min-height: 50px;
+  margin: 0 8px;
+  border-bottom: 1px dashed #ca5000;
+}
+.neighborhood {
+	font-size: 1.1rem;
+  padding: 8px;
+  color: #000;
+  margin: 0 8px;
+}
+.address {
+	font-size: 1rem;
+	height: 50px;
+  padding: 0 8px;
+  color: #4d4d4d;
+  margin: 0 8px;
+}
+.more {
+	border-radius: 10px;
+  color: #ffffff;
+  display: block;
+  height: 48px;
+  width: 180px;
+  font-size: 1rem;
+  margin: auto;
+  margin-top: 5px;
+  text-transform: uppercase;
+  line-height: 48px;
+  cursor: pointer;
+  text-align: center;
+  letter-spacing: 0.1rem;
+  text-decoration: none!important;
+  background-color: #ca5000;
+  color: #fff;
+}
+.more:hover, .more:focus {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.15), 0 2px 9px 1px rgba(0, 0, 0, 0.15), 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+	outline: none;
+	color: #1c262f;
+	background-color: #ff751a;
+}
+/* ~~~~~~~~~~~~~~~~~~ RESPONSIVE DESIGN WITH MEDIA QUERIES ~~~~~~~~~~~~~~~~~~ */
+@media screen and (max-width: 500px) {
+  #filterOptions {
+    flex-flow: column nowrap;
+    padding-bottom: 30px;
+  }
+}
+@media screen and (min-width: 840px) and (max-width: 900px) {
+  .restaurantCard {
+    margin: 1%;
+  }
+}
+@media screen and (min-width: 778px) and (max-width: 848px) {
+  .restaurantCard {
+    width: 100%;
+    max-width: 350px;
+    margin: 1%;
+    height: 480px;
+  }
+  .imageContainer {
+    height: 260px;
+  }
+}
+@media screen and (min-width: 405px) and (max-width: 612px) {
+  .restaurantCard {
+    width: 100%;
+    max-width: 350px;
+    margin: 16px;
+    height: 480px;
+  }
+  .imageContainer {
+    height: 260px;
+  }
+}

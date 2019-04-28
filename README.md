@@ -39,5 +39,3 @@ This repository is split into the following branches based on the app's phase of
   - [**master**](https://github.com/katerina-tziala/restaurant_reviews_app)**:** 
  The master branch contains the live demo of the app (*docs folder*), the source code of the app (*currently synchronized to **restaurant_reviews-stage_4** branch*), and the images used to describe all README files of this repository.
 
-
-
