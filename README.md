@@ -102,7 +102,8 @@ After an extensive research, I decided to use
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/app_params.png" alt="change app parameters" width="80%" height="auto">
 </p>
 
-**4.** Update the Service Worker files in the *config.json* file inside the **gulp_tasks** folder.
+**4.** Update the scope of the Service Worker files in the *config.json* file inside the **gulp_tasks** folder:<br>
+       <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/sw_scope.png" alt="service worker scope of localhost" width="40%" height="auto">  to         <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/sw_demo_scope.png" alt="service worker scope of demo app" width="40%" height="auto">
 
 **5.** Navigate from your terminal inside the /app folder and run ***gulp*** to bundle and build the app.
 <p align="center">
@@ -111,7 +112,7 @@ After an extensive research, I decided to use
 
 **5.** Upload all files located in the ***/dist*** folder of the project to the ***docs*** folder of the master branch in one of your github repositories.
 
-**6.** In the ***settings*** of your repository, in the **GitHub Pages** section, select the **/docs** to build and launch your app.
+**6.** In the **GitHub Pages** section of your repository settings, select the **/docs** to build and launch your app.
         <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/github_pages.png" alt="github pages" width="80%" height="auto"></p>
 
 
