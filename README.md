@@ -29,7 +29,7 @@ This repository is split into the following branches based on the app's phase of
 <h2>Technologies & APIs</h2>
 
  - CSS3, Flexbox and Media Queries for Responsive Design
- - Semantic HTML5 markup and ARIA atributes for Accessibility and Screen Reader/Assistive Technology capabilities
+ - Semantic HTML5 markup and ARIA atributes for Accessibility (Screen Reader & Assistive Technologies features)
  - Vanilla Javascript & JavaScript Promises following the ES6 JavaScript Syntax (arrow functions, destructuring, sting literals, sets, etc.)
  - Pulling data through Asynchronous Requests (AJAX) from live data sources with the use of the fetch() API
  - Cache API, ServiceWorker and IndexedDB for Offline-First capability
