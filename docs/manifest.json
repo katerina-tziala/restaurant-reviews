@@ -10,7 +10,7 @@
     "src": "ServiceWorker.js",
     "scope": "/"
   },
-  "start_url": "_START_URL_",
+  "start_url": "https://katerina-tziala.github.io/restaurant_reviews_app/index.html",
   "theme_color": "#ca5000",
   "lang": "en-US",
   "icons": [
