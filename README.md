@@ -1,4 +1,18 @@
 <h1>Restaurant Reviews App</h1>
+<br><br>
+
+<h2>Technologies & APIs</h2>
+
+ - CSS3, Flexbox and Media Queries for Responsive Design
+ - [**Fontawesome**](https://fontawesome.com/) icons to enrich User Interfaces
+ - Semantic HTML5 markup and ARIA atributes for Accessibility (Screen Reader & Assistive Technologies features)
+ - Vanilla Javascript & JavaScript Promises following the ES6 JavaScript Syntax (arrow functions, destructuring, sting literals, sets, etc.)
+ - Pulling data through Asynchronous Requests (AJAX) from live data sources with the use of the fetch() API
+ - Cache API, ServiceWorker and IndexedDB for Offline-First capability
+ - Progressive Web App features (Service Worker, App Manifest, Caching, Metatags, etc.)
+ - Implementation of a build system with Gulp for a highly optimized and performant app (90+ Audit metrics for Performance, Accessibility, PWA)
+<br><br>
+
 <h2>Branches</h2>
 This repository is split into the following branches based on the app's phase of development.
 
@@ -24,18 +38,6 @@ This repository is split into the following branches based on the app's phase of
  
   - [**master**](https://github.com/katerina-tziala/restaurant_reviews_app)**:** 
  The master branch contains the live demo of the app (*docs folder*), the source code of the app (*currently synchronized to **restaurant_reviews-stage_4** branch*), and the images used to describe all README files of this repository.
-<br><br>
 
-<h2>Technologies & APIs</h2>
-
- - CSS3, Flexbox and Media Queries for Responsive Design
- - [**Fontawesome**](https://fontawesome.com/) icons to enrich User Interfaces
- - Semantic HTML5 markup and ARIA atributes for Accessibility (Screen Reader & Assistive Technologies features)
- - Vanilla Javascript & JavaScript Promises following the ES6 JavaScript Syntax (arrow functions, destructuring, sting literals, sets, etc.)
- - Pulling data through Asynchronous Requests (AJAX) from live data sources with the use of the fetch() API
- - Cache API, ServiceWorker and IndexedDB for Offline-First capability
- - Progressive Web App features (Service Worker, App Manifest, Caching, Metatags, etc.)
- - Implementation of a build system with Gulp for a highly optimized and performant app (90+ Audit metrics for Performance, Accessibility, PWA)
- 
 
 
