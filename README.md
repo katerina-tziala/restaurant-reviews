@@ -36,7 +36,7 @@ to retrieve JSON data. The preparation to start working on this project and impl
  - **_APP_PATH:** The url of the path of the app (e.g.: http://localhost:8887/)
  - **_START_URL_:** The url of the index.html file (e.g.: http://localhost:8887/index.html)
  - **_SCOPE_:** Scope of application
- - **_MAPBOX_API_KEY_:** Add your [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE)
+ - **_MAPBOX_API_KEY_:** Add your own [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE)
   - **_RESTAURANTS_URL_:** The url to fetch the restaurants, which can be found in the README file of the [**stage-2 Node development server**](https://github.com/udacity/mws-restaurant-stage-2) 
 <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_2/app_params.png" alt="change app parameters" width="80%" height="auto">
