@@ -4,7 +4,7 @@ This is the fourth stage of the <b>Restaurant Reviews</b> project. Building upon
 
 <h2>Project Requirements</h2>
 
-  - **Update the app to work with a hosted NoSQL Database and RESTful API:** Set up a NoSQL Database that contains the required data of the app, and create RESTful API to perform CRUD (Create, Read, Update, Delete) operations against the DB. Update the client application in order to make use of the new API.
+  - **Update the app to work with a hosted NoSQL Database and a RESTful API:** Set up a NoSQL Database that contains the required data of the app, and create RESTful API to perform CRUD (Create, Read, Update, Delete) operations against the DB. Update the client application in order to make use of the new API.
    
  - **Responsive Design:** The application maintains a responsive design on mobile, tablet and desktop viewports. All new features are responsive, including the form to add a review and the control for marking a restaurant as a favorite.
 
@@ -15,4 +15,9 @@ This is the fourth stage of the <b>Restaurant Reviews</b> project. Building upon
    - **Performance** score should be at **90 or better**.
    - **Accessibility** score should be at **90 or better**.
 <br><br>
+
+
+<h2>Setting up a hosted NoSQL Database and a RESTful API</h2>
+For this stage an online database solution that offers both NoSQL DB storage and exposes a RESTful API was required. After an extensive research I decided to use [**restdb.io**](https://restdb.io/): a NoSQL database cloud service, Database-as-a-Service (DBaaS), that offers the online NoSQL database backend for web and serverless applications. Furthermore, it is a simple to use, developer friendly and no-cost NoSQL database with data management app, schema builder, and REST API instantly available [**restdb.io features**](https://restdb.io/features/). 
+
 
