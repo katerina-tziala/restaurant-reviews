@@ -103,7 +103,7 @@ After an extensive research, I decided to use
 </p>
 
 **4.** Update the scope of the Service Worker in the *config.json* file inside the **gulp_tasks** folder:<br>
-     from   <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/sw_scope.png" alt="service worker scope of localhost" width="44%" height="auto">  to  <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/sw_demo_scope.png" alt="service worker scope of demo app" width="40%" height="auto">
+     from   <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/sw_scope.png" alt="service worker scope of localhost" width="46%" height="auto">  to  <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/sw_demo_scope.png" alt="service worker scope of demo app" width="40%" height="auto">
 
 **5.** Navigate from your terminal inside the /app folder and run ***gulp*** to bundle and build the app.
 <p align="center">
