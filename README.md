@@ -30,13 +30,17 @@ After an extensive research, I decided to use
       <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/create_database.png" alt="create database" width="100%" height="auto">
     </p>
     - Once the database was created I added two collections, with the required fields and relations for each one of them: ***restaurants*** and ***reviews***.
-      <br>
-      
-      1. ***restaurants collection***
-     <p align="center">
-        <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/create_database.png" alt="create database" width="100%" height="auto">
+    <br>
+    <p align="center">
+      <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/collections.png" alt="database collections" width="80%" height="auto">
     </p>
+      1. ***restaurants collection***
+        <p align="center">
+        <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/restaurants_collection.png" alt="restaurants collection" width="80%" height="auto">
+        </p>
     
       2. ***reviews collection***.
-      
+         <p align="center">
+          <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/reviews_collection.png" alt="reviews collection" width="80%" height="auto">
+        </p>
     - Finally, I added the data in the collections.
