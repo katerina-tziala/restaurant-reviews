@@ -82,3 +82,38 @@ After an extensive research, I decided to use
 </p>
 
 **6.** Launch the website with the ***Web Server for Chrome*** app!<br><br>
+<br><br>
+ 
+<h2>Upload a Live Demo</h2>
+
+**1.** Fork and clone the [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_4) repository.
+
+**2.** Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
+
+**3.**  Make sure that the ***app_params*** of in the *config.json* file inside the **gulp_tasks** folder are defined appropriately:
+ - **_APP_PATH:** The url of the path of the app (`https://katerina-tziala.github.io/restaurant_reviews_app/`).
+ - **_START_URL_:** The url of the index.html file (`https://katerina-tziala.github.io/restaurant_reviews_app/index.html`).
+ - **_SCOPE_:** Scope of application (`/restaurant_reviews_app/`).
+ - **_DATABASE_API_KEY:** Add your own API key for the [**restdb.io**](https://restdb.io/) database. 
+ - **_MAPBOX_API_KEY_:** Add your own [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE).
+  - **_RESTAURANTS_URL_:** The url to fetch the restaurants, which is provided from the [**restdb.io**](https://restdb.io/).
+  - **_REVIEWS_URL_:** The url to fetch the reviews, which is provided from the [**restdb.io**](https://restdb.io/).
+<p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/app_params.png" alt="change app parameters" width="80%" height="auto">
+</p>
+
+**4.** Update the Service Worker files in the *config.json* file inside the **gulp_tasks** folder.
+
+**5.** Navigate from your terminal inside the /app folder and run ***gulp*** to bundle and build the app.
+<p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/bundle_app.png" alt="running gulp to build the app" width="80%" height="auto">
+</p>
+
+**5.** Upload all files located in the ***/dist*** folder of the project to the ***docs*** folder of the master branch in one of your github repositories.
+
+**6.** Navigate to the setting of your repository and in the **GitHub Pages** section select the **/docs** to build and launch your app.
+        <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/github_pages.png" alt="github pages" width="80%" height="auto"></p>
+
+
+
+
