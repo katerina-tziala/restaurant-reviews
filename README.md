@@ -23,4 +23,4 @@ After an extensive research, I decided to use  a NoSQL database cloud service, D
 [restdb.io features](https://restdb.io/features/)
 
 
-[**restdb.io**](https://restdb.io/) :
+[**restdb.io**](https://restdb.io/) : a NoSQL database cloud service, Database-as-a-Service (DBaaS), that offers the online NoSQL database backend for web and serverless applications. Furthermore, it is a simple to use, developer friendly and no-cost NoSQL database with data management app, schema builder, and REST API instantly available
