@@ -134,8 +134,8 @@ When launching the app locally all metrics (Responsive Design, Accessibility, Pe
 <br><br>
 
 <h2>Progressive Wep App</h2>
-The ***Restaurant Reviews App*** is a PWA. Such web applications are installable and live on the user's home screen, without the need for an app store. In stages 2 and 3 it was illustrated how the app can be installed on the home page of the ***Chrome*** browser. The following figure illustrates how the app can be installed on a mobile device.<br>
 
+The  ***Restaurant Reviews App***  is a PWA. Such web applications are installable and live on the user's home screen, without the need for an app store. In stages 2 and 3 it was illustrated how the app can be installed on the home page of the  ***Chrome***  browser. The following figure illustrates how the app can be installed on a mobile device.<br><br>
  <p align="center">
   <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/rr_pwa_mobile.png" alt="installing the app on a mobile device" width="100%" height="auto">
   </p>
