@@ -111,7 +111,7 @@ After an extensive research, I decided to use
 
 **5.** Upload all files located in the ***/dist*** folder of the project to the ***docs*** folder of the master branch in one of your github repositories.
 
-**6.** Navigate to the setting of your repository and in the **GitHub Pages** section select the **/docs** to build and launch your app.
+**6.** In the ***settings*** of your repository, in the **GitHub Pages** section, select the **/docs** to build and launch your app.
         <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/github_pages.png" alt="github pages" width="80%" height="auto"></p>
 
 
