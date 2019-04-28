@@ -2,7 +2,7 @@
 
 
 
-<h2>Technologies & APIs</h2>
+<h2>Technologies, APIs, and Features</h2>
 
  - CSS3, Flexbox and Media Queries for Responsive Design
  - [**Fontawesome**](https://fontawesome.com/) icons to enrich User Interfaces
