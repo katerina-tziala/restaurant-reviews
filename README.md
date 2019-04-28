@@ -11,7 +11,7 @@ This repository is split into the following branches based on the app's phase of
    - Performance >70
    - Accessibility >90
 
- - [**restaurant_reviews-stage_3**](https://github.com/katerina-tziala/restaurant/blob/restaurant_reviews-stage_3/README.md)**:** Building upon the responsive, accessible and connected application that was developed incrementally in the first two stages, the app should now provide additional functionality. Users should now be able to create their own reviews and add restaurants in their favorites list. If the app is offline, form submissions should defer updating to the remote database until a connection is established.Required performance benchmarks:
+ - [**restaurant_reviews-stage_3**](https://github.com/katerina-tziala/restaurant/blob/restaurant_reviews-stage_3/README.md)**:** Building upon the responsive, accessible and connected application that was developed incrementally in the first two stages, the app should now provide additional functionality. Users should now be able to create their own reviews and add restaurants in their favorites list. If the app is offline, form submissions should defer updating to the remote database until a connection is established. Required performance benchmarks:
  
    - Progressive Web App >90
    - Performance >90
@@ -19,17 +19,22 @@ This repository is split into the following branches based on the app's phase of
 
    <i>The app now must be run alongside with the [**mws-stage-restaurant-stage-3**](https://github.com/udacity/mws-restaurant-stage-3) back end data server.</i>
  
+ - [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant/blob/restaurant_reviews-stage_4/README.md)**:** 
+ Building upon the PWA that was developed incrementally in the three previous stages, the app should now connect to an online backend server (hosted NoSQL DB with a RESTful API) in order to facilitate a live demo of the app. Responsive design, accessibility, functionality and performance metrics should be retained.
+ 
+  - [**master**](https://github.com/katerina-tziala/restaurant_reviews_app)**:** 
+ The master branch contains the live demo of the app (*docs folder*), the source code of the app (*currently synchronized to **restaurant_reviews-stage_4** branch*), and the images used to describe all README files of this repository.
+<br><br>
+
+<h2>Technologies & APIs</h2>
+
+ - CSS3, Flexbox and Media Queries for Responsive Design
+ - Semantic HTML5 markup and ARIA atributes for Accessibility and Screen Reader/Assistive Technology capabilities
+ - Vanilla Javascript & JavaScript Promises following the ES6 JavaScript Syntax (arrow functions, destructuring, sting literals, sets, etc.)
+ - Pulling data through Asynchronous Requests (AJAX) from live data sources with the use of the fetch() API
+ - Cache API, ServiceWorker and IndexedDB for Offline-First capability
+ - Progressive Web App features (Service Worker, App Manifest, Caching, Metatags, etc.)
+ - Implementation of a build system with Gulp for a highly optimized and performant app (90+ Audit metrics for Performance, Accessibility, PWA)
+ 
 
 
-
-
-
-<h2>asd</h2>
-
- - CSS3, Flexbox and media queries for responsive design
- - Semantic HTML5 markup and ARIA atributes for accessibility
- - Vanilla Javascript following the ES6 JavaScript Syntax (arrow functions, destructuring, sting literals, sets, etc.)
- -  Cache API and a ServiceWorker for offline use
- - Pull data through Ajax (Fetch API) from a live data source
- - Cache the JSON response data on the client with IndexedDB for offline access
- - Create a build system with  Gulp
