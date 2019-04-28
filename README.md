@@ -29,8 +29,14 @@ After an extensive research, I decided to use
     <p align="center">
       <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/create_database.png" alt="create database" width="100%" height="auto">
     </p>
-    - Once the database was created I added two collections, with the required fields and relations for each one of them: 
+    - Once the database was created I added two collections, with the required fields and relations for each one of them: ***restaurants*** and ***reviews***.
+      <br>
       
-      1 ***restaurants collection***
-      2 ***reviews collection***.
+      1. ***restaurants collection***
+     <p align="center">
+        <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/create_database.png" alt="create database" width="100%" height="auto">
+    </p>
+    
+      2. ***reviews collection***.
+      
     - Finally, I added the data in the collections.
