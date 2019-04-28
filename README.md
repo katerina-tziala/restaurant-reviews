@@ -73,7 +73,7 @@ After an extensive research, I decided to use
 
 **4.** Navigate from your terminal inside the /app folder and run ***gulp*** to bundle and build the app.
 <p align="center">
-    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/bundle_app.png" alt="running gulp to build the app" width="80%" height="auto">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/bundle_app.png" alt="running gulp to build the app" width="80%" height="auto">
 </p>
 
 **5.** Choose the /dist folder of the project from the *Web Server for Chrome* app.
