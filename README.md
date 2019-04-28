@@ -117,6 +117,20 @@ After an extensive research, I decided to use
 
 **7.** Access the ***Restaurant Reviews App*** here:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<a class="button" href="https://katerina-tziala.github.io/restaurant_reviews_app/index.html" aria-label="access live demo"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_live_demo_btn.png" alt="live demo" width="100px" height="auto"></a>
+<br>
+
+<h2>Auditing the Restaurant Reviews App</h2>
+When launching the app locally all metrics (Responsive Design, Accessibility, Performance) are maintained. For the ***Live Demo*** of the app, performance metrics are illustraded in the following figures:
+
+   - **Lighthouse Metrics for index.html**
+   <p align="center">
+      <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/RR-S4_audit_index.png" alt="lighthouse metrincs for index page" width="100%" height="auto">
+      </p><br>
+
+   - **Lighthouse Metrics for restaurant.html**
+   <p align="center">
+      <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/RR-S4_audit_restaurant.png" alt="lighthouse metrincs for restaurant page" width="100%" height="auto">
+      </p><br>
 
 
 
