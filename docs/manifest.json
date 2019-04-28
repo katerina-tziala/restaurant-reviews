@@ -10,7 +10,7 @@
     "src": "ServiceWorker.js",
     "scope": "/"
   },
-  "start_url": "https://katerina-tziala.github.io/restaurant/index.html",
+  "start_url": "_START_URL_",
   "theme_color": "#ca5000",
   "lang": "en-US",
   "icons": [
