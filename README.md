@@ -25,7 +25,7 @@ This repository is split into the following branches based on the app's phase of
    - Performance >70
    - Accessibility >90
 
- - [**restaurant_reviews-stage_3**](https://github.com/katerina-tziala/restaurant/blob/restaurant_reviews-stage_3/README.md)**:** Building upon the responsive, accessible and connected application that was developed incrementally in the first two stages, the app should now provide additional functionality. Users should now be able to create their own reviews and add restaurants in their favorites list. If the app is offline, form submissions should defer updating to the remote database until a connection is established. Required performance benchmarks:
+ - [**restaurant_reviews-stage_3**](https://github.com/katerina-tziala/restaurant_reviews_app/tree/restaurant_reviews-stage_3)**:** Building upon the responsive, accessible and connected application that was developed incrementally in the first two stages, the app should now provide additional functionality. Users should now be able to create their own reviews and add restaurants in their favorites list. If the app is offline, form submissions should defer updating to the remote database until a connection is established. Required performance benchmarks:
  
    - Progressive Web App >90
    - Performance >90
@@ -33,7 +33,7 @@ This repository is split into the following branches based on the app's phase of
 
    <i>The app now must be run alongside with the [**mws-stage-restaurant-stage-3**](https://github.com/udacity/mws-restaurant-stage-3) back end data server.</i>
  
- - [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant/blob/restaurant_reviews-stage_4/README.md)**:** 
+ - [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant/blob/restaurant_reviews-stage_4)**:** 
  Building upon the PWA that was developed incrementally in the three previous stages, the app should now connect to an online backend server (hosted NoSQL DB with a RESTful API) in order to facilitate a live demo of the app. Responsive design, accessibility, functionality and performance metrics should be retained.
  
   - [**master**](https://github.com/katerina-tziala/restaurant_reviews_app)**:** 
