@@ -4,37 +4,6 @@ const imagesCacheName = "rr-images-v1";
 const appCaches = [staticCacheName, imagesCacheName];
 //files to be cached
 const cacheFiles = [_APP_CACHE_FILES_];
-/*
-const cacheFiles = [
-  "/",
-  "index.html",
-  "restaurant.html",
-  "js/app.js",
-  "js/datastore.js",
-  "js/dbhelper.js",
-  "js/favorite_toggler.js",
-  "js/fileLoader.js",
-  "js/idb.js",
-  "js/index.js",
-  "js/interface_manager.js",
-  "js/map.js",
-  "js/notifications.js",
-  "js/restaurant.js",
-  "js/reviews.js",
-  "js/select_widget.js",
-  "js/update_when_online.js",
-  "js/variables.js",
-  "css/critical.css",
-  "css/add_review.css",
-  "css/favorite_toggler.css",
-  "css/index.css",
-  "css/map.css",
-  "css/no_results_message.css",
-  "css/notifications.css",
-  "css/restaurant.css",
-  "css/reviews.css",
-  "css/select_widget.css"
-];*/
 //images to be cached
 const cacheImages = [
   "favicon.ico",
