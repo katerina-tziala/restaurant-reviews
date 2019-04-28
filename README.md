@@ -38,7 +38,13 @@ After an extensive research, I decided to use
       1. ***restaurants collection***
         <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/restaurants_collection.png" alt="restaurants collection" width="100%" height="auto"></p>
     
-      2. ***reviews collection***.
+      2. ***reviews collection***
          <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/reviews_collection.png" alt="reviews collection" width="100%" height="auto"></p>
         
-    - Finally, I added the data in the collections.
+    - Finally, I added the necessary data for each collection.
+     
+     1. ***restaurants collection data***
+        <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/restaurants_data.png" alt="restaurants collection data" width="100%" height="auto"></p>
+        
+      2. ***reviews collection data***
+         <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/reviews_data.png" alt="reviews collection data" width="100%" height="auto"></p>
