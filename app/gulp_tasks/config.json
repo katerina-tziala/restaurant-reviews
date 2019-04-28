@@ -4,7 +4,7 @@
     "dist" : "./dist"
   },
   "app_params" : {
-    "path":"_START_URL_",
+    "path":"_APP_PATH_",
     "start_url": "_START_URL_",
     "scope": "_SCOPE_",
     "databaseApiKey": "_DATABASE_API_KEY",
