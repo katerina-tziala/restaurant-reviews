@@ -34,13 +34,15 @@ After an extensive research, I decided to use
     <p align="center">
       <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/collections.png" alt="database collections" width="100%" height="auto">
     </p>
+    
       1. ***restaurants collection***
         <p align="center">
-        <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/restaurants_collection.png" alt="restaurants collection" width="80%" height="auto">
+        <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/restaurants_collection.png" alt="restaurants collection" width="100%" height="auto">
         </p>
     
       2. ***reviews collection***.
          <p align="center">
-          <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/reviews_collection.png" alt="reviews collection" width="80%" height="auto">
+          <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/reviews_collection.png" alt="reviews collection" width="100%" height="auto">
         </p>
+        
     - Finally, I added the data in the collections.
