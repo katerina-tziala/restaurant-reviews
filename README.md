@@ -1,41 +1,142 @@
-<h1>Restaurant Reviews App</h1>
+<h1>Restaurant Reviews App: Stage 4</h1>
+This is the fourth stage of the <b>Restaurant Reviews</b> project. Building upon the PWA that was developed incrementally in the three previous stages, this stage includes the necessary changes to host the app and create a live demo. 
+
+
+<h2>Project Requirements</h2>
+
+  - **Update the app to work with a hosted NoSQL Database and a RESTful API:** Set up a NoSQL Database that contains the required data of the app, and create RESTful API to perform CRUD (Create, Read, Update, Delete) operations against the DB. Update the client application in order to make use of the new API.
+   
+ - **Responsive Design:** The application maintains a responsive design on mobile, tablet and desktop viewports. All new features are responsive, including the form to add a review and the control for marking a restaurant as a favorite.
+
+ - **Accessibility:** The application retains accessibility features from the previous projects. Images have alternate text, the application uses appropriate focus management for navigation, semantic elements and ARIA attributes are used correctly. Roles are correctly defined for all elements of the review form. Modal or interstitial windows appropriately lock focus.
+
+ - **Performance Requirements:** The application still satisfies performance benchmarks (measure performance using the Lighthouse):
+   - **Progressive Web App** score should be at **90 or better**.
+   - **Performance** score should be at **90 or better**.
+   - **Accessibility** score should be at **90 or better**.
 <br><br>
 
-<h2>Technologies & APIs</h2>
 
- - CSS3, Flexbox and Media Queries for Responsive Design
- - [**Fontawesome**](https://fontawesome.com/) icons to enrich User Interfaces
- - Semantic HTML5 markup and ARIA atributes for Accessibility (Screen Reader & Assistive Technologies features)
- - Vanilla Javascript & JavaScript Promises following the ES6 JavaScript Syntax (arrow functions, destructuring, sting literals, sets, etc.)
- - Pulling data through Asynchronous Requests (AJAX) from live data sources with the use of the fetch() API
- - Cache API, ServiceWorker and IndexedDB for Offline-First capability
- - Progressive Web App features (Service Worker, App Manifest, Caching, Metatags, etc.)
- - Implementation of a build system with Gulp for a highly optimized and performant app (90+ Audit metrics for Performance, Accessibility, PWA)
+<h2>Setting up a hosted NoSQL Database and a RESTful API</h2>
+
+For this stage an online database solution that offers both NoSQL DB storage and exposes a RESTful API was required.
+After an extensive research, I decided to use
+[**restdb.io**](https://restdb.io/): a NoSQL database cloud service, Database-as-a-Service (DBaaS), that offers the online NoSQL database backend for web and serverless applications. Furthermore, it is a simple to use, developer friendly and no-cost NoSQL database with data management app, schema builder, and REST API instantly available
+([**restdb.io features**](https://restdb.io/features/)).
+
+ - **Create DB & Collection**<br>
+    - After creating an account, the first thing to do was to create a database.
+    <p align="center">
+      <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/create_database.png" alt="create database" width="100%" height="auto">
+    </p>
+    
+    - Once the database was created I added two collections, with the required fields and relations for each one of them: ***restaurants*** and ***reviews***.
+    <p align="center">
+      <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/collections.png" alt="database collections" width="100%" height="auto">
+    </p>
+    
+      1. ***restaurants collection***
+        <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/restaurants_collection.png" alt="restaurants collection" width="100%" height="auto"></p>
+    
+      2. ***reviews collection***
+         <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/reviews_collection.png" alt="reviews collection" width="100%" height="auto"></p>
+        
+    - Finally, I added the necessary data for each collection.
+     
+     1. ***restaurants collection data***
+        <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/restaurants_data.png" alt="restaurants collection data" width="100%" height="auto"></p>
+        
+      2. ***reviews collection data***
+         <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/reviews_data.png" alt="reviews collection data" width="100%" height="auto"></p>
+
+ - **Manage REST API**<br>
+    Once the database and collections were created, I defined the API key and tested the endpoints for all CRUD operations with the use of [**postman**](https://www.getpostman.com/).
+<br><br>
+ 
+<h2>Local Setup of the Project</h2>
+
+**1.** Fork and clone the [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_4) repository.
+
+**2.** Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
+
+**3.**  Make sure that the ***app_params*** of in the *config.json* file inside the **gulp_tasks** folder are defined appropriately:
+ - **_APP_PATH:** The url of the path of the app (e.g.: `http://localhost:<PORT>/`).
+ - **_START_URL_:** The url of the index.html file (e.g.: `http://localhost:<PORT>/index.html`).
+ - **_SCOPE_:** Scope of application.
+ - **_DATABASE_API_KEY:** Add your own API key for the [**restdb.io**](https://restdb.io/) database. 
+ - **_MAPBOX_API_KEY_:** Add your own [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE).
+  - **_RESTAURANTS_URL_:** The url to fetch the restaurants, which is provided from the [**restdb.io**](https://restdb.io/).
+  - **_REVIEWS_URL_:** The url to fetch the reviews, which is provided from the [**restdb.io**](https://restdb.io/).
+<p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/app_params.png" alt="change app parameters" width="80%" height="auto">
+</p>
+
+**4.** Navigate from your terminal inside the /app folder and run ***gulp*** to bundle and build the app.
+<p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/bundle_app.png" alt="running gulp to build the app" width="80%" height="auto">
+</p>
+
+**5.** Choose the /dist folder of the project from the *Web Server for Chrome* app.
+<p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/server.png" alt="setting up local server" width="40%" height="auto">
+</p>
+
+**6.** Launch the website with the ***Web Server for Chrome*** app!<br><br>
+<br><br>
+ 
+<h2>Upload Live Demo</h2>
+
+**1.** Fork and clone the [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_4) repository.
+
+**2.** Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
+
+**3.**  Make sure that the ***app_params*** of in the *config.json* file inside the **gulp_tasks** folder are defined appropriately:
+ - **_APP_PATH:** The url of the path of the app (`https://katerina-tziala.github.io/restaurant_reviews_app/`).
+ - **_START_URL_:** The url of the index.html file (`https://katerina-tziala.github.io/restaurant_reviews_app/index.html`).
+ - **_SCOPE_:** Scope of application (`/restaurant_reviews_app/`).
+ - **_DATABASE_API_KEY:** Add your own API key for the [**restdb.io**](https://restdb.io/) database. 
+ - **_MAPBOX_API_KEY_:** Add your own [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE).
+  - **_RESTAURANTS_URL_:** The url to fetch the restaurants, which is provided from the [**restdb.io**](https://restdb.io/).
+  - **_REVIEWS_URL_:** The url to fetch the reviews, which is provided from the [**restdb.io**](https://restdb.io/).
+<p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/app_params.png" alt="change app parameters" width="80%" height="auto">
+</p>
+
+**4.** Update the scope of the Service Worker in the *config.json* file inside the **gulp_tasks** folder:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;&nbsp;&nbsp;<img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/sw_scope.png" alt="service worker scope of localhost" width="29.5%" height="auto">&nbsp;&nbsp;&nbsp;to&nbsp;&nbsp;&nbsp;<img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/sw_demo_scope.png" alt="service worker scope of demo app" width="40%" height="auto">
+
+**5.** Navigate from your terminal inside the /app folder and run ***gulp*** to bundle and build the app.
+<p align="center">
+    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/bundle_app_demo.png" alt="running gulp to build the app" width="80%" height="auto">
+</p>
+
+**5.** Upload all files located in the ***/dist*** folder of the project to the ***docs*** folder of the master branch in one of your github repositories.
+
+**6.** In the **GitHub Pages** section of your repository settings, select the **/docs** to build and launch your app.
+        <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/github_pages.png" alt="github pages" width="80%" height="auto"></p>
+
+**7.** Access the ***Restaurant Reviews App*** here:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a class="button" href="https://katerina-tziala.github.io/restaurant_reviews_app/index.html" aria-label="access live demo"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_live_demo_btn.png" alt="live demo" width="100px" height="auto"></a>
 <br><br>
 
-<h2>Branches</h2>
-This repository is split into the following branches based on the app's phase of development.
+<h2>Auditing the Restaurant Reviews App</h2>
+When launching the app locally all metrics (Responsive Design, Accessibility, Performance) are maintained. For the ***Live Demo*** of the app, performance metrics are illustraded in the following figures:
 
- - [**restaurant_reviews-stage_1**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_1)**:** Building upon the provided restaurant reviews website, converts the existing static design into a fully responsive design that renders appropriately in any viewport including desktop, tablet, and mobile displays. Additionally, implements all standard accessibility features that are currently missing with the use of semantic markup and ARIA atributes. Finally, starts converting this website to a Progressive Web Application by caching some assets for offline use.
+   - **Lighthouse Metrics for index.html**
+   <p align="center">
+      <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/RR-S4_audit_index.png" alt="lighthouse metrincs for index page" width="100%" height="auto">
+      </p><br>
 
+   - **Lighthouse Metrics for restaurant.html**
+   <p align="center">
+      <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/RR-S4_audit_restaurant.png" alt="lighthouse metrincs for restaurant page" width="100%" height="auto">
+      </p>
+<br><br>
 
- - [**restaurant_reviews-stage_2**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_2)**:** Building upon the responsive and accessible design that was developed in **restaurant_reviews-stage_1**, the app is converted to a fully-featured app that communicates with a backend server and handles asynchronous requests. The app now retrieves JSON data from an external server by using Asynchronous JavaScript requests with the use of the fetch() API. Received data are stored in the client side in order to be accessible offline using the IndexedDB API. Appropriate meta-tags and the app manifest are implemented to take a step further in the implementation of a PWA. The Gulp build system is utilized to bundle, optimize and build the app. Required performance benchmarks:
- 
-   - Progressive Web App >90
-   - Performance >70
-   - Accessibility >90
+<h2>Progressive Wep App</h2>
 
- - [**restaurant_reviews-stage_3**](https://github.com/katerina-tziala/restaurant/blob/restaurant_reviews-stage_3/README.md)**:** Building upon the responsive, accessible and connected application that was developed incrementally in the first two stages, the app should now provide additional functionality. Users should now be able to create their own reviews and add restaurants in their favorites list. If the app is offline, form submissions should defer updating to the remote database until a connection is established. Required performance benchmarks:
- 
-   - Progressive Web App >90
-   - Performance >90
-   - Accessibility >90
-
-   <i>The app now must be run alongside with the [**mws-stage-restaurant-stage-3**](https://github.com/udacity/mws-restaurant-stage-3) back end data server.</i>
- 
- - [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant/blob/restaurant_reviews-stage_4/README.md)**:** 
- Building upon the PWA that was developed incrementally in the three previous stages, the app should now connect to an online backend server (hosted NoSQL DB with a RESTful API) in order to facilitate a live demo of the app. Responsive design, accessibility, functionality and performance metrics should be retained.
- 
-  - [**master**](https://github.com/katerina-tziala/restaurant_reviews_app)**:** 
- The master branch contains the live demo of the app (*docs folder*), the source code of the app (*currently synchronized to **restaurant_reviews-stage_4** branch*), and the images used to describe all README files of this repository.
+The  ***Restaurant Reviews App***  is a PWA. Such web applications are installable and live on the user's home screen, without the need for an app store. In stages 2 and 3 it was illustrated how the app can be installed on the home page of the  ***Chrome***  browser. The following figure illustrates how the app can be installed on a mobile device.<br>
+ <p align="center">
+  <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/rr_pwa_mobile.png" alt="installing the app on a mobile device" width="100%" height="auto">
+  </p>
 
