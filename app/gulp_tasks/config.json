@@ -4,16 +4,30 @@
     "dist" : "./dist"
   },
   "app_params" : {
-    "path":"http://localhost:8887/",
-    "start_url": "http://localhost:8887/index.html",
-    "scope": "/",
-    "mapboxkey": "pk.eyJ1Ijoia2F0ZXJpbmF0emlhbGEiLCJhIjoiY2pwenNqdHF3MGU5MDQ4bzRudGdlanZ6eCJ9.kGbzX08otPecWpIvfKU3ZA",
+    "path":"_APP_PATH",
+    "start_url": "_START_URL_",
+    "scope": "_SCOPE_",
+    "mapboxkey": "_MAPBOX_API_KEY_",
     "endpoints": {
-        "restaurants": "http://localhost:1337/restaurants/"
-      }
+        "restaurants": "_RESTAURANTS_URL_"
+    },
+    "theme_color": "#ca5000"
   },
   "browserconfig" : "./src/browserconfig.xml",
   "manifest" : "./src/manifest.json",
+  "head_icons" : [
+    "./src/img/safari-pinned-tab.svg",
+    "./src/img/android-chrome-256x256.png",
+    "./src/img/android-chrome-64x64.png",
+    "./src/img/android-chrome-128x128.png",
+    "./src/img/android-chrome-192x192.png",
+    "./src/img/android-chrome-512x512.png",
+    "./src/img/apple-touch-icon-57x57.png",
+    "./src/img/apple-touch-icon-76x76.png",
+    "./src/img/apple-touch-icon-144x144.png",
+    "./src/img/apple-touch-icon-152x152.png",
+    "./src/img/apple-touch-icon.png"
+  ],
   "service_worker" : "./src/ServiceWorker.js",
   "images" : {
     "root" : "./src/*.+(png|ico)",
@@ -37,13 +51,16 @@
       "./src/css/no_results_message.css",
       "./src/css/map.css",
       "./src/css/select_widget.css",
+      "./src/css/favorite_toggler.css",
       "./src/css/index.css"
     ],
     "restaurant" : [
       "./src/css/no_results_message.css",
       "./src/css/map.css",
       "./src/css/restaurant.css",
-      "./src/css/reviews.css"
+      "./src/css/favorite_toggler.css",
+      "./src/css/reviews.css",
+      "./src/css/add_review.css"
     ],
     "critical" : ["./src/css/critical.css", "./src/css/notifications.css"]
   },
@@ -56,16 +73,20 @@
       "./src/js/fileLoader.js",
       "./src/js/interface_manager.js",
       "./src/js/notifications.js",
+      "./src/js/update_when_online.js",
       "./src/js/app.js"
     ],
     "index" : [
       "./src/js/select_widget.js",
       "./src/js/map.js",
+      "./src/js/favorite_toggler.js",
       "./src/js/index.js"
     ],
     "restaurant" : [
       "./src/js/map.js",
-      "./src/js/restaurant.js"
+      "./src/js/favorite_toggler.js",
+      "./src/js/restaurant.js",
+      "./src/js/reviews.js"
     ]
   }
 }
