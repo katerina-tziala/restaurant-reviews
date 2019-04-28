@@ -48,3 +48,6 @@ After an extensive research, I decided to use
         
       2. ***reviews collection data***
          <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/reviews_data.png" alt="reviews collection data" width="100%" height="auto"></p>
+
+ - **Manage REST API**<br>
+    Once the database and collections were created, I defined the API key and tested the endpoints for all CRUD operations with the use of [**postman**](https://www.getpostman.com/) 
