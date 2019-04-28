@@ -115,7 +115,8 @@ After an extensive research, I decided to use
 **6.** In the **GitHub Pages** section of your repository settings, select the **/docs** to build and launch your app.
         <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/github_pages.png" alt="github pages" width="80%" height="auto"></p>
 
-**7.** Access the app: <a class="button" href="https://katerina-tziala.github.io/restaurant_reviews_app/index.html" aria-label="access live demo"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_live_demo_btn.png" alt="live demo" width="100px" height="auto"></a>
+**7.** Access the ***Restaurant Reviews App*** here:<br>
+&nbsp;&nbsp;&nbsp;<a class="button" href="https://katerina-tziala.github.io/restaurant_reviews_app/index.html" aria-label="access live demo"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_live_demo_btn.png" alt="live demo" width="100px" height="auto"></a>
 
 
 
