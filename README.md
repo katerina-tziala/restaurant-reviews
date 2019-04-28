@@ -130,7 +130,12 @@ When launching the app locally all metrics (Responsive Design, Accessibility, Pe
    - **Lighthouse Metrics for restaurant.html**
    <p align="center">
       <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/RR-S4_audit_restaurant.png" alt="lighthouse metrincs for restaurant page" width="100%" height="auto">
-      </p><br>
+      </p>
+<br><br>
 
-
+<h2>Progressive Wep App</h2>
+The ***Restaurant Reviews App*** is a PWA. Such web applications are installable and live on the user's home screen, without the need for an app store. In stages 2 and 3 it was illustrated how the app can be installed on the home page of the ***Chrome*** browser. The following figure illustrates how the app can be installed on a mobile device.
+   <p align="center">
+      <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/rr_pwa_mobile.png" alt="installing the app on a mobile device" width="100%" height="auto">
+      </p>
 
