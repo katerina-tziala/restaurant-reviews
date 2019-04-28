@@ -18,7 +18,7 @@ This is the fourth stage of the <b>Restaurant Reviews</b> project. Building upon
 
 
 <h2>Setting up a hosted NoSQL Database and a RESTful API</h2>
-For this stage an online database solution that offers both NoSQL DB storage and exposes a RESTful API was required. After an extensive research I decided to use
+For this stage an online database solution that offers both NoSQL DB storage and exposes a RESTful API was required. After an extensive research I decided to use [**stage-3 Node development server**](https://github.com/udacity/mws-restaurant-stage-3)
 
 [**restdb.io**](https://restdb.io/)
 
