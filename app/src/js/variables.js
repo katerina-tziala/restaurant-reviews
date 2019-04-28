@@ -1,7 +1,7 @@
 "use strict";
 const appParams = {
   port:"_PORT_",
-  start_url: "_START-URL_",
+  start_url: "_START_URL_",
   scope: "/",
   indexFiles:{
     js: ["js/map.js", "js/select_widget.js", "js/index.js"],
