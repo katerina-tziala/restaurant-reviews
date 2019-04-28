@@ -4,7 +4,7 @@ This is the fourth stage of the <b>Restaurant Reviews</b> project. Building upon
 
 <h2>Project Requirements</h2>
 
-  - **Update the app to work with a hosted NoSQLDB and RESTful API:** Set up a NoSQL Database that contains the required data of the app, and create RESTful API to perform CRUD (Create, Read, Update, Delete) operations against the DB. Update the client application in order to make use of the new API.
+  - **Update the app to work with a hosted NoSQL Database and RESTful API:** Set up a NoSQL Database that contains the required data of the app, and create RESTful API to perform CRUD (Create, Read, Update, Delete) operations against the DB. Update the client application in order to make use of the new API.
    
  - **Responsive Design:** The application maintains a responsive design on mobile, tablet and desktop viewports. All new features are responsive, including the form to add a review and the control for marking a restaurant as a favorite.
 
