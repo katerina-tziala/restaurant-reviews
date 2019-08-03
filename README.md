@@ -42,7 +42,7 @@ This repository is split into the following branches, based on the app's phase o
 
    <i>The app now must be run alongside with the [**mws-stage-restaurant-stage-3**](https://github.com/udacity/mws-restaurant-stage-3) back end data server.</i>
  
- - [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant/blob/restaurant_reviews-stage_4)**:** 
+ - [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant_reviews_app/tree/restaurant_reviews-stage_4)**:** 
  Building upon the PWA that was developed incrementally in the three previous stages, the app should now connect to an online backend server (hosted NoSQL DB with a RESTful API) in order to facilitate a live demo of the app. Responsive design, accessibility, functionality and performance metrics should be retained.
  
   - [**master**](https://github.com/katerina-tziala/restaurant_reviews_app)**:** 
