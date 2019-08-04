@@ -133,7 +133,7 @@ const generateFailureNotification = (idbsupport) => {
   let notification;
   if (idbsupport) {
     notification = getNotificationContent("failed_request_cached");
-  }else{
+  } else {
     notification = getNotificationContent("failed_request");
   }
   generateBasicNotification(notification, 15000);
