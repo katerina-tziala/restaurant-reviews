@@ -49,7 +49,7 @@ class FileLoader {
   static loadFile(fileType, params) {
     return new Promise((resolve, reject) => {
       const file = this.createFile(fileType, params);
-      if (file.readyState) { //IE
+      if (file.readyState) { // IE
         file.onreadystatechange = () => {
           if (file.readyState == "loaded" || file.readyState == "complete"){
             file.onreadystatechange = null;
@@ -58,7 +58,7 @@ class FileLoader {
             reject();
           }
         };
-      } else {//Others
+      } else { // Others
         file.onload = () => {
           resolve();
         };
