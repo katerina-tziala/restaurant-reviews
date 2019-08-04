@@ -183,19 +183,16 @@ const trackInstalling = (worker) => {
   });
 };
 
-
 // When upadate is ready, then display notification:
 const updateReady = (worker) => {
   self.newSWorker = worker;
   generateUpdateNotification();
 };
 
-
 // Dismiss update of the app:
 const dismissUpdate = () => {
   hideNotification();
 };
-
 
 // Update the app:
 const updateApp = () => {
