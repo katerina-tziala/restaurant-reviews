@@ -1,6 +1,4 @@
-/**
-** Create HTML for favorite bookmark.
-**/
+// Create HTML for favorite bookmark:
 const createFavoriteBookmark = (restaurant) => {
   const favoriteToggler = document.createElement('div');
   favoriteToggler.classList.add("favoriteToggler");
@@ -14,9 +12,7 @@ const createFavoriteBookmark = (restaurant) => {
   return favoriteToggler;
 };
 
-/**
-** Function to display properly the favorite button.
-**/
+// Function to display properly the favorite button:
 const toggleFavoriteDisplay = (favoriteButton, is_favorite) =>{
   const favorite = is_favorite.toString() === "true" ? true : false;
   favoriteButton.setAttribute('aria-pressed', favorite);
@@ -30,9 +26,7 @@ const toggleFavoriteDisplay = (favoriteButton, is_favorite) =>{
   favoriteButton.classList.add(heartclassadd);
 };
 
-/**
-** Function to mark / unmark restaurant as favorite.
-**/
+// Function to mark / unmark restaurant as favorite:
 const toggleFavorite = (event) => {
   event.preventDefault();
   const restaurant_id = parseInt(event.target.getAttribute("id").split("_").pop());
@@ -57,9 +51,7 @@ const toggleFavorite = (event) => {
   });
 };
 
-/**
-** Update JavaScript variables: restaurants or restaurant.
-**/
+// Update JavaScript variables: restaurants or restaurant:
 const updateRestaurantVarsOnFail = (newRestaurant) => {
   if (InterfaceManager.getUserView() === "restaurant") {
     self.restaurant.is_favorite = newRestaurant.is_favorite;
@@ -78,12 +70,7 @@ const updateRestaurantVarsOnFail = (newRestaurant) => {
   }
 };
 
-
-
-
-/**
-** Update JavaScript variables: restaurants or restaurant.
-**/
+// Update JavaScript variables: restaurants or restaurant:
 const updateRestaurantVars = (newRestaurant) => {
   if (InterfaceManager.getUserView() === "restaurant") {
     self.restaurant = newRestaurant;

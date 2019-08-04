@@ -5,9 +5,7 @@ let mapTimeout = 0;
 let mapInitializing = false;
 let mapLoaded = false;
 
-/**
-** Toggle map.
-**/
+// Toggle map:
 const toggleMap = () => {
   const action = self.mapButton.getAttribute("aria-label").split(" ")[0].toLowerCase();
   toggleMapButtonDisplay(action);
@@ -23,9 +21,7 @@ const toggleMap = () => {
   }
 };
 
-/**
-** Handle display of button to open/close map.
-**/
+// Handle display of button to open/close map:
 const toggleMapButtonDisplay = (action) => {
   const next_action = action === "show" ? "hide" : "show";
   const next_icon = next_action === "hide" ? "fa-map-marker-alt" : "fa-map";
@@ -39,25 +35,21 @@ const toggleMapButtonDisplay = (action) => {
     self.mapButton.classList.remove("map_icon", "fa-map");
     self.mapButton.classList.add("location_icon", "fa-map-marker-alt");
   }
-}
+};
 
-/**
-** Get title and label from map button.
-**/
+// Get title and label from map button:
 const getMabButtonLabelTitle = (next_action) => {
   const label_part_a = InterfaceManager.getUserView() === "restaurant" ? "restaurant" : "results";
   const label_part_b = next_action === "show" ? "on" : "from";
   const label = next_action + " " + label_part_a + " " + label_part_b + " map";
   return label.charAt(0).toUpperCase() + label.slice(1);
-}
+};
 
-/**
-** Get params to initialize the map based on the view.
-**/
+// Get params to initialize the map based on the view:
 const getMapInitParams = () => {
   const view = InterfaceManager.getUserView();
   let mapInitParams;
-  if(view === "restaurant"){
+  if (view === "restaurant") {
     mapInitParams = {
       lat: self.restaurant.latlng.lat,
       lng: self.restaurant.latlng.lng,
@@ -75,20 +67,16 @@ const getMapInitParams = () => {
   return mapInitParams;
 };
 
-/**
-** Reset map variables.
-**/
+// Reset map variables:
 const resetMap = () => {
   self.mapBoxLayer = null;
   removeMarkers();
   self.mapTimeout = 0;
   self.mapInitializing = false;
   self.mapLoaded = false;
-}
+};
 
-/**
-** Initialize map.
-**/
+// Initialize map:
 const initMap = (params) => {
   resetMap();
   self.mapInitializing = true;
@@ -112,9 +100,7 @@ const initMap = (params) => {
   }, 700);
 };
 
-/**
-** Display map.
-**/
+// Display map:
 const displayMap = () => {
  InterfaceManager.displayElement(self.mapContainer);
  self.mapTimeout = setTimeout(() => {
@@ -122,9 +108,7 @@ const displayMap = () => {
  }, 200);
 };
 
-/**
-** Hide map.
-**/
+// Hide map:
  const hideMap = () => {
    self.mapContainer.classList.remove(appParams.cssClasses.displayMap);
    self.mapTimeout = setTimeout(() => {
@@ -132,16 +116,14 @@ const displayMap = () => {
     }, 800);
 };
 
-/**
-** Display and/or hide map.
-**/
+// Display and/or hide map:
 const toggleMapDisplay = (display) => {
   if (!self.mapLoaded) {
     mapFailure();
   } else {
     if (!self.mapInitializing) {
        clearTimeout(self.mapTimeout);
-       if(display) {
+       if (display) {
          displayMap();
        } else {
          hideMap();
@@ -150,9 +132,7 @@ const toggleMapDisplay = (display) => {
   }
 };
 
-/**
-** Add markers for all restaurants to the map.
-**/
+// Add markers for all restaurants to the map:
 const addMarkersToMap = (restaurants) => {
   if (self.mapBoxLayer && self.mapLoaded) {
     restaurants.forEach(restaurant => {
@@ -175,9 +155,7 @@ const addMarkersToMap = (restaurants) => {
   }
 };
 
-/**
-** Remove markers from the map.
-**/
+// Remove markers from the map:
 const removeMarkers = () => {
   if (self.mapBoxLayer && self.mapLoaded && self.mapMarkers && self.mapMarkers.length > 0) {
     self.mapMarkers.forEach(marker => marker.remove());
@@ -185,18 +163,14 @@ const removeMarkers = () => {
   self.mapMarkers = [];
 };
 
-/**
-** Enable map for users based on view.
-**/
+// Enable map for users based on view:
 const enableMap = () => {
   self.mapButton.setAttribute("onclick", "toggleMap(event)");
   self.mapButton.classList.remove(appParams.cssClasses.disableMapButton);
   toggleMapButtonDisplay("hide");
 };
 
-/**
-** Disable map for users when they are offline and map was not loaded.
-**/
+// Disable map for users when they are offline and map was not loaded:
 const disableMap = () => {
   self.mapContainer.classList.remove(appParams.cssClasses.displayMap);
   InterfaceManager.hideElement(self.mapContainer);
@@ -209,9 +183,7 @@ const disableMap = () => {
   resetMap();
 };
 
-/**
-** Handle map failure.
-**/
+// Handle map failure:
 const mapFailure = () => {
   disableMap();
   generateBasicNotification(getNotificationContent("map_failure"), 0);

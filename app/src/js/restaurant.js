@@ -1,9 +1,7 @@
 "use strict";
 let restaurant, reviews, reviewsResults, reviewsList, reviewLayer, reviewModal, ratingStars;
 
-/**
-** Render restaurant view.
-**/
+// Render restaurant view:
 const renderRestaurantInfo = () => {
   self.reviewsResults = document.getElementById("reviews");
   self.reviewsList = document.getElementById("reviewsList");
@@ -25,9 +23,7 @@ const renderRestaurantInfo = () => {
   self.reviewLayer.addEventListener('keydown', trapModalKeys);
 };
 
-/**
-** Get current restaurant from page URL.
-**/
+// Get current restaurant from page URL:
 const fetchRestaurantFromURL = (callback) => {
   if (self.restaurant) {// restaurant already fetched!
     callback(null, self.restaurant)
@@ -49,9 +45,7 @@ const fetchRestaurantFromURL = (callback) => {
   }
 };
 
-/**
-** Add restaurant name to the breadcrumb navigation menu
-**/
+// Add restaurant name to the breadcrumb navigation menu:
 const fillBreadcrumb = (restaurant = self.restaurant) => {
   const breadcrumb = document.getElementById("breadcrumb");
   const li = document.createElement("li");
@@ -63,9 +57,7 @@ const fillBreadcrumb = (restaurant = self.restaurant) => {
   breadcrumb.appendChild(li);
 };
 
-/**
-** Create restaurant HTML and add it to the webpage.
-**/
+// Create restaurant HTML and add it to the webpage:
 const fillRestaurantHTML = (restaurant = self.restaurant) => {
   const name = document.getElementById("restaurantName");
   name.innerHTML = restaurant.name;
@@ -79,8 +71,7 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
   cuisine.innerHTML = restaurant.cuisine_type;
   const address = document.getElementById("address");
   address.innerHTML = `<span>${restaurant.neighborhood}</span><span>${restaurant.address}</span>`;
-  // fill operating hours
-  if (restaurant.operating_hours) {
+  if (restaurant.operating_hours) { // fill operating hours
     fillRestaurantHoursHTML();
   }
   document.getElementById("commentsfield").placeholder = `Enter your comments for the restaurant "${self.restaurant.name}" here!`;
@@ -95,9 +86,7 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
   });
 };
 
-/**
-** Create restaurant operating hours HTML table and add it to the webpage.
-**/
+// Create restaurant operating hours HTML table and add it to the webpage:
 const fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => {
   const hours = document.getElementById("restaurantHours");
   for (let key in operatingHours) {
@@ -114,9 +103,7 @@ const fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hour
   }
 };
 
-/**
-** Calculate total rating statistics and add them in the webpage.
-**/
+// Calculate total rating statistics and add them in the webpage:
 const fillRatingStats = (reviews = self.reviews) => {
   const total_rating = document.getElementById("total_rating");
   const total_reviews = document.getElementById("total_reviews");
@@ -127,14 +114,12 @@ const fillRatingStats = (reviews = self.reviews) => {
     reviews.forEach(review => {
       sum_rating += parseInt(review.rating);
     });
-    const avg = Number(Math.round(sum_rating/reviews_numb+'e'+1)+'e-'+1);
+    const avg = Number(Math.round(sum_rating / reviews_numb + 'e' + 1) + 'e-' + 1);
     total_rating.innerHTML = avg;
   }
 };
 
-/**
-** Create all reviews HTML and add them to the webpage.
-**/
+// Create all reviews HTML and add them to the webpage:
 const fillReviewsHTML = (reviews = self.reviews, reviewsList = self.reviewsList) => {
   self.reviewsList.innerHTML = "";
   if (!reviews || reviews.length === 0) {
@@ -154,9 +139,7 @@ const fillReviewsHTML = (reviews = self.reviews, reviewsList = self.reviewsList)
   }
 };
 
-/**
-** Create review HTML and add it to the webpage.
-**/
+// Create review HTML and add it to the webpage:
 const createReviewHTML = (review) => {
   const li = document.createElement("li");
   li.className = "reviewCard";
@@ -193,9 +176,7 @@ const createReviewHTML = (review) => {
   return li;
 };
 
-/**
-** Populate rating stars for review.
-**/
+// Populate rating stars for review:
 const populateReviewRating = (rating) => {
   const review_rating = document.createElement("div");
   review_rating.classList.add("centeredFlexbox", "reviewRating");
@@ -206,7 +187,7 @@ const populateReviewRating = (rating) => {
   for (let i = 1; i < 6; i++) {
     let star = document.createElement('div');
     star.classList.add("fas", "fa-star", "star_for_review");
-    if (i<=rating) {
+    if (i <= rating) {
       star.classList.add("given_star");
     }
     review_rating.append(star);

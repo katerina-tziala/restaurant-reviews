@@ -1,132 +1,105 @@
 class InterfaceManager {
-  /**
-  ** Display element.
-  **/
+  
+  // Display element:
   static displayElement(element) {
     element.classList.remove(appParams.cssClasses.hidden);
   }
 
-  /**
-  ** Hide element.
-  **/
+  // Hide element:
   static hideElement(element) {
     element.classList.add(appParams.cssClasses.hidden);
   }
 
-  /**
-  ** Set tabindex of multiple elements.
-  **/
+  // Set tabindex of multiple elements:
   static setTabIndex(elements, value) {
     for (let i = 0; i < elements.length; i++) {
       elements[i].setAttribute("tabindex", value);
     }
   }
 
-  /**
-  ** Hide loader.
-  **/
+  // Hide loader:
   static hideLoader() {
     self.spinner.classList.remove(appParams.cssClasses.spinClass);
     InterfaceManager.hideElement(self.loader);
     InterfaceManager.displayElement(self.main);
   }
 
-  /**
-  ** Show loader.
-  **/
+  // Show loader:
   static showLoader() {
     self.spinner.classList.add(appParams.cssClasses.spinClass);
     InterfaceManager.hideElement(self.main);
     InterfaceManager.displayElement(self.loader);
   }
 
-  /**
-  ** Check if loader is displayed.
-  **/
+  // Check if loader is displayed:
   static loaderIsDisplayed() {
     return !self.loader.classList.contains(appParams.cssClasses.hidden) ? true : false;
   }
 
-  /**
-  ** Get the displayed view to the user.
-  **/
+  // Get the displayed view to the user:
   static getUserView() {
     const url = window.location.href;
     const view = url.split("/").pop().split(".")[0];
     return view === "" ? null : view;
   }
 
-  /**
-  ** Get a parameter by name from page URL.
-  **/
+  // Get a parameter by name from page URL:
   static getParameterByName(name, url) {
     if (!url)
       url = window.location.href;
-    name = name.replace(/[\[\]]/g, '\\$&');
+    name = name.replace(/[\[\]]/g, "\\$&");
     const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`),
       results = regex.exec(url);
     if (!results)
       return null;
     if (!results[2])
-      return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+      return "";
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
   }
 
-  /**
-  ** Redirect user.
-  **/
+  // Redirect user:
   static redirectUser(redirectLink) {
     window.location.replace(redirectLink);
   }
 
-  /**
-  ** Reload the app.
-  **/
+  // Reload the app:
   static reloadApp() {
     DBHelper.clearIndexedBD();
     window.location.href = window.location.href;
   }
 
-  /**
-  ** Refresh the app.
-  **/
+  // Refresh the app:
   static refreshApp() {
     DBHelper.clearIndexedBD();
+    DBHelper.fetchRestaurants(() => {});
+    DBHelper.fetchReviews(() => {});
     window.location.reload(true);
   }
-
-  /**
-  ** Decode HTML entities.
-  **/
+  
+  // Decode HTML entities:
   static decodeEntities(encodedString) {
-    let textArea = document.createElement('textarea');
+    let textArea = document.createElement("textarea");
     textArea.innerHTML = encodedString;
     return textArea.value;
   }
 
-  /**
-  ** Format date for review.
-  **/
+  // Format date for review:
   static formatDate(dateToFormat) {
     const date = new Date(dateToFormat);
     const dateparts = date.toString().split(" ");
-    const formated = dateparts[2]+" "+dateparts[1]+" "+dateparts[3];
+    const formated = dateparts[2] + " " + dateparts[1] + " " + dateparts[3];
     return formated;
   }
 
-  /**
-  ** Get time.
-  **/
+  // Get time:
   static getTime(dateToGetTime) {
     let date = new Date(dateToGetTime),
-        hours = (date.getHours()<10?'0':'') + date.getHours(),
-        minutes = (date.getMinutes()<10?'0':'') + (date.getMinutes());
-    return hours+":"+ minutes;
+        hours = (date.getHours() < 10 ? "0" : "") + date.getHours(),
+        minutes = (date.getMinutes() < 10 ? "0" : "") + (date.getMinutes());
+    return hours + ":" + minutes;
   }
 
-  /**
-  ** Get date and time.
-  **/
+  // Get date and time:
   static getDateTime(date) {
     const datestring = InterfaceManager.formatDate(date);
     const time = InterfaceManager.getTime(date);
@@ -134,10 +107,7 @@ class InterfaceManager {
     return datetime;
   }
 
-
-  /**
-  ** Create button.
-  **/
+  // Create button:
   static createButton(id, text, aria, functionName) {
    const button = document.createElement("button");
    button.innerHTML = text;
@@ -148,9 +118,7 @@ class InterfaceManager {
    return button;
   }
 
-  /**
-  ** Remove message about restaurants/reviews results.
-  **/
+  // Remove message about restaurants/reviews results:
   static removeNoResultsFetchingeMessage() {
     const fetcherMessage = document.querySelectorAll(".fetcherMessageContainer");
     if (fetcherMessage.length>0) {
@@ -158,9 +126,7 @@ class InterfaceManager {
     }
   }
 
-  /**
-  ** Display proper message about fetching restaurants/reviews results.
-  **/
+  // Display proper message about fetching restaurants/reviews results:
   static displayNoResultsFetchingMessage(type, container, list) {
     const div = document.createElement("div");
     div.className = "fetcherMessageContainer";
@@ -178,20 +144,16 @@ class InterfaceManager {
     container.insertBefore(div, list);
   }
 
-  /**
-  ** Display freezer layer.
-  **/
+  // Display freezer layer:
   static displayFreezer() {
     const freezer = document.createElement("div");
     freezer.className = appParams.cssClasses.freezer;
     document.body.appendChild(freezer);
   }
 
-  /**
-  ** Remove freezer layer.
-  **/
+  // Remove freezer layer:
   static removeFreezer() {
-    const freezer = document.querySelectorAll('.freezer');
+    const freezer = document.querySelectorAll(".freezer");
     if (freezer.length>0) {
       freezer[0].remove();
     }

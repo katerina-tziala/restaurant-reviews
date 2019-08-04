@@ -5,9 +5,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     initApp();
 });
 
-/**
-** Initialize the App.
-**/
+// Initialize the App:
 const initApp = () => {
   self.main = document.getElementById("main");
   self.loader = document.getElementById("loader_container");
@@ -26,15 +24,13 @@ const initApp = () => {
   DBHelper.fetchRestaurants(() => {});
   initView();
   setTimeout(() => {
-    if(navigator.online){
+    if (navigator.online) {
        checkForAppDataUpdate();
     }
   }, 10000);
 };
 
-/**
-** Initialize view depending on the page that was loaded.
-**/
+// Initialize view depending on the page that was loaded:
 const initView = () => {
   const pageView = InterfaceManager.getUserView();
   switch (pageView) {
@@ -65,9 +61,7 @@ const initView = () => {
   }
 };
 
-/**
-** Load CSS and JavaScript files based on user view.
-**/
+// Load CSS and JavaScript files based on user view:
 const loadFiles = (view) => {
   let filesToLoad = [];
   appParams[view+"Files"].css.forEach(file => {
@@ -79,9 +73,7 @@ const loadFiles = (view) => {
   return filesToLoad;
 };
 
-/**
-** Notify users when online.
-**/
+// Notify users when online:
 window.addEventListener("online", (event) => {
   event.preventDefault();
   if (InterfaceManager.loaderIsDisplayed()) {
@@ -98,9 +90,7 @@ window.addEventListener("online", (event) => {
   }
 });
 
-/**
-** Notify users when offline.
-**/
+// Notify users when offline:
 window.addEventListener("offline", (event) => {
   event.preventDefault();
   let offlineNotification = "";
@@ -125,10 +115,10 @@ window.addEventListener("offline", (event) => {
   }
 });
 
-////////////////////////////// SERVICE WORKER FUNCTIONS //////////////////////////////
 /**
-** Register service worker.
+** SERVICE WORKER FUNCTIONS
 **/
+// Register service worker:
 const registerServiceWorker = () => {
   if ('serviceWorker' in navigator) {
     // Register the service worker
@@ -155,9 +145,7 @@ const registerServiceWorker = () => {
   }
 };
 
-/**
-** Track service worker installation.
-**/
+// Track service worker installation:
 const trackInstalling = (worker) => {
   worker.addEventListener('statechange', () => {
     if(worker.state == 'installed'){
@@ -166,24 +154,18 @@ const trackInstalling = (worker) => {
   });
 };
 
-/**
-** When upadate is ready, then display notification.
-**/
-const updateReady = (worker) => {
+// When upadate is ready, then display notification:
+const updateReady = () => {
   self.newSWorker = worker;
   generateUpdateNotification();
 };
 
-/**
-** Dismiss update of the app.
-**/
-const dismissUpdate = (event) => {
+// Dismiss update of the app:
+const dismissUpdate = () => {
   hideNotification();
 };
 
-/**
-** Update the app.
-**/
+// Update the app:
 const updateApp = (event) => {
   self.newSWorker.postMessage({action: 'skipWaiting'});
   hideNotification();
