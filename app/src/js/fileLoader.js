@@ -33,7 +33,6 @@ class FileLoader {
     return params;
   }
 
-  
   // Create tag and attributes of the CSS/Javascript file:
   static createFile(fileType, params) {
     const file = document.createElement(fileType);
