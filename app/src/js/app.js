@@ -142,7 +142,7 @@ window.addEventListener("offline", (event) => {
 // Refresh the app:
 const refreshApp = () => {
   InterfaceManager.refreshApp();
-}
+};
 
 /**
 ** SERVICE WORKER FUNCTIONS
