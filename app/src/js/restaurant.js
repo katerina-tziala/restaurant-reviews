@@ -187,7 +187,7 @@ const populateReviewRating = (rating) => {
   for (let i = 1; i < 6; i++) {
     let star = document.createElement("div");
     star.classList.add("fas", "fa-star", "star_for_review");
-    if (i<=rating) {
+    if (i <= rating) {
       star.classList.add("given_star");
     }
     review_rating.append(star);
