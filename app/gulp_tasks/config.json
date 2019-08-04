@@ -1,0 +1,95 @@
+{
+  "folders" : {
+    "src" : "./src",
+    "dist" : "./dist"
+  },
+  "app_params" : {
+    "path":"_APP_PATH_",
+    "start_url": "_START_URL_",
+    "scope": "_SCOPE_",
+    "databaseApiKey": "_DATABASE_API_KEY",
+    "mapboxkey": "_MAPBOX_API_KEY_",
+    "endpoints": {
+        "restaurants": "_RESTAURANTS_URL_",
+        "reviews": "_REVIEWS_URL_"
+    },
+    "theme_color": "#ca5000"
+  },
+  "browserconfig" : "./src/browserconfig.xml",
+  "manifest" : "./src/manifest.json",
+  "head_icons" : [
+    "./src/img/safari-pinned-tab.svg",
+    "./src/img/android-chrome-256x256.png",
+    "./src/img/android-chrome-64x64.png",
+    "./src/img/android-chrome-128x128.png",
+    "./src/img/android-chrome-192x192.png",
+    "./src/img/android-chrome-512x512.png",
+    "./src/img/apple-touch-icon-57x57.png",
+    "./src/img/apple-touch-icon-76x76.png",
+    "./src/img/apple-touch-icon-144x144.png",
+    "./src/img/apple-touch-icon-152x152.png",
+    "./src/img/apple-touch-icon.png"
+  ],
+  "service_worker" : "./src/ServiceWorker.js",
+  "images" : {
+    "root" : "./src/*.+(png|ico)",
+    "assets" : "./src/img/**/*.+(png|jpg|jpeg|gif|svg|ico)"
+  },
+  "pages" : ["./src/index.html", "./src/restaurant.html"],
+  "sw_files" : [
+    "'/'",
+    "'manifest.json'",
+    "'browserconfig.xml'",
+    "'index.html'",
+    "'restaurant.html'",
+    "'js/app.min.js'",
+    "'js/index.min.js'",
+    "'js/restaurant.min.js'",
+    "'css/critical.min.css'",
+    "'css/index.min.css'",
+    "'css/restaurant.min.css'"
+  ],
+  "css" : {
+    "index" : [
+      "./src/css/no_results_message.css",
+      "./src/css/map.css",
+      "./src/css/select_widget.css",
+      "./src/css/favorite_toggler.css",
+      "./src/css/index.css"
+    ],
+    "restaurant" : [
+      "./src/css/no_results_message.css",
+      "./src/css/map.css",
+      "./src/css/restaurant.css",
+      "./src/css/favorite_toggler.css",
+      "./src/css/reviews.css",
+      "./src/css/add_review.css"
+    ],
+    "critical" : ["./src/css/critical.css", "./src/css/notifications.css"]
+  },
+  "js" : {
+    "app" : [
+      "./src/js/variables.js",
+      "./src/js/idb.js",
+      "./src/js/datastore.js",
+      "./src/js/dbhelper.js",
+      "./src/js/fileLoader.js",
+      "./src/js/interface_manager.js",
+      "./src/js/notifications.js",
+      "./src/js/update_when_online.js",
+      "./src/js/app.js"
+    ],
+    "index" : [
+      "./src/js/select_widget.js",
+      "./src/js/map.js",
+      "./src/js/favorite_toggler.js",
+      "./src/js/index.js"
+    ],
+    "restaurant" : [
+      "./src/js/map.js",
+      "./src/js/favorite_toggler.js",
+      "./src/js/restaurant.js",
+      "./src/js/reviews.js"
+    ]
+  }
+}

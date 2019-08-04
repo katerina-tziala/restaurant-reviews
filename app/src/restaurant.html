@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=5.0">
+  <meta name="wap-font-scale" content="yes">
+  <title>Restaurant Reviews</title>
+  <meta name="application-name" content="Restaurant Reviews">
+  <meta name="apple-mobile-web-app-title" content="Restaurant Reviews">
+  <meta name="msapplication-tooltip" content="Restaurant Reviews">
+  <meta name="description" content="Restaurant Reviews is an app that helps you find the best food in town! You can also see or add reviews and ratings for restaurants, and mark your favorite restaurants."/>
+  <!--build:favicon-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <!--endbuild-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <!--build:css-->
+  <link rel="stylesheet" charset="utf-8" type="text/css" href="css/critical.css">
+  <link rel="stylesheet" charset="utf-8" type="text/css" href="css/notifications.css">
+  <!--endbuild-->
+  <!--build:manifest-->
+  <link rel="manifest" href="manifest.json">
+  <!--endbuild-->
+  <!--build:browserconfig-->
+  <meta name="msapplication-config" content="browserconfig.xml">
+  <!--endbuild-->
+  <meta name="theme-color" content="#ca5000">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#ca5000">
+  <meta name="msapplication-navbutton-color" content="#ca5000">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="msapplication-TileColor" content="#ca5000">
+  <!--build:tileImage-->
+  <!--endbuild-->
+  <meta name="full-screen" content="yes">
+  <meta name="imagemode" content="force">
+  <meta name="browsermode" content="application">
+  <meta name="nightmode" content="disable">
+  <meta name="layoutmode" content="fitscreen">
+  <meta name="x5-fullscreen" content="true">
+  <meta name="x5-page-mode" content="app">
+  <meta name="renderer" content="webkit|ie-comp|ie-stand">
+  <!--build:dns-->
+  <!--endbuild-->
+  <!--build:preconnect-->
+  <!--endbuild-->
+  <!--build:base-->
+  <!--endbuild-->
+  <!--build:starturl-->
+  <!--endbuild-->
+  <!-- inject:head_icons -->
+  <!-- endinject -->
+</head>
+<body>
+  <header id="header">
+    <nav>
+      <h1><a id="headerLink" href="index.html">Restaurant Reviews</a></h1>
+      <button id="refreshButton" aria-label="Refresh app" class="button fas fa-sync-alt" title="Refresh app" onclick="refreshApp()"></button>
+    </nav>
+    <nav id="navBcrumb" aria-label="breadcrumb">
+      <ul id="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div id="content_wrapper">
+      <main id="main" class="main hidden">
+        <section id="restaurantContainer" role="region" aria-label="restaurant details">
+          <h2 id="restaurantName"></h2>
+          <div class="centeredFlexbox basic_info">
+          <div class="imageContainer">
+            <img id="restaurantImg">
+            <div id="restaurantCuisineStats" class="centeredFlexbox">
+              <i class="fas fa-utensils"></i>
+              <span id="cuisine"></span>
+              <i class="fas fa-utensils"></i>
+              <div id="restaurantTotals" class="centeredFlexbox restaurantTotals">
+                  <span id="total_rating">0.0</span>
+                  <i class="fas fa-star totals_separator"></i>
+                  <span id="total_reviews">0</span>
+                  <span id="reviews_link">reviews</span>
+              </div>
+            </div>
+          </div>
+          <table id="restaurantHours">
+            <caption id="tableHeader"  class="centeredFlexbox">
+              <i class="far fa-clock"></i>
+              <span>working hours</span>
+              <i class="far fa-clock"></i>
+            </caption>
+          </table>
+        </div>
+        <div id="restaurantAddress">
+          <button id="mapButton" class="fas fa-map-marker-alt location_icon" aria-label="show map" title="Show map" onclick="toggleMap(event)"></button>
+          <p id="address"></p>
+          <section id="map_container" class="map_container hidden">
+             <div id="map" role="application" aria-label="Mapbox Maps"  title="Mapbox Maps with restaurant's location" tabindex="0"></div>
+          </section>
+        </div>
+      </section>
+      <section id="reviews" role="region" aria-label="restaurant reviews">
+        <h2 class="centeredFlexbox">
+          <span>Reviews</span>
+          <button id="rev_btn_open" class="fas fa-plus" aria-label="add a review" title="Add a review!" onclick="toggleReviewForm(event)"></button>
+        </h2>
+       <ul id="reviewsList" aria-label="reviews list"></ul>
+      </section>
+      </main>
+      <div id="loader_container" class="centeredFlexbox">
+        <div id="loader" class="loader">
+          <svg viewBox="0 0 32 32" width="32" height="32">
+            <circle id="spinner" class="spinner spin" cx="16" cy="16" r="14" fill="none"></circle>
+          </svg>
+        </div>
+      </div>
+      <footer id="footer">
+        <span>Copyright &copy; 2018</span>
+        <a href="index.html"><strong>Restaurant Reviews</strong></a>
+        <span>All Rights Reserved</span>
+      </footer>
+  </div>
+  <div id="add_review_wrapper" class="add_review_wrapper centeredFlexbox hidden">
+    <div id="add_review_modal">
+      <h3>add review</h3>
+      <button id="rev_btn_close" class="modalfocusable fas fa-times" aria-label="close review form" title="Close review form!" onclick="toggleReviewForm(event)"></button>
+      <form id="addReviewForm" aria-label="add a review">
+        <fieldset class="fieldset">
+          <label class="inputlabel" for="namefield">name:</label>
+          <input type="text" class="textfield modalfocusable" id="namefield" name="username" aria-label="enter your name" placeholder="Your Name" autocomplete="off"/>
+        </fieldset>
+        <fieldset class="fieldset">
+          <label class="inputlabel" for="ratingfield">rating:</label>
+          <div id="ratingfield" class="ratingfield">
+            <label id="rrstar_0" for="star5" class="fas fa-star rrstar modalfocusable" tabindex="0" title="5 stars">
+              <input type="radio" id="star5" class="ratingradio" name="userrating" value="5" onclick="selectRatingStar(event)"/>
+            </label>
+            <label id="rrstar_4" for="star4" class="fas fa-star rrstar modalfocusable" tabindex="0" title="4 stars">
+              <input type="radio" id="star4" class="ratingradio" name="userrating" value="4" onclick="selectRatingStar(event)"/>
+            </label>
+            <label id="rrstar_3" for="star3" class="fas fa-star rrstar modalfocusable" tabindex="0" title="3 stars">
+              <input type="radio" id="star3" class="ratingradio" name="userrating" value="3" onclick="selectRatingStar(event)"/>
+            </label>
+            <label id="rrstar_2" for="star2" class="fas fa-star rrstar modalfocusable" tabindex="0" title="2 stars">
+              <input type="radio" id="star2" class="ratingradio" name="userrating" value="2" onclick="selectRatingStar(event)"/>
+            </label>
+            <label id="rrstar_1" for="star1" class="fas fa-star rrstar modalfocusable" tabindex="0" title="1 star">
+              <input type="radio" id="star1" class="ratingradio" name="userrating" value="1" onclick="selectRatingStar(event)"/>
+            </label>
+          </div>
+        </fieldset>
+        <fieldset class="fieldset">
+          <label class="inputlabel" for="commentsfield">comments:</label>
+          <textarea id="commentsfield" placeholder="Enter your comments for the restaurant here!" class="textfield modalfocusable" name="usercomments" aria-label="Enter your comments here" autocomplete="off"></textarea>
+        </fieldset>
+        <div class="formButtonsWrapper">
+          <button id="rev_clear" class="revformbtn modalfocusable" aria-label="clear review form" title="Clear review form!" onclick="clearReviewForm(event)">clear</button>
+          <button id="rev_submit" class="revformbtn modalfocusable" aria-label="save review" title="Save review!" onclick="submitReviewForm(event)">save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div id="notification_container" class="notification">
+    <div id="notification_header">
+      <i id="notification_bell" class="fas fa-bell"></i>
+      <p id="notification_title"></p>
+    </div>
+    <div id="notification_body"></div>
+  </div>
+  <!--build:js -->
+  <script type="application/javascript" charset="utf-8" src="js/variables.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/idb.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/datastore.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/fileLoader.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/interface_manager.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/notifications.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/update_when_online.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/app.js"></script>
+  <!-- endbuild -->
+</body>
+</html>
