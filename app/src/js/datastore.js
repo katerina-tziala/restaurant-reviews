@@ -1,57 +1,64 @@
 "use strict";
 /**
-** Class to store and retrieve objects from IndexedDB.
+* Class to store and retrieve objects from IndexedDB.
 **/
 class DataStore {
-  constructor(autoIncrement = false) {
+  constructor() {
     this.cachename = "rr-app";
-    this.openDatabase(autoIncrement);
+    this.openDatabase();
   }
-  //open database
-  openDatabase(autoIncrement = false) {
+
+  // Open database:
+  openDatabase() {
     this.cache = idb.open(this.cachename, 1, (upgradeDb) => {
       switch (upgradeDb.oldVersion) {
         case 0:
-          const restaurantStore = this.createStore(upgradeDb, "restaurants");
+          this.createStore(upgradeDb, "restaurants");
           const reviewsStore = this.createStore(upgradeDb, "reviews");
           reviewsStore.createIndex("byRestaurant", "restaurant_id");
-          const requestStore = this.createStore(upgradeDb, "failedRequests", true);
+          this.createStore(upgradeDb, "failedRequests", true);
           break;
         }
       });
   }
-  //create object store
+
+  // Create object store:
   createStore(upgradeDb, storename, autoIncrement = false) {
     return upgradeDb.createObjectStore(storename, {
       keyPath: "_id",
       autoIncrement: autoIncrement
     });
   }
-  //get cached data:
-  getCachedData(storename){
+
+  // Get cached data:
+  getCachedData(storename) {
     return this.cache.then((db) => {
       return db.transaction(storename).objectStore(storename).getAll();
     });
   }
-  //get all from indexedDB based on storename, index and key
+
+  // Get all from indexedDB based on storename, index and key:
   getCachedDataById(storename, key) {
     return this.cache.then((db) => {
       return db.transaction(storename).objectStore(storename).getAll(key);
     });
   }
-  //get all from indexedDB based on storename, index and key
+
+  // Get all from indexedDB based on storename, index and key:
   getCachedDataByIndex(storename, index, key) {
    return this.cache.then((db) => {
      return db.transaction(storename).objectStore(storename).index(index).getAll(key);
    });
   }
-  //get all keys from a store
+
+  // Get all keys from a store:
   getStoreKeys(storename) {
     return this.cache.then((db) => {
        return db.transaction(storename).objectStore(storename).getAllKeys();
     });
   }
-  //put all objects in indexedDB:
+
+  // Put all objects in indexedDB:
   cacheAll(storename, objects) {
     this.cache.then((db) => {
       const tx = db.transaction(storename, "readwrite");
@@ -61,20 +68,24 @@ class DataStore {
       });
     });
   }
-  //put one object in indexedDB:
+
+  // Put one object in indexedDB:
   cacheOne(storename, object) {
     this.cacheAll(storename, [object]);
   }
-  //delete one record from indexxedDB by key:
+
+  // Delete one record from indexxedDB by key:
   deleteOne(storename, key) {
    this.cache.then((db) => {
      db.transaction(storename, "readwrite").objectStore(storename).delete(key);
    });
   }
-  //delete all records from a store:
+
+  // Delete all records from a store:
   deleteAll(storename) {
    this.cache.then((db) => {
      db.transaction(storename, "readwrite").objectStore(storename).clear();
    });
   }
+
 }

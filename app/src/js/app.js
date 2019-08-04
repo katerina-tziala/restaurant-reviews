@@ -5,11 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
     initApp();
 });
 
-/**
-** Initialize the App.
-**/
+// Initialize the App:
 const initApp = () => {
-  //registerServiceWorker();
+  registerServiceWorker();
   DBHelper.fetchRestaurants(() => {});
   DBHelper.fetchReviews(() => {});
   self.main = document.getElementById("main");
@@ -26,7 +24,7 @@ const initApp = () => {
   self.notificationInterval = 0;
   self.notificationCountdown = 0;
   initView();
-  checkForFailedRequests().then((response) => {
+  checkForFailedRequests().then(response => {
     if (response.length) { validateFailedRequests(response, () => {}); }
   });
   setTimeout(() => {
@@ -36,9 +34,7 @@ const initApp = () => {
   }, 10000);
 };
 
-/**
-** Initialize view depending on the page that was loaded.
-**/
+// Initialize view depending on the page that was loaded:
 const initView = () => {
   const pageView = InterfaceManager.getUserView();
   switch (pageView) {
@@ -69,9 +65,7 @@ const initView = () => {
   }
 };
 
-/**
-** Load CSS and JavaScript files based on user view.
-**/
+// Load CSS and JavaScript files based on user view:
 const loadFiles = (view) => {
   let filesToLoad = [];
   appParams[view+"Files"].css.forEach(file => {
@@ -83,9 +77,7 @@ const loadFiles = (view) => {
   return filesToLoad;
 };
 
-/**
-** Notify users when online.
-**/
+// Notify users when online:
 window.addEventListener("online", (event) => {
   event.preventDefault();
   if (InterfaceManager.loaderIsDisplayed()) {
@@ -96,9 +88,7 @@ window.addEventListener("online", (event) => {
   }
 });
 
-/**
-** Update the app when back online.
-**/
+// Update the app when back online:
 const updateWhenOnline = () => {
   clearNotification();
   hideNotification();
@@ -125,9 +115,7 @@ const updateWhenOnline = () => {
    });
 };
 
-/**
-** Notify users when offline.
-**/
+// Notify users when offline:
 window.addEventListener("offline", (event) => {
   event.preventDefault();
   let offlineNotification = "";
@@ -151,16 +139,15 @@ window.addEventListener("offline", (event) => {
   }
 });
 
-/**
-** Refresh the app.
-**/
+// Refresh the app:
 const refreshApp = () => {
   InterfaceManager.refreshApp();
 }
-////////////////////////////// SERVICE WORKER FUNCTIONS //////////////////////////////
+
 /**
-** Register service worker.
+** SERVICE WORKER FUNCTIONS
 **/
+// Register service worker:
 const registerServiceWorker = () => {
   if ("serviceWorker" in navigator) {
     // Register the service worker
@@ -187,36 +174,31 @@ const registerServiceWorker = () => {
   }
 };
 
-/**
-** Track service worker installation.
-**/
+// Track service worker installation:
 const trackInstalling = (worker) => {
   worker.addEventListener("statechange", () => {
-    if(worker.state == "installed"){
+    if (worker.state == "installed") {
       updateReady(worker);
     }
   });
 };
 
-/**
-** When upadate is ready, then display notification.
-**/
+
+// When upadate is ready, then display notification:
 const updateReady = (worker) => {
   self.newSWorker = worker;
   generateUpdateNotification();
 };
 
-/**
-** Dismiss update of the app.
-**/
-const dismissUpdate = (event) => {
+
+// Dismiss update of the app:
+const dismissUpdate = () => {
   hideNotification();
 };
 
-/**
-** Update the app.
-**/
-const updateApp = (event) => {
+
+// Update the app:
+const updateApp = () => {
   self.newSWorker.postMessage({action: "skipWaiting"});
   hideNotification();
   self.newSWorker = null;

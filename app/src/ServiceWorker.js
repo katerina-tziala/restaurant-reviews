@@ -35,7 +35,6 @@ const cacheFiles = [
   "css/select_widget.css"
 ];
 
-
 //images to be cached
 const cacheImages = [
   "favicon.ico",
@@ -109,7 +108,7 @@ self.addEventListener("fetch", (event) => {
   const requestUrl = new URL(event.request.url);
   const requestedPath = requestUrl.pathname;
   const requestMethod = event.request.method.toUpperCase();
-  if (requestMethod==="POST" || requestMethod==="PUT" || requestMethod==="PATCH" || requestMethod==="DELETE" || requestedPath.startsWith("/restaurants") || requestedPath.startsWith("/reviews")) {
+  if (requestMethod === "POST" || requestMethod === "PUT" || requestMethod === "PATCH" || requestMethod === "DELETE" || requestedPath.startsWith("/restaurants") || requestedPath.startsWith("/reviews")) {
     return;
   }
   if (requestedPath.match(".jpg") || requestedPath.match(".png") || requestedPath.match(".svg") || requestedPath.match(".ico")) {
@@ -120,9 +119,9 @@ self.addEventListener("fetch", (event) => {
 });
 
 //Respond with an image or file from cache or add the requested image or file in cache and then respond:
-self.retrieveFile = (cache, request) =>{
-  return caches.open(cache).then((cache) => {
-    return cache.match(request).then((response) => {
+self.retrieveFile = (cache, request) => {
+  return caches.open(cache).then(cache => {
+    return cache.match(request).then(response => {
       // Cache hit - return response:
       if (response) {
         return response;
@@ -132,7 +131,6 @@ self.retrieveFile = (cache, request) =>{
         cache.put(request, networkResponse.clone());
         return networkResponse;
       });
-      return fetch(request);
     }).catch((error) => {
       const requestUrl = new URL(request.url);
       const requestedPath = requestUrl.href;

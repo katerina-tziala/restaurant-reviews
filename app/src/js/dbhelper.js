@@ -1,23 +1,19 @@
 "use strict";
 /**
- * Common database helper functions.
- */
+** Common database helper functions.
+**/
 class DBHelper {
-  /**
-  ** Restaurants URL.
-  **/
+  // Get restaurants URL:
   static get RESTAURANTS_URL() {
     return appParams.endpoints.restaurants;
   }
-  /**
-  ** Reviews URL.
-  **/
+
+  // Get reviews URL:
   static get REVIEWS_URL() {
     return appParams.endpoints.reviews;
   }
-  /**
-  ** Request headers.
-  **/
+
+  // Get request headers:
   static get REQUEST_HEADERS() {
     const dataheaders = new Headers();
     dataheaders.append("Accept", "application/json; charset=UTF-8");
@@ -27,37 +23,46 @@ class DBHelper {
     return dataheaders;
   }
 
-  /**
-  ** Check if indexed db is supported.
-  **/
+  // Check if indexed db is supported:
   static get INDEXED_DB_SUPPORT() {
     const indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
     const transactions = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction || {READ_WRITE: "readwrite"};
     const keys = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
     if (!(indexedDB) || !(transactions) || !(keys)) {
       return false;
-    }else {
+    } else {
       return true;
     }
   }
 
-  /**
-  ** Index DB Store.
-  **/
+  // Get IndexDB Store:
   static get AppStore() {
     return new DataStore();
   }
 
-  /**
-  ** Fetch data.
-  **/
+  // Get URL of one restaurant:
+  static getRestaurantURL(id) {
+    return DBHelper.RESTAURANTS_URL+`/${id}`;
+  }
+
+  // Get URL of one review:
+  static getReviewURL(id) {
+    return DBHelper.REVIEWS_URL+`/${id}`;
+  }
+
+  // Get URL of one review:
+  static getReviewsURLBasedOnRestaurant(id) {
+    return DBHelper.REVIEWS_URL + `?q={"restaurant_id":"${id}"}`;
+  }
+
+  // Check if id is temporary:
+  static isTemporaryId(id) {
+    return id.startsWith("temp") ? true : false;
+  }
+
+  // Fetch data:
   static async fetchData(url) {
-    const request = new Request(url, {
-      method: "GET",
-      mode: "cors",
-      cache: "reload",
-      credentials:"same-origin",
-      headers: DBHelper.REQUEST_HEADERS});
+    const request = new Request(url, {method: "GET", mode: "cors", cache: "reload", credentials:"same-origin", headers: DBHelper.REQUEST_HEADERS});
     try {
       const fetchResult = fetch(request);
       const response = await fetchResult;
@@ -68,14 +73,10 @@ class DBHelper {
     }
   }
 
-  /**
-  ** Get data with proper error handling.
-  **/
+  // Get data with proper error handling:
   static getData(url, target, callback) {
     DBHelper.fetchData(url, target).then((response)=>{
-      const responseData = {
-        "target": target
-      };
+      const responseData = {target: target};
       if (target === "restaurants" || target === "reviews") {
         const returnData = response;
         responseData.data = returnData;
@@ -89,9 +90,7 @@ class DBHelper {
     }).catch((error) => callback(error, null));
   }
 
-  /**
-  ** Update indexed db.
-  **/
+  // Update indexed db:
   static updateIndexedDB(response, method) {
     if (DBHelper.INDEXED_DB_SUPPORT) {
       switch (method) {
@@ -99,22 +98,20 @@ class DBHelper {
           DBHelper.AppStore.cacheAll(response.target, response.data);
           break;
         case "DELETE":
-          DBHelper.AppStore.deleteOne(response.target+"s", response.data._id);
+          DBHelper.AppStore.deleteOne(response.target + "s", response.data._id);
           break;
         default:
-          DBHelper.AppStore.cacheOne(response.target+"s", response.data);
+          DBHelper.AppStore.cacheOne(response.target + "s", response.data);
           break;
       }
     }
   }
 
-  /**
-  ** Fetch all restaurants.
-  **/
+  // Fetch all restaurants:
   static fetchRestaurants(callback) {
     if (DBHelper.INDEXED_DB_SUPPORT) {
       DBHelper.AppStore.getCachedData("restaurants").then((response) => {
-        if (response.length > 0) {
+        if (response.length) {
           callback(null, response);
           callback = () => {}; // don"t call callback again from fetch
           }
@@ -126,30 +123,26 @@ class DBHelper {
     }
   }
 
-  /**
-  ** Fetch a restaurant by its ID.
-  **/
+  // Fetch a restaurant by its ID:
   static fetchRestaurantById(id, callback) {
     if (DBHelper.INDEXED_DB_SUPPORT) {
       DBHelper.AppStore.getCachedDataById("restaurants", id).then((response) => {
-        if (response.length > 0) {
+        if (response.length) {
           callback(null, response[0]);
           callback = () => {}; // don"t call callback again from fetch
         }
-        DBHelper.getData(DBHelper.RESTAURANTS_URL+`/${id}`,"restaurant", callback);
+        DBHelper.getData(DBHelper.getRestaurantURL(id), "restaurant", callback);
       });
     } else {
-      DBHelper.getData(DBHelper.RESTAURANTS_URL+`/${id}`,"restaurant", callback);
+      DBHelper.getData(DBHelper.getRestaurantURL(id), "restaurant", callback);
     }
   }
 
-  /**
-  ** Fetch all reviews.
-  **/
+  // Fetch all reviews:
   static fetchReviews(callback) {
     if (DBHelper.INDEXED_DB_SUPPORT) {
-      DBHelper.AppStore.getCachedData("reviews").then((response) => {
-        if (response.length > 0) {
+      DBHelper.AppStore.getCachedData("reviews").then(response => {
+        if (response.length) {
           callback(null, response);
           callback = () => {}; // don"t call callback again from fetch
         }
@@ -161,225 +154,192 @@ class DBHelper {
     }
   }
 
-  /**
-  ** Fetch reviews of a restaurant.
-  **/
+  // Fetch reviews of a restaurant:
   static fetchRestaurantReviews(id, callback) {
     if (DBHelper.INDEXED_DB_SUPPORT) {
-      DBHelper.AppStore.getCachedDataByIndex("reviews", "byRestaurant", id).then((response) => {
-        if (response.length > 0) {
+      DBHelper.AppStore.getCachedDataByIndex("reviews", "byRestaurant", id).then(response => {
+        if (response.length) {
           callback(null, response);
           callback = () => {}; // don"t call callback again from fetch
         }
-        const url_params = `?q={"restaurant_id":"${id}"}`;
-        DBHelper.getData(DBHelper.REVIEWS_URL + url_params,"reviews", callback);
+        DBHelper.getData(DBHelper.getReviewsURLBasedOnRestaurant(id), "reviews", callback);
       });
     } else {
-      const url_params = `?q={"restaurant_id":"${id}"}`;
-      DBHelper.getData(DBHelper.REVIEWS_URL + url_params,"reviews", callback);
+      DBHelper.getData(DBHelper.getReviewsURLBasedOnRestaurant(id), "reviews", callback);
     }
   }
 
-  /**
-  ** Fetch restaurants by a cuisine and a neighborhood with proper error handling.
-  **/
+  // Fetch restaurants by a cuisine and a neighborhood with proper error handling:
   static fetchRestaurantByCuisineAndNeighborhood(cuisine, neighborhood, callback) {
-    // Fetch all restaurants
     DBHelper.fetchRestaurants((error, restaurants) => {
       if (error) {
         callback(error, null);
       } else {
-        let results = restaurants
-        if (cuisine != "all") { // filter by cuisine
-          results = results.filter(r => r.cuisine_type == cuisine);
+        let filteredRestaurants = restaurants
+        if (cuisine !== "all") { // filter by cuisine
+          filteredRestaurants = filteredRestaurants.filter(restaurant => restaurant.cuisine_type == cuisine);
         }
-        if (neighborhood != "all") { // filter by neighborhood
-          results = results.filter(r => r.neighborhood == neighborhood);
+        if (neighborhood !== "all") { // filter by neighborhood
+          filteredRestaurants = filteredRestaurants.filter(restaurant => restaurant.neighborhood == neighborhood);
         }
-        callback(null, results);
+        callback(null, filteredRestaurants);
       }
     });
   }
 
-  /**
-  ** Fetch all parameters from restaurants (neighborhoods, restaurants) with proper error handling.
-  **/
+  // Fetch all parameters from restaurants (neighborhoods, restaurants) with proper error handling:
   static fetchUniqueRestaurantParams(param, callback) {
-    // Fetch all restaurants
     DBHelper.fetchRestaurants((error, restaurants) => {
       if (error) {
         callback(error, null);
       } else {
-        // Get all parameters from all restaurants based on key
-        const params = restaurants.map((v, i) => restaurants[i][param]);
-        // Remove duplicates from parameters
+        // get all parameters from all restaurants based on key
+        const params = restaurants.map(restaurant => restaurant[param]);
+        // remove duplicates from parameters
         const uniqueParams = params.filter((v, i) => params.indexOf(v) == i);
         callback(null, uniqueParams);
       }
     });
   }
 
-  /**
-  ** Restaurant page URL.
-  **/
+  // Get restaurant page URL:
   static urlForRestaurant(restaurant) {
     return (`restaurant.html?id=${restaurant._id}`);
   }
 
-  /**
-  ** Restaurant image URL.
-  **/
+  // Get restaurant image URL:
   static imageUrlForRestaurant(restaurant) {
-    let image = restaurant.photograph + ".jpg";
-    return (`img/${image}`);
+    return (`img/${restaurant.photograph + ".jpg"}`);
   }
 
-  /**
-  ** Mark restaurant as favorite or unmark it.
-  **/
+  // Mark restaurant as favorite or unmark it:
   static favoriteHandler(id, favorite) {
-    const url = DBHelper.RESTAURANTS_URL+`/${id}`;
     const request_params = {
       method: "PATCH",
       body: JSON.stringify({is_favorite: favorite})
     };
-    return DBHelper.sendData(url, request_params, "restaurant");
+    return DBHelper.sendData(DBHelper.getRestaurantURL(id), request_params, "restaurant");
   }
 
-  /**
-  ** Add a new review.
-  **/
+  // Add a new review:
   static postReview(review) {
-    const url = DBHelper.REVIEWS_URL;
     const request_params = {
       method: "POST",
-      body: JSON.stringify(review)}
-    return DBHelper.sendData(url, request_params, "review");
+      body: JSON.stringify(review)
+    };
+    return DBHelper.sendData(DBHelper.REVIEWS_URL, request_params, "review");
   }
 
-  /**
-  ** Update a review.
-  **/
+  // Update a review:
   static updateReview(review) {
-    const url = DBHelper.REVIEWS_URL+`/${review._id}`;
     const request_params = {
       method: "PATCH",
-      body: JSON.stringify(review)}
-    return DBHelper.sendData(url, request_params, "review");
+      body: JSON.stringify(review)
+    };
+    return DBHelper.sendData(DBHelper.getReviewURL(review._id), request_params, "review");
   }
 
-  /**
-  ** Delete a review.
-  **/
+  // Delete a review:
   static deleteReview(id) {
-    if (id.toString().startsWith("temp")) {
-      return DBHelper.getTargetId(DBHelper.REVIEWS_URL+`/${id}`, "review").then(id=>{
-        DBHelper.deleteExistingRequest({targetId:id, target: "review"});
+    if (DBHelper.isTemporaryId(id.toString())) {
+      return DBHelper.getTargetId(DBHelper.getReviewURL(id), "review").then(id => {
+        DBHelper.deleteExistingRequest({targetId: id, target: "review"});
         const returnData = {
-            "request_status": "fail",
-            "target": "review",
-            "data" : []
-          }
+          request_status: "fail",
+          target: "review",
+          data : []
+        };
         return returnData;
       });
     } else {
-      const url = DBHelper.REVIEWS_URL+`/${id}`;
       const request_params = {method: "DELETE"};
-      return DBHelper.sendData(url, request_params, "review");
+      return DBHelper.sendData(DBHelper.getReviewURL(id), request_params, "review");
     }
   }
 
-  /**
-  ** Send data to server.
-  **/
+  // Send data to server:
   static async sendData(url, request_params, target) {
-      const headers = DBHelper.REQUEST_HEADERS;
-      request_params.mode = "cors";
-      request_params.credentials = "same-origin";
-      request_params.headers = headers;
-      request_params.json = true;
-      const request = new Request(url, request_params);
-      try {
-        const fetchResult = fetch(request);
-        const response = await fetchResult;
-        const jsonData = await response.json();
-        const returnData = {
-          "request_status": "success",
-          "target": target,
-          "data": jsonData
-        };
-        if (request_params.method === "DELETE") {
-          returnData.data = {_id: jsonData.result[0]};
-        }
-        DBHelper.updateIndexedDB(returnData, request_params.method);
-        return Promise.resolve(returnData);
-      } catch(error) {
-        const failed_request = request_params;
-        failed_request.target = target;
-        failed_request.url = url;
-        failed_request.data = [];
-        return DBHelper.handleFailedRequest(failed_request);
+    const headers = DBHelper.REQUEST_HEADERS;
+    request_params.mode = "cors";
+    request_params.credentials = "same-origin";
+    request_params.headers = headers;
+    request_params.json = true;
+    const request = new Request(url, request_params);
+    try {
+      const fetchResult = fetch(request);
+      const response = await fetchResult;
+      const jsonData = await response.json();
+      const returnData = {
+        request_status: "success",
+        target: target,
+        data: jsonData
+      };
+      if (request_params.method === "DELETE") {
+        returnData.data = {_id: jsonData.result[0]};
       }
+      DBHelper.updateIndexedDB(returnData, request_params.method);
+      return Promise.resolve(returnData);
+    } catch(error) {
+      const failed_request = request_params;
+      failed_request.target = target;
+      failed_request.url = url;
+      failed_request.data = [];
+      return DBHelper.handleFailedRequest(failed_request);
     }
+  }
 
-    /**
-    ** Get target id of failed request.
-    **/
-    static getTargetId(url, target) {
-      const splitter = target + "s";
-      let url_part = url.split(splitter).pop();
-      if (target === "restaurant") {
-        url_part = url_part.split("/?is_favorite")[0];
+  // Get target id of failed request:
+  static getTargetId(url, target) {
+    const splitter = target + "s";
+    let url_part = url.split(splitter).pop();
+    if (target === "restaurant") {
+      url_part = url_part.split("/?is_favorite")[0];
+      return Promise.resolve(url_part.substring(1));
+    } else {
+      if (url_part) {
         return Promise.resolve(url_part.substring(1));
       } else {
-        if (url_part) {
-          return Promise.resolve(url_part.substring(1));
-        } else {
-          return DBHelper.AppStore.getStoreKeys("failedRequests").then((response) => {
-            const nextkey = response.length + 1;
-            return `temp${nextkey}`;
-          });
-        }
+        return DBHelper.AppStore.getStoreKeys("failedRequests").then(response => {
+          const nextkey = response.length + 1;
+          return `temp${nextkey}`;
+        });
       }
     }
+  }
 
-    /**
-    ** Delete existing request.
-    **/
-    static deleteExistingRequest(newRequest) {
-      DBHelper.AppStore.getCachedData("failedRequests").then((response) => {
-        if (response.length > 0){
-          const existingRequests = response.filter(response => response.target === newRequest.target && response.targetId === newRequest.targetId);
-          if(existingRequests.length > 0){
-            DBHelper.AppStore.deleteOne("failedRequests", existingRequests[0]._id);
-          }
+  // Delete existing request:
+  static deleteExistingRequest(newRequest) {
+    DBHelper.AppStore.getCachedData("failedRequests").then((response) => {
+      if (response.length) {
+        const existingRequests = response.filter(response => response.target === newRequest.target && response.targetId === newRequest.targetId);
+        if (existingRequests.length) {
+          DBHelper.AppStore.deleteOne("failedRequests", existingRequests[0]._id);
         }
-      });
-    }
+      }
+    });
+  }
 
-  /**
-  ** Handle failed requests.
-  **/
+  // Handle failed requests:
   static handleFailedRequest(failed_request) {
     const returnData = {
-      "request_status": "fail",
-      "target": failed_request.target,
-      "data" : failed_request.data
-    }
+      request_status: "fail",
+      target: failed_request.target,
+      data : failed_request.data
+    };
     if (DBHelper.INDEXED_DB_SUPPORT) {
       return DBHelper.getTargetId(failed_request.url, failed_request.target).then(id => {
         const requestToStore = {
-          "target": failed_request.target,
-          "url": failed_request.url,
-          "method": failed_request.method,
-          "targetId": id
-        }
+          target: failed_request.target,
+          url: failed_request.url,
+          method: failed_request.method,
+          targetId: id
+        };
         if ("body" in failed_request) {
           const dataload = JSON.parse(failed_request.body);
           if (!("_id" in dataload) || !("id" in dataload)) {
             dataload._id = id;
             dataload.id = id;
-          }
+          };
           requestToStore.body = dataload;
           returnData.data = dataload;
         }
@@ -392,44 +352,37 @@ class DBHelper {
     }
   }
 
-  /**
-  ** Sort item list by id.
-  **/
+  // Sort item list by id:
   static sortByID(item_a, item_b, order_type) {
     const sortOrder = order_type === "asc" ? (-1) : 1;
     return (item_a._id === item_b._id) ? 0 : item_a._id < item_b._id ? sortOrder : -sortOrder;
   }
 
-  /**
-  ** Sort data by date.
-  **/
+  // Sort data by date:
   static sortByDate(item_a, item_b, order_type, key) {
-    let optSort;
+    let sortedData;
     if(order_type === "asc"){
-      optSort =  parseFloat(new Date(item_a[key]).getTime()) - parseFloat(new Date(item_b[key]).getTime());
+      sortedData = parseFloat(new Date(item_a[key]).getTime()) - parseFloat(new Date(item_b[key]).getTime());
     } else {
-      optSort = parseFloat(new Date(item_b[key]).getTime()) - parseFloat(new Date(item_a[key]).getTime());
+      sortedData = parseFloat(new Date(item_b[key]).getTime()) - parseFloat(new Date(item_a[key]).getTime());
     }
-    return optSort;
+    return sortedData;
   }
 
-  /**
-  ** Fetch failed requests.
-  **/
+  // Fetch failed requests:
   static fetchFailedRequests() {
     if (DBHelper.INDEXED_DB_SUPPORT) {
       return DBHelper.AppStore.getCachedData("failedRequests");
-    }else{
+    } else {
       return Promise.resolve([]);
     }
   }
 
-  /**
-  ** Clear IndexedDB.
-  **/
+  // Clear IndexedDB:
   static clearIndexedBD() {
     DBHelper.AppStore.deleteAll("failedRequests");
     DBHelper.AppStore.deleteAll("restaurants");
     DBHelper.AppStore.deleteAll("reviews");
   }
+
 }

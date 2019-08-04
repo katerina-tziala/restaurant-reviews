@@ -1,8 +1,7 @@
 "use strict";
 let restaurants, neighborhoods, cuisines, neighborhoodSelect, neighborhoodsList, cuisineSelect, cuisineList, neighborhoodSelectWidget, cuisineSelectWidget, restaurantsList, restaurantResults;
-/**
-** Render index view.
-**/
+
+// Render index view:
 const renderIndex = () => {
   self.neighborhoodSelect = document.getElementById("select_neighborhood");
   self.neighborhoodsList = document.getElementById("neighborhoods_list");
@@ -14,15 +13,12 @@ const renderIndex = () => {
   self.cuisineSelectWidget = null;
   self.neighborhoods = [];
   self.cuisines = [];
-
   fetchNeighborhoods();
   fetchCuisines();
   updateRestaurants();
 };
 
-/**
-** Close select box when clicking outside the element.
-**/
+// Close select box when clicking outside the element:
 document.addEventListener("click", (event) => {
   const selects = document.querySelectorAll(".select_widget");
   if (selects[0].contains(event.target)) {
@@ -35,9 +31,8 @@ document.addEventListener("click", (event) => {
   }
 });
 
-/**
-** Fetch all neighborhoods and set their HTML.
-**/
+
+// Fetch all neighborhoods and set their HTML:
 const fetchNeighborhoods = () => {
   DBHelper.fetchUniqueRestaurantParams("neighborhood", (error, neighborhoods) => {
     if (error) { // Got an error
@@ -50,9 +45,8 @@ const fetchNeighborhoods = () => {
     }
   });
 };
-/**
-** Fetch all cuisines and set their HTML.
-**/
+
+// Fetch all cuisines and set their HTML:
  const fetchCuisines = () => {
   DBHelper.fetchUniqueRestaurantParams("cuisine_type", (error, cuisines) => {
     if (error) { // Got an error!
@@ -66,9 +60,7 @@ const fetchNeighborhoods = () => {
   });
 };
 
-/**
-** Update page and map for current restaurants.
-**/
+// Update page and map for current restaurants:
 const updateRestaurants = () => {
   const cuisine_id = self.cuisineList.getAttribute("aria-activedescendant");
   const neighborhood_id = self.neighborhoodsList.getAttribute("aria-activedescendant");
@@ -91,9 +83,8 @@ const updateRestaurants = () => {
   });
 };
 
-/**
-** Clear current restaurants, their HTML and remove their map markers.
-**/
+
+// Clear current restaurants, their HTML and remove their map markers:
 const resetRestaurants = (restaurants, ul = self.restaurantsList) => {
   self.restaurants = [];
   ul.innerHTML = "";
@@ -105,9 +96,8 @@ const resetRestaurants = (restaurants, ul = self.restaurantsList) => {
   self.restaurants = restaurants;
 };
 
-/**
-** Create all restaurants HTML and add them to the webpage.
-**/
+
+// Create all restaurants HTML and add them to the webpage:
 const fillRestaurantsHTML = (restaurants = self.restaurants, ul = self.restaurantsList) => {
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
@@ -115,9 +105,8 @@ const fillRestaurantsHTML = (restaurants = self.restaurants, ul = self.restauran
   addMarkersToMap(self.restaurants);
 };
 
-/**
-** Create restaurant HTML.
-**/
+
+// Create restaurant HTML:
 const createRestaurantHTML = (restaurant) => {
   const li = document.createElement("li");
   li.className = "restaurantCard";

@@ -8,18 +8,18 @@ const appParams = {
     reviews: "https://restreviews-eb12.restdb.io/rest/reviews"
   },
   indexFiles: {
-    js: [ "js/select_widget.js",
+    js: ["js/select_widget.js",
     "js/map.js",
     "js/favorite_toggler.js",
     "js/index.js"],
-    css: [ "css/no_results_message.css",
+    css: ["css/no_results_message.css",
     "css/map.css",
     "css/select_widget.css",
     "css/favorite_toggler.css",
     "css/index.css"]
   },
   restaurantFiles: {
-    js: [ "js/map.js",
+    js: ["js/map.js",
     "js/favorite_toggler.js",
     "js/restaurant.js",
     "js/reviews.js"],

@@ -1,25 +1,21 @@
 "use strict";
-let focusAfterError=[];
-let reviewInitiator="";
-let reviewsModification="";
+let focusAfterError = [];
+let reviewInitiator = "";
+let reviewsModification = "";
 let editableReview = [];
 
-/**
-** Open review form from edit button.
-**/
+// Open review form from edit button:
 const editReview = (event) => {
   self.editableReview = [];
-  self.reviewInitiator="";
+  self.reviewInitiator = "";
   self.reviewsModification = "edit";
   self.reviewInitiator=document.getElementById(event.target.id);
   const reviewId = event.target.id.split("_").pop();
-  self.editableReview = self.reviews.filter(r => r._id == reviewId)[0];
+  self.editableReview = self.reviews.filter(r => r._id === reviewId)[0];
   displayAddReviewModal();
 };
 
-/**
-** Open / close review form.
-**/
+// Open / close review form:
 const toggleReviewForm = (event) => {
   const action = event.target.getAttribute("id").split("_").pop();
   switch(action) {
@@ -35,11 +31,9 @@ const toggleReviewForm = (event) => {
   }
 };
 
-/**
-** Display add review modal box.
-**/
+// Display add review modal box:
 const displayAddReviewModal = () => {
-  if (self.reviewInitiator.id==="rev_btn_open") {
+  if (self.reviewInitiator.id === "rev_btn_open") {
     initReviewForm();
   }else{
     initEditReviewForm();
@@ -49,9 +43,7 @@ const displayAddReviewModal = () => {
   namefield.focus();
 };
 
-/**
-** Hide add review modal box.
-**/
+// Hide add review modal box:
 const hideAddReviewModal = () => {
   InterfaceManager.hideElement(self.reviewLayer);
   initReviewForm();
@@ -59,12 +51,10 @@ const hideAddReviewModal = () => {
   self.reviewInitiator.focus();
   self.editableReview = [];
   self.reviewsModification = "";
-  self.reviewInitiator="";
+  self.reviewInitiator = "";
 };
 
-/**
-** Initialize rating stars.
-**/
+// Initialize rating stars:
 const initRatingStars = (stars=self.ratingStars) => {
   for (let i = 0; i < stars.length; i++) {
     stars[i].classList.remove("selected");
@@ -72,9 +62,7 @@ const initRatingStars = (stars=self.ratingStars) => {
   }
 };
 
-/**
-** Check rating stars.
-**/
+// Check rating stars:
 const checkStars = (checkedstar, stars=self.ratingStars) => {
   initRatingStars();
   const checkedElement = stars[checkedstar];
@@ -86,36 +74,32 @@ const checkStars = (checkedstar, stars=self.ratingStars) => {
   }
 };
 
-/**
-** Select rating stars on click.
-**/
+// Select rating stars on click:
 const selectRatingStar = (event) => {
   let currentstar = parseInt(event.target.id.split("star").pop());
-  let nextstar = (currentstar+4)%5;
+  let nextstar = (currentstar + 4) % 5;
   checkStars(nextstar);
 };
 
-/**
-** Get form errors of review.
-**/
+// Get form errors of review:
 const getFormErrors = (userinput) => {
-  self.focusAfterError=[];
+  self.focusAfterError = [];
   let formerrors = [];
   const inputKeys =  Object.keys(userinput);
   for (var i = 0; i < inputKeys.length; i++) {
     let key = inputKeys[i];
-    if (key==="name") {
+    if (key === "name") {
       const validname = textValidation(userinput.name, 2, true);
       if (validname!=null) {
         formerrors.push(validname+" your name!");
         self.focusAfterError.push("namefield");
       }
     }
-    if (key==="rating" && userinput.rating==0) {
+    if (key === "rating" && userinput.rating === 0) {
       formerrors.push("Please provide a rating for the restaurant by selecting the respective number of stars!");
       self.focusAfterError.push("rrstar_1");
     }
-    if (key==="comments") {
+    if (key === "comments") {
       const validname = textValidation(userinput.comments, 1);
       if (validname!=null) {
         formerrors.push(validname+" your comments!");
@@ -126,31 +110,27 @@ const getFormErrors = (userinput) => {
   return formerrors;
 };
 
-/**
-** Validate text fields for review.
-**/
-const textValidation = (value, chars, oneletter=false) => {
+// Validate text fields for review:
+const textValidation = (value, chars, oneletter = false) => {
   const numbpattern = new RegExp(`^[0-9]+$`);
   const charpattern = new RegExp(`^(?=.*[a-zA-Z]).{2,}$`);
-  if(value ===""){
+  if (value === "") {
     return "Please provide";
-  } else if(value.replace(/\s+/, "") === ""){
+  } else if (value.replace(/\s+/, "") === "") {
     return "Only spaces are NOT allowed for";
-  }else if (numbpattern.test(value)) {
+  } else if (numbpattern.test(value)) {
     return "Only numbers are NOT allowed for";
-  }else if(value.length<chars){
-    let chartext = chars===1?"one character":"two characters";
+  } else if(value.length < chars) {
+    let chartext = chars === 1 ? "one character" : "two characters";
     return `At least ${chartext} are required for`;
-  }else if (!charpattern.test(value) && value.length>=2 && oneletter===true) {
+  } else if (!charpattern.test(value) && value.length >= 2 && oneletter === true) {
     return "At least one letter is required for";
-  }else {
+  } else {
     return null;
   }
 };
 
-/**
-** Create and display form errors.
-**/
+// Create and display form errors:
 const displayReviewFormErrors = (errors, reviewModal = self.reviewModal) => {
   const errorContainer = document.createElement("div");
   errorContainer.className = "formError";
@@ -177,55 +157,43 @@ const displayReviewFormErrors = (errors, reviewModal = self.reviewModal) => {
   document.getElementById("error_close_btn").focus();
 };
 
-/**
-** Remove form errors.
-**/
+// Remove form errors:
 const removeFormErrors = () => {
   const formerror = document.querySelectorAll(".formError");
-  if (formerror.length>0) {
+  if (formerror.length) {
     formerror[0].remove();
   }
   self.focusAfterError = [];
 };
 
-/**
-** Close form errors and focus on the first error field.
-**/
-const closeFormErrors = (event) => {
+// Close form errors and focus on the first error field:
+const closeFormErrors = () => {
   document.getElementById(self.focusAfterError[0]).focus();
   removeFormErrors();
 };
 
-/**
-** Initialize review form.
-**/
+// Initialize review form:
 const initReviewForm = () => {
   initRatingStars();
-  document.getElementById("namefield").value="";
-  document.getElementById("commentsfield").value="";
+  document.getElementById("namefield").value = "";
+  document.getElementById("commentsfield").value = "";
 };
 
-/**
-** Initialize review form for edit.
-**/
+// Initialize review form for edit:
 const initEditReviewForm = () => {
-  checkStars(self.editableReview.rating-1);
+  checkStars(self.editableReview.rating - 1);
   document.getElementById("namefield").value = self.editableReview.name;
   document.getElementById("commentsfield").value = self.editableReview.comments;
 };
 
-/**
-** Clear review form.
-**/
+// Clear review form:
 const clearReviewForm = (event) => {
   event.preventDefault();
   initReviewForm();
   removeFormErrors();
 };
 
-/**
-** Trap and handle navigation when form is open.
-**/
+// Trap and handle navigation when form is open:
 const trapModalKeys = (event) => {
   const focusableElements = document.querySelectorAll(".modalfocusable");
   const firstStop = focusableElements[0];
@@ -234,63 +202,61 @@ const trapModalKeys = (event) => {
   if (event.keyCode === 27) {// ESCAPE
     event.preventDefault();
     hideAddReviewModal();
-  }else if (event.keyCode === 13 && targetid.startsWith("rrstar_")) {// ENTER
+  } else if (event.keyCode === 13 && targetid.startsWith("rrstar_")) {// ENTER
     event.preventDefault();
     let currentstar = parseInt(targetid.split("_").pop());
-    let nextstar = (currentstar+4)%5;
+    let nextstar = (currentstar + 4) % 5;
     checkStars(nextstar);
-  }else if (event.keyCode === 13 && targetid==="namefield") {// ENTER
+  } else if (event.keyCode === 13 && targetid === "namefield") {// ENTER
     event.preventDefault();
-  }else if (event.keyCode === 9 && event.shiftKey===true) {// SHIFT + TAB
-    if (targetid==="rev_btn_close") {
+  } else if (event.keyCode === 9 && event.shiftKey === true) {// SHIFT + TAB
+    if (targetid === "rev_btn_close") {
       event.preventDefault();
       let formerror = document.querySelectorAll(".formError");
-      if (formerror.length>0) {
+      if (formerror.length) {
         document.getElementById("error_close_btn").focus();
-      }else{
+      } else {
         lastStop.focus();
       }
-    }else if (targetid.startsWith("rrstar_")) {
+    } else if (targetid.startsWith("rrstar_")) {
       event.preventDefault();
       focusableElements[1].focus();
-    }else if (targetid==="error_close_btn") {
+    } else if (targetid === "error_close_btn") {
       event.preventDefault();
       firstStop.focus();
     }
-  }else if (event.keyCode === 9 && event.shiftKey===false) {// TAB
-    if (targetid==="error_close_btn" || targetid==="rev_submit") {
+  } else if (event.keyCode === 9 && event.shiftKey === false) {// TAB
+    if (targetid === "error_close_btn" || targetid === "rev_submit") {
       event.preventDefault();
       firstStop.focus();
-    } else if (targetid==="namefield") {
+    } else if (targetid === "namefield") {
       event.preventDefault();
       self.ratingStars[0].focus();
     } else if (targetid.startsWith("rrstar_")) {
       event.preventDefault();
       focusableElements[7].focus();
-    } else if (targetid==="rev_btn_close") {
+    } else if (targetid === "rev_btn_close") {
       let formerror = document.querySelectorAll(".formError");
-      if (formerror.length>0) {
+      if (formerror.length) {
         event.preventDefault();
         document.getElementById("error_close_btn").focus();
       }
     }
-  }else if ((event.keyCode === 39 || event.keyCode === 40) && targetid.startsWith("rrstar_")) {//RIGHT OR DOWN ARROW
+  } else if ((event.keyCode === 39 || event.keyCode === 40) && targetid.startsWith("rrstar_")) {//RIGHT OR DOWN ARROW
     event.preventDefault();
     const nextstar = targetid.split("_").pop();
     checkStars(nextstar);
-  }else if ((event.keyCode === 37 || event.keyCode === 38) && targetid.startsWith("rrstar_")) {//LEFT OR UP ARROW
+  } else if ((event.keyCode === 37 || event.keyCode === 38) && targetid.startsWith("rrstar_")) {//LEFT OR UP ARROW
     event.preventDefault();
     const currentstar = parseInt(targetid.split("_").pop());
-    const nextstar = (currentstar+3)%5;
+    const nextstar = (currentstar + 3) % 5;
     checkStars(nextstar);
-  }else {
+  } else {
     return;
   }
 };
 
-/**
-** Get user input.
-**/
+// Get user input:
 const getUserInput = () => {
   const name = document.getElementById("namefield").value.toString().trim();
   const ratingField = document.querySelector("input[name='userrating']:checked");
@@ -300,16 +266,14 @@ const getUserInput = () => {
     rating=parseInt(ratingField.value);
   }
   const userinput = {
-    "name": name,
-    "rating": rating,
-    "comments": comments
+    name: name,
+    rating: rating,
+    comments: comments
   };
   return userinput;
 }
 
-/**
-** Submit review form.
-**/
+// Submit review form:
 const submitReviewForm = (event) => {
   event.preventDefault();
   switch (self.reviewsModification) {
@@ -322,21 +286,19 @@ const submitReviewForm = (event) => {
     }
 };
 
-/**
-** Submit new review.
-**/
+// Submit new review:
 const submitNewReview = () => {
   const userinput = getUserInput();
   const formerrors = getFormErrors(userinput);
-  if (formerrors.length>0) {
+  if (formerrors.length) {
     displayReviewFormErrors(formerrors);
-  }else{
+  } else {
     const newReview = userinput;
     newReview.restaurant_id = self.restaurant._id;
     newReview.createdAt = new Date().toUTCString();
     newReview.updatedAt = new Date().toUTCString();
     hideAddReviewModal();
-    DBHelper.postReview(newReview).then((response)=>{
+    DBHelper.postReview(newReview).then(response => {
       switch (response.request_status) {
         case "fail":
           generateFailureNotification(DBHelper.INDEXED_DB_SUPPORT);
@@ -357,20 +319,18 @@ const submitNewReview = () => {
   }
 };
 
-/**
-** Submit review editing.
-**/
+// Submit review editing:
 const submitReviewEditing = (editableReview = self.editableReview) => {
   const userinput = getUserInput();
-  if (userinput.name.toLowerCase()===editableReview.name.toLowerCase() &&
-    parseInt(userinput.rating)===parseInt(editableReview.rating) &&
-    userinput.comments.toLowerCase()===editableReview.comments.toLowerCase()) {
+  if (userinput.name.toLowerCase() === editableReview.name.toLowerCase() &&
+    parseInt(userinput.rating) === parseInt(editableReview.rating) &&
+    userinput.comments.toLowerCase() === editableReview.comments.toLowerCase()) {
     hideAddReviewModal();
   } else {
     const formerrors = getFormErrors(userinput);
-    if (formerrors.length>0) {
+    if (formerrors.length) {
       displayReviewFormErrors(formerrors);
-    }else{
+    } else {
       const newReview = userinput;
       newReview.restaurant_id = self.restaurant._id;
       newReview.createdAt = editableReview.createdAt;
@@ -396,9 +356,7 @@ const submitReviewEditing = (editableReview = self.editableReview) => {
   }
 };
 
-/**
-** Update view after editing a review.
-**/
+// Update view after editing a review:
 const updateViewAfterReviewEdit = (editedRev) => {
   let updatedRevs = [];
   for (let i = 0; i < self.reviews.length; i++) {
@@ -414,9 +372,7 @@ const updateViewAfterReviewEdit = (editedRev) => {
   fillReviewsHTML();
 };
 
-/**
-** Delete a review.
-**/
+// Delete a review:
 const deleteReview = (event) => {
   let reviewId = event.target.id.split("_").pop()
   DBHelper.deleteReview(reviewId).then((response)=>{
@@ -424,15 +380,15 @@ const deleteReview = (event) => {
       case "fail":
       generateFailureNotification(DBHelper.INDEXED_DB_SUPPORT);
       if (DBHelper.INDEXED_DB_SUPPORT) {
-          const deleteReview = self.reviews.filter(r => r._id == reviewId)[0];
+          const deleteReview = self.reviews.filter(r => r._id === reviewId)[0];
           DBHelper.updateIndexedDB({target: "review", data: deleteReview}, "DELETE");
-          self.reviews = self.reviews.filter(r => r._id != reviewId);
+          self.reviews = self.reviews.filter(r => r._id !== reviewId);
           fillRatingStats();
           fillReviewsHTML();
         }
         break;
       default:
-        self.reviews = self.reviews.filter(r => r._id != reviewId);
+        self.reviews = self.reviews.filter(r => r._id !== reviewId);
         fillRatingStats();
         fillReviewsHTML();
         break;
