@@ -1,24 +1,24 @@
-//gulp variables
+//gulp variables:
 var gulp = require('gulp'),
     babel = require('gulp-babel'),
     uglify = require('gulp-uglify-es').default,
     sourcemaps = require('gulp-sourcemaps'),
     concat = require('gulp-concat'),
-    minify = require('gulp-minify'),
     replace = require('gulp-replace-task'),
     strip = require('gulp-strip-comments'),
     through2 = require('through2'),
     runSequence = require('run-sequence'),
     replaceBatch = require('gulp-batch-replace'),
-    config = require('./config.json'),
-    js = config.js;
-//compile javascript
+    config = require('./config.json');
+
+//compile javascript:
 gulp.task('compile_js', function(callback) {
   runSequence(
     ['service_worker', 'bundle_js'],
     callback);
 });
-//function to help compile all javascript files through iteration
+
+//function to help compile all javascript files through iteration:
 function synchro(done) {
   return through2.obj(function (data, enc, cb) {
     cb();
@@ -28,7 +28,8 @@ function synchro(done) {
     done();
   });
 }
-//transpile and minify servce worker
+
+//transpile and minify servce worker:
 gulp.task('service_worker', () => {
   var cacheFiles = config.sw_files;
   var replaceThis = [
@@ -41,7 +42,8 @@ gulp.task('service_worker', () => {
     .pipe(uglify())
     .pipe(gulp.dest(global.production_folder));
 });
-//function to compile styles
+
+//function to compile styles:
 gulp.task('bundle_js', function(done){
   var filenames = Object.keys(config.js);
   var doneCounter = 0;
@@ -54,12 +56,11 @@ gulp.task('bundle_js', function(done){
   for (var i = 0; i < filenames.length; ++i) {
     var filename = filenames[i];
     var files = config.js[filename];
-    var output_file=filename+".min.js";
     gulp.src(files)
       .pipe(sourcemaps.init())
       .pipe(babel({presets: ['es2015']}))
       .pipe(uglify())
-      .pipe(concat(filename+'.min.js'))
+      .pipe(concat(filename + '.min.js'))
       .pipe(sourcemaps.write())
       .pipe(replace({
         patterns: [{
@@ -89,7 +90,7 @@ gulp.task('bundle_js', function(done){
       ]
       }))
       .pipe(strip())
-      .pipe(gulp.dest(global.production_folder+"/js"))
+      .pipe(gulp.dest(global.production_folder + "/js"))
       .pipe(synchro(incDoneCounter));
   }
 });

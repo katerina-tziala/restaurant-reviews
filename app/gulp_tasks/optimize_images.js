@@ -1,11 +1,13 @@
-//gulp variables
+//gulp variables:
 var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     config = require('./config.json'),
     images = config.images;
-//optimize all images
+
+//optimize all images:
 gulp.task('optimize_images', ['optimize_root_images', 'optimize_img_assets']);
-//optimize root images
+
+//optimize root images:
 gulp.task('optimize_root_images', function() {
   return gulp.src(images.root)
   .pipe(imagemin({
@@ -15,7 +17,8 @@ gulp.task('optimize_root_images', function() {
       svgoPlugins: [{removeViewBox: true}]}))
   .pipe(gulp.dest(global.production_folder));
 });
-//optimize images
+
+//optimize images:
 gulp.task('optimize_img_assets', function(){
   return gulp.src(images.assets)
   .pipe(imagemin({
@@ -23,5 +26,5 @@ gulp.task('optimize_img_assets', function(){
       progressive: true,
       optimizationLevel: 5,
       svgoPlugins: [{removeViewBox: true}]}))
-  .pipe(gulp.dest(global.production_folder+"/img"));
+  .pipe(gulp.dest(global.production_folder + "/img"));
 });

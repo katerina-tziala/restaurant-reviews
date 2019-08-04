@@ -5,7 +5,8 @@ var gulp = require('gulp'),
     through2 = require('through2'),
     inject = require('gulp-inject'),
     config = require('./config.json');
-//function to help compile all html files through iteration
+
+//function to help compile all html files through iteration:
 function synchro(done) {
     return through2.obj(function (data, enc, cb) {
         cb();
@@ -15,7 +16,8 @@ function synchro(done) {
         done();
     });
 }
-//function to compile styles
+
+//function to compile styles:
 gulp.task('compile_html', function(done){
   var pages = config.pages;
   var doneCounter = 0;

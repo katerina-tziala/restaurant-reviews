@@ -1,4 +1,4 @@
-//gulp variables
+//gulp variables:
 var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     cleancss = require('gulp-clean-css'),
@@ -7,7 +7,8 @@ var gulp = require('gulp'),
     stripCssComments = require('gulp-strip-css-comments'),
     config = require('./config.json'),
     css = config.css;
-//function to help compile all css files through iteration
+
+//function to help compile all css files through iteration:
 function synchro(done) {
   return through2.obj(function (data, enc, cb) {
     cb();
@@ -17,7 +18,8 @@ function synchro(done) {
     done();
   });
 }
-//function to compile styles
+
+//function to compile styles:
 gulp.task('compile_styles', function(done){
   var filenames = Object.keys(css);
   var doneCounter = 0;
@@ -34,9 +36,9 @@ gulp.task('compile_styles', function(done){
     gulp.src(files)
       .pipe(stripCssComments({preserve: false}))
       .pipe(cleancss({debug: true, rebase: false}))
-      .pipe(autoprefixer({browsers: ['last 99 versions'], cascade: false}))
+      .pipe(autoprefixer({overrideBrowserslist: ['last 99 versions'], cascade: false}))
       .pipe(concat(output_file))
-      .pipe(gulp.dest(global.production_folder+"/css"))
+      .pipe(gulp.dest(global.production_folder + "/css"))
       .pipe(synchro(incDoneCounter));
   }
 });
