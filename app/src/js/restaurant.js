@@ -101,7 +101,7 @@ const fillRatingStats = (reviews = self.reviews) => {
     reviews.forEach(review => {
       sum_rating += parseInt(review.rating);
     });
-    const avg = Number(Math.round(sum_rating/reviews_numb+'e'+1)+'e-'+1);
+    const avg = Number(Math.round(sum_rating / reviews_numb + 'e' + 1) + 'e-' + 1);
     total_rating.innerHTML = avg;
   }
 };
