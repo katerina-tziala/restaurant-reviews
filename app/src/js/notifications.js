@@ -1,41 +1,32 @@
 "use strict";
-/**
-** Display notification.
-**/
+
+// Display notification:
 const displayNotification = () => {
   self.notificationContainer.classList.add(appParams.cssClasses.displayNotification);
   self.notificationContainer.setAttribute("role", "alert");
   self.notificationContainer.setAttribute("aria-live", "assertive");
 };
 
-/**
-** Hide notification.
-**/
+// Hide notification:
 const hideNotification = () => {
   self.notificationContainer.classList.remove(appParams.cssClasses.displayNotification);
   self.notificationContainer.removeAttribute("role");
   self.notificationContainer.removeAttribute("aria-live");
 };
 
-/**
-** Get notification content.
-**/
+// Get notification content:
 const getNotificationContent = (key) => {
   return appParams.notifications[key];
 };
 
-/**
-** Create notification content.
-**/
+// Create notification content:
 const createNotificationContent = (notification) => {
   self.notificationTitle.innerHTML = notification.title;
   self.notificationBody.innerHTML = notification.message;
   self.notificationContainer.setAttribute("notification_type", notification.type);
 };
 
-/**
-** Clear notification.
-**/
+// Clear notification:
 const clearNotification = () => {
   createNotificationContent(getNotificationContent("clear"));
   if (self.notificationTimeout > 0) {
@@ -46,9 +37,7 @@ const clearNotification = () => {
   }
 };
 
-/**
-** Display a countdown notification. When it reaches to 0 clear countdown execute the next function.
-**/
+// Display a countdown notification. When it reaches to 0 clear countdown execute the next function:
 const addNotificationCountDown = (callback) => {
   self.notificationCountdown = 0;
   self.notificationInterval = 0;
@@ -66,17 +55,13 @@ const addNotificationCountDown = (callback) => {
   }, 1000);
 };
 
-/**
-** Clear notification count down.
-**/
+// Clear notification count down:
 const clearNotificationCountDown = () => {
   clearInterval(self.notificationInterval);
   self.notificationCountdown = 0;
 };
 
-/**
-** Close notification and clear timeout.
-**/
+// Close notification and clear timeout:
 const closeNotification = (event) => {
   event.preventDefault();
   hideNotification();
@@ -86,10 +71,10 @@ const closeNotification = (event) => {
   }
 };
 
-/////////////////////// CREATE BUTTONS FOR NOTIFICATIONS ///////////////////////
 /**
-** Create buttons container or get the existing one.
+**  CREATE BUTTONS FOR NOTIFICATIONS
 **/
+// Create buttons container or get the existing one:
 const getButtonsContainer = () => {
   let buttonsContainer = self.notificationBody.querySelectorAll(".buttons_wrapper");
   if (buttonsContainer.length > 0) {
@@ -101,9 +86,7 @@ const getButtonsContainer = () => {
   return buttonsContainer;
 };
 
-/**
-** Create "got it" button for notification.
-**/
+// Create "got it" button for notification:
 const createGotItButton = () => {
   const buttonsContainer = getButtonsContainer();
   const gotitButton = InterfaceManager.createButton("btn_gotit", "got it", "close notification", closeNotification);
@@ -112,9 +95,7 @@ const createGotItButton = () => {
   self.notificationBody.append(buttonsContainer);
 };
 
-/**
-** Create action button for notification.
-**/
+// Create action button for notification:
 const createNotificationActionButton = (type, text, title, callback) => {
   const buttonsContainer = getButtonsContainer();
   const button = InterfaceManager.createButton(`btn_${type}`, text, title, callback);
@@ -123,10 +104,10 @@ const createNotificationActionButton = (type, text, title, callback) => {
   self.notificationBody.append(buttonsContainer);
 }
 
-//////////////////////////// GENERATE NOTIFICATIONS ////////////////////////////
 /**
-** Generate basic notification.
+**  GENERATE NOTIFICATIONS
 **/
+// Generate basic notification:
 const generateBasicNotification = (notification, timeout) => {
   clearNotification();
   createNotificationContent(notification);
@@ -137,9 +118,7 @@ const generateBasicNotification = (notification, timeout) => {
   }
 };
 
-/**
-** Generate update notification.
-**/
+// Generate update notification:
 const generateUpdateNotification = () => {
   clearNotification();
   createNotificationContent(getNotificationContent("update"));

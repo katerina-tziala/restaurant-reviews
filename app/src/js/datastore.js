@@ -3,12 +3,13 @@
 ** Class to store and retrieve objects from IndexedDB.
 **/
 class DataStore {
-  constructor(autoIncrement = false) {
+  constructor() {
     this.cachename = "rr-app";
-    this.openDatabase(autoIncrement);
+    this.openDatabase();
   }
-  //open database
-  openDatabase(autoIncrement = false) {
+
+  // Open database:
+  openDatabase() {
     this.cache = idb.open(this.cachename, 1, (upgradeDb) => {
       switch (upgradeDb.oldVersion) {
         case 0:
@@ -17,20 +18,23 @@ class DataStore {
         }
       });
   }
-  //create object store
+
+  // Create object store:
   createStore(upgradeDb, storename, autoIncrement = false) {
     return upgradeDb.createObjectStore(storename, {
       keyPath: 'id',
       autoIncrement: autoIncrement
     });
   }
-  //get cached data:
+
+  // Get cached data:
   getCachedData(storename){
     return this.cache.then((db) => {
       return db.transaction(storename).objectStore(storename).getAll();
     });
   }
-  //put all objects in indexedDB:
+
+  // Put all objects in indexedDB:
   cacheAll(storename, objects) {
     this.cache.then((db) => {
       const tx = db.transaction(storename, 'readwrite');

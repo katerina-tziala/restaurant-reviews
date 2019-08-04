@@ -1,6 +1,5 @@
 "use strict";
 class SelectWidget {
-
   constructor(selectButton, selectList, optionKey, onOptionSelectFunction, selectedOptions) {
     this.selectButton = selectButton;
     this.selectList = selectList;
@@ -9,11 +8,9 @@ class SelectWidget {
     this.fillSelectOptionsHTLM(selectedOptions);
   }
 
-  /**
-  ** Fill options HTML for select widget.
-  **/
+  // Fill options HTML for select widget:
   fillSelectOptionsHTLM(selectedOptions) {
-    this.selectList.innerHTML="";
+    this.selectList.innerHTML = "";
     for (let i = 0; i < selectedOptions.length; i++) {
       let selected = i === 0 ? true : false;
       let option = document.createElement("li");
@@ -35,9 +32,7 @@ class SelectWidget {
     this.selectWidgetManager();
   }
 
-  /**
-  ** Focus on the hovered option.
-  **/
+  // Focus on the hovered option:
   hoverOptions() {
     this.focusableElements.forEach(option => {
       option.addEventListener("mouseover", (event) =>{
@@ -46,9 +41,7 @@ class SelectWidget {
     });
   }
 
-  /**
-  ** Add event listeners for select widget.
-  **/
+  // Add event listeners for select widget:
   selectWidgetManager() {
     this.selectButton.addEventListener("keydown", (event) => {
       this.handleSelectWidgetInteraction(event.keyCode);
@@ -69,9 +62,7 @@ class SelectWidget {
     });
   }
 
-  /**
-  ** Handle select widget display and interaction.
-  **/
+  // Handle select widget display and interaction:
   handleSelectWidgetInteraction(keyCode) {
     const currentid = parseInt(this.selectList.getAttribute("aria-activedescendant").split("_").pop());
     this.expanded = this.selectList.getAttribute("aria-expanded") === "false" ? false : true;
@@ -106,7 +97,7 @@ class SelectWidget {
       case 37://Left Arrow
         if (!this.expanded) {
           event.preventDefault();
-          this.moveToPrev(currentid-1);
+          this.moveToPrev(currentid - 1);
         }
         this.selectOptionWhenClosed();
         break;
@@ -132,9 +123,7 @@ class SelectWidget {
     }
   }
 
-  /**
-  ** Move to next option.
-  **/
+  // Move to next option:
   moveToNext(nextid) {
     if (nextid > this.focusableElements.length - 1) {
       this.updateOptionAndButton(this.focusableElements[0]);
@@ -143,9 +132,7 @@ class SelectWidget {
     }
   }
 
-  /**
-  ** Move to previous option.
-  **/
+  // Move to previous option:
   moveToPrev(previd) {
     if (previd < 0) {
       this.updateOptionAndButton(this.focusableElements[this.focusableElements.length - 1]);
@@ -154,18 +141,14 @@ class SelectWidget {
     }
   }
 
-  /**
-  ** Select option when select is closed.
-  **/
+  // Select option when select is closed:
   selectOptionWhenClosed() {
     if (!this.expanded) {
       this.onOptionSelect();
     }
   }
-
-  /**
-  ** Update select button and option.
-  **/
+  
+  // Update select button and option:
   updateOptionAndButton(element) {
     element.setAttribute("aria-selected", true);
     const selectedOption = this.selectButton.getElementsByTagName("SPAN")[0];
@@ -175,10 +158,8 @@ class SelectWidget {
       element.focus();
     }
   }
-
-  /**
-  ** Handle display of select button and option list when opening/closing select options popup.
-  **/
+  
+  // Handle display of select button and option list when opening/closing select options popup:
   toggleDisplayManager(expanded) {
      const arrow_prev = expanded === false ? "fa-caret-down" : "fa-caret-up";
      const arrow_next = expanded === false ? "fa-caret-up" : "fa-caret-down";
@@ -190,9 +171,7 @@ class SelectWidget {
      this.selectButton.setAttribute("tabindex", button_tabindex);
   }
 
-  /**
-  ** Toggle select options list.
-  **/
+  // Toggle select options list:
   toggleSelectOptions(target) {
     if (this.expanded) {
       this.closeSelectBox(target);
@@ -202,9 +181,7 @@ class SelectWidget {
     }
   }
 
-  /**
-  ** Open select box.
-  **/
+  // Open select box:
   openSelectBox() {
     InterfaceManager.displayElement(this.selectList);
     this.selectButton.blur();
@@ -220,9 +197,7 @@ class SelectWidget {
     this.expanded = true;
   }
 
-  /**
-  ** Close select box.
-  **/
+  // Close select box:
   closeSelectBox(target, outside = false) {
     InterfaceManager.hideElement(this.selectList);
     InterfaceManager.setTabIndex(this.focusableElements, -1);
