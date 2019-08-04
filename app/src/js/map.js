@@ -35,7 +35,7 @@ const toggleMapButtonDisplay = (action) => {
     self.mapButton.classList.remove("map_icon", "fa-map");
     self.mapButton.classList.add("location_icon", "fa-map-marker-alt");
   }
-}
+};
 
 // Get title and label from map button:
 const getMabButtonLabelTitle = (next_action) => {
@@ -43,7 +43,7 @@ const getMabButtonLabelTitle = (next_action) => {
   const label_part_b = next_action === "show" ? "on" : "from";
   const label = next_action + " " + label_part_a + " " + label_part_b + " map";
   return label.charAt(0).toUpperCase() + label.slice(1);
-}
+};
 
 // Get params to initialize the map based on the view:
 const getMapInitParams = () => {
@@ -74,7 +74,7 @@ const resetMap = () => {
   self.mapTimeout = 0;
   self.mapInitializing = false;
   self.mapLoaded = false;
-}
+};
 
 // Initialize map:
 const initMap = (params) => {
