@@ -1,4 +1,4 @@
-<h1>Restaurant Reviews App: Stage 4</h1>
+<h1><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_logo-72x72.png" alt="budget restaurant reviews logo" width="54" height="54">Restaurant Reviews App: Stage 4</h1>
 This is the fourth stage of the <b>Restaurant Reviews</b> project. Building upon the PWA that was developed incrementally in the three previous stages, this stage includes the necessary changes to host the app and create a live demo. 
 
 
@@ -55,11 +55,13 @@ After an extensive research, I decided to use
  
 <h2>Local Setup of the Project</h2>
 
-**1.** Fork and clone the [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_4) repository.
+**1.** Create an online NoSQL database backend and a REST API on [**restdb.io**](https://restdb.io/) as described above. 
 
-**2.** Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
+**2.** Fork and clone the [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_4) repository.
 
-**3.**  Make sure that the ***app_params*** of in the *config.json* file inside the **gulp_tasks** folder are defined appropriately:
+**3.** Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
+
+**4.**  Make sure that the ***app_params*** of in the *config.json* file inside the **gulp_tasks** folder are defined appropriately:
  - **_APP_PATH:** The url of the path of the app (e.g.: `http://localhost:<PORT>/`).
  - **_START_URL_:** The url of the index.html file (e.g.: `http://localhost:<PORT>/index.html`).
  - **_SCOPE_:** Scope of application.
