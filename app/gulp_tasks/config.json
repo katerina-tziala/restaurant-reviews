@@ -47,7 +47,8 @@
     "'js/restaurant.min.js'",
     "'css/critical.min.css'",
     "'css/index.min.css'",
-    "'css/restaurant.min.css'"],
+    "'css/restaurant.min.css'"
+  ],
   "css" : {
     "index" : [
       "./src/css/no_results_message.css",

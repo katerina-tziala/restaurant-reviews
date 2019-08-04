@@ -1,39 +1,24 @@
 "use strict";
 const appParams = {
-  start_url: "http://localhost:8887/index.html",
-  scope: "/",
-  databaseApiKey: "5c5428e3640ec41c0c24ec1e",
+  start_url: "_START_URL_",
+  scope: "_SCOPE_",
+  databaseApiKey: "_DATABASE_API_KEY",
   endpoints: {
-    restaurants: "https://restreviews-eb12.restdb.io/rest/restaurants",
-    reviews: "https://restreviews-eb12.restdb.io/rest/reviews"
+    restaurants: "_RESTAURANTS_URL_",
+    reviews: "_REVIEWS_URL_"
   },
   indexFiles: {
-    js: ["js/select_widget.js",
-    "js/map.js",
-    "js/favorite_toggler.js",
-    "js/index.js"],
-    css: ["css/no_results_message.css",
-    "css/map.css",
-    "css/select_widget.css",
-    "css/favorite_toggler.css",
-    "css/index.css"]
+    js: ["js/index.min.js"],
+    css: ["css/index.min.css"]
   },
   restaurantFiles: {
-    js: ["js/map.js",
-    "js/favorite_toggler.js",
-    "js/restaurant.js",
-    "js/reviews.js"],
-    css: ["css/no_results_message.css",
-    "css/map.css",
-    "css/restaurant.css",
-    "css/favorite_toggler.css",
-    "css/reviews.css",
-    "css/add_review.css"]
+    js: ["js/restaurant.min.js"],
+    css: ["css/restaurant.min.css"]
   },
   mapBox: {
     leaflet_tile_layer_link: "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}",
     leaflet_params: {
-        mapboxToken: "pk.eyJ1Ijoia2F0ZXJpbmF0emlhbGEiLCJhIjoiY2pwenNqdHF3MGU5MDQ4bzRudGdlanZ6eCJ9.kGbzX08otPecWpIvfKU3ZA",
+        mapboxToken: "_MAPBOX_API_KEY_",
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
         '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
