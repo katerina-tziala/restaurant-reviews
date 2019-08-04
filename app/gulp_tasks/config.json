@@ -4,14 +4,14 @@
     "dist" : "./dist"
   },
   "app_params" : {
-    "path":"_APP_PATH_",
-    "start_url": "_START_URL_",
-    "scope": "_SCOPE_",
-    "databaseApiKey": "_DATABASE_API_KEY",
-    "mapboxkey": "_MAPBOX_API_KEY_",
+    "path":"http://localhost:8887/",
+    "start_url": "http://localhost:8887/index.html",
+    "scope": "/",
+    "databaseApiKey": "5c5428e3640ec41c0c24ec1e",
+    "mapboxkey": "pk.eyJ1Ijoia2F0ZXJpbmF0emlhbGEiLCJhIjoiY2pwenNqdHF3MGU5MDQ4bzRudGdlanZ6eCJ9.kGbzX08otPecWpIvfKU3ZA",
     "endpoints": {
-        "restaurants": "_RESTAURANTS_URL_",
-        "reviews": "_REVIEWS_URL_"
+        "restaurants": "https://restreviews-eb12.restdb.io/rest/restaurants",
+        "reviews": "https://restreviews-eb12.restdb.io/rest/reviews"
     },
     "theme_color": "#ca5000"
   },

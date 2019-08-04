@@ -3,15 +3,66 @@
 ** Check if there are failed requests.
 **/
 const checkForFailedRequests = () => {
-  return DBHelper.fetchFailedRequests().then((failedRequests) => {
-    const failedRequestsNumber = failedRequests.length;
-    if (failedRequestsNumber > 0) {
+  return DBHelper.fetchFailedRequests().then(failedRequests => {
+    if (failedRequests.length) {
       return failedRequests;
     } else {
       return [];
     }
   });
 };
+
+/**
+** Validate failed requests.
+**/
+const validateFailedRequests = (failedRequests, callback) => {
+  let requestsToSend = failedRequests.filter(request => request.method === "POST");
+  const deleteRequests = failedRequests.filter(request => request.method === "DELETE");
+  const patchRequests = failedRequests.filter(request => request.method === "PATCH");
+  DBHelper.fetchData(DBHelper.REVIEWS_URL,"reviews").then((reviews)=>{
+    const dbReviewsIds = reviews.map(review => review._id);
+      const validDeleteRequests = getValidRequests(dbReviewsIds, deleteRequests);
+      if (validDeleteRequests.length) {
+        validDeleteRequests.forEach(request => requestsToSend.push(request));
+      }
+      const validUpdateRequests = getValidRequests(dbReviewsIds, patchRequests);
+      if (validUpdateRequests.length) {
+        validUpdateRequests.forEach(request => requestsToSend.push(request));
+      }
+      const requestsToSendIds = reviews.map(request => request._id);
+      failedRequests.forEach(request => {
+        if (!requestsToSendIds.includes(request._id)) {
+          if (request.method === "PATCH") {
+            const newId = "temp" + request.body.id;
+            request.url = request.url.split("reviews/")[0] + "reviews/" + newId;
+            request.targetId = newId;
+            request.body._id = newId;
+            requestsToSend.push(prepareRequestParams(request));
+          } else {
+            DBHelper.AppStore.deleteOne("failedRequests", request._id);
+          }
+        }
+      });
+      callback(null, requestsToSend);
+  }).catch((error) => callback(error, null));
+}
+
+/**
+** Check if data for update exist in database.
+**/
+const getValidRequests = (dbDataIds, requestsTocheck) => {
+  const validRequests = [];
+  if (requestsTocheck.length) {
+    requestsTocheck.forEach(request => {
+      if (request.targetId.startsWith("temp")) {
+        validRequests.push(request);
+      } else if (dbDataIds.includes(request.targetId)) {
+        validRequests.push(request);
+      }
+    });
+  }
+  return validRequests;
+}
 
 /**
 ** Allow an eager user to save changes immediately.
@@ -27,7 +78,7 @@ const saveNow = (event) => {
 **/
 const updateAppData = () => {
   checkForFailedRequests().then((response) => {
-    if (response.length > 0) {
+    if (response.length) {
       saveRequests(response);
     }
   });
@@ -42,17 +93,17 @@ const updateAppData = () => {
 ** that everything was successfully stored and will be promped to refresh the app.
 **/
 const saveRequests = (requests) => {
-  if (requests.length > 0) {
+  if (requests.length) {
     let requestToStore = requests[0];
     let sendingRequest = prepareRequestParams(requestToStore);
     setTimeout(() => {
-      DBHelper.sendData(sendingRequest.url, sendingRequest.params, sendingRequest.target).then(response => {
+      DBHelper.sendData(sendingRequest.url, sendingRequest.params, sendingRequest.target).then(() => {
         DBHelper.AppStore.deleteOne("failedRequests", requestToStore._id);
         requests.shift();
         saveRequests(requests);
       });
-    }, 500);
-  }else{
+    }, 0);
+  } else {
     checkForAppDataUpdate(true);
   }
 };

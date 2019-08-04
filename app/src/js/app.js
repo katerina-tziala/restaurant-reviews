@@ -1,7 +1,7 @@
 "use strict";
 let main, loader, spinner, mapContainer, mapButton, notificationContainer, notificationHeader, notificationTitle, notificationBody, newSWorker;
 let notificationTimeout, notificationInterval, notificationCountdown = 0;
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", () => {
     initApp();
 });
 
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 ** Initialize the App.
 **/
 const initApp = () => {
-  registerServiceWorker();
+  //registerServiceWorker();
   DBHelper.fetchRestaurants(() => {});
   DBHelper.fetchReviews(() => {});
   self.main = document.getElementById("main");
@@ -26,9 +26,12 @@ const initApp = () => {
   self.notificationInterval = 0;
   self.notificationCountdown = 0;
   initView();
+  checkForFailedRequests().then((response) => {
+    if (response.length) { validateFailedRequests(response, () => {}); }
+  });
   setTimeout(() => {
-    if(navigator.online){
-       checkForAppDataUpdate();
+    if (navigator.online) {
+      checkForAppDataUpdate();
     }
   }, 10000);
 };
@@ -89,15 +92,38 @@ window.addEventListener("online", (event) => {
     InterfaceManager.refreshApp();
   } else {
     enableMap();
-    checkForFailedRequests().then((response) => {
-      if (response.length > 0) {
-        generateUnsavedChangesNotification(response.length);
-      } else {
-        generateBasicNotification(getNotificationContent("online"), 8000);
-      }
-    });
+    updateWhenOnline();
   }
 });
+
+/**
+** Update the app when back online.
+**/
+const updateWhenOnline = () => {
+  clearNotification();
+  hideNotification();
+  checkForFailedRequests().then((response) => {
+     if (response.length) {
+       validateFailedRequests(response, (error, requestsToSend) => {
+         if (error) {
+           clearNotification();
+           createNotificationContent(getNotificationContent("retry"));
+           createNotificationActionButton("retry", "retry", "retry now", updateWhenOnline);
+           addNotificationCountDown(() => {
+             updateWhenOnline();
+           });
+           displayNotification();
+         } else if (requestsToSend && requestsToSend.length) {
+           generateUnsavedChangesNotification(response.length);
+         } else {
+           generateBasicNotification(getNotificationContent("online"), 8000);
+         }
+       });
+     } else {
+       generateBasicNotification(getNotificationContent("online"), 8000);
+     }
+   });
+};
 
 /**
 ** Notify users when offline.
@@ -115,7 +141,6 @@ window.addEventListener("offline", (event) => {
     });
     displayNotification();
   } else {
-
     if(!self.mapLoaded) {
       offlineNotification =  getNotificationContent("offline_noMap");
       disableMap();
@@ -126,6 +151,12 @@ window.addEventListener("offline", (event) => {
   }
 });
 
+/**
+** Refresh the app.
+**/
+const refreshApp = () => {
+  InterfaceManager.refreshApp();
+}
 ////////////////////////////// SERVICE WORKER FUNCTIONS //////////////////////////////
 /**
 ** Register service worker.

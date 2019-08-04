@@ -62,14 +62,26 @@ nav {
 }
 nav>h1 {
   width: 100%;
+  text-align: center;
 }
 #headerLink {
   font-weight: 400;
   text-transform: uppercase;
   text-align: center;
   font-size: 1.3rem;
-  width: 100%;
-  display: block;
+  display: inline-block;
+  margin: auto;
+}
+#refreshButton {
+  position: absolute;
+  right: 20px;
+  background: none;
+  color: #f2f2f2;
+  font-size: 16px;
+  padding-top: 4px;
+}
+#refreshButton:hover,  #refreshButton:focus{
+  color: #ff751a;
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ CONTENT SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 #content_wrapper {
@@ -181,4 +193,15 @@ nav>h1 {
   width: 100vw;
   height: 100vh;
  background-color: rgba(0,0,0,0.4);
+}
+/* ~~~~~~~~~~~~~~~~~~ RESPONSIVE DESIGN WITH MEDIA QUERIES ~~~~~~~~~~~~~~~~~~ */
+@media screen and (max-width: 350px) {
+  #headerLink {
+    margin-right: 30px;
+    margin-left: 30px;
+    font-size: 1.1rem;
+  }
+  #refreshButton {
+    padding-top: 6px;
+  }
 }

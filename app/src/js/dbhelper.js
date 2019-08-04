@@ -77,11 +77,10 @@ class DBHelper {
         "target": target
       };
       if (target === "restaurants" || target === "reviews") {
-        let refactorkey = target.substring(0, target.length-1);
         const returnData = response;
         responseData.data = returnData;
         DBHelper.updateIndexedDB(responseData, "GETALL");
-      }else{
+      } else {
         const returnData = response;
         responseData.data = returnData;
         DBHelper.updateIndexedDB(responseData, "GET");
@@ -119,6 +118,7 @@ class DBHelper {
           callback(null, response);
           callback = () => {}; // don"t call callback again from fetch
           }
+          DBHelper.AppStore.deleteAll("restaurants");
           DBHelper.getData(DBHelper.RESTAURANTS_URL,"restaurants", callback);
         });
     } else {
@@ -153,9 +153,10 @@ class DBHelper {
           callback(null, response);
           callback = () => {}; // don"t call callback again from fetch
         }
+        DBHelper.AppStore.deleteAll("reviews");
         DBHelper.getData(DBHelper.REVIEWS_URL,"reviews", callback);
       });
-    }else{
+    } else {
       DBHelper.getData(DBHelper.REVIEWS_URL,"reviews", callback);
     }
   }
@@ -173,7 +174,7 @@ class DBHelper {
         const url_params = `?q={"restaurant_id":"${id}"}`;
         DBHelper.getData(DBHelper.REVIEWS_URL + url_params,"reviews", callback);
       });
-    }else{
+    } else {
       const url_params = `?q={"restaurant_id":"${id}"}`;
       DBHelper.getData(DBHelper.REVIEWS_URL + url_params,"reviews", callback);
     }
@@ -327,11 +328,11 @@ class DBHelper {
     static getTargetId(url, target) {
       const splitter = target + "s";
       let url_part = url.split(splitter).pop();
-      if(target === "restaurant") {
+      if (target === "restaurant") {
         url_part = url_part.split("/?is_favorite")[0];
         return Promise.resolve(url_part.substring(1));
       } else {
-        if(url_part){
+        if (url_part) {
           return Promise.resolve(url_part.substring(1));
         } else {
           return DBHelper.AppStore.getStoreKeys("failedRequests").then((response) => {
@@ -426,7 +427,7 @@ class DBHelper {
   /**
   ** Clear IndexedDB.
   **/
-  static clearIndexedBD(){
+  static clearIndexedBD() {
     DBHelper.AppStore.deleteAll("failedRequests");
     DBHelper.AppStore.deleteAll("restaurants");
     DBHelper.AppStore.deleteAll("reviews");

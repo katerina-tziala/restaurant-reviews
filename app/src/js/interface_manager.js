@@ -92,6 +92,8 @@ class InterfaceManager {
   **/
   static refreshApp() {
     DBHelper.clearIndexedBD();
+    DBHelper.fetchRestaurants(() => {});
+    DBHelper.fetchReviews(() => {});
     window.location.reload(true);
   }
 
@@ -133,7 +135,6 @@ class InterfaceManager {
     const datetime = datestring + ", " + time;
     return datetime;
   }
-
 
   /**
   ** Create button.

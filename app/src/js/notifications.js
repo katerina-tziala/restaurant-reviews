@@ -186,5 +186,8 @@ const generateRefreshNotification = () => {
   clearNotification();
   createNotificationContent(getNotificationContent("refresh"));
   createNotificationActionButton("refresh", "refresh", "refresh app", InterfaceManager.refreshApp);
+  addNotificationCountDown(() => {
+    InterfaceManager.refreshApp();
+  });
   displayNotification();
 };
