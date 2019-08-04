@@ -75,7 +75,7 @@ class DBHelper {
 
   // Get data with proper error handling:
   static getData(url, target, callback) {
-    DBHelper.fetchData(url, target).then((response)=>{
+    DBHelper.fetchData(url, target).then(response => {
       const responseData = {target: target};
       if (target === "restaurants" || target === "reviews") {
         const returnData = response;
@@ -110,7 +110,7 @@ class DBHelper {
   // Fetch all restaurants:
   static fetchRestaurants(callback) {
     if (DBHelper.INDEXED_DB_SUPPORT) {
-      DBHelper.AppStore.getCachedData("restaurants").then((response) => {
+      DBHelper.AppStore.getCachedData("restaurants").then(response => {
         if (response.length) {
           callback(null, response);
           callback = () => {}; // don"t call callback again from fetch
@@ -126,7 +126,7 @@ class DBHelper {
   // Fetch a restaurant by its ID:
   static fetchRestaurantById(id, callback) {
     if (DBHelper.INDEXED_DB_SUPPORT) {
-      DBHelper.AppStore.getCachedDataById("restaurants", id).then((response) => {
+      DBHelper.AppStore.getCachedDataById("restaurants", id).then(response => {
         if (response.length) {
           callback(null, response[0]);
           callback = () => {}; // don"t call callback again from fetch
