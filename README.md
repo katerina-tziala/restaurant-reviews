@@ -1,4 +1,4 @@
-<h1><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_logo-72x72.png" alt="budget restaurant reviews logo" width="54" height="54">Restaurant Reviews App: Stage 4</h1>
+<h1><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_logo-72x72.png" alt="restaurant reviews logo" width="54" height="54">Restaurant Reviews App: Stage 4</h1>
 This is the fourth stage of the <b>Restaurant Reviews</b> project. Building upon the PWA that was developed incrementally in the three previous stages, this stage includes the necessary changes to host the app and create a live demo. 
 
 
