@@ -1,4 +1,4 @@
-<h1><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_logo-72x72.png" alt="budget restaurant reviews logo" width="54" height="54">Restaurant Reviews App: Stage 1</h1>
+<h1><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_logo-72x72.png" alt="restaurant reviews logo" width="54" height="54">Restaurant Reviews App: Stage 1</h1>
 This is the first stage of the three-stage course material project <b>Restaurant Reviews</b>. The preparation to start working on this project and implement the requirements documented below, included:
 
  - Fork and clone the [**mws-restaurant-stage-1**](https://github.com/udacity/mws-restaurant-stage-1) starter repository.
