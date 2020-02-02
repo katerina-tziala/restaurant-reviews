@@ -1,4 +1,5 @@
-<h1><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_logo-72x72.png" alt="restaurant reviews logo" width="54" height="54">Restaurant Reviews App</h1>
+# <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_logo-72x72.png" alt="restaurant reviews logo" width="44" height="44" align="left">Restaurant Reviews App
+
 <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_layout_hor.png" alt="restaurant reviews layout" width="100%" height="auto">
 </p>
