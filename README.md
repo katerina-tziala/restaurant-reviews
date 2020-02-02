@@ -1,8 +1,9 @@
-<h1><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_logo-72x72.png" alt="restaurant reviews logo" width="54" height="54">Restaurant Reviews App: Stage 4</h1>
+# <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_logo-72x72.png" alt="restaurant reviews logo" width="44" height="44" align="left">Restaurant Reviews App: Stage 4
+
 This is the fourth stage of the <b>Restaurant Reviews</b> project. Building upon the PWA that was developed incrementally in the three previous stages, this stage includes the necessary changes to host the app and create a live demo. 
 
 
-<h2>Project Requirements</h2>
+## Project Requirements
 
   - **Update the app to work with a hosted NoSQL Database and a RESTful API:** Set up a NoSQL Database that contains the required data of the app, and create RESTful API to perform CRUD (Create, Read, Update, Delete) operations against the DB. Update the client application in order to make use of the new API.
    
@@ -14,10 +15,8 @@ This is the fourth stage of the <b>Restaurant Reviews</b> project. Building upon
    - **Progressive Web App** score should be at **90 or better**.
    - **Performance** score should be at **90 or better**.
    - **Accessibility** score should be at **90 or better**.
-<br><br>
 
-
-<h2>Setting up a hosted NoSQL Database and a RESTful API</h2>
+## Setting up a hosted NoSQL Database and a RESTful API
 
 For this stage an online database solution that offers both NoSQL DB storage and exposes a RESTful API was required.
 After an extensive research, I decided to use
@@ -51,79 +50,89 @@ After an extensive research, I decided to use
 
  - **Manage REST API**<br>
     Once the database and collections were created, I defined the API key and tested the endpoints for all CRUD operations with the use of [**postman**](https://www.getpostman.com/).
-<br><br>
  
-<h2>Local Setup of the Project</h2>
+## Local Setup of the Project
 
-**1.** Create an online NoSQL database backend and a REST API on [**restdb.io**](https://restdb.io/) as described above. 
+1. Create an online NoSQL database backend and a REST API on [**restdb.io**](https://restdb.io/) as described above. 
 
-**2.** Fork and clone the [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_4) repository.
+2. Fork and clone the [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_4) repository.
 
-**3.** Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
+3. Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
 
-**4.**  Make sure that the ***app_params*** of in the *config.json* file inside the **gulp_tasks** folder are defined appropriately:
- - **_APP_PATH:** The url of the path of the app (e.g.: `http://localhost:<PORT>/`).
- - **_START_URL_:** The url of the index.html file (e.g.: `http://localhost:<PORT>/index.html`).
- - **_SCOPE_:** Scope of application.
- - **_DATABASE_API_KEY:** Add your own API key for the [**restdb.io**](https://restdb.io/) database. 
- - **_MAPBOX_API_KEY_:** Add your own [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE).
-  - **_RESTAURANTS_URL_:** The url to fetch the restaurants, which is provided from the [**restdb.io**](https://restdb.io/).
-  - **_REVIEWS_URL_:** The url to fetch the reviews, which is provided from the [**restdb.io**](https://restdb.io/).
-<p align="center">
-    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/app_params.png" alt="change app parameters" width="80%" height="auto">
-</p>
+4.  Make sure that the ***app_params*** of in the *config.json* file inside the **gulp_tasks** folder are defined appropriately:
 
-**4.** Navigate from your terminal inside the /app folder and run ***gulp*** to bundle and build the app.
-<p align="center">
-    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/bundle_app.png" alt="running gulp to build the app" width="80%" height="auto">
-</p>
+    - **_APP_PATH:** The url of the path of the app (e.g.: `http://localhost:<PORT>/`).
 
-**5.** Choose the /dist folder of the project from the *Web Server for Chrome* app.
-<p align="center">
-    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/server.png" alt="setting up local server" width="40%" height="auto">
-</p>
+    - **_START_URL_:** The url of the index.html file (e.g.: `http://localhost:<PORT>/index.html`).
 
-**6.** Launch the website with the ***Web Server for Chrome*** app!<br><br>
-<br><br>
+    - **_SCOPE_:** Scope of application.
+
+    - **_DATABASE_API_KEY:** Add your own API key for the [**restdb.io**](https://restdb.io/) database.
+
+    - **_MAPBOX_API_KEY_:** Add your own [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE).
+    
+    - **_RESTAURANTS_URL_:** The url to fetch the restaurants, which is provided from the [**restdb.io**](https://restdb.io/).
+    
+    - **_REVIEWS_URL_:** The url to fetch the reviews, which is provided from the [**restdb.io**](https://restdb.io/).
+      <p align="center">
+        <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/app_params.png" alt="change app parameters" width="80%" height="auto">
+      </p>
+5. Navigate from your terminal inside the /app folder and run ***gulp*** to bundle and build the app.
+    <p align="center">
+        <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/bundle_app.png" alt="running gulp to build the app" width="80%" height="auto">
+    </p>
+
+6. Choose the /dist folder of the project from the *Web Server for Chrome* app.
+    <p align="center">
+        <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/server.png" alt="setting up local server" width="40%" height="auto">
+    </p>
+
+7. Launch the website with the ***Web Server for Chrome*** app!
  
-<h2>Upload Live Demo</h2>
+## Upload Live Demo
 
-**1.** Create an online NoSQL database backend and a REST API on [**restdb.io**](https://restdb.io/) as described above. 
+1. Create an online NoSQL database backend and a REST API on [**restdb.io**](https://restdb.io/) as described above. 
 
-**2.** Fork and clone the [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_4) repository.
+2. Fork and clone the [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_4) repository.
 
-**3.** Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
+3. Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
 
-**4.**  Make sure that the ***app_params*** of in the *config.json* file inside the **gulp_tasks** folder are defined appropriately:
- - **_APP_PATH:** The url of the path of the app (`https://katerina-tziala.github.io/restaurant_reviews_app/`).
- - **_START_URL_:** The url of the index.html file (`https://katerina-tziala.github.io/restaurant_reviews_app/index.html`).
- - **_SCOPE_:** Scope of application (`/restaurant_reviews_app/`).
- - **_DATABASE_API_KEY:** Add your own API key for the [**restdb.io**](https://restdb.io/) database. 
- - **_MAPBOX_API_KEY_:** Add your own [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE).
-  - **_RESTAURANTS_URL_:** The url to fetch the restaurants, which is provided from the [**restdb.io**](https://restdb.io/).
-  - **_REVIEWS_URL_:** The url to fetch the reviews, which is provided from the [**restdb.io**](https://restdb.io/).
-<p align="center">
-    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/app_params.png" alt="change app parameters" width="80%" height="auto">
-</p>
+4. Make sure that the ***app_params*** of in the *config.json* file inside the **gulp_tasks** folder are defined appropriately:
 
-**5.** Update the scope of the Service Worker in the *config.json* file inside the **gulp_tasks** folder:<br>
+    - **_APP_PATH:** The url of the path of the app (`https://katerina-tziala.github.io/restaurant_reviews_app/`).
+
+    - **_START_URL_:** The url of the index.html file (`https://katerina-tziala.github.io/restaurant_reviews_app/index.html`).
+
+    - **_SCOPE_:** Scope of application (`/restaurant_reviews_app/`).
+
+    - **_DATABASE_API_KEY:** Add your own API key for the [**restdb.io**](https://restdb.io/) database.
+
+    - **_MAPBOX_API_KEY_:** Add your own [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE).
+
+      - **_RESTAURANTS_URL_:** The url to fetch the restaurants, which is provided from the [**restdb.io**](https://restdb.io/).
+
+      - **_REVIEWS_URL_:** The url to fetch the reviews, which is provided from the [**restdb.io**](https://restdb.io/).
+        <p align="center">
+            <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/app_params.png" alt="change app parameters" width="80%" height="auto">
+        </p>
+
+6. Update the scope of the Service Worker in the ***config.json*** file inside the ***gulp_tasks*** folder:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;&nbsp;&nbsp;<img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/sw_scope.png" alt="service worker scope of localhost" width="29.5%" height="auto">&nbsp;&nbsp;&nbsp;to&nbsp;&nbsp;&nbsp;<img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/sw_demo_scope.png" alt="service worker scope of demo app" width="40%" height="auto">
 
-**6.** Navigate from your terminal inside the /app folder and run ***gulp*** to bundle and build the app.
-<p align="center">
-    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/bundle_app_demo.png" alt="running gulp to build the app" width="80%" height="auto">
-</p>
+7. Navigate from your terminal inside the /app folder and run ***gulp*** to bundle and build the app.
+  <p align="center">
+      <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_4/bundle_app_demo.png" alt="running gulp to build the app" width="80%" height="auto">
+  </p>
 
-**7.** Upload all files located in the ***/dist*** folder of the project to the ***docs*** folder of the master branch in one of your github repositories.
+8. Upload all files located in the ***/dist*** folder of the project to the ***docs*** folder of the master branch in one of your github repositories.
 
-**8.** In the **GitHub Pages** section of your repository settings, select the **/docs** to build and launch your app.
+9. In the **GitHub Pages** section of your repository settings, select the **/docs** to build and launch your app.
         <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/github_pages.png" alt="github pages" width="80%" height="auto"></p>
 
-**9.** Access the ***Restaurant Reviews App*** here:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<a class="button" href="https://katerina-tziala.github.io/restaurant_reviews_app/index.html" aria-label="access live demo"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_live_demo_btn.png" alt="live demo" width="100px" height="auto"></a>
-<br><br>
+10. Access the app here: <a href="https://katerina-tziala.github.io/restaurant_reviews_app/index.html" target="blank">Restaurant Reviews App</a>
 
-<h2>Auditing the Restaurant Reviews App</h2>
+## Auditing the Restaurant Reviews App
+
 When launching the app locally all metrics (Responsive Design, Accessibility, Performance) are maintained. For the ***Live Demo*** of the app, performance metrics are illustraded in the following figures:
 
    - **Lighthouse Metrics for index.html**
@@ -137,7 +146,7 @@ When launching the app locally all metrics (Responsive Design, Accessibility, Pe
       </p>
 <br><br>
 
-<h2>Progressive Wep App</h2>
+## Progressive Wep App
 
 The  ***Restaurant Reviews App***  is a PWA. Such web applications are installable and live on the user's home screen, without the need for an app store. In stages 2 and 3 it was illustrated how the app can be installed on the home page of the  ***Chrome***  browser. The following figure illustrates how the app can be installed on a mobile device.<br>
  <p align="center">
