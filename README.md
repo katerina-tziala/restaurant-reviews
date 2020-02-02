@@ -1,10 +1,11 @@
-<h1><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_logo-72x72.png" alt="restaurant reviews logo" width="54" height="54">Restaurant Reviews App: Stage 3</h1>
+# <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_logo-72x72.png" alt="restaurant reviews logo" width="44" height="44" align="left">Restaurant Reviews App: Stage 3
+
 This is the third and final stage of the three-stage course material project <b>Restaurant Reviews</b>. Building upon the responsive, accessible and connected application that was developed incrementally in the first two stages, the app should now provide additional functionality. Users should now be able to create their own reviews and add restaurants in their favorites list. If the app is offline, form submissions should defer updating to the remote database until a connection is established. The preparation to start working on this project and implement the requirements documented below, included:
 
  - Fork and clone the [**stage-3 Node development server**](https://github.com/udacity/mws-restaurant-stage-3) repository.
  - Run the development server locally to develop the project code.<br><br>
  
-<h2>Project Requirements</h2>
+## Project Requirements
  
   - **User Interface:** Users are able to mark a restaurant as a favorite (and remove a restaurant from favorites), this toggle is visible in the application. Users are also able to add their own reviews for a restaurant. Form submission works properly and adds a new review to the database.
 
@@ -18,42 +19,45 @@ This is the third and final stage of the three-stage course material project <b>
    - **Progressive Web App** score should be at **90 or better**.
    - **Performance** score should be at **90 or better**.
    - **Accessibility** score should be at **90 or better**.
-<br><br>
  
-<h2>Local Setup of the Project</h2>
+## Local Setup of the Project
 
-**1.** Fork and clone the [**stage-3 Node development server**](https://github.com/udacity/mws-restaurant-stage-3) repository.
+1. Fork and clone the [**stage-3 Node development server**](https://github.com/udacity/mws-restaurant-stage-3) repository.
 
-**2.** Follow the README file of the server repository to get the Node development server up and running locally on your computer.
+2. Follow the README file of the server repository to get the Node development server up and running locally on your computer.
 
-**3.** Fork and clone the [**restaurant_reviews-stage_3**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_3) repository.
+3. Fork and clone the [**restaurant_reviews-stage_3**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_3) repository.
 
-**4.** Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
+4. Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
 
-**5.**  Make sure that the ***app_params*** of in the *config.json* file inside the **gulp_tasks** folder are defined appropriately:
+5.  Make sure that the ***app_params*** of in the *config.json* file inside the **gulp_tasks** folder are defined appropriately:
+
  - **_APP_PATH:** The url of the path of the app (e.g.: `http://localhost:<PORT>/`).
+
  - **_START_URL_:** The url of the index.html file (e.g.: `http://localhost:<PORT>/index.html`).
+
  - **_SCOPE_:** Scope of application.
  - **_MAPBOX_API_KEY_:** Add your own [**Mapbox API key**](https://www.mapbox.com/?utm_source=googlesearch&utm_medium=paid-search&utm_campaign=CHKO-GG-PR01-Mapbox-BR.Broad-INT-Search&utm_content=search-ad&gclid=EAIaIQobChMI1szU_9-74QIVz-F3Ch3miw9IEAAYASAAEgLAHfD_BwE).
-  - **_RESTAURANTS_URL_:** The url to fetch the restaurants, which can be found in the README file of the [**stage-3 Node development server**](https://github.com/udacity/mws-restaurant-stage-3).
-  - **_REVIEWS_URL_:** The url to fetch the reviews, which can be found in the README file of the [**stage-3 Node development server**](https://github.com/udacity/mws-restaurant-stage-3).
-<p align="center">
-    <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/app_params.png" alt="change app parameters" width="80%" height="auto">
-</p>
 
-**6.** Navigate from your terminal inside the /app folder and run ***gulp*** to bundle and build the app.
+ - **_RESTAURANTS_URL_:** The url to fetch the restaurants, which can be found in the README file of the [**stage-3 Node development server**](https://github.com/udacity/mws-restaurant-stage-3).
+
+ - **_REVIEWS_URL_:** The url to fetch the reviews, which can be found in the README file of the [**stage-3 Node development server**](https://github.com/udacity/mws-restaurant-stage-3).
+  <p align="center">
+      <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/app_params.png" alt="change app parameters" width="80%" height="auto">
+  </p>
+
+6. Navigate from your terminal inside the /app folder and run ***gulp*** to bundle and build the app.
 <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/bundle_app.png" alt="running gulp to build the app" width="80%" height="auto">
 </p>
 
-**7.** Choose the /dist folder of the project from the *Web Server for Chrome* app.
-<p align="center">
+7. Choose the /dist folder of the project from the *Web Server for Chrome* app.
+   <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/server.png" alt="setting up local server" width="40%" height="auto">
-</p>
+   </p>
+8. Launch the website with the ***Web Server for Chrome*** app and while the ***Node development server*** is up and running!<br><br><br>
 
-**8.** Launch the website with the ***Web Server for Chrome*** app and while the ***Node development server*** is up and running!<br><br><br>
-
-<h2>Auditing the Restaurant Reviews App</h2>
+## Auditing the Restaurant Reviews App
 After completing the third stage of the project, the application was audited. The following figures illustrate the audit results.
 
  - **User Interface**
@@ -96,7 +100,7 @@ After completing the third stage of the project, the application was audited. Th
     <img src="https://github.com/katerina-tziala/restaurant/blob/master/repository_images/stage_3/RR-S3_audit_restaurant.png" alt="lighthouse metrincs for restaurant page" width="100%" height="auto">
     </p><br><br>
 
-<h2>Progressive Wep App</h2>
+## Progressive Wep App
 
  - **Reliable:** Loads instantly even in uncertain network conditions.
  - **Fast:** Responds quickly to user interactions with silky smooth animations and no janky scrolling.
