@@ -5,12 +5,11 @@
 </p>
 
 The ***Restaurant Reviews App*** is a proof-of-concept PWA (Progressive Web App) that served as my capstone project for *Udacity’s Mobile Web Specialist Nanodegree Program*.
-In this real world case study, the front end code for a static Restaurant Reviews App that was barely usable on a desktop browser was provided. I had to revise the site, refactor the code, and incrementally develop, in this three-stage course material project, a PWA.<br>Finally, a fourth stage was added in order to create a live demo of the app. Access the ***Restaurant Reviews App*** here:
-<br><br>
-&nbsp;<a class="button" href="https://katerina-tziala.github.io/restaurant_reviews_app/index.html" aria-label="access live demo"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_live_demo_btn.png" alt="live demo" width="100px" height="auto"></a>
-<br><br>
+In this real world case study, the front end code for a static Restaurant Reviews App that was barely usable on a desktop browser was provided. I had to revise the site, refactor the code, and incrementally develop, in this three-stage course material project, a PWA.
+Finally, a fourth stage was added in order to create a live demo of the app.
+Access the app here: <a href="https://katerina-tziala.github.io/restaurant_reviews_app/index.html" target="blank">Restaurant Reviews App</a>
 
-<h2>Technologies, APIs, and Features</h2>
+## Technologies, APIs, and Features
 Here’s a high level list of some of the technologies, APIs, and Features of the app:
 
  - CSS3, Flexbox and Media Queries for Responsive Design
@@ -23,7 +22,7 @@ Here’s a high level list of some of the technologies, APIs, and Features of th
  - Implementation of a build system with Gulp for a highly optimized and performant app (90+ Audit metrics for Performance, Accessibility, PWA)
 <br><br>
 
-<h2>Branches</h2>
+## Branches
 This repository is split into the following branches, based on the app's phase of development:
 
  - [**restaurant_reviews-stage_1**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_1)**:** Building upon the provided restaurant reviews website, converts the existing static design into a fully responsive design that renders appropriately in any viewport including desktop, tablet, and mobile displays. Additionally, implements all standard accessibility features that are currently missing with the use of semantic markup and ARIA atributes. Finally, starts converting this website to a Progressive Web Application by caching some assets for offline use.
@@ -48,4 +47,3 @@ This repository is split into the following branches, based on the app's phase o
  
   - [**master**](https://github.com/katerina-tziala/restaurant_reviews_app)**:** 
  The master branch contains the live demo of the app (*docs folder, bundled app*), the source code of the app (*app folder, currently synchronized to **restaurant_reviews-stage_4** branch*), and the images used to describe all README files of this repository (*repository_images folder*).
-
