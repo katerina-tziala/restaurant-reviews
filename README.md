@@ -55,7 +55,7 @@ After an extensive research, I decided to use
 
 1. Create an online NoSQL database backend and a REST API on [**restdb.io**](https://restdb.io/) as described above. 
 
-2. Fork and clone the [**restaurant_reviews-stage_4**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_4) repository.
+2. Fork and clone the [**restaurant-reviews-stage-4**](https://github.com/katerina-tziala/restaurant/tree/restaurant-reviews-stage-4) repository.
 
 3. Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
 
