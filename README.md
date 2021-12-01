@@ -1,4 +1,4 @@
-# <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_logo-72x72.png" alt="restaurant reviews logo" width="44" height="44" align="left">Restaurant Reviews App: Stage 1
+# <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_logo-72x72.png" alt="restaurant reviews logo" width="44" height="44" align="left">Restaurant Reviews: Stage 1
 
 This is the first stage of the three-stage course material project **Restaurant Reviews**. The preparation to start working on this project and implement the requirements documented below, included:
 
