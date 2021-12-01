@@ -18,7 +18,7 @@ This is the first stage of the three-stage course material project **Restaurant 
 
 ## Local Setup of the Project
 
-1. Fork and clone the [**restaurant_reviews-stage_1**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_1) repository.
+1. Fork and clone the [**restaurant-reviews-stage-1**](https://github.com/katerina-tziala/restaurant/tree/restaurant-reviews-stage-1) repository.
 
 2. To launch the website install and use the [**Web Server for Chrome**](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb).
 
