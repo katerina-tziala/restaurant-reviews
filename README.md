@@ -129,8 +129,6 @@ After an extensive research, I decided to use
 8. In the **GitHub Pages** section of your repository settings, select the **/docs** to build and launch your app.
         <p align="center"><img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/stage_4/github_pages.png" alt="github pages" width="80%" height="auto"></p>
 
-9. Access the app here: <a href="https://katerina-tziala.github.io/restaurant_reviews_app/index.html" target="blank">Restaurant Reviews App</a>
-
 ## Auditing the Restaurant Reviews App
 
 When launching the app locally all metrics (Responsive Design, Accessibility, Performance) are maintained. For the ***Live Demo*** of the app, performance metrics are illustraded in the following figures:
