@@ -45,4 +45,4 @@ This repository is split into the following branches, based on the app's phase o
  Building upon the PWA that was developed incrementally in the three previous stages, the app should now connect to an online backend server (hosted NoSQL DB with a RESTful API) in order to facilitate a live demo of the app. Responsive design, accessibility, functionality and performance metrics should be retained.
  
   - [**master**](https://github.com/katerina-tziala/restaurant_reviews_app)**:** 
- The master branch is synchronized to **restaurant_reviews-stage_4** branch* and contains also the images used to describe all README files of this repository (*repository_images folder*).
+ The master branch is synchronized to **restaurant_reviews-stage_4** branch and contains also the images used to describe all README files of this repository (*repository_images folder*).
