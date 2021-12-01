@@ -26,7 +26,7 @@ This is the third and final stage of the three-stage course material project <b>
 
 2. Follow the README file of the server repository to get the Node development server up and running locally on your computer.
 
-3. Fork and clone the [**restaurant_reviews-stage_3**](https://github.com/katerina-tziala/restaurant/tree/restaurant_reviews-stage_3) repository.
+3. Fork and clone the [**restaurant-reviews-stage-3**](https://github.com/katerina-tziala/restaurant/tree/restaurant-reviews-stage-3) repository.
 
 4. Navigate from your terminal inside the /app folder and run  ***npm install*** to install the project's dependencies.
 
