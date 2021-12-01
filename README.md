@@ -1,10 +1,10 @@
-# <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_logo-72x72.png" alt="restaurant reviews logo" width="44" height="44" align="left">Restaurant Reviews App
+# <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_logo-72x72.png" alt="restaurant reviews logo" width="44" height="44" align="left">Restaurant Reviews
 
 <p align="center">
     <img src="https://github.com/katerina-tziala/restaurant_reviews_app/blob/master/repository_images/rr_layout_hor.png" alt="restaurant reviews layout" width="100%" height="auto">
 </p>
 
-The ***Restaurant Reviews App*** is a proof-of-concept PWA (Progressive Web App) that served as my capstone project for *Udacity’s Mobile Web Specialist Nanodegree Program*.
+The ***Restaurant Reviews*** is a proof-of-concept PWA (Progressive Web App) that served as my capstone project for *Udacity’s Mobile Web Specialist Nanodegree Program*.
 In this real world case study, the front end code for a static Restaurant Reviews App that was barely usable on a desktop browser was provided. I had to revise the site, refactor the code, and incrementally develop, in this three-stage course material project, a PWA.
 <br/>Finally, a fourth stage was added in order to create a live demo of the app.
 
