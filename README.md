@@ -7,7 +7,6 @@
 The ***Restaurant Reviews App*** is a proof-of-concept PWA (Progressive Web App) that served as my capstone project for *Udacity’s Mobile Web Specialist Nanodegree Program*.
 In this real world case study, the front end code for a static Restaurant Reviews App that was barely usable on a desktop browser was provided. I had to revise the site, refactor the code, and incrementally develop, in this three-stage course material project, a PWA.
 <br/>Finally, a fourth stage was added in order to create a live demo of the app.
-<br/>Access the app here: <a href="https://katerina-tziala.github.io/restaurant_reviews_app/index.html" target="blank">Restaurant Reviews App</a>
 
 ## Technologies, APIs, and Features
 Here’s a high level list of some of the technologies, APIs, and Features of the app:
